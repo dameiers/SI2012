@@ -1,0 +1,1500 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/6/Ontology1342622372824.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://www.semanticweb.org/ontologies/2012/6/Ontology1342622372824.owl">
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#ActionGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ActiveSportEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AdulsPreferredEvents"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AdultsAgeClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AdventureGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AgeClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AmusementParkEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BalletEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CampingEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChildAgeClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChildFriendlyEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CinemaEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CinemaGenres"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CircusEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClassicGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ComedyGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ComicGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ConcertEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ConcertGenres"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CruiseEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CultureEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DramaGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Duration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ElectroGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FestivityEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FootballEvents"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Genre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HikeEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HipHopGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HorrorGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LeisureTimeEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MotorSportEvents"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MultipleDaysDuration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MultipleDaysEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NonActiveSportEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OldAdultsAgeClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OneDayDuration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OneDayEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OperaEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PartyEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PopGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PunkGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RockGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RunningEvents"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SchlagerGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SportEvents"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TeenagerAgeClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TeenagerPreferredEvents"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TheatreEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TheatreGenres"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ThrillerGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TragedyGenre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TripEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WeekendEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#YoungAdultsAgeClass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDuration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGenre"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isPreferredOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isRelatedToEvent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSuitableForEvent"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAge"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasChildCare"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasConcreteDuration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isActive"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isChildFriendly"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#ActiveSportEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#SportEvents"/>
+            <DataHasValue>
+                <DataProperty IRI="#isActive"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Event"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isPreferredOf"/>
+                <Class IRI="#AdultsAgeClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Event"/>
+            <DataHasValue>
+                <DataProperty IRI="#isChildFriendly"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#ChildAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <DataHasValue>
+            <DataProperty IRI="#hasChildCare"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#CinemaGenres"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Genre"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isRelatedToEvent"/>
+                <Class IRI="#CinemaEvent"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ConcertGenres"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Genre"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isRelatedToEvent"/>
+                <Class IRI="#ConcertEvent"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#MultipleDaysEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Event"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasDuration"/>
+                <Class IRI="#MultipleDaysDuration"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#MultipleDaysEvent"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasConcreteDuration"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:integer"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#NonActiveSportEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#SportEvents"/>
+            <DataHasValue>
+                <DataProperty IRI="#isActive"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Event"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isPreferredOf"/>
+                <Class IRI="#OldAdultsAgeClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#OneDayDuration"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Duration"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isSuitableForEvent"/>
+                <Class IRI="#OneDayEvent"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#OneDayEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Event"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasDuration"/>
+                <Class IRI="#OneDayDuration"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Event"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isPreferredOf"/>
+                <Class IRI="#TeenagerAgeClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TheatreGenres"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Genre"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isRelatedToEvent"/>
+                <Class IRI="#TheatreEvent"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#WeekendEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#MultipleDaysEvent"/>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasConcreteDuration"/>
+                <DataIntersectionOf>
+                    <DatatypeRestriction>
+                        <Datatype abbreviatedIRI="xsd:integer"/>
+                        <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+                        </FacetRestriction>
+                    </DatatypeRestriction>
+                    <DatatypeRestriction>
+                        <Datatype abbreviatedIRI="xsd:integer"/>
+                        <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+                        </FacetRestriction>
+                    </DatatypeRestriction>
+                </DataIntersectionOf>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Event"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isPreferredOf"/>
+                <Class IRI="#YoungAdultsAgeClass"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#ActionGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ActionGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#CinemaEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AdultsAgeClass"/>
+        <Class IRI="#AgeClass"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AdventureGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AdventureGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#CinemaEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AdventureGenre"/>
+        <DataHasValue>
+            <DataProperty IRI="#isChildFriendly"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AgeClass"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasAge"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AmusementParkEvent"/>
+        <Class IRI="#LeisureTimeEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AmusementParkEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#MultipleDaysDuration"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AmusementParkEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#OneDayDuration"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BalletEvent"/>
+        <Class IRI="#CultureEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BalletEvent"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#OneDayDuration"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CampingEvent"/>
+        <Class IRI="#LeisureTimeEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CampingEvent"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#MultipleDaysDuration"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChildAgeClass"/>
+        <Class IRI="#AgeClass"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CinemaEvent"/>
+        <Class IRI="#CultureEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CinemaEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#TeenagerAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CinemaEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#YoungAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CinemaEvent"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#OneDayDuration"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CircusEvent"/>
+        <Class IRI="#LeisureTimeEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CircusEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#ChildAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ClassicGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ClassicGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#OldAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ClassicGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#ConcertEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComedyGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComedyGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#CinemaEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComedyGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#TheatreEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComedyGenre"/>
+        <DataHasValue>
+            <DataProperty IRI="#isChildFriendly"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComicGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComicGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#CinemaEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ComicGenre"/>
+        <DataHasValue>
+            <DataProperty IRI="#isChildFriendly"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConcertEvent"/>
+        <Class IRI="#CultureEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConcertEvent"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#OneDayDuration"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CruiseEvent"/>
+        <Class IRI="#LeisureTimeEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CultureEvent"/>
+        <Class IRI="#Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DramaGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DramaGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#CinemaEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DramaGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#TheatreEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ElectroGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ElectroGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#YoungAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ElectroGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#ConcertEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Event"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#Duration"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Event"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasChildCare"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FestivityEvent"/>
+        <Class IRI="#LeisureTimeEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FestivityEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#AgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FootballEvents"/>
+        <Class IRI="#SportEvents"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FootballEvents"/>
+        <DataHasValue>
+            <DataProperty IRI="#isActive"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FootballEvents"/>
+        <DataHasValue>
+            <DataProperty IRI="#isActive"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HikeEvent"/>
+        <Class IRI="#LeisureTimeEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HipHopGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HipHopGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#TeenagerAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HipHopGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#YoungAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HipHopGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#ConcertEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HorrorGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HorrorGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#CinemaEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LeisureTimeEvent"/>
+        <Class IRI="#Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MotorSportEvents"/>
+        <Class IRI="#SportEvents"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MotorSportEvents"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#AdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MotorSportEvents"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#YoungAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MotorSportEvents"/>
+        <DataHasValue>
+            <DataProperty IRI="#isActive"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MultipleDaysDuration"/>
+        <Class IRI="#Duration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OldAdultsAgeClass"/>
+        <Class IRI="#AgeClass"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OperaEvent"/>
+        <Class IRI="#CultureEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OperaEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#AdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OperaEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#OldAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OperaEvent"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#OneDayDuration"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PartyEvent"/>
+        <Class IRI="#LeisureTimeEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PartyEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#TeenagerAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PartyEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#YoungAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PopGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PopGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#AdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PopGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#TeenagerAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PopGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#ConcertEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PunkGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PunkGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#TeenagerAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PunkGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#ConcertEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RockGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RockGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#TeenagerAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RockGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#YoungAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RockGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#ConcertEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RunningEvents"/>
+        <Class IRI="#SportEvents"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RunningEvents"/>
+        <DataHasValue>
+            <DataProperty IRI="#isActive"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SchlagerGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SchlagerGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#OldAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SchlagerGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#ConcertEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SportEvents"/>
+        <Class IRI="#Event"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TeenagerAgeClass"/>
+        <Class IRI="#AgeClass"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TheatreEvent"/>
+        <Class IRI="#CultureEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TheatreEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#AdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TheatreEvent"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#OldAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TheatreEvent"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#OneDayDuration"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ThrillerGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ThrillerGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#CinemaEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TragedyGenre"/>
+        <Class IRI="#Genre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TragedyGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isPreferredOf"/>
+            <Class IRI="#OldAdultsAgeClass"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TragedyGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#CinemaEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TragedyGenre"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isRelatedToEvent"/>
+            <Class IRI="#TheatreEvent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TripEvent"/>
+        <Class IRI="#LeisureTimeEvent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TripEvent"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasDuration"/>
+            <Class IRI="#MultipleDaysDuration"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#YoungAdultsAgeClass"/>
+        <Class IRI="#AgeClass"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#ChildAgeClass"/>
+        <Class IRI="#OldAdultsAgeClass"/>
+        <Class IRI="#TeenagerAgeClass"/>
+        <Class IRI="#YoungAdultsAgeClass"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#MultipleDaysDuration"/>
+        <Class IRI="#OneDayDuration"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#MultipleDaysEvent"/>
+        <Class IRI="#OneDayEvent"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#13"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NonActiveSportEvent"/>
+        <NamedIndividual IRI="#13"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#16"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NonActiveSportEvent"/>
+        <NamedIndividual IRI="#16"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#17"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NonActiveSportEvent"/>
+        <NamedIndividual IRI="#17"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ActiveSportEvent"/>
+        <NamedIndividual IRI="#22"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#22"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#25"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#25"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#26"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#26"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BalletEvent"/>
+        <NamedIndividual IRI="#27"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#27"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#31"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#31"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#37"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#37"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#40"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#40"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#41"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#41"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#42"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#42"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#43"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#43"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#44"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#44"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#45"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#45"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#47"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#47"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CircusEvent"/>
+        <NamedIndividual IRI="#49"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#49"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CircusEvent"/>
+        <NamedIndividual IRI="#50"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#50"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CircusEvent"/>
+        <NamedIndividual IRI="#52"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#52"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CircusEvent"/>
+        <NamedIndividual IRI="#54"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#54"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#56"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PartyEvent"/>
+        <NamedIndividual IRI="#56"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#61"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PartyEvent"/>
+        <NamedIndividual IRI="#61"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#63"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PartyEvent"/>
+        <NamedIndividual IRI="#63"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#66"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PartyEvent"/>
+        <NamedIndividual IRI="#66"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#67"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TripEvent"/>
+        <NamedIndividual IRI="#67"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FestivityEvent"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FestivityEvent"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CampingEvent"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CampingEvent"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#8"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NonActiveSportEvent"/>
+        <NamedIndividual IRI="#8"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#82"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#82"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#9"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NonActiveSportEvent"/>
+        <NamedIndividual IRI="#9"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#13"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#16"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#17"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#22"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#25"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#26"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#27"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#31"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#37"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#40"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#41"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#42"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#43"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#44"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#45"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#47"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#49"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#50"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#52"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#54"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#56"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#61"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#63"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#66"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#67"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#68"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#70"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#74"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#78"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#8"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#82"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#9"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasDuration"/>
+        <ObjectProperty IRI="#isSuitableForEvent"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isRelatedToEvent"/>
+        <ObjectProperty IRI="#hasGenre"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDuration"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGenre"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isPreferredOf"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isRelatedToEvent"/>
+        <Class IRI="#Genre"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isSuitableForEvent"/>
+        <Class IRI="#Duration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDuration"/>
+        <Class IRI="#Duration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGenre"/>
+        <Class IRI="#Genre"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isPreferredOf"/>
+        <Class IRI="#AgeClass"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isRelatedToEvent"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isSuitableForEvent"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAge"/>
+        <Class IRI="#AgeClass"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasChildCare"/>
+        <Class IRI="#Event"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <Class IRI="#Event"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isActive"/>
+        <Class IRI="#Event"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isChildFriendly"/>
+        <Class IRI="#Event"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAge"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasChildCare"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isActive"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isChildFriendly"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.2.4.1806) http://owlapi.sourceforge.net -->
+
