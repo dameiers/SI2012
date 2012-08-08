@@ -126,11 +126,21 @@ public class SchoolLocationStep extends javax.swing.JPanel implements ActionList
 		}
 	}
 	
+	public String[] getSelectedLocations()
+	{
+		int locationCount = schoolCboContainer.getComponentCount();
+		String[] locations = new String[locationCount];
+		for(int i=0; i<locationCount; i++) {
+			locations[i] = ((SchoolLocationComponent)schoolCboContainer.getComponent(i)).getSelectedLocation();
+		}
+		
+		return locations;
+	}
+	
 	public void actionPerformed(ActionEvent arg0) {			
 		schoolCboContainer.add(new SchoolLocationComponent(schoolCboContainer));
 		schoolCboContainer.revalidate();
 		schoolCboContainer.repaint();
-		
 	}
 
 }

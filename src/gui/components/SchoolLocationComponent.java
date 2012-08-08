@@ -34,12 +34,17 @@ public class SchoolLocationComponent extends javax.swing.JPanel implements Actio
 	private JComboBox schoolLocationCbo;
 	private JButton removeBtn;
 	private JPanel container;
+	private final String[] locations = {"Saarbrücken", "Saarlouis", "Lebach"};
 
 	
 	public SchoolLocationComponent(JPanel container) {
 		super();
 		initGUI();
 		this.container = container;
+	}
+	
+	public String getSelectedLocation() {
+		return locations[schoolLocationCbo.getSelectedIndex()];
 	}
 	
 	private void initGUI() {
@@ -58,12 +63,10 @@ public class SchoolLocationComponent extends javax.swing.JPanel implements Actio
 				schoolLocationLbl.setText("Schulort");
 			}
 			{
-				ComboBoxModel schoolLocationCboModel = 
-						new DefaultComboBoxModel(
-								new String[] { "Item One", "Item Two" });
-				schoolLocationCbo = new JComboBox();
+
+				schoolLocationCbo = new JComboBox(locations);
 				this.add(schoolLocationCbo, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
-				schoolLocationCbo.setModel(schoolLocationCboModel);
+
 			}
 			{
 				removeBtn = new JButton();
