@@ -31,11 +31,9 @@ import javax.swing.JLabel;
 */
 public class SchoolLocationComponent extends javax.swing.JPanel implements ActionListener {
 	private JLabel schoolLocationLbl;
-	private JComboBox schoolLocationCbo;
+	private LocationComboBox schoolLocationCbo;
 	private JButton removeBtn;
 	private JPanel container;
-	private final String[] locations = {"Saarbrücken", "Saarlouis", "Lebach"};
-
 	
 	public SchoolLocationComponent(JPanel container) {
 		super();
@@ -44,7 +42,7 @@ public class SchoolLocationComponent extends javax.swing.JPanel implements Actio
 	}
 	
 	public String getSelectedLocation() {
-		return locations[schoolLocationCbo.getSelectedIndex()];
+		return schoolLocationCbo.getSelectedLocation();
 	}
 	
 	private void initGUI() {
@@ -64,7 +62,7 @@ public class SchoolLocationComponent extends javax.swing.JPanel implements Actio
 			}
 			{
 
-				schoolLocationCbo = new JComboBox(locations);
+				schoolLocationCbo = new LocationComboBox();
 				this.add(schoolLocationCbo, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 
 			}
