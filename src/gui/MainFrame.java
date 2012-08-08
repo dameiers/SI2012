@@ -1,4 +1,7 @@
 package gui;
+import gui.steps.PersonDescriptionStep;
+import gui.steps.TimeRangeStep;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -11,8 +14,6 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
-import steps.PersonDescriptionStep;
-import steps.TimeRangeStep;
 
 
 /**
