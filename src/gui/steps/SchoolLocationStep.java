@@ -8,9 +8,13 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 import javax.swing.WindowConstants;
@@ -31,11 +35,13 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class SchoolLocationStep extends javax.swing.JPanel {
+public class SchoolLocationStep extends javax.swing.JPanel implements ActionListener {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
+	private JPanel addBtnContainer;
 	private SchoolLocationComponent schoolLocationComponent1;
-	private JPanel schoolLocationComponentContainer;
+	private JPanel schoolCboContainer;
+	private JButton addBtn;
 	private JTextPane titleTxt;
 
 	/**
@@ -53,6 +59,7 @@ public class SchoolLocationStep extends javax.swing.JPanel {
 	public SchoolLocationStep() {
 		super();
 		initGUI();
+		
 	}
 	
 	private void initGUI() {
@@ -82,28 +89,48 @@ public class SchoolLocationStep extends javax.swing.JPanel {
 				this.add(contentPnl, BorderLayout.CENTER);
 				GridBagLayout contentPnlLayout = new GridBagLayout();
 				contentPnlLayout.rowWeights = new double[] {0.0, 0.1};
-				contentPnlLayout.rowHeights = new int[] {200, 5};
-				contentPnlLayout.columnWeights = new double[] {0.0};
-				contentPnlLayout.columnWidths = new int[] {600};
+				contentPnlLayout.rowHeights = new int[] {300, 5};
+				contentPnlLayout.columnWeights = new double[] {0.1, 0.0, 0.0, 0.1};
+				contentPnlLayout.columnWidths = new int[] {5, 350, 75, 5};
 				contentPnl.setLayout(contentPnlLayout);
 				contentPnl.setPreferredSize(new java.awt.Dimension(635, 277));
 				{
-					schoolLocationComponentContainer = new JPanel();
-					contentPnl.add(schoolLocationComponentContainer, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0, GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+					schoolCboContainer = new JPanel();
+					FlowLayout schoolCboContainerLayout = new FlowLayout();
+					contentPnl.add(schoolCboContainer, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.VERTICAL, new Insets(0, 0, 0, 0), 0, 0));
+					contentPnl.setSize(400, 300);
+					schoolCboContainer.setLayout(schoolCboContainerLayout);
+
+					schoolCboContainer.setPreferredSize(new java.awt.Dimension(400, 300));
+					schoolCboContainer.setMaximumSize(new java.awt.Dimension(400, 32767));
+					schoolCboContainer.add(new SchoolLocationComponent(schoolCboContainer));
+
+				}
+				{
+					addBtnContainer = new JPanel();
+					contentPnl.add(addBtnContainer, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+					addBtnContainer.setLayout(null);
 					{
-						schoolLocationComponent1 = new SchoolLocationComponent();
-						schoolLocationComponentContainer.add(schoolLocationComponent1);
+						addBtn = new JButton();
+						addBtnContainer.add(addBtn);
+						addBtn.setText("+");
+						addBtn.setActionCommand("add");
+						addBtn.addActionListener(this);
+						addBtn.setBounds(12, 16, 40, 22);
 					}
 				}
-				//final int col =((GridLayout)contentPnl.getLayout()).getRows()+1;
-				//((GridLayout)contentPnl.getLayout()).setRows(col);
-				//contentPnl.add(new SchoolLocationComponent());
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	
+	public void actionPerformed(ActionEvent arg0) {			
+		schoolCboContainer.add(new SchoolLocationComponent(schoolCboContainer));
+		schoolCboContainer.revalidate();
+		schoolCboContainer.repaint();
+		
+	}
 
 }

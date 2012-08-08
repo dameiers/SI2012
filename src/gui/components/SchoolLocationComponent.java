@@ -4,10 +4,14 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
@@ -25,26 +29,17 @@ import javax.swing.JLabel;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class SchoolLocationComponent extends javax.swing.JPanel {
+public class SchoolLocationComponent extends javax.swing.JPanel implements ActionListener {
 	private JLabel schoolLocationLbl;
 	private JComboBox schoolLocationCbo;
 	private JButton removeBtn;
+	private JPanel container;
 
-	/**
-	* Auto-generated main method to display this 
-	* JPanel inside a new JFrame.
-	*/
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.getContentPane().add(new SchoolLocationComponent());
-		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		frame.pack();
-		frame.setVisible(true);
-	}
 	
-	public SchoolLocationComponent() {
+	public SchoolLocationComponent(JPanel container) {
 		super();
 		initGUI();
+		this.container = container;
 	}
 	
 	private void initGUI() {
@@ -74,9 +69,20 @@ public class SchoolLocationComponent extends javax.swing.JPanel {
 				removeBtn = new JButton();
 				this.add(removeBtn, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				removeBtn.setText("-");
+				removeBtn.addActionListener(this);
+				removeBtn.setActionCommand("remove");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void actionPerformed(ActionEvent arg0) {
+		if(container.getComponentCount() > 1)
+		{
+			container.remove(this);
+			container.revalidate(); 
+			container.repaint();
 		}
 	}
 
