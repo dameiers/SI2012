@@ -13,6 +13,7 @@ import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 /**
@@ -30,7 +31,9 @@ import javax.swing.JTextPane;
 public class DistanceStep extends javax.swing.JPanel {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
-	private JTextPane jTextPane1;
+	private JTextPane hintTxt;
+	private JComboBox unitCbo;
+	private JTextField distanceTxt;
 	private JTextPane titleTxt;
 
 	/**
@@ -78,14 +81,22 @@ public class DistanceStep extends javax.swing.JPanel {
 				contentPnl.setLayout(null);
 				contentPnl.setPreferredSize(new java.awt.Dimension(635, 277));
 				{
-					jTextPane1 = new JTextPane();
-					contentPnl.add(jTextPane1, "West");
-					jTextPane1.setText("Wie weit darf das Event entfernt sein?");
-					jTextPane1.setEditable(false);
-					jTextPane1.setBackground(new java.awt.Color(212,208,200));
-					jTextPane1.setFont(new java.awt.Font("Segoe UI",0,18));
-					jTextPane1.setPreferredSize(new java.awt.Dimension(626,58));
-					jTextPane1.setOpaque(false);
+					distanceTxt = new JTextField();
+					contentPnl.add(distanceTxt);
+					distanceTxt.setBounds(72, 25, 106, 22);
+				}
+				{
+					unitCbo = new JComboBox(new String[] { "Km/h", "Stunden" });
+					contentPnl.add(unitCbo);
+					unitCbo.setBounds(198, 24, 112, 22);
+				}
+				{
+					hintTxt = new JTextPane();
+					contentPnl.add(hintTxt);
+					hintTxt.setText("Hinweis: Ohne Auto kann sich die Reisezeit verzšgern!");
+					hintTxt.setBounds(12, 79, 391, 35);
+					hintTxt.setEditable(false);
+					hintTxt.setBackground(new java.awt.Color(255,43,52));
 				}
 			}
 		} catch (Exception e) {
