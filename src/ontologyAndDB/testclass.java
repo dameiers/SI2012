@@ -48,7 +48,7 @@ public class testclass {
 	
 		OntToDbConnection t = new OntToDbConnection();
 		//t.fillOntWithIndividuals();
-		//t.removeAllIndividuals();
+		t.removeAllIndividuals();
 		ResultSet rs = t.getDataFromDbByEvent_Id(t.getInvidualsFromOntologieClass("BalletEvent"));
 		while (rs.next()){
 			System.out.println ( rs.getString(1));
