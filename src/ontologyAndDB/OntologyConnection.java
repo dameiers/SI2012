@@ -51,7 +51,7 @@ public class OntologyConnection {
 	private 	Set<OWLNamedIndividual> individuals;
 	private		Set<OWLClass>			classes;
 	
-	public OntologyConnection(String filePath){
+	protected OntologyConnection(String filePath){
 		try{			
 			manager = OWLManager.createOWLOntologyManager();
 			factory = manager.getOWLDataFactory();
@@ -74,7 +74,7 @@ public class OntologyConnection {
 	}
 	
 	
-	public void saveOntologie (){
+	protected void saveOntologie (){
 		try {
 			manager.saveOntology(ontology);
 		} catch (OWLOntologyStorageException e) {
@@ -82,7 +82,7 @@ public class OntologyConnection {
 		}
 	}
 	
-	public OWLNamedIndividual setObjectPropertieToIndividual(OWLNamedIndividual individual , String objectPropertieName ,String value)throws OntologyConnectionDataPropertyException,OWLConnectionUnknownTypeException{
+	protected OWLNamedIndividual setObjectPropertieToIndividual(OWLNamedIndividual individual , String objectPropertieName ,String value)throws OntologyConnectionDataPropertyException,OWLConnectionUnknownTypeException{
 		OWLDataProperty prop = getOWLDataProperty( ontID+"#"+objectPropertieName);
 		if ( null == prop)
 			throw new OntologyConnectionDataPropertyException(objectPropertieName + " : Doesnt exist");
@@ -92,7 +92,7 @@ public class OntologyConnection {
 		return individual;	 
 	}
 	
-	public OWLNamedIndividual setObjectPropertieToIndividual(OWLNamedIndividual individual , String objectPropertieName ,boolean value)throws OntologyConnectionDataPropertyException,OWLConnectionUnknownTypeException{
+	protected OWLNamedIndividual setObjectPropertieToIndividual(OWLNamedIndividual individual , String objectPropertieName ,boolean value)throws OntologyConnectionDataPropertyException,OWLConnectionUnknownTypeException{
 		OWLDataProperty prop = getOWLDataProperty( ontID+"#"+objectPropertieName);
 		if ( null == prop)
 			throw new OntologyConnectionDataPropertyException(objectPropertieName + " : Doesnt exist");
@@ -102,7 +102,7 @@ public class OntologyConnection {
 		return individual;	 
 	}
 	
-	public OWLNamedIndividual setObjectPropertieToIndividual(OWLNamedIndividual individual , String objectPropertieName ,Integer value)throws OntologyConnectionDataPropertyException,OWLConnectionUnknownTypeException{
+	protected OWLNamedIndividual setObjectPropertieToIndividual(OWLNamedIndividual individual , String objectPropertieName ,Integer value)throws OntologyConnectionDataPropertyException,OWLConnectionUnknownTypeException{
 		OWLDataProperty prop = getOWLDataProperty( ontID+"#"+objectPropertieName);
 		if ( null == prop)
 			throw new OntologyConnectionDataPropertyException(objectPropertieName + " : Doesnt exist");
@@ -113,7 +113,7 @@ public class OntologyConnection {
 	}
 	
 	
-	public void addIndividualToClass (OWLNamedIndividual individual , String ClassName)throws OntologyConnectionUnknowClassException{
+	protected void addIndividualToClass (OWLNamedIndividual individual , String ClassName)throws OntologyConnectionUnknowClassException{
 		OWLClass cl = getClass( ontID+"#"+ClassName);
 		if (null == cl)
 			throw new OntologyConnectionUnknowClassException("Unknown class : "+ClassName);
@@ -121,7 +121,7 @@ public class OntologyConnection {
         manager.addAxiom(ontology, classAssertion);
 	}
 
-	public OWLNamedIndividual createIndividual (String name) throws OntologyConnectionIndividualAreadyExistsException{
+	protected OWLNamedIndividual createIndividual (String name) throws OntologyConnectionIndividualAreadyExistsException{
 		if ( null != getIndividual(  ontID+"#"+name ) ) 
 			throw new OntologyConnectionIndividualAreadyExistsException(name + "  :  Already Exists");
 		OWLNamedIndividual individual = factory.getOWLNamedIndividual(name,pm);
@@ -129,7 +129,7 @@ public class OntologyConnection {
 		return individual;
 	}
 		
-	public void printSubClasses(String className){
+	protected void printSubClasses(String className){
 		printNodeSet (getSubClasses(className));
 	}
 	
@@ -178,7 +178,7 @@ public class OntologyConnection {
 		return null;
 	}
 	
-	public void removeAllIndividuals (){
+	protected void removeAllIndividuals (){
 		 
 		OWLEntityRemover remover = new OWLEntityRemover(manager, Collections.singleton(ontology));
 		System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
@@ -192,7 +192,7 @@ public class OntologyConnection {
 		this.saveOntologie();
 	}
 	
-	public ArrayList<Integer> getEventIdsByClass(String className){
+	protected ArrayList<Integer> getEventIdsByClass(String className){
 		
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		for (OWLIndividual invid :  factory.getOWLClass(className, pm).getIndividuals(ontology)){

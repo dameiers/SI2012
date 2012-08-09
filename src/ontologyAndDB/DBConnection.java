@@ -13,7 +13,7 @@ public class DBConnection {
 	private String username;
 	private String password;
 	
-	public DBConnection() {
+	protected DBConnection() {
 		
 		try {
 		url = "jdbc:postgresql://localhost/eventmanager";
@@ -26,7 +26,7 @@ public class DBConnection {
 		}
 	}
 	
-	public ResultSet executeQuery (String sqlStatement)throws SQLException{
+	protected ResultSet executeQuery (String sqlStatement)throws SQLException{
 		
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -40,7 +40,7 @@ public class DBConnection {
 	}
 
 	
-	public void disconnect(){
+	protected void disconnect(){
 		try {
 			conn.close();
 		}catch (SQLException e){
