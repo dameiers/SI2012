@@ -3,9 +3,9 @@ package model.steps;
 import java.util.ArrayList;
 
 
-public class PersonDescriptionStep extends InformationGatherStep 
+public class PersonDescriptionStepModel extends InformationGatherStepModel 
 {
-	private static PersonDescriptionStep instance;
+	private static PersonDescriptionStepModel instance;
 	
 	private final static String[] VALID_GROUPS = {
 		"single",
@@ -15,14 +15,14 @@ public class PersonDescriptionStep extends InformationGatherStep
 	private int age;
 	private String group;
 	
-	private PersonDescriptionStep() 
+	private PersonDescriptionStepModel() 
 	{
 		
 	}
 	
-	public static PersonDescriptionStep getInstance() 
+	public static PersonDescriptionStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new PersonDescriptionStep());
+		return instance != null ? instance : (instance=new PersonDescriptionStepModel());
 	}
 	
 	public String getError() {

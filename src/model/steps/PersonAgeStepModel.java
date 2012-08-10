@@ -1,19 +1,19 @@
 package model.steps;
 
-public class PersonAgeStep extends InformationGatherStep 
+public class PersonAgeStepModel extends InformationGatherStepModel 
 {
-	private static PersonAgeStep instance;
+	private static PersonAgeStepModel instance;
 	
 	private int[] ages;
 	
-	private PersonAgeStep() 
+	private PersonAgeStepModel() 
 	{
 		
 	}
 	
-	public static PersonAgeStep getInstance() 
+	public static PersonAgeStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new PersonAgeStep());
+		return instance != null ? instance : (instance=new PersonAgeStepModel());
 	}
 
 	public String getError() 

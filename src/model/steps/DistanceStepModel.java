@@ -1,22 +1,22 @@
 package model.steps;
 
 
-public class DistanceStep extends InformationGatherStep 
+public class DistanceStepModel extends InformationGatherStepModel 
 {
-	private static DistanceStep instance;
+	private static DistanceStepModel instance;
 	
 	private String unit;
 	private String distance;
 	
 	
-	private DistanceStep() 
+	private DistanceStepModel() 
 	{
 		
 	}
 	
-	public static DistanceStep getInstance() 
+	public static DistanceStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new DistanceStep());
+		return instance != null ? instance : (instance=new DistanceStepModel());
 	}
 	
 	public String getError() {

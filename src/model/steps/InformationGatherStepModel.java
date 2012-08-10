@@ -2,10 +2,10 @@ package model.steps;
 
 import javax.swing.JComponent;
 
-public abstract class InformationGatherStep {
+public abstract class InformationGatherStepModel 
+{
 	
 	private String displayName;
-	private String identifier;
 	private JComponent guiForm;
 	private Boolean alredyFilled;
 	

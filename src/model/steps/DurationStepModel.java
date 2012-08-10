@@ -1,19 +1,19 @@
 package model.steps;
 
-public class DurationStep extends InformationGatherStep 
+public class DurationStepModel extends InformationGatherStepModel 
 {
-	private static DurationStep instance;
+	private static DurationStepModel instance;
 	
 	private String duration;
 
-	private DurationStep() 
+	private DurationStepModel() 
 	{
 		
 	}
 	
-	public static DurationStep getInstance() 
+	public static DurationStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new DurationStep());
+		return instance != null ? instance : (instance=new DurationStepModel());
 	}
 
 	

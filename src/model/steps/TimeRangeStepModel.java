@@ -1,8 +1,8 @@
 package model.steps;
 
-public class TimeRangeStep extends InformationGatherStep 
+public class TimeRangeStepModel extends InformationGatherStepModel 
 {
-	private static TimeRangeStep instance;
+	private static TimeRangeStepModel instance;
 
 	private final static String[] VALID_TIME_RANGE_TYPES = {
 		"summerbreak", 
@@ -19,14 +19,14 @@ public class TimeRangeStep extends InformationGatherStep
 	private String toDate;
 	
 	
-	private TimeRangeStep() 
+	private TimeRangeStepModel() 
 	{
 		
 	}
 	
-	public static TimeRangeStep getInstance() 
+	public static TimeRangeStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new TimeRangeStep());
+		return instance != null ? instance : (instance=new TimeRangeStepModel());
 	}
 
 	public String getError() 

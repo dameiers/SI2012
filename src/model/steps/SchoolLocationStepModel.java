@@ -1,19 +1,19 @@
 package model.steps;
 
-public class SchoolLocationStep extends InformationGatherStep 
+public class SchoolLocationStepModel extends InformationGatherStepModel 
 {
-	private static SchoolLocationStep instance;
+	private static SchoolLocationStepModel instance;
 	
 	private String[] locations;
 	
-	private SchoolLocationStep() 
+	private SchoolLocationStepModel() 
 	{
 		
 	}
 	
-	public static SchoolLocationStep getInstance() 
+	public static SchoolLocationStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new SchoolLocationStep());
+		return instance != null ? instance : (instance=new SchoolLocationStepModel());
 	}
 	
 	public String getError() 

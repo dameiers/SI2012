@@ -11,17 +11,17 @@ import model.steps.*;
 
 public class Model extends Observable 
 {
-	private static PersonDescriptionStep	personDescriptionStep = PersonDescriptionStep.getInstance();
-	private static TimeRangeStep 			timeRangeStep = TimeRangeStep.getInstance();
-	private static DurationStep 			durationStep = DurationStep.getInstance();
-	private static SchoolLocationStep		schoolLocationStep = SchoolLocationStep.getInstance();
-	private static PersonAgeStep 			personAgeStep = PersonAgeStep.getInstance();
-	private static VoyageMethodStep			voyageMethodStep = VoyageMethodStep.getInstance();
-	private static DistanceStep				distanceStep = DistanceStep.getInstance();
-	
-	public InformationGatherStep[] getInformationGatherTrace()
+	private static PersonDescriptionStepModel	personDescriptionStep = PersonDescriptionStepModel.getInstance();
+	private static TimeRangeStepModel 			timeRangeStep = TimeRangeStepModel.getInstance();
+	private static DurationStepModel 			durationStep = DurationStepModel.getInstance();
+	private static SchoolLocationStepModel		schoolLocationStep = SchoolLocationStepModel.getInstance();
+	private static PersonAgeStepModel 			personAgeStep = PersonAgeStepModel.getInstance();
+	private static VoyageMethodStepModel		voyageMethodStep = VoyageMethodStepModel.getInstance();
+	private static DistanceStepModel			distanceStep = DistanceStepModel.getInstance();
+		
+	public InformationGatherStepModel[] getInformationGatherTrace()
 	{
-		List<InformationGatherStep> result = new ArrayList<InformationGatherStep>();
+		List<InformationGatherStepModel> result = new ArrayList<InformationGatherStepModel>();
 		
 		result.add(personDescriptionStep);
 		result.add(timeRangeStep);
@@ -42,14 +42,13 @@ public class Model extends Observable
 		
 		result.add(distanceStep);
 		
-		
-		return (InformationGatherStep[])result.toArray();
+		return (InformationGatherStepModel[])result.toArray();
 	}
 	
-	public InformationGatherStep getNextStep()
+	public InformationGatherStepModel getNextStep()
 	{
-		InformationGatherStep[] steps = getInformationGatherTrace();
-		InformationGatherStep result = null;
+		InformationGatherStepModel[] steps = getInformationGatherTrace();
+		InformationGatherStepModel result = null;
 		for(int i=0; i<steps.length; i++) {
 			if(steps[i].isAlredyFilled() == false) {
 				result = steps[i];
@@ -61,6 +60,7 @@ public class Model extends Observable
 	
 	public HashMap<String, String>[] getEvents()
 	{
+		
 		return null;
 	}
 }
