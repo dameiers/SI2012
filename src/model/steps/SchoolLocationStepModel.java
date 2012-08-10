@@ -32,6 +32,7 @@ public class SchoolLocationStepModel extends InformationGatherStepModel
 	public void setLocations(String[] locations) 
 	{
 		this.locations = locations;
+		updateAlredayFilled();
 	}
 
 }

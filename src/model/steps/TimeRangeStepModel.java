@@ -65,6 +65,7 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	public void setTimeRangeTyp(String timeRangeTyp) 
 	{
 		this.timeRangeTyp = timeRangeTyp;
+		updateAlredayFilled();
 	}
 
 	public String getFromDate() 
@@ -75,6 +76,7 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	public void setFromDate(String fromDate) 
 	{
 		this.fromDate = fromDate;
+		updateAlredayFilled();
 	}
 
 	public String getToDate() 
@@ -85,5 +87,6 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	public void setToDate(String toDate) 
 	{
 		this.toDate = toDate;
+		updateAlredayFilled();
 	}
 }

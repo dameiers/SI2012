@@ -38,5 +38,6 @@ public class DurationStepModel extends InformationGatherStepModel
 	public void setDuration(String duration) 
 	{
 		this.duration = duration;
+		updateAlredayFilled();
 	}
 }

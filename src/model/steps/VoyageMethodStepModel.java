@@ -4,6 +4,8 @@ public class VoyageMethodStepModel extends InformationGatherStepModel
 {
 	private static VoyageMethodStepModel instance;
 	
+	private boolean byCar;
+	
 	private VoyageMethodStepModel() 
 	{
 		
@@ -16,12 +18,18 @@ public class VoyageMethodStepModel extends InformationGatherStepModel
 
 	
 	public String getError() 
-	{
+	{	
 		return null;
+	}
+	
+	public void setByCar(boolean byCar)
+	{
+		this.byCar = byCar;
+		updateAlredayFilled();
 	}
 	
 	public boolean byCar() 
 	{
-		return true;
+		return byCar;
 	}
 }

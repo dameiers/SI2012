@@ -13,8 +13,10 @@ public abstract class InformationGatherStepModel
 		return alredyFilled;
 	}
 	
-	public void setAlredyFilled(Boolean alredyFilled) {
-		this.alredyFilled = alredyFilled;
+	public void updateAlredayFilled()
+	{
+		if(getError() == null)
+			alredyFilled = true;
 	}
 	
 	public abstract String getError();

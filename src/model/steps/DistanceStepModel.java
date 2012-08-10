@@ -47,6 +47,7 @@ public class DistanceStepModel extends InformationGatherStepModel
 	public void setUnit(String unit) 
 	{
 		this.unit = unit;
+		updateAlredayFilled();
 	}
 
 	public String getDistance() 
@@ -57,6 +58,7 @@ public class DistanceStepModel extends InformationGatherStepModel
 	public void setDistance(String distance) 
 	{
 		this.distance = distance;
+		updateAlredayFilled();
 	}
 
 }

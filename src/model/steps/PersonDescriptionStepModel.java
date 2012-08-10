@@ -62,6 +62,7 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	public void setAge(String age)
 	{
 		setAge(Integer.parseInt(age));
+		updateAlredayFilled();
 	}
 
 	public String getGroup() 
@@ -72,5 +73,6 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	public void setGroup(String group) 
 	{
 		this.group = group;
+		updateAlredayFilled();
 	}
 }

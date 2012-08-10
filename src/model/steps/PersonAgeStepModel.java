@@ -36,10 +36,12 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 		for(int i=1; i<ages.length; i++) {
 			this.ages[i] = Integer.parseInt(ages[i]);
 		}
+		updateAlredayFilled();
 	}
 	
 	public void setAges(int[] ages)
 	{
 		this.ages = ages;
+		updateAlredayFilled();
 	}
 }

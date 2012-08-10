@@ -5,7 +5,7 @@ import java.util.List;
 
 import model.steps.*;
 
-public class TraceBuilder 
+class TraceBuilder
 {
 	private static PersonDescriptionStepModel	personDescriptionStep = PersonDescriptionStepModel.getInstance();
 	private static TimeRangeStepModel 			timeRangeStep = TimeRangeStepModel.getInstance();
@@ -14,13 +14,36 @@ public class TraceBuilder
 	private static PersonAgeStepModel 			personAgeStep = PersonAgeStepModel.getInstance();
 	private static VoyageMethodStepModel		voyageMethodStep = VoyageMethodStepModel.getInstance();
 	private static DistanceStepModel			distanceStep = DistanceStepModel.getInstance();
+	private static OriginLocationStepModel		originLocationStep = OriginLocationStepModel.getInstance();
+	private static KindOfEventSelectionStepModel kindOfEventSelectionStepModel = KindOfEventSelectionStepModel.getInstance();
+	private static EventCategoryStepModel		eventCategoryStepModel = EventCategoryStepModel.getInstance();
+	private static GenreSelectionStepModel 		genreSelectionStepModel = GenreSelectionStepModel.getInstance();
 	
 	public InformationGatherStepModel[] build()
 	{
-		if(!personDescriptionStep.isAlredyFilled())
-			return initianalTrace();
+		return initianalTrace();
 		
-		return dynamicTrace();
+//		if(!personDescriptionStep.isAlredyFilled())
+//			return initianalTrace();
+//		
+//		return dynamicTrace();
+	}
+	
+	private InformationGatherStepModel[] initianalTrace()
+	{
+		List<InformationGatherStepModel> result = new ArrayList<InformationGatherStepModel>();
+		
+		result.add(personDescriptionStep);
+		result.add(timeRangeStep);
+		result.add(durationStep);
+		result.add(voyageMethodStep);
+		result.add(distanceStep);
+		result.add(originLocationStep);
+		result.add(kindOfEventSelectionStepModel);
+		result.add(eventCategoryStepModel);
+		result.add(genreSelectionStepModel);
+		
+		return (InformationGatherStepModel[])result.toArray();
 	}
 	
 	private InformationGatherStepModel[] dynamicTrace()
@@ -44,14 +67,11 @@ public class TraceBuilder
 			result.add(voyageMethodStep);
 		}
 		
+		
 		result.add(distanceStep);
 		
 		return (InformationGatherStepModel[])result.toArray();
 	}
 	
-	private InformationGatherStepModel[] initianalTrace()
-	{
-		return null;
-	}
-
+	
 }

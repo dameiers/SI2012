@@ -11,11 +11,17 @@ import model.steps.*;
 
 public class Model extends Observable 
 {	
+	/**
+	 * Returns the current question order belonging to the data already asked
+	 */
 	public InformationGatherStepModel[] getInformationGatherTrace()
 	{
 		return (new TraceBuilder()).build();
 	}
 	
+	/**
+	 * Returns the next Step which needs to be asked in the current question order
+	 */
 	public InformationGatherStepModel getNextStep()
 	{
 		InformationGatherStepModel[] steps = getInformationGatherTrace();
@@ -29,6 +35,10 @@ public class Model extends Observable
 		return result;
 	}
 	
+	/**
+	 * Returns all events considering the data which is already asked
+	 * TODO: implemend me :)
+	 */
 	public HashMap<String, String>[] getEvents()
 	{	
 		return null;
