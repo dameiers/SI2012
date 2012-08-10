@@ -8,7 +8,6 @@ public class DistanceStepModel extends InformationGatherStepModel
 	private String unit;
 	private String distance;
 	
-	
 	private DistanceStepModel() 
 	{
 		

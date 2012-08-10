@@ -15,8 +15,7 @@ public abstract class InformationGatherStepModel
 	
 	public void updateAlredayFilled()
 	{
-		if(getError() == null)
-			alredyFilled = true;
+		alredyFilled = (getError() == null);
 	}
 	
 	public abstract String getError();

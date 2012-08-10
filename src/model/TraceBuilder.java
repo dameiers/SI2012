@@ -18,6 +18,7 @@ class TraceBuilder
 	private static KindOfEventSelectionStepModel kindOfEventSelectionStepModel = KindOfEventSelectionStepModel.getInstance();
 	private static EventCategoryStepModel		eventCategoryStepModel = EventCategoryStepModel.getInstance();
 	private static GenreSelectionStepModel 		genreSelectionStepModel = GenreSelectionStepModel.getInstance();
+	private static BudgetStepModel				budgetStepModel = BudgetStepModel.getInstance();
 	
 	public InformationGatherStepModel[] build()
 	{
@@ -42,6 +43,7 @@ class TraceBuilder
 		result.add(kindOfEventSelectionStepModel);
 		result.add(eventCategoryStepModel);
 		result.add(genreSelectionStepModel);
+		result.add(budgetStepModel);
 		
 		return (InformationGatherStepModel[])result.toArray();
 	}
