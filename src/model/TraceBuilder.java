@@ -5,6 +5,9 @@ import java.util.List;
 
 import model.steps.*;
 
+/**
+ * Helper Class used in the model class
+ */
 class TraceBuilder
 {
 	private static PersonDescriptionStepModel	personDescriptionStep = PersonDescriptionStepModel.getInstance();
