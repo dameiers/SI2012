@@ -30,12 +30,8 @@ public class DBConnection {
 		
 		Statement stmt = null;
 		ResultSet rs = null;
-		    try {
-		        stmt = conn.createStatement();
-		        rs = stmt.executeQuery(sqlStatement);			        
-		    } catch (SQLException e) {
-		        System.out.println(e.toString());
-		        }
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sqlStatement);			        
 		return rs;
 	}
 

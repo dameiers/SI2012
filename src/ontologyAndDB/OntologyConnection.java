@@ -178,22 +178,24 @@ public class OntologyConnection {
 		return null;
 	}
 	
-	protected void removeAllIndividuals (){
+protected void removeAllIndividuals (){
 		 
 		OWLEntityRemover remover = new OWLEntityRemover(manager, Collections.singleton(ontology));
-		System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
+		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
 
 		 for(OWLNamedIndividual ind : ontology.getIndividualsInSignature()) {
 			 ind.accept(remover);
 			 }
 		manager.applyChanges(remover.getChanges());
-		System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
+		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
 		remover.reset();
-		this.saveOntologie();
+		saveOntologie();
 	}
 	
-	protected ArrayList<Integer> getEventIdsByClass(String className){
+	
 		
+	//TODO Testen ob auc unterklassen elemente ausgegeben werden?
+	protected ArrayList<Integer> getEventIdsByClass(String className){
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		for (OWLIndividual invid :  factory.getOWLClass(className, pm).getIndividuals(ontology)){
 			ids.add(Integer.valueOf(invid.toStringID().replace(pm.getDefaultPrefix(),"")));
