@@ -131,15 +131,7 @@ public class OntToDbConnection {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
-	
-	
+
 	public ResultSet executeQuery (String sqlStatement)throws SQLException{		
 		return dbCon.executeQuery(sqlStatement);
 	}
@@ -187,9 +179,9 @@ public class OntToDbConnection {
 		return ontCon.getClassNamesOnly(ontCon.getSubClasses(className));
 	}
 	
-	public ArrayList<String> getSuperClassesOfClass ( String className){
-		//TODO Implementieren :get Super ClassesOfClass
-		return new ArrayList<String> ();
+	public ArrayList<String> getSuperClassesOfClass ( String className) throws OntologyConnectionUnknowClassException{
+		return ontCon.getSuperClasses(className);
+		
 	}
 	
 	public ResultSet getDataFromDbByEvent_Id ( ArrayList<Integer> eventIDs) throws SQLException{

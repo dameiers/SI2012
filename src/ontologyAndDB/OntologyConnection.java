@@ -147,7 +147,14 @@ public class OntologyConnection {
 		System.out.println("\n");
 	}
 	
+	/**
+	 * 
+	 * @param classList
+	 * @return
+	 */
 	protected ArrayList<String> getClassNamesOnly(NodeSet<OWLClass> classList){
+		if (classList.isEmpty())
+			return null;
 		Set<OWLClass> clses = classList.getFlattened();
 		ArrayList<String> subClasses =new ArrayList<String> ();
 		for(OWLClass cls : clses) {
@@ -188,11 +195,9 @@ public class OntologyConnection {
 		return null;
 	}
 	
-protected void removeAllIndividuals (){
-		 
+	protected void removeAllIndividuals (){
 		OWLEntityRemover remover = new OWLEntityRemover(manager, Collections.singleton(ontology));
 		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
-
 		 for(OWLNamedIndividual ind : ontology.getIndividualsInSignature()) {
 			 ind.accept(remover);
 			 }
@@ -202,15 +207,34 @@ protected void removeAllIndividuals (){
 		saveOntologie();
 	}
 	
-	
-		
-	//TODO Testen ob auc unterklassen elemente ausgegeben werden?
 	protected ArrayList<Integer> getEventIdsByClass(String className){
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		for (OWLIndividual invid :  factory.getOWLClass(className, pm).getIndividuals(ontology)){
 			ids.add(Integer.valueOf(invid.toStringID().replace(pm.getDefaultPrefix(),"")));
 		}
 		return ids;
+	}
+	/**
+	 * 
+	 * @param className
+	 * @return the names of the SuperClasses or null if there are no superclasses
+	 * @throws OntologyConnectionUnknowClassException
+	 */
+	protected ArrayList<String> getSuperClasses (String className) throws OntologyConnectionUnknowClassException{
+		OWLClass cl = getClassByName(className);
+		if(null == cl)
+				throw new OntologyConnectionUnknowClassException("Unknown : "+className);
+		NodeSet<OWLClass> nodes = reasoner.getSuperClasses(cl, true);
+		return this.getClassNamesOnly(nodes);
+	}
+	
+	/**
+	 * 
+	 * @param className
+	 * @return OWLClass or null if the class doesnt exist
+	 */
+	private OWLClass getClassByName ( String className){
+		return this.getClass(ontID+"#"+className);
 	}
 	
 }
