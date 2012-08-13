@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import ontologyAndDB.exception.ViewDoesntExistsException;
+
 
 public class DBConnection {
 
@@ -44,7 +46,17 @@ public class DBConnection {
 		}
 	}
 	
-	
+	/**
+	 * If a VIEW with this name already exists, it will be overwritten
+	 * @param viewName the Name of the View to be created
+	 * @param sqlStatement the statement witch fills the view
+	 * @throws SQLException 
+	 */
+	protected void createView ( String viewName, String sqlStatement) throws SQLException{
+		//TODO check if View exists and override(delete and create)
+		this.executeQuery("CREATE VIEW "+ viewName +" AS "+ sqlStatement);
+		
+	}
 	
 	
 }

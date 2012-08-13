@@ -6,6 +6,7 @@ import ontologyAndDB.exception.OWLConnectionUnknownTypeException;
 import ontologyAndDB.exception.OntologyConnectionDataPropertyException;
 import ontologyAndDB.exception.OntologyConnectionIndividualAreadyExistsException;
 import ontologyAndDB.exception.OntologyConnectionUnknowClassException;
+import ontologyAndDB.exception.ViewDoesntExistsException;
 
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -17,20 +18,32 @@ public class OntToDbConnection {
 	
 	private 	DBConnection 		dbCon;
 	private		OntologyConnection  ontCon;
-	private 	boolean				reachCitiesView;
+	private 	boolean				reachCitiesViewIsSet;
+	private		boolean				holidayViewIsSet;
+	
+	private final String HOLIDAY_VIEW_NAME ="HolidayView";
+	private final String REACHABLE_CITIES_VIEW_NAME ="ReachableCitiesView";
 	
 	public OntToDbConnection(){
 		 dbCon = new DBConnection();
 		 ontCon = new OntologyConnection("evntologie_latest.owl");
-		 reachCitiesView =false;
+		 holidayViewIsSet=false;
+		 reachCitiesViewIsSet=false;
 	}
+	/////////////////////////////////////////////////// Fill Ontologie /////////////////////////////////////////////////////
 	
-	public void fillOntWithAllEvents() throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
+	private void fillOntWithAllEvents() throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
 	  ResultSet rs = dbCon.executeQuery("Select * from \"Event\"");
 	  fillOntWithEvents(rs);
 	}
+	public void fillOntWithEvents () throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, ViewDoesntExistsException{
+		if (!holidayViewIsSet)
+				throw new ViewDoesntExistsException(HOLIDAY_VIEW_NAME + " doesnt exist yet");
+		ResultSet rs = dbCon.executeQuery("SELECT * FROM \""+HOLIDAY_VIEW_NAME+"\"");
+		 fillOntWithEvents(rs);
+	}
 	
-	public void fillOntWithEvents(ResultSet dataBaseEvents) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
+	private void fillOntWithEvents(ResultSet dataBaseEvents) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
 		  ResultSet rs2;
 		  ResultSet rs3;
 		  ResultSet rs4;
@@ -66,7 +79,7 @@ public class OntToDbConnection {
 			  ontCon.saveOntologie();
 		  }	
 		}
-	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
 	////////////////////////////////// Entfernungsmethoden /////////////////////////////////////////////////////////////
@@ -91,11 +104,36 @@ public class OntToDbConnection {
 	 */
 	public void setDistanceView (ArrayList<String> reachableCities) throws SQLException{
 		String sqlInStat = reachableCities.toString().replace("[","").replace("]","").trim();
-		ResultSet rs = dbCon.executeQuery( "CREATE VIEW reachableEvents AS SELECT * FROM \"Event\" WHERE ort IN ("+sqlInStat+"(" );
-		reachCitiesView =true;
+		String sqlStatement =  " SELECT * FROM \"Event\" WHERE ort IN ("+sqlInStat+"(" ;
+		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);
+		reachCitiesViewIsSet = true;
+		
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	//////////////////////////////////////////////////////////// Zeit-Methoden //////////////////////////////////////////
+	
+	public void setHolidayView (String startDate, String endDate) throws SQLException, ViewDoesntExistsException{
+		if ( !reachCitiesViewIsSet )
+			throw new ViewDoesntExistsException(REACHABLE_CITIES_VIEW_NAME+" hasnt been created yet");
+		String sqlStatement ="";
+		//TODO Implementieren der Zeitberecchnung und des passenden SQL statements
+		dbCon.createView(HOLIDAY_VIEW_NAME, sqlStatement);
+		holidayViewIsSet =true;
+	}
+		
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 	
 	
 	public ResultSet executeQuery (String sqlStatement)throws SQLException{		
@@ -110,6 +148,26 @@ public class OntToDbConnection {
 		return ontCon.getEventIdsByClass(className);
 	}
   
+	public ArrayList<Integer> getIndividualUnionOverClasses (ArrayList<String> classNames) {
+		//TODO Implementieren : getIndividual Union OverClasses 
+		return new  ArrayList<Integer>();
+	}
+	
+	public ArrayList<Integer> getIndividualIntersectionOverClasses ( ArrayList<String> classNames) {
+		//TODO Implementieren : getIndividual Intersection OverClasses 
+		return new  ArrayList<Integer>();
+	} 
+	
+	public ArrayList<String> getSubClassesOfClass(String className){
+		//TODO Implementieren : get Sub ClassesOfClass
+		return new ArrayList<String> ();
+	}
+	
+	public ArrayList<String> getSuperClassesOfClass ( String className){
+		//TODO Implementieren :get Super ClassesOfClass
+		return new ArrayList<String> ();
+	}
+	
 	public ResultSet getDataFromDbByEvent_Id ( ArrayList<Integer> eventIDs) throws SQLException{
 		String s = new String(" ");
 		int i ;

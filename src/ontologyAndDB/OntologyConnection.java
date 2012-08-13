@@ -133,7 +133,7 @@ public class OntologyConnection {
 		printNodeSet (getSubClasses(className));
 	}
 	
-	private NodeSet<OWLClass> getSubClasses (String className){
+	protected NodeSet<OWLClass> getSubClasses (String className){
 		OWLClass superClass = factory.getOWLClass(className ,pm);
 		return  reasoner.getSubClasses(superClass, true);
 	}

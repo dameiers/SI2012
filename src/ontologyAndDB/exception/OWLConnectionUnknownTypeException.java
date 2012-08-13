@@ -4,7 +4,7 @@ public class OWLConnectionUnknownTypeException extends Exception {
 
 	public OWLConnectionUnknownTypeException(String arg0) {
 		super(arg0);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }
