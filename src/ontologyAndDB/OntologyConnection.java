@@ -20,6 +20,7 @@ import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDataPropertyAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -144,6 +145,15 @@ public class OntologyConnection {
 		for(OWLClass cls : clses) {
 			System.out.println(" " + cls.toString().replaceFirst(ontID+"#", "").replace("<", "").replace(">", ""));	}
 		System.out.println("\n");
+	}
+	
+	protected ArrayList<String> getClassNamesOnly(NodeSet<OWLClass> classList){
+		Set<OWLClass> clses = classList.getFlattened();
+		ArrayList<String> subClasses =new ArrayList<String> ();
+		for(OWLClass cls : clses) {
+			subClasses.add(cls.toString().replaceFirst(ontID+"#", "").replace("<", "").replace(">", ""));	
+			}
+		return subClasses;
 	}
 		
 	private OWLDataProperty getOWLDataProperty (String dataPropIRI){	

@@ -54,7 +54,9 @@ public class testclass {
 		//	System.out.println ( rs.getString(1));
 		//}
 		
-		System.out.println( t.getCitiesFromDB().toString());
+		System.out.println (t.getSubClassesOfClass("CultureEvent"));
+		
+		//System.out.println( t.getCitiesFromDB().toString());
 		
 		
 	}

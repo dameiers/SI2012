@@ -53,7 +53,9 @@ public class DBConnection {
 	 * @throws SQLException 
 	 */
 	protected void createView ( String viewName, String sqlStatement) throws SQLException{
-		//TODO check if View exists and override(delete and create)
+		ResultSet rs = this.executeQuery("SELECT count(*) FROM pg_tables where tablename='"+viewName+"'");
+		if (rs.next())
+			this.executeQuery("DROP VIEW "+viewName);
 		this.executeQuery("CREATE VIEW "+ viewName +" AS "+ sqlStatement);
 		
 	}

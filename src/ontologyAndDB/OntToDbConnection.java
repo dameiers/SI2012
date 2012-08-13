@@ -1,6 +1,7 @@
 package ontologyAndDB;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Set;
 
 import ontologyAndDB.exception.OWLConnectionUnknownTypeException;
 import ontologyAndDB.exception.OntologyConnectionDataPropertyException;
@@ -8,8 +9,10 @@ import ontologyAndDB.exception.OntologyConnectionIndividualAreadyExistsException
 import ontologyAndDB.exception.OntologyConnectionUnknowClassException;
 import ontologyAndDB.exception.ViewDoesntExistsException;
 
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.util.OWLEntityRemover;
 
 
@@ -32,7 +35,7 @@ public class OntToDbConnection {
 	}
 	/////////////////////////////////////////////////// Fill Ontologie /////////////////////////////////////////////////////
 	
-	private void fillOntWithAllEvents() throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
+	public void fillOntWithAllEvents() throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
 	  ResultSet rs = dbCon.executeQuery("Select * from \"Event\"");
 	  fillOntWithEvents(rs);
 	}
@@ -57,8 +60,9 @@ public class OntToDbConnection {
 			  // data propertie: childfriendly
 			  ontCon.setObjectPropertieToIndividual(individ, "isChildFriendly", dataBaseEvents.getBoolean("kinderfreundlich"));
 			  // data propertie : hasconcreteDuration 
-			  	//TODO : data propertie hinzufügen : concrete duration
-			  
+			  long timeDiff = dataBaseEvents.getTimestamp("enddatum").getTime() - dataBaseEvents.getTimestamp("startdatum").getTime();
+			  int durationInDays = (int)(timeDiff / 1000 / 3600 / 24) ;
+			  ontCon.setObjectPropertieToIndividual(individ, "hasConcreteDuration", durationInDays+1);
 			  // hinzufügen zur passenden Event-Klasse
 			  rs2 = (dbCon.executeQuery("select bezeichnung from \"Kategorie\" where kategorie_id="+  dataBaseEvents.getInt("kategorie") ));
 			  rs2.next();
@@ -153,14 +157,31 @@ public class OntToDbConnection {
 		return new  ArrayList<Integer>();
 	}
 	
-	public ArrayList<Integer> getIndividualIntersectionOverClasses ( ArrayList<String> classNames) {
-		//TODO Implementieren : getIndividual Intersection OverClasses 
-		return new  ArrayList<Integer>();
+	public ArrayList<Integer> getIndividualIntersectionOverClasses ( ArrayList<String> classNames) throws Exception {
+		if (classNames.size()<2)
+			throw new Exception("2 ore more Classes needed to make an intersection");
+		ArrayList<Integer> list1 ;
+		ArrayList<Integer> list2 ;
+		ArrayList<Integer> list3 = this.getInvidualsFromOntologieClass(classNames.get(0));
+		for ( int i = 1; i < classNames.size(); i++ ){
+			list1 = list3;
+			list3 = new ArrayList<Integer>();
+			list2 = this.getInvidualsFromOntologieClass(classNames.get(i));
+			for (Integer s : list1){
+				if (list2.contains(s))
+					list3.add(s);
+			}
+		}
+		return list3;
 	} 
 	
+	/**
+	 *  Returns the direct Subclases of a Class
+	 * @param className the Name of the superclass
+	 * @return Non rekursive list of subclasses
+	 */
 	public ArrayList<String> getSubClassesOfClass(String className){
-		//TODO Implementieren : get Sub ClassesOfClass
-		return new ArrayList<String> ();
+		return ontCon.getClassNamesOnly(ontCon.getSubClasses(className));
 	}
 	
 	public ArrayList<String> getSuperClassesOfClass ( String className){
