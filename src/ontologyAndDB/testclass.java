@@ -48,16 +48,16 @@ public class testclass {
 	
 		OntToDbConnection t = new OntToDbConnection();
 		//t.fillOntWithAllEvents();
-		//t.removeAllIndividuals();
+		t.removeAllIndividuals();
 		//ResultSet rs = t.getDataFromDbByEvent_Id(t.getEventIdsFromOntologieClass("BalletEvent"));
 		//while (rs.next()){
 		//	System.out.println ( rs.getString(1));
 		//}
 		
-		System.out.println (t.getSubClassesOfClass("CultureEvent"));
+		//System.out.println (t.getSubClassesOfClass("CultureEvent"));
 		
 		//System.out.println( t.getCitiesFromDB().toString());
 		
-		
+		t.disconnectFromDB();
 	}
 }

@@ -153,8 +153,11 @@ public class OntToDbConnection {
 	}
   
 	public ArrayList<Integer> getIndividualUnionOverClasses (ArrayList<String> classNames) {
-		//TODO Implementieren : getIndividual Union OverClasses 
-		return new  ArrayList<Integer>();
+		ArrayList<Integer> individs = new  ArrayList<Integer>();
+		for (String s : classNames){
+			individs.addAll(this.getInvidualsFromOntologieClass(s));
+		}
+		return individs;
 	}
 	
 	public ArrayList<Integer> getIndividualIntersectionOverClasses ( ArrayList<String> classNames) throws Exception {
@@ -197,5 +200,22 @@ public class OntToDbConnection {
 		}
 		s = s.concat(String.valueOf(eventIDs.get(i)));
 		return  dbCon.executeQuery("Select * from \"Event\" where \"event_id\" in (" + s + ")");
+	}
+	
+	public void disconnectFromDB (){
+		dbCon.disconnect();
+	}
+	
+	public ArrayList<Integer> EventsByMaxCosts ( int numberGrownUp , int numberChilden , int numberReducedCost , int MaxSum , ArrayList<Integer> searchField) throws SQLException{
+		ArrayList<Integer> events = new ArrayList<Integer>();
+		ResultSet rs = dbCon.executeQuery("Select * from \"Event\" where \"event_id\" in (" + searchField + ")");
+		while(rs.next()){
+			int event_id = rs.getInt("event_id");
+			ResultSet rs2 = dbCon.executeQuery("SELECT * FROM \"Preisliste\" WHERE event = " + event_id);
+			if ( rs2.getInt("kinder")*numberChilden + rs2.getInt("erwachsene")*numberChilden +rs2.getInt("ermaessigt")*numberReducedCost < MaxSum )
+				events.add(event_id);
+		}
+		return events;
+		
 	}
 }
