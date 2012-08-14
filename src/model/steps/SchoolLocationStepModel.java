@@ -15,7 +15,11 @@ public class SchoolLocationStepModel extends InformationGatherStepModel
 	
 	public static SchoolLocationStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new SchoolLocationStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new SchoolLocationStepModel();
+		return instance;
 	}
 	
 	public String getError() 

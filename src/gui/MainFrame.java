@@ -131,9 +131,7 @@ public class MainFrame extends javax.swing.JFrame {
 				mainPnl.setPreferredSize(new Dimension(691, 416));
 				mainPnl.setBorder(new EmptyBorder(10, 10, 10, 10));
 				mainPnl.add(new TimeRangeStep(), BorderLayout.CENTER);
-				getContentPane().add(mainPnl, BorderLayout.CENTER);
-				
-				
+				getContentPane().add(mainPnl, BorderLayout.CENTER);				
 			}
 			pack();
 			this.setSize(750, 650);

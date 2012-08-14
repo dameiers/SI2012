@@ -17,7 +17,11 @@ public class DistanceStepModel extends InformationGatherStepModel
 	
 	public static DistanceStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new DistanceStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new DistanceStepModel();
+		return instance;
 	}
 	
 	public String getError() {

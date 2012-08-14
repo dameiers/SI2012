@@ -19,7 +19,11 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 	
 	public static EventCategoryStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new EventCategoryStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new EventCategoryStepModel();
+		return instance;
 	}
 
 	public String getError() 

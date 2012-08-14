@@ -15,7 +15,11 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 	
 	public static PersonAgeStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new PersonAgeStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new PersonAgeStepModel();
+		return instance;
 	}
 
 	public String getError() 

@@ -16,7 +16,11 @@ public class DurationStepModel extends InformationGatherStepModel
 	
 	public static DurationStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new DurationStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new DurationStepModel();
+		return instance;
 	}
 
 	

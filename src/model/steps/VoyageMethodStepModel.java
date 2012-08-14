@@ -15,7 +15,11 @@ public class VoyageMethodStepModel extends InformationGatherStepModel
 	
 	public static VoyageMethodStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new VoyageMethodStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new VoyageMethodStepModel();
+		return instance;
 	}
 	
 	public String getError() 

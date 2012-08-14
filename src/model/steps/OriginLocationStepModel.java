@@ -15,7 +15,11 @@ public class OriginLocationStepModel extends InformationGatherStepModel
 	
 	public static OriginLocationStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new OriginLocationStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new OriginLocationStepModel();
+		return instance;
 	}
 	
 	public String getError() 

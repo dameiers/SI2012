@@ -6,7 +6,7 @@ import gui.steps.TimeRangeStep;
 
 public class TimeRangeStepModel extends InformationGatherStepModel 
 {
-	private static TimeRangeStepModel instance;
+	private static TimeRangeStepModel instance = new TimeRangeStepModel();
 
 	public final static String SUMMERBREAK_TIME_RANGE = "summerbreak";
 	public final static String AUTUMNBREAK_TIME_RANGE = "autumnbreak";
@@ -27,7 +27,13 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	
 	public static TimeRangeStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new TimeRangeStepModel());
+		System.out.println(instance);
+		
+		if(instance == null) {
+			instance = new TimeRangeStepModel();
+		}
+		
+		return instance;
 	}
 
 	public String getError() 

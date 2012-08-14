@@ -18,7 +18,11 @@ public class GenreSelectionStepModel extends InformationGatherStepModel
 	
 	public static GenreSelectionStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new GenreSelectionStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new GenreSelectionStepModel();
+		return instance;
 	}
 
 	public String getError() 

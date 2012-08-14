@@ -21,7 +21,11 @@ public class KindOfEventSelectionStepModel extends InformationGatherStepModel
 	
 	public static KindOfEventSelectionStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new KindOfEventSelectionStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new KindOfEventSelectionStepModel();
+		return instance;
 	}
 	
 	public String getError() 

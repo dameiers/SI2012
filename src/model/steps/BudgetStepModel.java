@@ -15,7 +15,11 @@ public class BudgetStepModel extends InformationGatherStepModel
 	
 	public static BudgetStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new BudgetStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new BudgetStepModel();
+		return instance;
 	}
 	
 	public String getError() 
