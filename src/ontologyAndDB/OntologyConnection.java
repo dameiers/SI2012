@@ -20,6 +20,7 @@ import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDataPropertyAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -133,7 +134,7 @@ public class OntologyConnection {
 		printNodeSet (getSubClasses(className));
 	}
 	
-	private NodeSet<OWLClass> getSubClasses (String className){
+	protected NodeSet<OWLClass> getSubClasses (String className){
 		OWLClass superClass = factory.getOWLClass(className ,pm);
 		return  reasoner.getSubClasses(superClass, true);
 	}
@@ -144,6 +145,22 @@ public class OntologyConnection {
 		for(OWLClass cls : clses) {
 			System.out.println(" " + cls.toString().replaceFirst(ontID+"#", "").replace("<", "").replace(">", ""));	}
 		System.out.println("\n");
+	}
+	
+	/**
+	 * 
+	 * @param classList
+	 * @return
+	 */
+	protected ArrayList<String> getClassNamesOnly(NodeSet<OWLClass> classList){
+		if (classList.isEmpty())
+			return null;
+		Set<OWLClass> clses = classList.getFlattened();
+		ArrayList<String> subClasses =new ArrayList<String> ();
+		for(OWLClass cls : clses) {
+			subClasses.add(cls.toString().replaceFirst(ontID+"#", "").replace("<", "").replace(">", ""));	
+			}
+		return subClasses;
 	}
 		
 	private OWLDataProperty getOWLDataProperty (String dataPropIRI){	
@@ -179,26 +196,45 @@ public class OntologyConnection {
 	}
 	
 	protected void removeAllIndividuals (){
-		 
 		OWLEntityRemover remover = new OWLEntityRemover(manager, Collections.singleton(ontology));
-		System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
-
+		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
 		 for(OWLNamedIndividual ind : ontology.getIndividualsInSignature()) {
 			 ind.accept(remover);
 			 }
 		manager.applyChanges(remover.getChanges());
-		System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
+		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
 		remover.reset();
-		this.saveOntologie();
+		saveOntologie();
 	}
 	
 	protected ArrayList<Integer> getEventIdsByClass(String className){
-		
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		for (OWLIndividual invid :  factory.getOWLClass(className, pm).getIndividuals(ontology)){
 			ids.add(Integer.valueOf(invid.toStringID().replace(pm.getDefaultPrefix(),"")));
 		}
 		return ids;
+	}
+	/**
+	 * 
+	 * @param className
+	 * @return the names of the SuperClasses or null if there are no superclasses
+	 * @throws OntologyConnectionUnknowClassException
+	 */
+	protected ArrayList<String> getSuperClasses (String className) throws OntologyConnectionUnknowClassException{
+		OWLClass cl = getClassByName(className);
+		if(null == cl)
+				throw new OntologyConnectionUnknowClassException("Unknown : "+className);
+		NodeSet<OWLClass> nodes = reasoner.getSuperClasses(cl, true);
+		return this.getClassNamesOnly(nodes);
+	}
+	
+	/**
+	 * 
+	 * @param className
+	 * @return OWLClass or null if the class doesnt exist
+	 */
+	private OWLClass getClassByName ( String className){
+		return this.getClass(ontID+"#"+className);
 	}
 	
 }

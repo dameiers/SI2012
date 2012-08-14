@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import ontologyAndDB.exception.ViewDoesntExistsException;
+
 
 public class DBConnection {
 
@@ -30,12 +32,8 @@ public class DBConnection {
 		
 		Statement stmt = null;
 		ResultSet rs = null;
-		    try {
-		        stmt = conn.createStatement();
-		        rs = stmt.executeQuery(sqlStatement);			        
-		    } catch (SQLException e) {
-		        System.out.println(e.toString());
-		        }
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sqlStatement);			        
 		return rs;
 	}
 
@@ -48,7 +46,19 @@ public class DBConnection {
 		}
 	}
 	
-	
+	/**
+	 * If a VIEW with this name already exists, it will be overwritten
+	 * @param viewName the Name of the View to be created
+	 * @param sqlStatement the statement witch fills the view
+	 * @throws SQLException 
+	 */
+	protected void createView ( String viewName, String sqlStatement) throws SQLException{
+		ResultSet rs = this.executeQuery("SELECT count(*) FROM pg_tables where tablename='"+viewName+"'");
+		if (rs.next())
+			this.executeQuery("DROP VIEW "+viewName);
+		this.executeQuery("CREATE VIEW "+ viewName +" AS "+ sqlStatement);
+		
+	}
 	
 	
 }
