@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.PersonDescriptionStep;
+
 import java.util.ArrayList;
 
 
@@ -17,7 +19,7 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	
 	private PersonDescriptionStepModel() 
 	{
-		
+		super("Persšnlich", new PersonDescriptionStep());
 	}
 	
 	public static PersonDescriptionStepModel getInstance() 

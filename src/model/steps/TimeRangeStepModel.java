@@ -2,6 +2,8 @@ package model.steps;
 
 import java.util.GregorianCalendar;
 
+import gui.steps.TimeRangeStep;
+
 public class TimeRangeStepModel extends InformationGatherStepModel 
 {
 	private static TimeRangeStepModel instance;
@@ -20,7 +22,7 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	
 	private TimeRangeStepModel() 
 	{
-		
+		super("Zeitrahmen", new TimeRangeStep());
 	}
 	
 	public static TimeRangeStepModel getInstance() 

@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.EventCategorySelectionStep;
+
 public class EventCategoryStepModel extends InformationGatherStepModel 
 {
 	private static EventCategoryStepModel instance;
@@ -8,7 +10,7 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 	
 	private EventCategoryStepModel() 
 	{
-		
+		super("Kategorie", new EventCategorySelectionStep(true, true, true));
 	}
 	
 	public static EventCategoryStepModel getInstance() 

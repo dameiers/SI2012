@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.DurationStep;
+
 public class DurationStepModel extends InformationGatherStepModel 
 {
 	private static DurationStepModel instance;
@@ -8,7 +10,7 @@ public class DurationStepModel extends InformationGatherStepModel
 
 	private DurationStepModel() 
 	{
-		
+		super("Dauer", new DurationStep());
 	}
 	
 	public static DurationStepModel getInstance() 

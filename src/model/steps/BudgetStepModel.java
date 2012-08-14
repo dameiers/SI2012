@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.BudgetStep;
+
 public class BudgetStepModel extends InformationGatherStepModel 
 {
 	private static BudgetStepModel instance;
@@ -8,7 +10,7 @@ public class BudgetStepModel extends InformationGatherStepModel
 
 	private BudgetStepModel() 
 	{
-		
+		super("Budget", new BudgetStep());
 	}
 	
 	public static BudgetStepModel getInstance() 

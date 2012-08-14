@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.DistanceStep;
+
 
 public class DistanceStepModel extends InformationGatherStepModel 
 {
@@ -10,7 +12,7 @@ public class DistanceStepModel extends InformationGatherStepModel
 	
 	private DistanceStepModel() 
 	{
-		
+		super("Distanz", new DistanceStep());
 	}
 	
 	public static DistanceStepModel getInstance() 

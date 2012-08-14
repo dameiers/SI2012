@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.VoyageMethodStep;
+
 public class VoyageMethodStepModel extends InformationGatherStepModel 
 {
 	private static VoyageMethodStepModel instance;
@@ -8,14 +10,13 @@ public class VoyageMethodStepModel extends InformationGatherStepModel
 	
 	private VoyageMethodStepModel() 
 	{
-		
+		super("Verkehrsmittel", new VoyageMethodStep());
 	}
 	
 	public static VoyageMethodStepModel getInstance() 
 	{
 		return instance != null ? instance : (instance=new VoyageMethodStepModel());
 	}
-
 	
 	public String getError() 
 	{	

@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.SchoolLocationStep;
+
 public class SchoolLocationStepModel extends InformationGatherStepModel 
 {
 	private static SchoolLocationStepModel instance;
@@ -8,7 +10,7 @@ public class SchoolLocationStepModel extends InformationGatherStepModel
 	
 	private SchoolLocationStepModel() 
 	{
-		
+		super("Schulort", new SchoolLocationStep());
 	}
 	
 	public static SchoolLocationStepModel getInstance() 
