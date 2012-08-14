@@ -31,7 +31,7 @@ import java.util.*;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class DistanceStep extends javax.swing.JPanel {
+public class DistanceStep extends javax.swing.JPanel implements ModelFiller{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JTextPane hintTxt;
@@ -96,7 +96,7 @@ public class DistanceStep extends javax.swing.JPanel {
 				{
 					hintTxt = new JTextPane();
 					contentPnl.add(hintTxt);
-					hintTxt.setText("Hinweis: Ohne Auto kann sich die Reisezeit verz�gern!");
+					hintTxt.setText("Hinweis: Ohne Auto kann sich die Reisezeit verzoegern!");
 					hintTxt.setBounds(12, 79, 391, 35);
 					hintTxt.setEditable(false);
 					hintTxt.setBackground(new java.awt.Color(255,43,52));
@@ -143,24 +143,12 @@ public class DistanceStep extends javax.swing.JPanel {
 		return 6371*c;
 	}
 
-	public static double getRouteDistance (String from, String to, String vehicle, String type) throws Exception {
-		double[] fpos = getLatLon(from);
-		double[] tpos = getLatLon(to);
-		URL dis = new URL("http://www.yournavigation.org/api/1.0/gosmore.php?format=kml&flat="+fpos[0]+"&flon="+fpos[1]+"&tlat="+tpos[0]+"&tlon="+tpos[1]+"&v="+vehicle+"&fast="+type);
-		URLConnection con = dis.openConnection();
-		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		String inputLine;
-		while ((inputLine = in.readLine())!=null){
-			inputLine = inputLine.trim();
-			if (inputLine.startsWith("<distance>") && inputLine.endsWith("</distance>")){
-                        	String value = inputLine.substring(10, inputLine.indexOf("</distance"));
-				in.close();
-				return Double.parseDouble(value);
-			}
-		}
-		in.close();
-		return 0;
+	@Override
+	public void fillModel() {
+		// TODO Auto-generated method stub
+		
 	}
+	
 	
 
 }

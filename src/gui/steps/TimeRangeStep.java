@@ -30,7 +30,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class TimeRangeStep extends javax.swing.JPanel {
+public class TimeRangeStep extends javax.swing.JPanel implements ModelFiller{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton summerbreakBtn;
@@ -196,6 +196,12 @@ public class TimeRangeStep extends javax.swing.JPanel {
 			toDateTxt.setSize(96, 28);
 		}
 		return toDateTxt;
+	}
+
+	@Override
+	public void fillModel() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

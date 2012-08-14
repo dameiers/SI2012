@@ -30,7 +30,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class DurationStep extends javax.swing.JPanel {
+public class DurationStep extends javax.swing.JPanel implements ModelFiller {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton weekendBtn;
@@ -96,7 +96,7 @@ public class DurationStep extends javax.swing.JPanel {
 				{
 					oneDayBtn = new JRadioButton();
 					contentPnl.add(oneDayBtn, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					oneDayBtn.setText("EintŠgig");
+					oneDayBtn.setText("Eintï¿½gig");
 					getTimeRangeGroup().add(oneDayBtn);
 				}
 			}
@@ -109,7 +109,15 @@ public class DurationStep extends javax.swing.JPanel {
 		if(durationGroup == null) {
 			durationGroup = new ButtonGroup();
 		}
+		
+		"asdf".equals("ff");
 		return durationGroup;
+	}
+
+	@Override
+	public void fillModel() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

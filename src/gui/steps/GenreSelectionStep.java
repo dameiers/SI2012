@@ -25,7 +25,7 @@ import javax.swing.WindowConstants;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class GenreSelectionStep extends javax.swing.JPanel {
+public class GenreSelectionStep extends javax.swing.JPanel implements ModelFiller {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private LikeSelectionList theatreGenreList;
@@ -146,6 +146,12 @@ public class GenreSelectionStep extends javax.swing.JPanel {
 			contentPnl.add(theatreGenreList, new GridBagConstraints(insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
 		}
+	}
+
+	@Override
+	public void fillModel() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

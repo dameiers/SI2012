@@ -27,7 +27,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class PersonDescriptionStep extends javax.swing.JPanel {
+public class PersonDescriptionStep extends javax.swing.JPanel implements ModelFiller {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JLabel ageLbl;
@@ -67,7 +67,7 @@ public class PersonDescriptionStep extends javax.swing.JPanel {
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Bitte geben Sie zunächst ihr Alter an und für welche Gruppe Sie ein Event suchen.");
+					titleTxt.setText("Bitte geben Sie zunï¿½chst ihr Alter an und fï¿½r welche Gruppe Sie ein Event suchen.");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);
@@ -115,6 +115,12 @@ public class PersonDescriptionStep extends javax.swing.JPanel {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void fillModel() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

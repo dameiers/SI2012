@@ -29,7 +29,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class OriginLocationStep extends javax.swing.JPanel {
+public class OriginLocationStep extends javax.swing.JPanel implements ModelFiller {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private LocationComboBox locationComboBox;
@@ -67,7 +67,7 @@ public class OriginLocationStep extends javax.swing.JPanel {
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Von wo aus mšchten Sie die Reise zum Event antreten?");
+					titleTxt.setText("Von wo aus mï¿½chten Sie die Reise zum Event antreten?");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);
@@ -95,6 +95,12 @@ public class OriginLocationStep extends javax.swing.JPanel {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void fillModel() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

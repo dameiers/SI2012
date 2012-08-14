@@ -7,11 +7,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import javax.swing.ListModel;
 import javax.swing.WindowConstants;
 
 /**
@@ -24,7 +22,7 @@ import javax.swing.WindowConstants;
  * PURCHASED FOR THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED LEGALLY FOR
  * ANY CORPORATE OR COMMERCIAL PURPOSE.
  */
-public class EventCategorySelectionStep extends javax.swing.JPanel {
+public class EventCategorySelectionStep extends javax.swing.JPanel implements ModelFiller {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private LikeSelectionList sportCategoryList;
@@ -35,6 +33,7 @@ public class EventCategorySelectionStep extends javax.swing.JPanel {
 	private boolean leisureTimeCategoryVisible;
 	private boolean cultureCategoryVisible;
 	private int insertPos = 1;
+	private EventCategorySelectionModel model;
 
 	/**
 	 * Auto-generated main method to display this JPanel inside a new JFrame.
@@ -151,5 +150,11 @@ public class EventCategorySelectionStep extends javax.swing.JPanel {
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
 		}
+	}
+
+	@Override
+	public void fillModel() {
+		
+		
 	}
 }

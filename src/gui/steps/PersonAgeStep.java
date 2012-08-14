@@ -36,7 +36,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class PersonAgeStep extends javax.swing.JPanel implements ActionListener {
+public class PersonAgeStep extends javax.swing.JPanel implements ActionListener, ModelFiller {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JPanel addBtnContainer;
@@ -142,6 +142,12 @@ public class PersonAgeStep extends javax.swing.JPanel implements ActionListener 
 		ageCboContainer.add(new PersonAgeComponent(ageCboContainer));
 		ageCboContainer.revalidate();
 		ageCboContainer.repaint();
+	}
+
+	@Override
+	public void fillModel() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

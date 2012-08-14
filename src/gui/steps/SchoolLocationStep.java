@@ -35,7 +35,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class SchoolLocationStep extends javax.swing.JPanel implements ActionListener {
+public class SchoolLocationStep extends javax.swing.JPanel implements ActionListener,ModelFiller {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JPanel addBtnContainer;
@@ -141,6 +141,12 @@ public class SchoolLocationStep extends javax.swing.JPanel implements ActionList
 		schoolCboContainer.add(new SchoolLocationComponent(schoolCboContainer));
 		schoolCboContainer.revalidate();
 		schoolCboContainer.repaint();
+	}
+
+	@Override
+	public void fillModel() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

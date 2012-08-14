@@ -25,7 +25,7 @@ import javax.swing.WindowConstants;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class KindOfEventSelectionStep extends javax.swing.JPanel {
+public class KindOfEventSelectionStep extends javax.swing.JPanel implements ModelFiller {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private LikeSelectionList kindOfEventList;
@@ -88,6 +88,12 @@ public class KindOfEventSelectionStep extends javax.swing.JPanel {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void fillModel() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
