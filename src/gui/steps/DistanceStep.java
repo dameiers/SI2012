@@ -17,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.*;
 
 /**
