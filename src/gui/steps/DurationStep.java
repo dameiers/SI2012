@@ -19,6 +19,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import model.steps.DurationStepModel;
 import model.steps.InformationGatherStepModel;
 
 /**
@@ -33,13 +34,14 @@ import model.steps.InformationGatherStepModel;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class DurationStep extends javax.swing.JPanel implements ViewModelConnection {
+public class DurationStep extends AbstractViewModelConnectionImpl {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton weekendBtn;
 	private JRadioButton oneDayBtn;
 	private ButtonGroup durationGroup;
 	private JTextPane titleTxt;
+	private DurationStepModel model = DurationStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -118,20 +120,13 @@ public class DurationStep extends javax.swing.JPanel implements ViewModelConnect
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public JComponent getVisualisationUI() {
-		// TODO Auto-generated method stub
-		return this;
+		final String duration = durationGroup.getSelection() == oneDayBtn.getModel() ? DurationStepModel.ONE_DAY_DURATION : DurationStepModel.WEEKEND_DURATION;
+		model.setDuration(duration);
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		// TODO Auto-generated method stub
-		return null;
+		return model;
 	}
 
 }

@@ -2,8 +2,9 @@ package model.steps;
 
 public class DurationStepModel extends InformationGatherStepModel 
 {
+	public final static String ONE_DAY_DURATION = "one_day";
+	public final static String WEEKEND_DURATION = "multiple_days";
 	private static DurationStepModel instance;
-	
 	private String duration;
 
 	private DurationStepModel() 
@@ -20,14 +21,14 @@ public class DurationStepModel extends InformationGatherStepModel
 	public String getError() 
 	{
 		if(!hasValidDuration())
-			return "Ungüliger Zeitraum";
+			return "Ungueliger Zeitraum";
 		
 		return null;
 	}
 	
 	public boolean hasValidDuration()
 	{
-		return "oneDay".equals(duration) || "weekend".equals(duration);
+		return ONE_DAY_DURATION.equals(duration) || WEEKEND_DURATION.equals(duration);
 	}
 
 	public String getDuration() 
