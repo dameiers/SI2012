@@ -41,7 +41,6 @@ public class DurationStep extends AbstractViewModelConnectionImpl {
 	private JRadioButton oneDayBtn;
 	private ButtonGroup durationGroup;
 	private JTextPane titleTxt;
-	private DurationStepModel model = DurationStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -120,13 +119,14 @@ public class DurationStep extends AbstractViewModelConnectionImpl {
 
 	@Override
 	public void fillModel() {
+		DurationStepModel model = DurationStepModel.getInstance();
 		final String duration = durationGroup.getSelection() == oneDayBtn.getModel() ? DurationStepModel.ONE_DAY_DURATION : DurationStepModel.WEEKEND_DURATION;
 		model.setDuration(duration);
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return DurationStepModel.getInstance();
 	}
 
 }

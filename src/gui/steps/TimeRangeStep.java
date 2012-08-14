@@ -52,7 +52,6 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 	private JRadioButton autumbreakBtn;
 	private ButtonGroup timeRangeGroup;
 	private JTextPane titleTxt;
-	private TimeRangeStepModel model = TimeRangeStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -208,6 +207,7 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 
 	@Override
 	public void fillModel() {
+		TimeRangeStepModel model = TimeRangeStepModel.getInstance();
 		//there is a own time range defined
 		if(timeRangeGroup.getSelection() == miscTimeRange.getModel()){
 			model.setTimeRangeTyp(TimeRangeStepModel.MISC_TIME_RANGE);
@@ -241,7 +241,7 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return TimeRangeStepModel.getInstance();
 	}
 
 }

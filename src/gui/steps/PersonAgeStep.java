@@ -48,7 +48,6 @@ public class PersonAgeStep extends AbstractViewModelConnectionImpl implements Ac
 	private JPanel ageCboContainer;
 	private JButton addBtn;
 	private JTextPane titleTxt;
-	private PersonAgeStepModel model = PersonAgeStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -151,12 +150,13 @@ public class PersonAgeStep extends AbstractViewModelConnectionImpl implements Ac
 
 	@Override
 	public void fillModel() {
-		
+		PersonAgeStepModel model = PersonAgeStepModel.getInstance();
+		model.setAges(getSelectedAges());
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return PersonAgeStepModel.getInstance();
 	}
 
 }

@@ -37,7 +37,6 @@ public class BudgetStep extends AbstractViewModelConnectionImpl {
 	private JLabel jLabel1;
 	private JTextField distanceTxt;
 	private JTextPane titleTxt;
-	private BudgetStepModel model = BudgetStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -102,14 +101,13 @@ public class BudgetStep extends AbstractViewModelConnectionImpl {
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
+		BudgetStepModel model = BudgetStepModel.getInstance();
 		model.setBudget(distanceTxt.getText());
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		// TODO Auto-generated method stub
-		return model;
+		return  BudgetStepModel.getInstance();
 	}
 	
 	

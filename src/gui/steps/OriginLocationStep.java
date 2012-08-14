@@ -39,7 +39,6 @@ public class OriginLocationStep extends AbstractViewModelConnectionImpl {
 	private LocationComboBox locationComboBox;
 	private JLabel locationLbl;
 	private JTextPane titleTxt;
-	private OriginLocationStepModel model = OriginLocationStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -104,12 +103,13 @@ public class OriginLocationStep extends AbstractViewModelConnectionImpl {
 
 	@Override
 	public void fillModel() {
-		
+		OriginLocationStepModel model = OriginLocationStepModel.getInstance();
+		model.setOrigin(locationComboBox.getSelectedLocation());
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return OriginLocationStepModel.getInstance();
 	}
 	
 	

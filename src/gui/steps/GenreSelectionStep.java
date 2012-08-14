@@ -39,7 +39,6 @@ public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 	private boolean theatreGenreVisible;
 	private boolean concertGenreVisible;
 	private int insertPos =1;
-	private GenreSelectionStepModel model = GenreSelectionStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -154,12 +153,12 @@ public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 
 	@Override
 	public void fillModel() {
-		
+		GenreSelectionStepModel model = GenreSelectionStepModel.getInstance();
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return GenreSelectionStepModel.getInstance();
 	}
 
 }
