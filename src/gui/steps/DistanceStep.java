@@ -93,7 +93,7 @@ public class DistanceStep extends javax.swing.JPanel {
 				{
 					hintTxt = new JTextPane();
 					contentPnl.add(hintTxt);
-					hintTxt.setText("Hinweis: Ohne Auto kann sich die Reisezeit verzšgern!");
+					hintTxt.setText("Hinweis: Ohne Auto kann sich die Reisezeit verzï¿½gern!");
 					hintTxt.setBounds(12, 79, 391, 35);
 					hintTxt.setEditable(false);
 					hintTxt.setBackground(new java.awt.Color(255,43,52));
@@ -103,7 +103,61 @@ public class DistanceStep extends javax.swing.JPanel {
 			e.printStackTrace();
 		}
 	}
+		public static double[] getLatLon(String city) throws Exception {
+		double[] pos = new double[2];
+		URL citylat = new URL("http://nominatim.openstreetmap.org/search?q="
+				+ city + "&format=xml");
+		URLConnection con = citylat.openConnection();
+		BufferedReader in = new BufferedReader(new InputStreamReader(
+				con.getInputStream()));
+		String inputLine;
+		while ((inputLine = in.readLine()) != null){
+			if (inputLine.contains("lat='")){
+				int index = inputLine.indexOf("lat='");
+				String lat = inputLine.substring(index+5, inputLine.indexOf("'", index+5));
+				pos[0]=Double.parseDouble(lat);
+			}
+			if (inputLine.contains("lon='")){
+				int index = inputLine.indexOf("lon='");
+				String lon = inputLine.substring(index+5, inputLine.indexOf("'", index+5));
+				pos[1]=Double.parseDouble(lon);
+			}
+		}
+			
+		in.close();
+		return pos;
+	}
 	
+	public static double getDistance(String from, String to) throws Exception{
+		double[] pos1 = getLatLon(from);
+		double[] pos2 = getLatLon(to);
+		double dLon = Math.toRadians(pos2[1]-pos1[1]);
+		double dLat = Math.toRadians(pos2[0]-pos1[0]);
+		double lat1 = Math.toRadians(pos1[0]);
+		double lat2 = Math.toRadians(pos2[0]);
+		double a = Math.pow(Math.sin(dLat/2), 2)+ Math.pow(Math.sin(dLon/2), 2)* Math.cos(lat1) * Math.cos(lat2); 
+		double c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		return 6371*c;
+	}
+
+	public static double getRouteDistance (String from, String to, String vehicle, String type) throws Exception {
+		double[] fpos = getLatLon(from);
+		double[] tpos = getLatLon(to);
+		URL dis = new URL("http://www.yournavigation.org/api/1.0/gosmore.php?format=kml&flat="+fpos[0]+"&flon="+fpos[1]+"&tlat="+tpos[0]+"&tlon="+tpos[1]+"&v="+vehicle+"&fast="+type);
+		URLConnection con = dis.openConnection();
+		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		while ((inputLine = in.readLine())!=null){
+			inputLine = inputLine.trim();
+			if (inputLine.startsWith("<distance>") && inputLine.endsWith("</distance>")){
+                        	String value = inputLine.substring(10, inputLine.indexOf("</distance"));
+				in.close();
+				return Double.parseDouble(value);
+			}
+		}
+		in.close();
+		return 0;
+	}
 	
 
 }
