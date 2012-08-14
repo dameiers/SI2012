@@ -46,7 +46,6 @@ public class SchoolLocationStep extends AbstractViewModelConnectionImpl implemen
 	private JPanel schoolCboContainer;
 	private JButton addBtn;
 	private JTextPane titleTxt;
-	private SchoolLocationStepModel model = SchoolLocationStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -149,12 +148,12 @@ public class SchoolLocationStep extends AbstractViewModelConnectionImpl implemen
 
 	@Override
 	public void fillModel() {
-		
+		SchoolLocationStepModel model = SchoolLocationStepModel.getInstance();
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return SchoolLocationStepModel.getInstance();
 	}
 
 }

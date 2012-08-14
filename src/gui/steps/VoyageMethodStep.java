@@ -41,7 +41,6 @@ public class VoyageMethodStep extends AbstractViewModelConnectionImpl {
 	private JRadioButton yesBtn;
 	private ButtonGroup btnGroup;
 	private JTextPane titleTxt;
-	private VoyageMethodStepModel model = VoyageMethodStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -116,12 +115,13 @@ public class VoyageMethodStep extends AbstractViewModelConnectionImpl {
 
 	@Override
 	public void fillModel() {
+		VoyageMethodStepModel model = VoyageMethodStepModel.getInstance();
 		model.setByCar(btnGroup.getSelection() == yesBtn.getModel());
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return VoyageMethodStepModel.getInstance();
 	}
 
 }

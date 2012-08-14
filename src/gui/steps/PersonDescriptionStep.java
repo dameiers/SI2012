@@ -17,6 +17,7 @@ import javax.swing.JTextPane;
 
 import model.steps.InformationGatherStepModel;
 import model.steps.PersonAgeStepModel;
+import model.steps.PersonDescriptionStepModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -38,7 +39,6 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 	private JComboBox groupCbo;
 	private JLabel groupLbl;
 	private JTextPane titleTxt;
-	private PersonAgeStepModel model = PersonAgeStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -123,12 +123,15 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 
 	@Override
 	public void fillModel() {
-		
-	}
+		PersonDescriptionStepModel model = PersonDescriptionStepModel.getInstance();
+		final int age = Integer.valueOf((String)ageCbo.getSelectedItem());
+		model.setAge(age);
+		model.setGroup((String)groupCbo.getSelectedItem());
+;	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return PersonDescriptionStepModel.getInstance();
 	}
 	
 	

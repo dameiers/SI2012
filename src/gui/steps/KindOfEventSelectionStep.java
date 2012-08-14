@@ -34,7 +34,6 @@ public class KindOfEventSelectionStep extends AbstractViewModelConnectionImpl {
 	private JPanel contentPnl;
 	private LikeSelectionList kindOfEventList;
 	private JTextPane titleTxt;
-	private KindOfEventSelectionStepModel model = KindOfEventSelectionStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -97,12 +96,12 @@ public class KindOfEventSelectionStep extends AbstractViewModelConnectionImpl {
 
 	@Override
 	public void fillModel() {
-		
+		KindOfEventSelectionStepModel model = KindOfEventSelectionStepModel.getInstance();
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return KindOfEventSelectionStepModel.getInstance();
 	}
 	
 	

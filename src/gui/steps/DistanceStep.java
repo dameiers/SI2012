@@ -35,7 +35,6 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 	private JComboBox unitCbo;
 	private JTextField distanceTxt;
 	private JTextPane titleTxt;
-	private DistanceStepModel model = DistanceStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -143,7 +142,7 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
+		DistanceStepModel model = DistanceStepModel.getInstance();
 		model.setDistance(distanceTxt.getText());
 		model.setUnit((String)unitCbo.getSelectedItem());
 	}
@@ -151,7 +150,7 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 	@Override
 	public InformationGatherStepModel getModel() {
 		// TODO Auto-generated method stub
-		return model;
+		return DistanceStepModel.getInstance();
 	}
 	
 	

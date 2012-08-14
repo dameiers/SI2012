@@ -38,7 +38,6 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 	private boolean leisureTimeCategoryVisible;
 	private boolean cultureCategoryVisible;
 	private int insertPos = 1;
-	private EventCategoryStepModel model = EventCategoryStepModel.getInstance();
 
 	/**
 	 * Auto-generated main method to display this JPanel inside a new JFrame.
@@ -159,16 +158,20 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 
 	@Override
 	public void fillModel() {
+		EventCategoryStepModel model = EventCategoryStepModel.getInstance();
 		if(cultureCategoryVisible){
-			final HashMap<LikeBox, String> map = cultureCategoryList.getSelectionList();
-//			for(LikeBox box : map){
-//				box.get
-//			}
+			model.setCultureCategories(cultureCategoryList.getSelectionList());
+		}
+		if(sportCategoryVisible){
+			model.setSportCategories(sportCategoryList.getSelectionList());
+		}
+		if(leisureTimeCategoryVisible){
+			model.setCultureCategories(cultureCategoryList.getSelectionList());
 		}
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
-		return model;
+		return EventCategoryStepModel.getInstance();
 	}
 }
