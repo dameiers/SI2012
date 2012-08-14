@@ -24,13 +24,11 @@ class TraceBuilder
 	private static BudgetStepModel				budgetStepModel = BudgetStepModel.getInstance();
 	
 	public InformationGatherStepModel[] build()
-	{
-		return initianalTrace();
+	{	
+		if(!personDescriptionStep.isAlredyFilled())
+			return initianalTrace();
 		
-//		if(!personDescriptionStep.isAlredyFilled())
-//			return initianalTrace();
-//		
-//		return dynamicTrace();
+		return dynamicTrace();
 	}
 	
 	private InformationGatherStepModel[] initianalTrace()
@@ -70,19 +68,18 @@ class TraceBuilder
 		
 		if(personDescriptionStep.getAge() >= 18 || 
 		   personAgeStep.hasAdultPerson() ||
-		   !personDescriptionStep.isAlredyFilled()) {
+		   !personDescriptionStep.isAlredyFilled()) 
+		{
 			result.add(voyageMethodStep);
 		}
 		
 		result.add(distanceStep);
 		result.add(originLocationStep);
 		result.add(kindOfEventSelectionStepModel);
-		
-		
-		
+		result.add(eventCategoryStepModel);
+		result.add(genreSelectionStepModel);
 		
 		result.add(budgetStepModel);
-		
 		
 		return (InformationGatherStepModel[])result.toArray();
 	}
