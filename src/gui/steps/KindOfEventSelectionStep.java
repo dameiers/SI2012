@@ -7,11 +7,15 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.ListModel;
 import javax.swing.WindowConstants;
+
+import model.steps.InformationGatherStepModel;
+import model.steps.KindOfEventSelectionStepModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -25,11 +29,12 @@ import javax.swing.WindowConstants;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class KindOfEventSelectionStep extends javax.swing.JPanel implements ModelFiller {
+public class KindOfEventSelectionStep extends AbstractViewModelConnectionImpl {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private LikeSelectionList kindOfEventList;
 	private JTextPane titleTxt;
+	private KindOfEventSelectionStepModel model = KindOfEventSelectionStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -92,8 +97,12 @@ public class KindOfEventSelectionStep extends javax.swing.JPanel implements Mode
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return model;
 	}
 	
 	

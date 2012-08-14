@@ -10,12 +10,16 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
+import javax.swing.JComponent;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+
+import model.steps.InformationGatherStepModel;
+import model.steps.OriginLocationStepModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -29,12 +33,13 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class OriginLocationStep extends javax.swing.JPanel implements ModelFiller {
+public class OriginLocationStep extends AbstractViewModelConnectionImpl {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private LocationComboBox locationComboBox;
 	private JLabel locationLbl;
 	private JTextPane titleTxt;
+	private OriginLocationStepModel model = OriginLocationStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -99,8 +104,12 @@ public class OriginLocationStep extends javax.swing.JPanel implements ModelFille
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return model;
 	}
 	
 	

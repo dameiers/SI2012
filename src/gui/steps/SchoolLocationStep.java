@@ -23,6 +23,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
+import model.steps.InformationGatherStepModel;
+import model.steps.SchoolLocationStepModel;
+
 /**
 * This code was edited or generated using CloudGarden's Jigloo
 * SWT/Swing GUI Builder, which is free for non-commercial
@@ -35,7 +38,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class SchoolLocationStep extends javax.swing.JPanel implements ActionListener,ModelFiller {
+public class SchoolLocationStep extends AbstractViewModelConnectionImpl implements ActionListener {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JPanel addBtnContainer;
@@ -43,6 +46,7 @@ public class SchoolLocationStep extends javax.swing.JPanel implements ActionList
 	private JPanel schoolCboContainer;
 	private JButton addBtn;
 	private JTextPane titleTxt;
+	private SchoolLocationStepModel model = SchoolLocationStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -145,8 +149,12 @@ public class SchoolLocationStep extends javax.swing.JPanel implements ActionList
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return model;
 	}
 
 }

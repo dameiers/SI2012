@@ -19,6 +19,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import model.steps.InformationGatherStepModel;
+import model.steps.VoyageMethodStepModel;
+
 /**
 * This code was edited or generated using CloudGarden's Jigloo
 * SWT/Swing GUI Builder, which is free for non-commercial
@@ -31,13 +34,14 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class VoyageMethodStep extends javax.swing.JPanel implements ModelFiller {
+public class VoyageMethodStep extends AbstractViewModelConnectionImpl {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton noBtn;
 	private JRadioButton yesBtn;
 	private ButtonGroup btnGroup;
 	private JTextPane titleTxt;
+	private VoyageMethodStepModel model = VoyageMethodStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -112,8 +116,12 @@ public class VoyageMethodStep extends javax.swing.JPanel implements ModelFiller 
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
-		
+		model.setByCar(btnGroup.getSelection() == yesBtn.getModel());
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return model;
 	}
 
 }

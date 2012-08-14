@@ -1,23 +1,20 @@
 package gui.steps;
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
-
-import javax.swing.WindowConstants;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.WindowConstants;
 
-import java.io.*;
-import java.util.*;
+import model.steps.DistanceStepModel;
+import model.steps.InformationGatherStepModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -31,13 +28,14 @@ import java.util.*;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class DistanceStep extends javax.swing.JPanel implements ModelFiller{
+public class DistanceStep extends javax.swing.JPanel implements ViewModelConnection{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JTextPane hintTxt;
 	private JComboBox unitCbo;
 	private JTextField distanceTxt;
 	private JTextPane titleTxt;
+	private DistanceStepModel model = DistanceStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -146,7 +144,19 @@ public class DistanceStep extends javax.swing.JPanel implements ModelFiller{
 	@Override
 	public void fillModel() {
 		// TODO Auto-generated method stub
-		
+		model.setDistance(distanceTxt.getText());
+		model.setUnit((String)unitCbo.getSelectedItem());
+	}
+
+	@Override
+	public JComponent getVisualisationUI() {
+		return this;
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		// TODO Auto-generated method stub
+		return model;
 	}
 	
 	

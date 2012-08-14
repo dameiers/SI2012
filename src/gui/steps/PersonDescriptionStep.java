@@ -15,6 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
+import model.steps.InformationGatherStepModel;
+import model.steps.PersonAgeStepModel;
+
 /**
 * This code was edited or generated using CloudGarden's Jigloo
 * SWT/Swing GUI Builder, which is free for non-commercial
@@ -27,7 +30,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class PersonDescriptionStep extends javax.swing.JPanel implements ModelFiller {
+public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JLabel ageLbl;
@@ -35,6 +38,7 @@ public class PersonDescriptionStep extends javax.swing.JPanel implements ModelFi
 	private JComboBox groupCbo;
 	private JLabel groupLbl;
 	private JTextPane titleTxt;
+	private PersonAgeStepModel model = PersonAgeStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -119,8 +123,12 @@ public class PersonDescriptionStep extends javax.swing.JPanel implements ModelFi
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return model;
 	}
 	
 	

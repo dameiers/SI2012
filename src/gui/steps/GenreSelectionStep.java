@@ -13,6 +13,9 @@ import javax.swing.JTextPane;
 import javax.swing.ListModel;
 import javax.swing.WindowConstants;
 
+import model.steps.GenreSelectionStepModel;
+import model.steps.InformationGatherStepModel;
+
 /**
 * This code was edited or generated using CloudGarden's Jigloo
 * SWT/Swing GUI Builder, which is free for non-commercial
@@ -25,7 +28,7 @@ import javax.swing.WindowConstants;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class GenreSelectionStep extends javax.swing.JPanel implements ModelFiller {
+public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private LikeSelectionList theatreGenreList;
@@ -36,6 +39,7 @@ public class GenreSelectionStep extends javax.swing.JPanel implements ModelFille
 	private boolean theatreGenreVisible;
 	private boolean concertGenreVisible;
 	private int insertPos =1;
+	private GenreSelectionStepModel model = GenreSelectionStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -150,10 +154,12 @@ public class GenreSelectionStep extends javax.swing.JPanel implements ModelFille
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
 		
 	}
-	
-	
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return model;
+	}
 
 }

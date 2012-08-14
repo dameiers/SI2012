@@ -10,6 +10,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
+import javax.swing.JComponent;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+
+import model.steps.InformationGatherStepModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -30,7 +33,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class DurationStep extends javax.swing.JPanel implements ModelFiller {
+public class DurationStep extends javax.swing.JPanel implements ViewModelConnection {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton weekendBtn;
@@ -110,7 +113,6 @@ public class DurationStep extends javax.swing.JPanel implements ModelFiller {
 			durationGroup = new ButtonGroup();
 		}
 		
-		"asdf".equals("ff");
 		return durationGroup;
 	}
 
@@ -118,6 +120,18 @@ public class DurationStep extends javax.swing.JPanel implements ModelFiller {
 	public void fillModel() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public JComponent getVisualisationUI() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -17,12 +17,16 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+
+import model.steps.InformationGatherStepModel;
+import model.steps.PersonAgeStepModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -36,7 +40,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class PersonAgeStep extends javax.swing.JPanel implements ActionListener, ModelFiller {
+public class PersonAgeStep extends AbstractViewModelConnectionImpl implements ActionListener {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JPanel addBtnContainer;
@@ -44,6 +48,7 @@ public class PersonAgeStep extends javax.swing.JPanel implements ActionListener,
 	private JPanel ageCboContainer;
 	private JButton addBtn;
 	private JTextPane titleTxt;
+	private PersonAgeStepModel model = PersonAgeStepModel.getInstance();
 
 	/**
 	* Auto-generated main method to display this 
@@ -146,8 +151,12 @@ public class PersonAgeStep extends javax.swing.JPanel implements ActionListener,
 
 	@Override
 	public void fillModel() {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return model;
 	}
 
 }
