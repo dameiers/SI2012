@@ -4,12 +4,11 @@ import javax.swing.JComponent;
 
 public abstract class InformationGatherStepModel 
 {
-	
 	private String displayName;
-	private JComponent guiForm;
-	private Boolean alredyFilled;
+	private Boolean alredyFilled = false;
 	
-	public Boolean isAlredyFilled() {
+	public Boolean isAlredyFilled() 
+	{
 		return alredyFilled;
 	}
 	

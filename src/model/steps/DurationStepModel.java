@@ -27,7 +27,7 @@ public class DurationStepModel extends InformationGatherStepModel
 	
 	public boolean hasValidDuration()
 	{
-		return "oneDay".equals(duration) || "weekend".equals(duration); 
+		return "oneDay".equals(duration) || "weekend".equals(duration);
 	}
 
 	public String getDuration() 

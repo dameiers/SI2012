@@ -57,6 +57,7 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	public void setAge(int age) 
 	{
 		this.age = age;
+		updateAlredayFilled();
 	}
 	
 	public void setAge(String age)

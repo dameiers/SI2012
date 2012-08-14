@@ -58,25 +58,33 @@ class TraceBuilder
 		result.add(personDescriptionStep);
 		result.add(timeRangeStep);
 		
-		if("summerbreak".equals(timeRangeStep.getTimeRangeTyp())) { 
+		if(timeRangeStep.isAlredyFilled() && "summerbreak".equals(timeRangeStep.getTimeRangeTyp())) {
 			result.add(schoolLocationStep);
 		}
 		
 		result.add(durationStep);
 		
-		if(!"single".equals(personDescriptionStep.getGroup())){
+		if(personDescriptionStep.isAlredyFilled() && !"single".equals(personDescriptionStep.getGroup())) {
 			result.add(personAgeStep);
 		} 	
 		
-		if(personDescriptionStep.getAge() >= 18) {
+		if(personDescriptionStep.getAge() >= 18 || 
+		   personAgeStep.hasAdultPerson() ||
+		   !personDescriptionStep.isAlredyFilled()) {
 			result.add(voyageMethodStep);
 		}
 		
-		
 		result.add(distanceStep);
+		result.add(originLocationStep);
+		result.add(kindOfEventSelectionStepModel);
+		
+		
+		
+		
+		result.add(budgetStepModel);
+		
 		
 		return (InformationGatherStepModel[])result.toArray();
 	}
-	
 	
 }

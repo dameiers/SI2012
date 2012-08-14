@@ -23,6 +23,17 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 		
 		return null;
 	}
+	
+	public boolean hasAdultPerson()
+	{
+		for(int i=0; i<ages.length; i++)
+		{
+			if(ages[i] >= 18) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public int[] getAges() 
 	{
