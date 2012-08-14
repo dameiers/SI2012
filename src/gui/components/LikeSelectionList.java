@@ -75,4 +75,8 @@ public class LikeSelectionList extends JPanel {
 			this.add(lbl, lblConstrains);
 		}
 	}
+	
+	public HashMap<LikeBox, String> getSelectionList(){
+		return map;
+	}
 }

@@ -35,7 +35,7 @@ import model.steps.InformationGatherStepModel;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class DistanceStep extends javax.swing.JPanel implements ViewModelConnection{
+public class DistanceStep extends AbstractViewModelConnectionImpl{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JTextPane hintTxt;
@@ -153,11 +153,6 @@ public class DistanceStep extends javax.swing.JPanel implements ViewModelConnect
 		// TODO Auto-generated method stub
 		model.setDistance(distanceTxt.getText());
 		model.setUnit((String)unitCbo.getSelectedItem());
-	}
-
-	@Override
-	public JComponent getVisualisationUI() {
-		return this;
 	}
 
 	@Override

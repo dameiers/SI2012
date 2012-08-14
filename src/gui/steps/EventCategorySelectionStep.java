@@ -1,13 +1,14 @@
 package gui.steps;
 
+import gui.components.LikeBox;
 import gui.components.LikeSelectionList;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.HashMap;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -158,8 +159,12 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 
 	@Override
 	public void fillModel() {
-		
-		
+		if(cultureCategoryVisible){
+			final HashMap<LikeBox, String> map = cultureCategoryList.getSelectionList();
+//			for(LikeBox box : map){
+//				box.get
+//			}
+		}
 	}
 
 	@Override
