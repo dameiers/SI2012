@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
 
+import model.steps.DistanceStepModel;
+import model.steps.InformationGatherStepModel;
+
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
