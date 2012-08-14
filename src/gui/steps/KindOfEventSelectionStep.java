@@ -5,13 +5,11 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.HashMap;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import javax.swing.ListModel;
 import javax.swing.WindowConstants;
 
 import model.steps.InformationGatherStepModel;
@@ -97,13 +95,21 @@ public class KindOfEventSelectionStep extends AbstractViewModelConnectionImpl {
 	@Override
 	public void fillModel() {
 		KindOfEventSelectionStepModel model = KindOfEventSelectionStepModel.getInstance();
+		final HashMap<String, String> map = kindOfEventList.getSelectionList();
+		for(String s : map.keySet()){
+			if(s.equals(LikeSelectionList.CULTURE_ID)){
+				model.setCultureStatus(map.get(s));		
+			}else if(LikeSelectionList.SPORT_ID.equals(s)){
+				model.setSportStatus(map.get(s));		
+			}else{
+				model.setLeisureTimeStatus(map.get(s));				
+			}
+		}
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
 		return KindOfEventSelectionStepModel.getInstance();
 	}
-	
-	
 
 }

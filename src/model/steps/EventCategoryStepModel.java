@@ -22,27 +22,9 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 
 	public String getError() 
 	{
-		if(!hasValidCategorys())
-			return "Ungueltige Auswhal";
-		
 		return null;
 	}
 	
-	public boolean hasValidCategorys()
-	{
-		if(leisureTimeCategories == null || leisureTimeCategories.isEmpty()){
-			return false;
-		}
-		if(sportCategories == null || sportCategories.isEmpty()){
-			return false;
-		}
-		if(cultureCategories == null || cultureCategories.isEmpty()){
-			return false;
-		}
-		return true;
-	}
-
-
 	public void setLeisureTimeCategories(HashMap<String, String> leisureTimeList) 
 	{
 		this.leisureTimeCategories = leisureTimeList;

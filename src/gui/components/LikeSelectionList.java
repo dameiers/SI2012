@@ -13,6 +13,9 @@ import javax.swing.border.TitledBorder;
 
 public class LikeSelectionList extends JPanel {
 
+	public final static String CULTURE_ID ="Kulturell";
+	public static final String LEISURE_TIME_ID ="Freizeit";
+	public static final String SPORT_ID ="Sportlich";
 	private ArrayList<String> elems;
 	private String title;
 	//map<sportlich, liked>

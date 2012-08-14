@@ -111,7 +111,5 @@ public class OriginLocationStep extends AbstractViewModelConnectionImpl {
 	public InformationGatherStepModel getModel() {
 		return OriginLocationStepModel.getInstance();
 	}
-	
-	
 
 }

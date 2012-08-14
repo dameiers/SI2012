@@ -149,6 +149,8 @@ public class SchoolLocationStep extends AbstractViewModelConnectionImpl implemen
 	@Override
 	public void fillModel() {
 		SchoolLocationStepModel model = SchoolLocationStepModel.getInstance();
+		model.setLocations(getSelectedLocations());
+		
 	}
 
 	@Override

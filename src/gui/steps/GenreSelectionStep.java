@@ -154,6 +154,16 @@ public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 	@Override
 	public void fillModel() {
 		GenreSelectionStepModel model = GenreSelectionStepModel.getInstance();
+		
+		if(theatreGenreVisible){
+			model.setTheatreGenresMap(theatreGenreList.getSelectionList());
+		}
+		if(concertGenreVisible){
+			model.setConcertGenresMap(concertGenresList.getSelectionList());
+		}
+		if(cinemaGenreVisible){
+			model.setCinemaGenresMap(cinemaGenreList.getSelectionList());
+		}
 	}
 
 	@Override
