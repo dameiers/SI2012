@@ -1,5 +1,6 @@
 package model.steps;
 
+import gui.steps.AbstractViewModelConnectionImpl;
 import gui.steps.ViewModelConnection;
 
 import javax.swing.JComponent;
@@ -8,10 +9,10 @@ public abstract class InformationGatherStepModel
 {
 	private String displayName;
 	private Boolean alredyFilled = false;
-	private ViewModelConnection viewModelConnection;
+	private AbstractViewModelConnectionImpl viewModelConnection;
 	
 	public InformationGatherStepModel(String displayName, 
-									  ViewModelConnection viewModelConnection) 
+			AbstractViewModelConnectionImpl viewModelConnection) 
 	{
 		this.displayName = displayName;
 		this.viewModelConnection = viewModelConnection;
@@ -22,7 +23,7 @@ public abstract class InformationGatherStepModel
 		return alredyFilled;
 	}
 	
-	public ViewModelConnection getViewModelConnection() 
+	public AbstractViewModelConnectionImpl getViewModelConnection() 
 	{
 		return viewModelConnection;
 	}
