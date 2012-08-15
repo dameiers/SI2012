@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import ontologyAndDB.OntToDbConnection;
+
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -40,6 +42,7 @@ public class DistanceStep extends javax.swing.JPanel {
 	private JComboBox unitCbo;
 	private JTextField distanceTxt;
 	private JTextPane titleTxt;
+	private OntToDbConnection ontoconn;
 
 	/**
 	* Auto-generated main method to display this 
@@ -55,6 +58,7 @@ public class DistanceStep extends javax.swing.JPanel {
 	
 	public DistanceStep() {
 		super();
+		ontoconn = new OntToDbConnection();
 		initGUI();
 	}
 	
@@ -108,6 +112,30 @@ public class DistanceStep extends javax.swing.JPanel {
 			e.printStackTrace();
 		}
 	}
+	
+	public  ArrayList<String> getReachableCities(double wish_distance) throws Exception {
+		ArrayList<String> allcities = ontoconn.getCitiesFromDB();
+		ArrayList<String> reachablecities = new ArrayList<String>();
+		
+		for (int i=0; i<allcities.size(); i++){
+			String city = allcities.get(i).replace("[", "").replace("]", "").trim();
+			city = city.replaceAll("ü", "ue");
+			city = city.replaceAll("ä", "ae");
+			city = city.replaceAll("ö", "oe");
+			city = city.replaceAll("ß", "ss");
+			city = city.replaceAll(" ", "%20");
+			city = city.replaceAll("Ü", "UE");
+			city = city.replaceAll("A", "AE");
+			city = city.replaceAll("Ö", "OE");
+			double dist = getRouteDistance("Saarbruecken", city, "motorcar", "1");
+			System.out.println(city+"   "+dist);
+			if (dist < wish_distance){
+				reachablecities.add(city);
+			}
+		}
+		return reachablecities;
+	}
+	
 		public static double[] getLatLon(String city) throws Exception {
 		double[] pos = new double[2];
 		URL citylat = new URL("http://nominatim.openstreetmap.org/search?q="
