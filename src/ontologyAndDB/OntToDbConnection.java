@@ -62,7 +62,7 @@ public class OntToDbConnection {
 			  // data propertie : hasconcreteDuration 
 			  long timeDiff = dataBaseEvents.getTimestamp("enddatum").getTime() - dataBaseEvents.getTimestamp("startdatum").getTime();
 			  int durationInDays = (int)(timeDiff / 1000 / 3600 / 24) ;
-			  ontCon.setObjectPropertieToIndividual(individ, "hasConcreteDuration", durationInDays+1);
+			  ontCon.setObjectPropertieToIndividual(individ, "hasConcreteDuration", durationInDays);
 			  // hinzufügen zur passenden Event-Klasse
 			  rs2 = (dbCon.executeQuery("select bezeichnung from \"Kategorie\" where kategorie_id="+  dataBaseEvents.getInt("kategorie") ));
 			  rs2.next();
@@ -131,6 +131,9 @@ public class OntToDbConnection {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	public void preAndSave(){
+		ontCon.preAndSave();
+	}
 
 	public ResultSet executeQuery (String sqlStatement)throws SQLException{		
 		return dbCon.executeQuery(sqlStatement);
@@ -174,8 +177,9 @@ public class OntToDbConnection {
 	 *  Returns the direct Subclases of a Class
 	 * @param className the Name of the superclass
 	 * @return Non rekursive list of subclasses
+	 * @throws OntologyConnectionUnknowClassException 
 	 */
-	public ArrayList<String> getSubClassesOfClass(String className){
+	public ArrayList<String> getSubClassesOfClass(String className) throws OntologyConnectionUnknowClassException{
 		return ontCon.getClassNamesOnly(ontCon.getSubClasses(className));
 	}
 	

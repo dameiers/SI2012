@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.Set;
+import java.util.Calendar;
 
 import ontologyAndDB.exception.OWLConnectionUnknownTypeException;
 import ontologyAndDB.exception.OntologyConnectionDataPropertyException;
@@ -47,17 +48,21 @@ public class testclass {
 	public static void main (String args[]) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{
 	
 		OntToDbConnection t = new OntToDbConnection();
+		Calendar cal =		Calendar.getInstance();
+		System.out.println("Start : "+cal.getTime());
 		//t.fillOntWithAllEvents();
-		t.removeAllIndividuals();
+		//t.removeAllIndividuals();
 		//ResultSet rs = t.getDataFromDbByEvent_Id(t.getEventIdsFromOntologieClass("BalletEvent"));
 		//while (rs.next()){
 		//	System.out.println ( rs.getString(1));
 		//}
 		
-		//System.out.println (t.getSubClassesOfClass("CultureEvent"));
-		
+		//System.out.println (t.getSubClassesOfClass("Event"));
+		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 
 		//System.out.println( t.getCitiesFromDB().toString());
-		
+		//t.preAndSave();
+		System.out.println (t.getInvidualsFromOntologieClass("Event")); 
 		t.disconnectFromDB();
+		System.out.println("Ende : "+cal.getTime());
 	}
 }
