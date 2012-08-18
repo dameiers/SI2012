@@ -12,6 +12,8 @@ import ontologyAndDB.exception.ViewDoesntExistsException;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.util.OWLEntityRemover;
 
@@ -29,11 +31,11 @@ public class OntToDbConnection {
 	
 	public OntToDbConnection(){
 		 dbCon = new DBConnection();
-		 ontCon = new OntologyConnection("evntologie_latest.owl");
+		 ontCon = new OntologyConnection();
 		 holidayViewIsSet=false;
 		 reachCitiesViewIsSet=false;
 	}
-	/////////////////////////////////////////////////// Fill Ontologie /////////////////////////////////////////////////////
+	/////////////////////////////////////////////////// Fill Ontologie - Methods////////////////////////////////
 	
 	public void fillOntWithAllEvents() throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
 	  ResultSet rs = dbCon.executeQuery("Select * from \"Event\"");
@@ -83,10 +85,9 @@ public class OntToDbConnection {
 			  ontCon.saveOntologie();
 		  }	
 		}
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	
-	
-	////////////////////////////////// Entfernungsmethoden /////////////////////////////////////////////////////////////
+	////////////////////////////////// Distance-Methods /////////////////////////////////////////////////////////////
 	
 	/**
 	 * Returns the Cities which occur in the DB
@@ -113,11 +114,9 @@ public class OntToDbConnection {
 		reachCitiesViewIsSet = true;
 		
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
-	//////////////////////////////////////////////////////////// Zeit-Methoden //////////////////////////////////////////
+	//////////////////////////////////////////////////////////// Time-Methods//////////////////////////////////////////
 	
 	public void setHolidayView (String startDate, String endDate) throws SQLException, ViewDoesntExistsException{
 		if ( !reachCitiesViewIsSet )
@@ -131,7 +130,15 @@ public class OntToDbConnection {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public void preAndSave(){
+	
+	public void openOntology(String ontologyFilePath) throws OWLOntologyCreationException{
+		ontCon.openOntology(ontologyFilePath);
+	}
+	public void preAndSave(String owlFilePath) throws OWLOntologyCreationException, OWLOntologyStorageException{
+		ontCon.preAndSave(owlFilePath);
+	}
+	
+	public void preAndSave() throws OWLOntologyCreationException, OWLOntologyStorageException{
 		ontCon.preAndSave();
 	}
 
@@ -214,4 +221,6 @@ public class OntToDbConnection {
 		return events;
 		
 	}
+	
+	
 }

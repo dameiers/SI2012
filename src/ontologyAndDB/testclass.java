@@ -45,9 +45,10 @@ import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 
 public class testclass {
 
-	public static void main (String args[]) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{
+	public static void main (String args[]) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, OWLOntologyCreationException, OWLOntologyStorageException{
 	
 		OntToDbConnection t = new OntToDbConnection();
+		t.openOntology("evntologie_latest.owl");
 		Calendar cal =		Calendar.getInstance();
 		System.out.println("Start : "+cal.getTime());
 		//t.fillOntWithAllEvents();
@@ -56,13 +57,15 @@ public class testclass {
 		//while (rs.next()){
 		//	System.out.println ( rs.getString(1));
 		//}
-		
-		//System.out.println (t.getSubClassesOfClass("Event"));
+		//"file://TestOntology.owl"
+		//System.out.println (t.getSubClassesOfClass("WeekendEvent"));
 		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 
 		//System.out.println( t.getCitiesFromDB().toString());
-		//t.preAndSave();
-		System.out.println (t.getInvidualsFromOntologieClass("Event")); 
+		//t.preAndSave("evntologie_latest.owl");
+		t.preAndSave();
+		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 
 		t.disconnectFromDB();
+		cal =		Calendar.getInstance();
 		System.out.println("Ende : "+cal.getTime());
 	}
 }
