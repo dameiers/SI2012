@@ -5,14 +5,23 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
@@ -38,28 +47,43 @@ import java.util.*;
 public class DistanceStep extends javax.swing.JPanel {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
+	private JButton jButton1;
+	private JLabel jLabel1;
+	private JTable jTable1;
 	private JTextPane hintTxt;
 	private JComboBox unitCbo;
 	private JTextField distanceTxt;
 	private JTextPane titleTxt;
 	private OntToDbConnection ontoconn;
+	private HashMap<String, Double> cityandDist;
+	private DefaultTableModel jTable1Model;
 
 	/**
 	* Auto-generated main method to display this 
 	* JPanel inside a new JFrame.
 	*/
 	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.getContentPane().add(new DistanceStep());
-		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		frame.pack();
-		frame.setVisible(true);
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+            	JFrame frame = new JFrame();
+        		frame.getContentPane().add(new DistanceStep());
+        		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        		frame.pack();
+        		frame.setVisible(true);
+            }
+        });
+		
 	}
 	
 	public DistanceStep() {
 		super();
+		cityandDist = new HashMap<String, Double>();
 		ontoconn = new OntToDbConnection();
 		initGUI();
+	}
+	
+	private void addToHash(String city, double dist){
+		cityandDist.put(city, new Double(dist));
 	}
 	
 	private void initGUI() {
@@ -95,7 +119,7 @@ public class DistanceStep extends javax.swing.JPanel {
 					distanceTxt.setBounds(72, 25, 106, 22);
 				}
 				{
-					unitCbo = new JComboBox(new String[] { "Km/h", "Stunden" });
+					unitCbo = new JComboBox(new String[] { "Km", "Stunden" });
 					contentPnl.add(unitCbo);
 					unitCbo.setBounds(198, 24, 112, 22);
 				}
@@ -103,10 +127,41 @@ public class DistanceStep extends javax.swing.JPanel {
 					hintTxt = new JTextPane();
 					contentPnl.add(hintTxt);
 					hintTxt.setText("Hinweis: Ohne Auto kann sich die Reisezeit verzï¿½gern!");
-					hintTxt.setBounds(12, 79, 391, 35);
+					hintTxt.setBounds(19, 318, 391, 35);
 					hintTxt.setEditable(false);
 					hintTxt.setBackground(new java.awt.Color(255,43,52));
 				}
+				{
+					jButton1 = new JButton();
+					contentPnl.add(jButton1);
+					jButton1.setText("suchen");
+					jButton1.setBounds(331, 24, 100, 23);
+					jButton1.addActionListener(new SearchListener());
+				}
+				{
+					jLabel1 = new JLabel();
+					contentPnl.add(jLabel1);
+					jLabel1.setText("Ergebnis:");
+					jLabel1.setBounds(72, 72, 73, 16);
+
+				}
+				{
+					 jTable1Model = 
+							new DefaultTableModel(
+									new String[][] { { "Eine Stadt", "Die Entferung" } },
+									new String[] { "Stadt", "Entfernung" });
+					jTable1 = new JTable();
+					jTable1.setModel(jTable1Model);
+					jTable1.setAutoCreateRowSorter(true);
+					jTable1.setFillsViewportHeight(true);
+					JScrollPane scrollPane = new JScrollPane(jTable1);
+					scrollPane.setBounds(93, 111, 300, 150);
+					contentPnl.add(scrollPane);
+					
+					//jTable1.setBounds(93, 111, 94, 30);
+					//jTable1.setPreferredSize(new java.awt.Dimension(90, 73));
+				}
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -128,9 +183,11 @@ public class DistanceStep extends javax.swing.JPanel {
 			city = city.replaceAll("A", "AE");
 			city = city.replaceAll("Ö", "OE");
 			double dist = getRouteDistance("Saarbruecken", city, "motorcar", "1");
-			System.out.println(city+"   "+dist);
+			
 			if (dist < wish_distance){
 				reachablecities.add(city);
+				addToHash(city, dist);
+				jTable1Model.addRow(new Object[]{city,dist});
 			}
 		}
 		return reachablecities;
@@ -192,5 +249,36 @@ public class DistanceStep extends javax.swing.JPanel {
 		return 0;
 	}
 	
+	class SearchListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println(distanceTxt.getText());
+			String input = distanceTxt.getText();
+			input = input.replace(',', '.');
+			final double dist;
+			try {
+				dist = Double.parseDouble(input);
+			} catch (Exception e){
+				JOptionPane.showMessageDialog(null, "Die Eingabe ist ungültig.", "Fehler", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			jTable1Model.getDataVector().clear();
+				Runnable run = new Runnable() {
+		            public void run() {
+		            	try {
+		            		System.out.println("run");
+							getReachableCities(dist);
+						} catch (Exception e) {
+							JOptionPane.showMessageDialog(null, "Bearbeitung fehlerhaft.", "Fehler", JOptionPane.ERROR_MESSAGE);
+							e.printStackTrace();
+						}
+		            }
+		        };
+			 
+			new Thread(run).start();
+		}
+		
+	}
 
 }
