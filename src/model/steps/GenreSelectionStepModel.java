@@ -13,6 +13,13 @@ public class GenreSelectionStepModel extends InformationGatherStepModel
 		
 	}
 	
+	public void setPreselection()
+	{
+		//TODO
+		//PersonAgeStepModel personAgeStepModel = PersonAgeStepModel.getInstance();
+		
+	}
+	
 	public static GenreSelectionStepModel getInstance() 
 	{
 		return instance != null ? instance : (instance=new GenreSelectionStepModel());

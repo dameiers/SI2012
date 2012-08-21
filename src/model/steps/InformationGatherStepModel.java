@@ -17,5 +17,11 @@ public abstract class InformationGatherStepModel
 		alredyFilled = (getError() == null);
 	}
 	
+	public void setPreselection()
+	{
+		
+	}
+	
 	public abstract String getError();
+	
 }

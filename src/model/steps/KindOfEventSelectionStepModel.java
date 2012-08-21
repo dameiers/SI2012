@@ -17,6 +17,13 @@ public class KindOfEventSelectionStepModel extends InformationGatherStepModel
 		
 	}
 	
+	public void setPreselection()
+	{
+		//TODO
+		//PersonAgeStepModel personAgeStepModel = PersonAgeStepModel.getInstance();
+		
+	}
+	
 	public static KindOfEventSelectionStepModel getInstance() 
 	{
 		return instance != null ? instance : (instance=new KindOfEventSelectionStepModel());
