@@ -28,6 +28,12 @@ public class OntToDbConnection {
 	
 	private final String HOLIDAY_VIEW_NAME ="HolidayView";
 	private final String REACHABLE_CITIES_VIEW_NAME ="ReachableCitiesView";
+	public static String THEATRE_GENRE = "TheatreGenre";
+	public static String Cinema_GENRE = "CinemaGenre";
+	public static String CONCERT_GENRE = "ConcertGenre";
+	
+	
+	/////////////////////////////////////////////////// Constructor //////////////////////////////////////////////////////
 	
 	public OntToDbConnection(){
 		 dbCon = new DBConnection();
@@ -35,19 +41,35 @@ public class OntToDbConnection {
 		 holidayViewIsSet=false;
 		 reachCitiesViewIsSet=false;
 	}
-	/////////////////////////////////////////////////// Fill Ontologie - Methods////////////////////////////////
 	
+	/////////////////////////////////////////////////// Ontologie - Manipulation- Methods////////////////////////////////
+	
+	public void removeAllIndividuals (){
+		ontCon.removeAllIndividuals();
+	}
+	
+	public void openOntology(String ontologyFilePath) throws OWLOntologyCreationException{
+		ontCon.openOntology(ontologyFilePath);
+	}
+	public void InfereceAndSaveToFile(String owlFilePath) throws OWLOntologyCreationException, OWLOntologyStorageException{
+		ontCon.preAndSave(owlFilePath);
+	}
+	
+	public void InfereceAndSaveOntology() throws OWLOntologyCreationException, OWLOntologyStorageException{
+		ontCon.preAndSave();
+	}
+
 	public void fillOntWithAllEvents() throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
 	  ResultSet rs = dbCon.executeQuery("Select * from \"Event\"");
 	  fillOntWithEvents(rs);
 	}
 	
-	public void fillOntWithHalfEvents() throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
-		  ResultSet rs = dbCon.executeQuery("Select * from \"Event\" WHERE event_id < 150");
+	public void fillOntWithEventsUntilNumber(int eventNumber) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
+		  ResultSet rs = dbCon.executeQuery("Select * from \"Event\" WHERE event_id < "+ eventNumber);
 		  fillOntWithEvents(rs);
 		}
 	
-	public void fillOntWithEvents () throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, ViewDoesntExistsException{
+	public void fillOntWithEventsFromHolidayView () throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, ViewDoesntExistsException{
 		if (!holidayViewIsSet)
 				throw new ViewDoesntExistsException(HOLIDAY_VIEW_NAME + " doesnt exist yet");
 		ResultSet rs = dbCon.executeQuery("SELECT * FROM \""+HOLIDAY_VIEW_NAME+"\"");
@@ -59,10 +81,8 @@ public class OntToDbConnection {
 		  ResultSet rs3;
 		  ResultSet rs4;
 		  while(dataBaseEvents.next()){
-			 
 			  // Individual erzeugen
 			  OWLNamedIndividual individ = ontCon.createIndividual(String.valueOf(dataBaseEvents.getInt("event_id")));
-			  
 			  // data propertie : Kinderbetreeung
 			  ontCon.setObjectPropertieToIndividual(individ, "hasChildCare", dataBaseEvents.getBoolean("kinderbetreuung"));
 			  // data propertie: childfriendly
@@ -76,7 +96,6 @@ public class OntToDbConnection {
 			  rs2.next();
 			  String eventKategorie = rs2.getString(1);
 			  ontCon.addIndividualToClass(individ, eventKategorie);
-			 
 			  // falls genre gesetzt ist , hinzufügen zur Genre-Klasse
 			  rs3 = (dbCon.executeQuery("select genre from \"Event_Genre\" where event=" + String.valueOf(dataBaseEvents.getInt("event_id") )));
 			  if (rs3.next()){
@@ -86,12 +105,9 @@ public class OntToDbConnection {
 				  String genreKategorie = rs4.getString(1);
 				  ontCon.addIndividualToClass(individ, genreKategorie);
 			  }
-
-
 			  ontCon.saveOntologie();
 		  }	
 		}
-
 	
 	////////////////////////////////// Distance-Methods /////////////////////////////////////////////////////////////
 	
@@ -121,7 +137,6 @@ public class OntToDbConnection {
 		
 	}
 	
-	
 	//////////////////////////////////////////////////////////// Time-Methods//////////////////////////////////////////
 	
 	public void setHolidayView (String startDate, String endDate) throws SQLException, ViewDoesntExistsException{
@@ -132,28 +147,22 @@ public class OntToDbConnection {
 		dbCon.createView(HOLIDAY_VIEW_NAME, sqlStatement);
 		holidayViewIsSet =true;
 	}
+	
+	//////////////////////////////////////////Reasoner Based Methods ////////////////////////////////////////////////////////
+	
+	/**
+	 *  Returns the direct Subclases of a Class
+	 * @param className the Name of the superclass
+	 * @return Non rekursive list of subclasses
+	 * @throws OntologyConnectionUnknowClassException 
+	 */
+	public ArrayList<String> getSubClassesOfClassByReasoner(String className) throws OntologyConnectionUnknowClassException{
+		return ontCon.getClassNamesOnly(ontCon.getSubClassesByReasoner(className));
+	}
+	
+	public ArrayList<String> getSuperClassesOfClassByReasoner ( String className) throws OntologyConnectionUnknowClassException{
+		return ontCon.getSuperClassesByReasoner(className);
 		
-	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
-	public void openOntology(String ontologyFilePath) throws OWLOntologyCreationException{
-		ontCon.openOntology(ontologyFilePath);
-	}
-	public void preAndSave(String owlFilePath) throws OWLOntologyCreationException, OWLOntologyStorageException{
-		ontCon.preAndSave(owlFilePath);
-	}
-	
-	public void preAndSave() throws OWLOntologyCreationException, OWLOntologyStorageException{
-		ontCon.preAndSave();
-	}
-
-	public ResultSet executeQuery (String sqlStatement)throws SQLException{		
-		return dbCon.executeQuery(sqlStatement);
-	}
-	
-	public void removeAllIndividuals (){
-		ontCon.removeAllIndividuals();
 	}
 	
 	public ArrayList<Integer> getInvidualsFromOntologieClassByReasoner (String className){
@@ -186,46 +195,22 @@ public class OntToDbConnection {
 		return list3;
 	} 
 	
-	
-	
-	//////////////////////////////////////////Reasoner Based Methods ////////////////////////////////////////////////////////
-	/**
-	 *  Returns the direct Subclases of a Class
-	 * @param className the Name of the superclass
-	 * @return Non rekursive list of subclasses
-	 * @throws OntologyConnectionUnknowClassException 
-	 */
-	public ArrayList<String> getSubClassesOfClassByReasoner(String className) throws OntologyConnectionUnknowClassException{
-		return ontCon.getClassNamesOnly(ontCon.getSubClassesByReasoner(className));
-	}
-	
-	public ArrayList<String> getSuperClassesOfClassByReasoner ( String className) throws OntologyConnectionUnknowClassException{
-		return ontCon.getSuperClassesByReasoner(className);
-		
-	}
-	
 	//////////////////////////////////////////Ontology Based Queries ////////////////////////////////////////////////////////
 	
-	public ArrayList<String> getSuperClassesOfClassByOntology(String className) throws OntologyConnectionUnknowClassException{
-		return ontCon.getSuperClassesByOntology(className);
+	public ArrayList<String> getSuperClassesOfClassFromOntology(String className) throws OntologyConnectionUnknowClassException{
+		return ontCon.getSuperClassesByClassFromOntology(className);
 	}
 	
 	public ArrayList<Integer> getEventIdsByClassByOntology (String className){
 		return ontCon.getEventIdsByClassByOntology(className);
 	}
 	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public  ArrayList<String> getSubClassesOfClassByOntology(String className) throws OntologyConnectionUnknowClassException{
+		return ontCon.getSubClassesByClassFromOntology(className);
+	}
+	//////////////////////////////////////////////////Database Methods//////////////////////////////////////////////////////////////////
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	public ResultSet getDataFromDbByEvent_Id ( ArrayList<Integer> eventIDs) throws SQLException{
 		String s = new String(" ");
 		int i ;
@@ -240,7 +225,7 @@ public class OntToDbConnection {
 		dbCon.disconnect();
 	}
 	
-	public ArrayList<Integer> EventsByMaxCosts ( int numberGrownUp , int numberChilden , int numberReducedCost , int MaxSum , ArrayList<Integer> searchField) throws SQLException{
+	public ArrayList<Integer> EventsFromDBByMaxCosts ( int numberGrownUp , int numberChilden , int numberReducedCost , int MaxSum , ArrayList<Integer> searchField) throws SQLException{
 		ArrayList<Integer> events = new ArrayList<Integer>();
 		ResultSet rs = dbCon.executeQuery("Select * from \"Event\" where \"event_id\" in (" + searchField + ")");
 		while(rs.next()){
@@ -250,8 +235,12 @@ public class OntToDbConnection {
 				events.add(event_id);
 		}
 		return events;
-		
 	}
 	
+	private ResultSet executeQuery (String sqlStatement)throws SQLException{		
+		return dbCon.executeQuery(sqlStatement);
+	}
+	
+
 	
 }
