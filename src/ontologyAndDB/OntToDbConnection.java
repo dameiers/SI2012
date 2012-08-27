@@ -41,6 +41,12 @@ public class OntToDbConnection {
 	  ResultSet rs = dbCon.executeQuery("Select * from \"Event\"");
 	  fillOntWithEvents(rs);
 	}
+	
+	public void fillOntWithHalfEvents() throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
+		  ResultSet rs = dbCon.executeQuery("Select * from \"Event\" WHERE event_id < 150");
+		  fillOntWithEvents(rs);
+		}
+	
 	public void fillOntWithEvents () throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, ViewDoesntExistsException{
 		if (!holidayViewIsSet)
 				throw new ViewDoesntExistsException(HOLIDAY_VIEW_NAME + " doesnt exist yet");
@@ -150,28 +156,28 @@ public class OntToDbConnection {
 		ontCon.removeAllIndividuals();
 	}
 	
-	public ArrayList<Integer> getInvidualsFromOntologieClass (String className){
-		return ontCon.getEventIdsByClass(className);
+	public ArrayList<Integer> getInvidualsFromOntologieClassByReasoner (String className){
+		return ontCon.getEventIdsByClassByReasoner(className);
 	}
   
-	public ArrayList<Integer> getIndividualUnionOverClasses (ArrayList<String> classNames) {
+	public ArrayList<Integer> getIndividualUnionOverClassesByReasoner (ArrayList<String> classNames) {
 		ArrayList<Integer> individs = new  ArrayList<Integer>();
 		for (String s : classNames){
-			individs.addAll(this.getInvidualsFromOntologieClass(s));
+			individs.addAll(this.getInvidualsFromOntologieClassByReasoner(s));
 		}
 		return individs;
 	}
 	
-	public ArrayList<Integer> getIndividualIntersectionOverClasses ( ArrayList<String> classNames) throws Exception {
+	public ArrayList<Integer> getIndividualIntersectionOverClassesByReasoner ( ArrayList<String> classNames) throws Exception {
 		if (classNames.size()<2)
 			throw new Exception("2 ore more Classes needed to make an intersection");
 		ArrayList<Integer> list1 ;
 		ArrayList<Integer> list2 ;
-		ArrayList<Integer> list3 = this.getInvidualsFromOntologieClass(classNames.get(0));
+		ArrayList<Integer> list3 = this.getInvidualsFromOntologieClassByReasoner(classNames.get(0));
 		for ( int i = 1; i < classNames.size(); i++ ){
 			list1 = list3;
 			list3 = new ArrayList<Integer>();
-			list2 = this.getInvidualsFromOntologieClass(classNames.get(i));
+			list2 = this.getInvidualsFromOntologieClassByReasoner(classNames.get(i));
 			for (Integer s : list1){
 				if (list2.contains(s))
 					list3.add(s);
@@ -180,20 +186,45 @@ public class OntToDbConnection {
 		return list3;
 	} 
 	
+	
+	
+	//////////////////////////////////////////Reasoner Based Methods ////////////////////////////////////////////////////////
 	/**
 	 *  Returns the direct Subclases of a Class
 	 * @param className the Name of the superclass
 	 * @return Non rekursive list of subclasses
 	 * @throws OntologyConnectionUnknowClassException 
 	 */
-	public ArrayList<String> getSubClassesOfClass(String className) throws OntologyConnectionUnknowClassException{
-		return ontCon.getClassNamesOnly(ontCon.getSubClasses(className));
+	public ArrayList<String> getSubClassesOfClassByReasoner(String className) throws OntologyConnectionUnknowClassException{
+		return ontCon.getClassNamesOnly(ontCon.getSubClassesByReasoner(className));
 	}
 	
-	public ArrayList<String> getSuperClassesOfClass ( String className) throws OntologyConnectionUnknowClassException{
-		return ontCon.getSuperClasses(className);
+	public ArrayList<String> getSuperClassesOfClassByReasoner ( String className) throws OntologyConnectionUnknowClassException{
+		return ontCon.getSuperClassesByReasoner(className);
 		
 	}
+	
+	//////////////////////////////////////////Ontology Based Queries ////////////////////////////////////////////////////////
+	
+	public ArrayList<String> getSuperClassesOfClassByOntology(String className) throws OntologyConnectionUnknowClassException{
+		return ontCon.getSuperClassesByOntology(className);
+	}
+	
+	public ArrayList<Integer> getEventIdsByClassByOntology (String className){
+		return ontCon.getEventIdsByClassByOntology(className);
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public ResultSet getDataFromDbByEvent_Id ( ArrayList<Integer> eventIDs) throws SQLException{
 		String s = new String(" ");

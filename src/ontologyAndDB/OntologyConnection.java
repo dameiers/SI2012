@@ -23,6 +23,7 @@ import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDataPropertyAssertionAxiom;
@@ -90,9 +91,6 @@ public class OntologyConnection {
 		dataProperties = ontology.getDataPropertiesInSignature();
 		classes = ontology.getClassesInSignature();
 		reasoner = reasonerFactory.createReasoner(ontology);
-		//ConsoleProgressMonitor progressMonitor = new ConsoleProgressMonitor();
-		//OWLReasonerConfiguration config = new SimpleConfiguration(progressMonitor);
-		//reasoner = reasonerFactory.createReasoner(ontology, config);
 	}
 	
 	protected void preAndSave(String owlFilePath) throws OWLOntologyCreationException, OWLOntologyStorageException{
@@ -108,10 +106,11 @@ public class OntologyConnection {
 		
 		List<InferredAxiomGenerator<? extends OWLAxiom>> gens = new ArrayList<InferredAxiomGenerator<? extends OWLAxiom>>();
 		gens.add(new InferredSubClassAxiomGenerator());
+		gens.add(new InferredClassAssertionAxiomGenerator());
 		
 		File ontfile = new File(owlFilePath);
 		OWLOntology ont = manager.loadOntologyFromOntologyDocument(ontfile);
-   		
+		
 		InferredOntologyGenerator iog = new InferredOntologyGenerator(reasoner, gens);
 		iog.fillOntology(manager, ont);
 		manager.saveOntology(ont);
@@ -129,7 +128,6 @@ public class OntologyConnection {
 		reasoner.precomputeInferences(InferenceType.DISJOINT_CLASSES);
 		reasoner.precomputeInferences(InferenceType.OBJECT_PROPERTY_ASSERTIONS);
 		reasoner.precomputeInferences(InferenceType.OBJECT_PROPERTY_HIERARCHY);
-		
 		
 		List<InferredAxiomGenerator<? extends OWLAxiom>> gens = new ArrayList<InferredAxiomGenerator<? extends OWLAxiom>>();
 		gens.add(new InferredSubClassAxiomGenerator());
@@ -224,7 +222,15 @@ public class OntologyConnection {
 		return subClasses;
 	}
 		
-	
+	protected ArrayList<String> getClassNamesOnly(Set<OWLClassExpression> classList){
+		if (classList.isEmpty())
+			return null;
+		ArrayList<String> subClasses =new ArrayList<String> ();
+		for(OWLClassExpression cls : classList) {
+			subClasses.add(cls.toString().replaceFirst(ontID+"#", "").replace("<", "").replace(">", ""));	
+			}
+		return subClasses;
+	}
 	
 	
 	////////////////////////////////////////////Reasoner-Calls//////////////////////////////////////////////////////////////////
@@ -234,7 +240,7 @@ public class OntologyConnection {
 	 * @return the names of the SuperClasses or null if there are no superclasses
 	 * @throws OntologyConnectionUnknowClassException
 	 */
-	protected ArrayList<String> getSuperClasses (String className) throws OntologyConnectionUnknowClassException{
+	protected ArrayList<String> getSuperClassesByReasoner (String className) throws OntologyConnectionUnknowClassException{
 		OWLClass cl = getClassByName(className);
 		if(null == cl)
 				throw new OntologyConnectionUnknowClassException("Unknown : "+className);
@@ -242,7 +248,7 @@ public class OntologyConnection {
 		return this.getClassNamesOnly(nodes);
 	}
 	
-	protected ArrayList<Integer> getEventIdsByClass(String className){
+	protected ArrayList<Integer> getEventIdsByClassByReasoner(String className){
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		NodeSet<OWLNamedIndividual> invids =reasoner.getInstances( getClassByName (className), false);
 		Set<OWLNamedIndividual> flatinvids= invids.getFlattened();
@@ -252,13 +258,45 @@ public class OntologyConnection {
 		return ids;
 	}
 	
-	protected NodeSet<OWLClass> getSubClasses (String className) throws OntologyConnectionUnknowClassException{
+	protected NodeSet<OWLClass> getSubClassesByReasoner (String className) throws OntologyConnectionUnknowClassException{
 		OWLClass superClass = getClassByName(className );
 		if (superClass==null)
 			throw new OntologyConnectionUnknowClassException("unknow :"+className);
 		return  reasoner.getSubClasses(superClass, true);
 	}
 	
+	////////////////////////////////////////////////////Ontology-Base-Queries///////////////////////////////////////////////////////
+	
+	/**
+	 * 
+	 * @param className
+	 * @return the names of the SuperClasses or null if there are no superclasses
+	 * @throws OntologyConnectionUnknowClassException
+	 */
+	protected ArrayList<String> getSuperClassesByOntology(String className) throws OntologyConnectionUnknowClassException{
+		OWLClass cl = getClassByName(className);
+		if(null == cl)
+				throw new OntologyConnectionUnknowClassException("Unknown : "+className);
+		Set<OWLClassExpression> nodes = cl.getSuperClasses(ontology);
+		return this.getClassNamesOnly(nodes);
+	}
+	
+	protected ArrayList<Integer> getEventIdsByClassByOntology(String className){
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		Set<OWLIndividual> invids = getClassByName(className).getIndividuals(ontology);
+		for (OWLIndividual invid : invids ){
+			ids.add(Integer.valueOf(invid.toStringID().replace(pm.getDefaultPrefix(),"")));
+		}
+		return ids;
+	}
+	/*
+	protected Set<OWLClass> getSubClassesByOntology (String className) throws OntologyConnectionUnknowClassException{
+		OWLClass superClass = getClassByName(className );
+		if (superClass==null)
+			throw new OntologyConnectionUnknowClassException("unknow :"+className);
+		return  superClass.getSubClasses(ontology);
+	}
+	*/
 	
 	
 	////////////////////////////////////////////////////Private Methods///////////////////////////////////////////////////////////
