@@ -273,7 +273,7 @@ public class OntologyConnection {
 	 * @return the names of the SuperClasses or null if there are no superclasses
 	 * @throws OntologyConnectionUnknowClassException
 	 */
-	protected ArrayList<String> getSuperClassesByOntology(String className) throws OntologyConnectionUnknowClassException{
+	protected ArrayList<String> getSuperClassesByClassFromOntology(String className) throws OntologyConnectionUnknowClassException{
 		OWLClass cl = getClassByName(className);
 		if(null == cl)
 				throw new OntologyConnectionUnknowClassException("Unknown : "+className);
@@ -289,14 +289,14 @@ public class OntologyConnection {
 		}
 		return ids;
 	}
-	/*
-	protected Set<OWLClass> getSubClassesByOntology (String className) throws OntologyConnectionUnknowClassException{
+	
+	protected ArrayList<String> getSubClassesByClassFromOntology (String className) throws OntologyConnectionUnknowClassException{
 		OWLClass superClass = getClassByName(className );
 		if (superClass==null)
 			throw new OntologyConnectionUnknowClassException("unknow :"+className);
-		return  superClass.getSubClasses(ontology);
+		return getClassNamesOnly(superClass.getSubClasses(ontology));
 	}
-	*/
+	
 	
 	
 	////////////////////////////////////////////////////Private Methods///////////////////////////////////////////////////////////
