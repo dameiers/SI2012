@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.GenreSelectionStep;
+
 import java.util.HashMap;
 
 public class GenreSelectionStepModel extends InformationGatherStepModel 
@@ -10,6 +12,7 @@ public class GenreSelectionStepModel extends InformationGatherStepModel
 	
 	private GenreSelectionStepModel() 
 	{
+		super("Genre", new GenreSelectionStep(true, true, true));
 		
 	}
 	
@@ -22,7 +25,11 @@ public class GenreSelectionStepModel extends InformationGatherStepModel
 	
 	public static GenreSelectionStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new GenreSelectionStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new GenreSelectionStepModel();
+		return instance;
 	}
 
 	public String getError() 

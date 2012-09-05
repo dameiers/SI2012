@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.OriginLocationStep;
+
 public class OriginLocationStepModel extends InformationGatherStepModel 
 {
 	private static OriginLocationStepModel instance;
@@ -8,12 +10,16 @@ public class OriginLocationStepModel extends InformationGatherStepModel
 	
 	private OriginLocationStepModel() 
 	{
-		
+		super("Abfahrt", new OriginLocationStep());
 	}
 	
 	public static OriginLocationStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new OriginLocationStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new OriginLocationStepModel();
+		return instance;
 	}
 	
 	public String getError() 

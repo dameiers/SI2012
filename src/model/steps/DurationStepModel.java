@@ -1,33 +1,40 @@
 package model.steps;
 
+import gui.steps.DurationStep;
+
 public class DurationStepModel extends InformationGatherStepModel 
 {
+	public final static String ONE_DAY_DURATION = "one_day";
+	public final static String WEEKEND_DURATION = "multiple_days";
 	private static DurationStepModel instance;
-	
 	private String duration;
 
 	private DurationStepModel() 
 	{
-		
+		super("Dauer", new DurationStep());
 	}
 	
 	public static DurationStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new DurationStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new DurationStepModel();
+		return instance;
 	}
 
 	
 	public String getError() 
 	{
 		if(!hasValidDuration())
-			return "Ungüliger Zeitraum";
+			return "Ungueliger Zeitraum";
 		
 		return null;
 	}
 	
 	public boolean hasValidDuration()
 	{
-		return "oneDay".equals(duration) || "weekend".equals(duration);
+		return ONE_DAY_DURATION.equals(duration) || WEEKEND_DURATION.equals(duration);
 	}
 
 	public String getDuration() 

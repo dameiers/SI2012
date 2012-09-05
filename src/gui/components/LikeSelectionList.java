@@ -15,7 +15,8 @@ public class LikeSelectionList extends JPanel {
 
 	private ArrayList<String> elems;
 	private String title;
-	private HashMap<LikeBox, String> map = new HashMap<LikeBox, String>();
+	//map<sportlich, liked>
+	private HashMap<String,LikeBox> map = new HashMap<String,LikeBox>();
 
 	public LikeSelectionList() {
 		elems = new ArrayList<String>();
@@ -61,7 +62,7 @@ public class LikeSelectionList extends JPanel {
 		for (int i= 0; i < elems.size(); i++) {
 			final LikeBox lcb = new LikeBox();
 			lcb.setBorder(new EmptyBorder(0,0, 5,0));
-			map.put(lcb, elems.get(i));
+			map.put(elems.get(i),lcb);
 			GridBagConstraints lcbConstrains = new GridBagConstraints();
 			lcbConstrains.gridx = 1;
 			lcbConstrains.gridy = i;
@@ -74,5 +75,18 @@ public class LikeSelectionList extends JPanel {
 			lbl.setBorder(new EmptyBorder(0, 5, 0, 0));
 			this.add(lbl, lblConstrains);
 		}
+	}
+	
+	/**
+	 * 
+	 * @return for example map<culture,liked>
+	 */
+	public HashMap<String,String> getSelectionList(){
+		final HashMap<String, String> resMap = new HashMap<String, String>();
+		for(String s : map.keySet()){
+			final String likestring = (String)((LikeBox)map.get(s)).getSelectedItem();
+			resMap.put(s,likestring);
+		}
+		return resMap;
 	}
 }

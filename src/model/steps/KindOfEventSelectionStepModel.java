@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.KindOfEventSelectionStep;
+
 public class KindOfEventSelectionStepModel extends InformationGatherStepModel 
 {
 	public static final String LIKE = "like";
@@ -14,7 +16,7 @@ public class KindOfEventSelectionStepModel extends InformationGatherStepModel
 	
 	private KindOfEventSelectionStepModel() 
 	{
-		
+		super("Art", new KindOfEventSelectionStep());
 	}
 	
 	public void setPreselection()
@@ -26,7 +28,11 @@ public class KindOfEventSelectionStepModel extends InformationGatherStepModel
 	
 	public static KindOfEventSelectionStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new KindOfEventSelectionStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new KindOfEventSelectionStepModel();
+		return instance;
 	}
 	
 	public String getError() 
