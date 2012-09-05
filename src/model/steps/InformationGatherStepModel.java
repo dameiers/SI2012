@@ -33,5 +33,10 @@ public abstract class InformationGatherStepModel
 		alredyFilled = (getError() == null);
 	}
 	
+	public String getDisplayName()
+	{
+		return displayName;
+	}
+	
 	public abstract String getError();
 }

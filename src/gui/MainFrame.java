@@ -8,6 +8,10 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Stack;
+
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -33,7 +37,7 @@ import model.steps.InformationGatherStepModel;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	private JPanel ctrlPnl;
 	private JPanel mainPnl;
 	private JButton backBtn;
@@ -41,6 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
 	
 	private Model model;
 	private ViewModelConnection currentViewStepConnection;
+	private Stack<ViewModelConnection> stepHistory;
 	
 
 	/**
@@ -61,6 +66,11 @@ public class MainFrame extends javax.swing.JFrame {
 		initGUI();
 	}
 	
+	public void lastStep()
+	{
+		
+	}
+	
 	public void nextStep() 
 	{
 		InformationGatherStepModel stepModel = currentViewStepConnection.getModel();
@@ -74,6 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
 			ViewModelConnection 		nextViewModelConnection = nextStepModel.getViewModelConnection();
 			JComponent 					nextJComponent = nextViewModelConnection.getVisualisationUI();
 			
+			stepHistory.push(currentViewStepConnection);
 			getContentPane().add(mainPnl, BorderLayout.CENTER);
 			
 			//remove(currentViewStepConnection.getVisualisationUI());
@@ -139,6 +150,12 @@ public class MainFrame extends javax.swing.JFrame {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) 
+	{
+		nextStep();
 	}
 
 }
