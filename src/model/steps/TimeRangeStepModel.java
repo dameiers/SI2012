@@ -89,7 +89,7 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 
 	public GregorianCalendar getFromDate() 
 	{
-		return null;
+		return fromDate;
 	}
 
 	public void setFromDate(GregorianCalendar fromDate) 
@@ -100,7 +100,7 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 
 	public GregorianCalendar getToDate() 
 	{
-		return null;
+		return toDate;
 		
 	}
 
