@@ -70,7 +70,22 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 
 	public String getFromDate() 
 	{
-		return fromDate;
+		if(timeRangeTyp.equals("autumbreak")){
+			return "2012-10-22";
+		}
+		else if(timeRangeTyp.equals("winterbreak")){
+			return "2012-12-24";
+		}
+		else if(timeRangeTyp.equals("easterbreak")){
+			return "2013-03-25";
+		}
+		else if(timeRangeTyp.equals("summerbreak")){
+			return "2013-07-08";
+		}
+		else if(timeRangeTyp.equals("misc")){
+			return fromDate;
+		}
+		return null;
 	}
 
 	public void setFromDate(String fromDate) 
@@ -81,7 +96,23 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 
 	public String getToDate() 
 	{
-		return toDate;
+		if(timeRangeTyp.equals("autumbreak")){
+			return "2012-11-03";
+		}
+		else if(timeRangeTyp.equals("winterbreak")){
+			return "2013-01-05";
+		}
+		else if(timeRangeTyp.equals("easterbreak")){
+			return "2013-04-06";
+		}
+		else if(timeRangeTyp.equals("summerbreak")){
+			return "2013-08-17";
+		}
+		else if(timeRangeTyp.equals("misc")){
+			return toDate;
+		}
+		return null;
+		
 	}
 
 	public void setToDate(String toDate) 

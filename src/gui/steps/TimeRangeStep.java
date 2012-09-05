@@ -18,6 +18,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import model.steps.TimeRangeStepModel;
+
 /**
 * This code was edited or generated using CloudGarden's Jigloo
 * SWT/Swing GUI Builder, which is free for non-commercial
@@ -30,7 +32,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class TimeRangeStep extends javax.swing.JPanel {
+public class TimeRangeStep extends javax.swing.JPanel implements StepMask{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton summerbreakBtn;
@@ -150,7 +152,7 @@ public class TimeRangeStep extends javax.swing.JPanel {
 		}
 		return miscTimeRange;
 	}
-	
+
 	private JPanel getMiscTimeRangePnl() {
 		if(miscTimeRangePnl == null) {
 			miscTimeRangePnl = new JPanel();
@@ -196,6 +198,36 @@ public class TimeRangeStep extends javax.swing.JPanel {
 			toDateTxt.setSize(96, 28);
 		}
 		return toDateTxt;
+	}
+	/**
+	 * Valid TIME RANGE TYPES:
+	 *  "summerbreak", 
+		"autumbreak", 
+		"easterbreak",
+		"winterbreak",
+		"misc"
+	 */
+	@Override
+	public void putDataToModel() {
+		TimeRangeStepModel model = TimeRangeStepModel.getInstance();
+	    
+		if(easterbreak.isSelected()){
+			model.setTimeRangeTyp("easterbreak");
+		}
+		else if(winterbreakBtn.isSelected()){
+			model.setTimeRangeTyp("winterbreak");
+		}
+		else if(autumbreakBtn.isSelected()){
+			model.setTimeRangeTyp("autumbreak");
+		}
+		else if(miscTimeRange.isSelected()){
+			model.setTimeRangeTyp("misc");
+			model.setFromDate(fromDateTxt.getText());
+			model.setToDate(toDateTxt.getText());
+	    }
+		else if(summerbreakBtn.isSelected()){
+			model.setTimeRangeTyp("summerbreak");
+	    }		
 	}
 
 }
