@@ -16,6 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import model.steps.BudgetStepModel;
+import model.steps.InformationGatherStepModel;
+
 /**
 * This code was edited or generated using CloudGarden's Jigloo
 * SWT/Swing GUI Builder, which is free for non-commercial
@@ -28,7 +31,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class BudgetStep extends javax.swing.JPanel {
+public class BudgetStep extends AbstractViewModelConnectionImpl {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JLabel jLabel1;
@@ -94,6 +97,17 @@ public class BudgetStep extends javax.swing.JPanel {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void fillModel() {
+		BudgetStepModel model = BudgetStepModel.getInstance();
+		model.setBudget(distanceTxt.getText());
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return  BudgetStepModel.getInstance();
 	}
 	
 	

@@ -10,6 +10,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
+import javax.swing.JComponent;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+
+import model.steps.DurationStepModel;
+import model.steps.InformationGatherStepModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -30,7 +34,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class DurationStep extends javax.swing.JPanel {
+public class DurationStep extends AbstractViewModelConnectionImpl {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton weekendBtn;
@@ -96,7 +100,7 @@ public class DurationStep extends javax.swing.JPanel {
 				{
 					oneDayBtn = new JRadioButton();
 					contentPnl.add(oneDayBtn, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					oneDayBtn.setText("EintŠgig");
+					oneDayBtn.setText("Eintï¿½gig");
 					getTimeRangeGroup().add(oneDayBtn);
 				}
 			}
@@ -109,7 +113,20 @@ public class DurationStep extends javax.swing.JPanel {
 		if(durationGroup == null) {
 			durationGroup = new ButtonGroup();
 		}
+		
 		return durationGroup;
+	}
+
+	@Override
+	public void fillModel() {
+		DurationStepModel model = DurationStepModel.getInstance();
+		final String duration = durationGroup.getSelection() == oneDayBtn.getModel() ? DurationStepModel.ONE_DAY_DURATION : DurationStepModel.WEEKEND_DURATION;
+		model.setDuration(duration);
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return DurationStepModel.getInstance();
 	}
 
 }

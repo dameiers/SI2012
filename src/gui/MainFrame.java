@@ -1,18 +1,27 @@
 package gui;
 import gui.steps.PersonDescriptionStep;
 import gui.steps.TimeRangeStep;
+import gui.steps.ViewModelConnection;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Stack;
+
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+
+import model.Model;
+import model.steps.InformationGatherStepModel;
 
 
 
@@ -28,11 +37,16 @@ import javax.swing.border.EmptyBorder;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	private JPanel ctrlPnl;
 	private JPanel mainPnl;
 	private JButton backBtn;
 	private JButton nextBtn;
+	
+	private Model model;
+	private ViewModelConnection currentViewStepConnection;
+	private Stack<ViewModelConnection> stepHistory;
+	
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -50,6 +64,49 @@ public class MainFrame extends javax.swing.JFrame {
 	public MainFrame() {
 		super();
 		initGUI();
+	}
+	
+	public void lastStep()
+	{
+		
+	}
+	
+	public void nextStep() 
+	{
+		InformationGatherStepModel stepModel = currentViewStepConnection.getModel();
+		String error = stepModel.getError();
+		
+		if(error == null)
+		{
+			updateBreadcrubs(model.getInformationGatherTrace());
+			
+			InformationGatherStepModel 	nextStepModel = model.getNextStep();
+			ViewModelConnection 		nextViewModelConnection = nextStepModel.getViewModelConnection();
+			JComponent 					nextJComponent = nextViewModelConnection.getVisualisationUI();
+			
+			stepHistory.push(currentViewStepConnection);
+			getContentPane().add(mainPnl, BorderLayout.CENTER);
+			
+			//remove(currentViewStepConnection.getVisualisationUI());
+			//getContentPane().add(nextJComponent);
+			
+			currentViewStepConnection = nextViewModelConnection;
+			pack();
+		}
+		else
+		{
+			displayError(error); 
+		}
+	}
+	
+	private void displayError(String error) 
+	{
+		
+	}
+	
+	private void updateBreadcrubs(InformationGatherStepModel[] stepModels)
+	{
+		
 	}
 	
 	private void initGUI() {
@@ -85,9 +142,7 @@ public class MainFrame extends javax.swing.JFrame {
 				mainPnl.setPreferredSize(new Dimension(691, 416));
 				mainPnl.setBorder(new EmptyBorder(10, 10, 10, 10));
 				mainPnl.add(new TimeRangeStep(), BorderLayout.CENTER);
-				getContentPane().add(mainPnl, BorderLayout.CENTER);
-				
-				
+				getContentPane().add(mainPnl, BorderLayout.CENTER);				
 			}
 			pack();
 			this.setSize(750, 650);
@@ -95,6 +150,12 @@ public class MainFrame extends javax.swing.JFrame {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) 
+	{
+		nextStep();
 	}
 
 }

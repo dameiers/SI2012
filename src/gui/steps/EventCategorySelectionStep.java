@@ -1,18 +1,21 @@
 package gui.steps;
 
+import gui.components.LikeBox;
 import gui.components.LikeSelectionList;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.HashMap;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
-import javax.swing.ListModel;
 import javax.swing.WindowConstants;
+
+import model.steps.EventCategoryStepModel;
+import model.steps.InformationGatherStepModel;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
@@ -24,7 +27,7 @@ import javax.swing.WindowConstants;
  * PURCHASED FOR THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED LEGALLY FOR
  * ANY CORPORATE OR COMMERCIAL PURPOSE.
  */
-public class EventCategorySelectionStep extends javax.swing.JPanel {
+public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private LikeSelectionList sportCategoryList;
@@ -151,5 +154,24 @@ public class EventCategorySelectionStep extends javax.swing.JPanel {
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
 		}
+	}
+
+	@Override
+	public void fillModel() {
+		EventCategoryStepModel model = EventCategoryStepModel.getInstance();
+		if(cultureCategoryVisible){
+			model.setCultureCategories(cultureCategoryList.getSelectionList());
+		}
+		if(sportCategoryVisible){
+			model.setSportCategories(sportCategoryList.getSelectionList());
+		}
+		if(leisureTimeCategoryVisible){
+			model.setCultureCategories(cultureCategoryList.getSelectionList());
+		}
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return EventCategoryStepModel.getInstance();
 	}
 }

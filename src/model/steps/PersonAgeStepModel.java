@@ -1,5 +1,7 @@
 package model.steps;
 
+import gui.steps.PersonAgeStep;
+
 public class PersonAgeStepModel extends InformationGatherStepModel 
 {
 	private static PersonAgeStepModel instance;
@@ -8,12 +10,16 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 	
 	private PersonAgeStepModel() 
 	{
-		
+		super("Personen", new PersonAgeStep());
 	}
 	
 	public static PersonAgeStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new PersonAgeStepModel());
+		if(instance != null)
+			return instance;
+		
+		instance = new PersonAgeStepModel();
+		return instance;
 	}
 
 	public String getError() 

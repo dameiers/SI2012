@@ -1,5 +1,9 @@
 package gui.steps;
 import java.awt.BorderLayout;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -16,6 +20,7 @@ import javax.swing.JComboBox;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,13 +29,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.WindowConstants;
 
 import ontologyAndDB.OntToDbConnection;
+
+import model.steps.DistanceStepModel;
+import model.steps.InformationGatherStepModel;
 
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.*;
+import model.steps.DistanceStepModel;
+import model.steps.InformationGatherStepModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -44,7 +55,7 @@ import java.util.*;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class DistanceStep extends javax.swing.JPanel {
+public class DistanceStep extends AbstractViewModelConnectionImpl{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JButton jButton1;
@@ -126,8 +137,8 @@ public class DistanceStep extends javax.swing.JPanel {
 				{
 					hintTxt = new JTextPane();
 					contentPnl.add(hintTxt);
-					hintTxt.setText("Hinweis: Ohne Auto kann sich die Reisezeit verz�gern!");
-					hintTxt.setBounds(19, 318, 391, 35);
+					hintTxt.setText("Hinweis: Ohne Auto kann sich die Reisezeit verzoegern!");
+					hintTxt.setBounds(12, 79, 391, 35);
 					hintTxt.setEditable(false);
 					hintTxt.setBackground(new java.awt.Color(255,43,52));
 				}
@@ -247,6 +258,19 @@ public class DistanceStep extends javax.swing.JPanel {
 		}
 		in.close();
 		return 0;
+	}
+	
+	@Override
+	public void fillModel() {
+		DistanceStepModel model = DistanceStepModel.getInstance();
+		model.setDistance(distanceTxt.getText());
+		model.setUnit((String)unitCbo.getSelectedItem());
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		// TODO Auto-generated method stub
+		return DistanceStepModel.getInstance();
 	}
 	
 	class SearchListener implements ActionListener {
