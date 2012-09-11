@@ -100,9 +100,16 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 					groupLbl.setText("Gruppe:");
 				}
 				{
+					String[] ages = new String[99];
+					
+					for(int i=0; i< ages.length; i++)
+					{
+						ages[i] = ((Number)i).toString();
+					}
+					
 					ComboBoxModel ageCboModel = 
-							new DefaultComboBoxModel(
-									new String[] { "Item One", "Item Two" });
+							new DefaultComboBoxModel(ages);
+					
 					ageCbo = new JComboBox();
 					contentPnl.add(ageCbo, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 					ageCbo.setModel(ageCboModel);
@@ -110,7 +117,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 				{
 					ComboBoxModel groupCboModel = 
 							new DefaultComboBoxModel(
-									new String[] { "Item One", "Item Two" });
+									new String[] { "single", "family" });
 					groupCbo = new JComboBox();
 					contentPnl.add(groupCbo, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 					groupCbo.setModel(groupCboModel);
@@ -127,7 +134,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 		final int age = Integer.valueOf((String)ageCbo.getSelectedItem());
 		model.setAge(age);
 		model.setGroup((String)groupCbo.getSelectedItem());
-;	}
+	}
 
 	@Override
 	public InformationGatherStepModel getModel() {

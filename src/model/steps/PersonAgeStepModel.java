@@ -32,6 +32,9 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 	
 	public boolean hasAdultPerson()
 	{
+		if(ages == null) 
+			return false;
+		
 		for(int i=0; i<ages.length; i++)
 		{
 			if(ages[i] >= 18) {

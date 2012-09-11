@@ -71,6 +71,12 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 		initGUI();
 	}
 	
+	public void loadInitianalStep()
+	{
+		currentViewStepConnection = new PersonDescriptionStep();
+		mainPnl.add(currentViewStepConnection.getVisualisationUI(), BorderLayout.CENTER);
+	}
+	
 	public void lastStep()
 	{
 		cleanError();
@@ -84,7 +90,6 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			mainPnl.add(currentViewStepConnection.getVisualisationUI());
 			mainPnl.revalidate();
 			mainPnl.repaint();
-		
 		}
 	}
 	
@@ -170,8 +175,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 				mainPnl.setPreferredSize(new Dimension(691, 416));
 				mainPnl.setBorder(new EmptyBorder(10, 10, 10, 10));
 				
-				currentViewStepConnection = new TimeRangeStep();
-				mainPnl.add(currentViewStepConnection.getVisualisationUI(), BorderLayout.CENTER);
+				loadInitianalStep();
 				
 				getContentPane().add(mainPnl, BorderLayout.CENTER);		
 				
