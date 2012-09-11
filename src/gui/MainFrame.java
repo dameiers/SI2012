@@ -75,10 +75,12 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 		if(!stepHistory.empty())
 		{
 			ViewModelConnection lastStep = stepHistory.pop();
-			remove(currentViewStepConnection.getVisualisationUI());
+			mainPnl.remove(currentViewStepConnection.getVisualisationUI());
 			currentViewStepConnection = lastStep;
-			getContentPane().add(currentViewStepConnection.getVisualisationUI());
-			pack();
+			mainPnl.add(currentViewStepConnection.getVisualisationUI());
+			mainPnl.revalidate();
+			mainPnl.repaint();
+		
 		}
 	}
 	
@@ -97,19 +99,18 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			
 			stepHistory.push(currentViewStepConnection);
 					
-			remove(currentViewStepConnection.getVisualisationUI());
-			getContentPane().add(nextJComponent);
+			mainPnl.remove(currentViewStepConnection.getVisualisationUI());
+			mainPnl.add(nextJComponent);
 			
 			currentViewStepConnection = nextViewModelConnection;
-			pack();
+			mainPnl.revalidate();
+			mainPnl.repaint();
 		}
 		else
 		{
 			displayError(error); 
 		}
 	}
-	
-	
 	
 	private void displayError(String error) 
 	{
@@ -184,5 +185,6 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			lastStep();
 		}
 	}
+
 
 }
