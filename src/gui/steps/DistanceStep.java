@@ -130,7 +130,7 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 					distanceTxt.setBounds(72, 25, 106, 22);
 				}
 				{
-					unitCbo = new JComboBox(new String[] { "Km", "Stunden" });
+					unitCbo = new JComboBox(new String[] { "km", "h" });
 					contentPnl.add(unitCbo);
 					unitCbo.setBounds(198, 24, 112, 22);
 				}

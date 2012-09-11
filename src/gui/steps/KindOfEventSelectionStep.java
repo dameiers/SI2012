@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.HashMap;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
@@ -97,6 +98,11 @@ public class KindOfEventSelectionStep extends AbstractViewModelConnectionImpl {
 	@Override
 	public void fillModel() {
 		KindOfEventSelectionStepModel model = KindOfEventSelectionStepModel.getInstance();
+		HashMap<String,String> list = kindOfEventList.getSelectionList();
+		
+		model.setCultureStatus(list.get("Kulturell"));
+		model.setLeisureTimeStatus(list.get("Freizeit"));
+		model.setSportStatus(list.get("Sportlich"));
 	}
 	
 	@Override
