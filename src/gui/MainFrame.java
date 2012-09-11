@@ -108,7 +108,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			ViewModelConnection 		nextViewModelConnection = nextStepModel.getViewModelConnection();
 			JComponent 					nextJComponent = nextViewModelConnection.getVisualisationUI();
 			
-			nextStepModel.setPreselection();
+			nextStepModel.setPreselectionIfItWasntAlredySet();
 			nextViewModelConnection.fillMask();
 			
 			stepHistory.push(currentViewStepConnection);
