@@ -5,6 +5,10 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -18,6 +22,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import model.steps.InformationGatherStepModel;
 import model.steps.TimeRangeStepModel;
 
 /**
@@ -32,7 +37,7 @@ import model.steps.TimeRangeStepModel;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class TimeRangeStep extends javax.swing.JPanel implements StepMask{
+public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton summerbreakBtn;
@@ -199,35 +204,44 @@ public class TimeRangeStep extends javax.swing.JPanel implements StepMask{
 		}
 		return toDateTxt;
 	}
-	/**
-	 * Valid TIME RANGE TYPES:
-	 *  "summerbreak", 
-		"autumbreak", 
-		"easterbreak",
-		"winterbreak",
-		"misc"
-	 */
+
 	@Override
-	public void putDataToModel() {
+	public void fillModel() {
 		TimeRangeStepModel model = TimeRangeStepModel.getInstance();
-	    
-		if(easterbreak.isSelected()){
-			model.setTimeRangeTyp("easterbreak");
+		//there is a own time range defined
+		if(timeRangeGroup.getSelection() == miscTimeRange.getModel()){
+			model.setTimeRangeTyp(TimeRangeStepModel.MISC_TIME_RANGE);
+			SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+			final GregorianCalendar fromDate = new GregorianCalendar();
+			final GregorianCalendar toDate = new GregorianCalendar();
+			try {
+				fromDate.setTime(df.parse(fromDateTxt.getText()));
+				toDate.setTime(df.parse(toDateTxt.getText()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			model.setFromDate(fromDate);
+			model.setToDate(toDate);
+		}else{
+			if(timeRangeGroup.getSelection() == easterbreak.getModel()){
+				model.setTimeRangeTyp(TimeRangeStepModel.EASTERBREAK_TIME_RANGE);
+			}else if(timeRangeGroup.getSelection() == winterbreakBtn.getModel()){
+				model.setTimeRangeTyp(TimeRangeStepModel.WINTERBREAK_TIME_RANGE);
+			}else if(timeRangeGroup.getSelection() == summerbreakBtn.getModel()){
+				model.setTimeRangeTyp(TimeRangeStepModel.SUMMERBREAK_TIME_RANGE);
+			}else{
+				model.setTimeRangeTyp(TimeRangeStepModel.AUTUMNBREAK_TIME_RANGE);	
+			}
+			
 		}
-		else if(winterbreakBtn.isSelected()){
-			model.setTimeRangeTyp("winterbreak");
-		}
-		else if(autumbreakBtn.isSelected()){
-			model.setTimeRangeTyp("autumbreak");
-		}
-		else if(miscTimeRange.isSelected()){
-			model.setTimeRangeTyp("misc");
-			model.setFromDate(fromDateTxt.getText());
-			model.setToDate(toDateTxt.getText());
-	    }
-		else if(summerbreakBtn.isSelected()){
-			model.setTimeRangeTyp("summerbreak");
-	    }		
+
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return TimeRangeStepModel.getInstance();
 	}
 
 }

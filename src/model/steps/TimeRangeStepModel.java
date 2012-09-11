@@ -1,60 +1,53 @@
 package model.steps;
 
+import java.util.GregorianCalendar;
+
+import gui.steps.TimeRangeStep;
+
 public class TimeRangeStepModel extends InformationGatherStepModel 
 {
-	private static TimeRangeStepModel instance;
+	private static TimeRangeStepModel instance = new TimeRangeStepModel();
 
-	private final static String[] VALID_TIME_RANGE_TYPES = {
-		"summerbreak", 
-		"autumbreak", 
-		"easterbreak",
-		"winterbreak",
-		"misc"		
-	};
+	public final static String SUMMERBREAK_TIME_RANGE = "summerbreak";
+	public final static String AUTUMNBREAK_TIME_RANGE = "autumnbreak";
+	public final static String EASTERBREAK_TIME_RANGE = "easterbreak";
+	public final static String WINTERBREAK_TIME_RANGE = "winterbreak";
+	public final static String MISC_TIME_RANGE = "misc";
 	
-	private final static String VALID_DATE = "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]";
 	
 	private String timeRangeTyp;
-	private String fromDate;
-	private String toDate;
+	private GregorianCalendar fromDate;
+	private GregorianCalendar toDate;
 	
 	
 	private TimeRangeStepModel() 
 	{
-		
+		super("Zeitrahmen", new TimeRangeStep());
 	}
 	
 	public static TimeRangeStepModel getInstance() 
 	{
-		return instance != null ? instance : (instance=new TimeRangeStepModel());
+		System.out.println(instance);
+		
+		if(instance == null) {
+			instance = new TimeRangeStepModel();
+		}
+		
+		return instance;
 	}
 
 	public String getError() 
 	{	
-		if(!hasValidMiscTimeRange())
-			return "UngŸltiges von/bis Datum";
 		if(!hasValidTimeRange())
-			return "UngŸltiger Zeitraum";
+			return "Ungï¿½ltiger Zeitraum";
 		
 		return null;
 	}
 	
-	public boolean hasValidMiscTimeRange()
-	{
-		if(timeRangeTyp.equals("misc")){
-			return fromDate != null && fromDate.matches(VALID_DATE) &&
-				   toDate != null && toDate.matches(VALID_DATE);	   
-		}
-		
-		return true;
-	}
 	
 	public boolean hasValidTimeRange()
 	{
-		for(int i=0; i<VALID_TIME_RANGE_TYPES.length; i++) {
-			if(VALID_TIME_RANGE_TYPES[i].equals(timeRangeTyp)) return true;
-		}
-		return false;
+		return true;
 	}
 	
 	public String getTimeRangeTyp() 
@@ -65,57 +58,46 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	public void setTimeRangeTyp(String timeRangeTyp) 
 	{
 		this.timeRangeTyp = timeRangeTyp;
+		if(timeRangeTyp != MISC_TIME_RANGE){
+			fillTimeRangeDates();
+		}
 		updateAlredayFilled();
 	}
 
-	public String getFromDate() 
-	{
-		if(timeRangeTyp.equals("autumbreak")){
-			return "2012-10-22";
+	private void fillTimeRangeDates() {
+		if(timeRangeTyp.equals(SUMMERBREAK_TIME_RANGE)){
+			fromDate = new GregorianCalendar(2013, 6, 8);
+			toDate = new GregorianCalendar(2013,7,17);
+		}else if(timeRangeTyp.equals(WINTERBREAK_TIME_RANGE)){
+			fromDate = new GregorianCalendar(2012, 11, 24);
+			toDate = new GregorianCalendar(2013,0,5);			
+		}else if(timeRangeTyp.equals(EASTERBREAK_TIME_RANGE)){
+			fromDate = new GregorianCalendar(2013, 2, 25);
+			toDate = new GregorianCalendar(2013,3,6);
+		}else{
+			fromDate = new GregorianCalendar(2012, 9, 22);
+			toDate = new GregorianCalendar(2012,10,3);
 		}
-		else if(timeRangeTyp.equals("winterbreak")){
-			return "2012-12-24";
-		}
-		else if(timeRangeTyp.equals("easterbreak")){
-			return "2013-03-25";
-		}
-		else if(timeRangeTyp.equals("summerbreak")){
-			return "2013-07-08";
-		}
-		else if(timeRangeTyp.equals("misc")){
-			return fromDate;
-		}
-		return null;
 	}
 
-	public void setFromDate(String fromDate) 
+	public GregorianCalendar getFromDate() 
+	{
+		return fromDate;
+	}
+
+	public void setFromDate(GregorianCalendar fromDate) 
 	{
 		this.fromDate = fromDate;
 		updateAlredayFilled();
 	}
 
-	public String getToDate() 
+	public GregorianCalendar getToDate() 
 	{
-		if(timeRangeTyp.equals("autumbreak")){
-			return "2012-11-03";
-		}
-		else if(timeRangeTyp.equals("winterbreak")){
-			return "2013-01-05";
-		}
-		else if(timeRangeTyp.equals("easterbreak")){
-			return "2013-04-06";
-		}
-		else if(timeRangeTyp.equals("summerbreak")){
-			return "2013-08-17";
-		}
-		else if(timeRangeTyp.equals("misc")){
-			return toDate;
-		}
-		return null;
+		return toDate;
 		
 	}
 
-	public void setToDate(String toDate) 
+	public void setToDate(GregorianCalendar toDate) 
 	{
 		this.toDate = toDate;
 		updateAlredayFilled();

@@ -46,7 +46,13 @@ class TraceBuilder
 		result.add(genreSelectionStepModel);
 		result.add(budgetStepModel);
 		
-		return (InformationGatherStepModel[])result.toArray();
+		InformationGatherStepModel[] newResult =  new InformationGatherStepModel[result.size()];
+		
+		for(int i=0; i<result.size(); i++) {
+			newResult[i] = result.get(i);
+		}
+		
+		return newResult;
 	}
 	
 	private InformationGatherStepModel[] dynamicTrace()
@@ -81,7 +87,13 @@ class TraceBuilder
 		
 		result.add(budgetStepModel);
 		
-		return (InformationGatherStepModel[])result.toArray();
+		InformationGatherStepModel[] newResult =  new InformationGatherStepModel[result.size()];
+		
+		for(int i=0; i<result.size(); i++) {
+			newResult[i] = result.get(i);
+		}
+		
+		return newResult;
 	}
 	
 }

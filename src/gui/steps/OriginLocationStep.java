@@ -10,12 +10,16 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
+import javax.swing.JComponent;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+
+import model.steps.InformationGatherStepModel;
+import model.steps.OriginLocationStepModel;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -29,7 +33,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class OriginLocationStep extends javax.swing.JPanel {
+public class OriginLocationStep extends AbstractViewModelConnectionImpl {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private LocationComboBox locationComboBox;
@@ -67,7 +71,7 @@ public class OriginLocationStep extends javax.swing.JPanel {
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Von wo aus mšchten Sie die Reise zum Event antreten?");
+					titleTxt.setText("Von wo aus mï¿½chten Sie die Reise zum Event antreten?");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);
@@ -95,6 +99,17 @@ public class OriginLocationStep extends javax.swing.JPanel {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void fillModel() {
+		OriginLocationStepModel model = OriginLocationStepModel.getInstance();
+		model.setOrigin(locationComboBox.getSelectedLocation());
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return OriginLocationStepModel.getInstance();
 	}
 	
 	

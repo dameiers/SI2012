@@ -1,18 +1,29 @@
 package gui;
 import gui.steps.PersonDescriptionStep;
 import gui.steps.TimeRangeStep;
+import gui.steps.ViewModelConnection;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Stack;
+
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+
+import model.Model;
+import model.steps.InformationGatherStepModel;
 
 
 
@@ -28,11 +39,17 @@ import javax.swing.border.EmptyBorder;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	private JPanel ctrlPnl;
-	private JPanel mainPnl;
+	private JPanel mainPnl, errorMsg;
 	private JButton backBtn;
 	private JButton nextBtn;
+	private JLabel msg;
+	
+	private Model model;
+	private ViewModelConnection currentViewStepConnection;
+	private Stack<ViewModelConnection> stepHistory;
+	
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -49,7 +66,70 @@ public class MainFrame extends javax.swing.JFrame {
 	
 	public MainFrame() {
 		super();
+		model = new Model();
+		stepHistory = new Stack<ViewModelConnection>();
 		initGUI();
+	}
+	
+	public void lastStep()
+	{
+		cleanError();
+		System.out.println(stepHistory.size());
+		
+		if(!stepHistory.empty())
+		{
+			ViewModelConnection lastStep = stepHistory.pop();
+			mainPnl.remove(currentViewStepConnection.getVisualisationUI());
+			currentViewStepConnection = lastStep;
+			mainPnl.add(currentViewStepConnection.getVisualisationUI());
+			mainPnl.revalidate();
+			mainPnl.repaint();
+		
+		}
+	}
+	
+	public void nextStep() 
+	{
+		cleanError();
+		InformationGatherStepModel stepModel = currentViewStepConnection.getModel();
+		String error = stepModel.getError();
+		
+		if(error == null)
+		{
+			updateBreadcrubs(model.getInformationGatherTrace());
+			
+			InformationGatherStepModel 	nextStepModel = model.getNextStep();
+			ViewModelConnection 		nextViewModelConnection = nextStepModel.getViewModelConnection();
+			JComponent 					nextJComponent = nextViewModelConnection.getVisualisationUI();
+			
+			stepHistory.push(currentViewStepConnection);
+					
+			mainPnl.remove(currentViewStepConnection.getVisualisationUI());
+			mainPnl.add(nextJComponent);
+			
+			currentViewStepConnection = nextViewModelConnection;
+			mainPnl.revalidate();
+			mainPnl.repaint();
+		}
+		else
+		{
+			displayError(error); 
+		}
+	}
+	
+	private void cleanError()
+	{
+		msg.setText("");
+	}
+	
+	private void displayError(String error) 
+	{
+		msg.setText(error);
+	}
+	
+	private void updateBreadcrubs(InformationGatherStepModel[] stepModels)
+	{
+		
 	}
 	
 	private void initGUI() {
@@ -72,29 +152,55 @@ public class MainFrame extends javax.swing.JFrame {
 					ctrlPnl.add(nextBtn, new GridBagConstraints(4, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					nextBtn.setText("Weiter");
 					nextBtn.setBounds(566, 12, 58, 28);
+					nextBtn.setActionCommand("next");
+					nextBtn.addActionListener(this);
 				}
 				{
 					backBtn = new JButton();
 					ctrlPnl.add(backBtn, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					backBtn.setText("Zurück");
 					backBtn.setBounds(485, 12, 58, 28);
+					backBtn.setActionCommand("back");
+					backBtn.addActionListener(this);
 				}
 			}
 			{
 				mainPnl = new JPanel();
 				mainPnl.setPreferredSize(new Dimension(691, 416));
 				mainPnl.setBorder(new EmptyBorder(10, 10, 10, 10));
-				mainPnl.add(new TimeRangeStep(), BorderLayout.CENTER);
-				getContentPane().add(mainPnl, BorderLayout.CENTER);
 				
+				currentViewStepConnection = new TimeRangeStep();
+				mainPnl.add(currentViewStepConnection.getVisualisationUI(), BorderLayout.CENTER);
 				
+				getContentPane().add(mainPnl, BorderLayout.CENTER);		
+				
+				errorMsg = new JPanel();
+				getContentPane().add(errorMsg, BorderLayout.NORTH);
+				msg = new JLabel();
+				msg.setForeground(Color.red);
+				errorMsg.add(msg);
 			}
-			pack();
+			
 			this.setSize(750, 650);
+			pack();
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent actionEvent) 
+	{
+		if(actionEvent.getActionCommand().equals("next"))
+		{
+			nextStep();
+		}
+		else if(actionEvent.getActionCommand().equals("back"))
+		{
+			lastStep();
+		}
+	}
+
 
 }

@@ -19,6 +19,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import model.steps.InformationGatherStepModel;
+import model.steps.VoyageMethodStepModel;
+
 /**
 * This code was edited or generated using CloudGarden's Jigloo
 * SWT/Swing GUI Builder, which is free for non-commercial
@@ -31,7 +34,7 @@ import javax.swing.JTextPane;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class VoyageMethodStep extends javax.swing.JPanel {
+public class VoyageMethodStep extends AbstractViewModelConnectionImpl {
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton noBtn;
@@ -70,7 +73,7 @@ public class VoyageMethodStep extends javax.swing.JPanel {
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Ist die Anreise mit dem Auto mšglich?");
+					titleTxt.setText("Ist die Anreise mit dem Auto mï¿½glich?");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);
@@ -108,6 +111,17 @@ public class VoyageMethodStep extends javax.swing.JPanel {
 			btnGroup = new ButtonGroup();
 		}
 		return btnGroup;
+	}
+
+	@Override
+	public void fillModel() {
+		VoyageMethodStepModel model = VoyageMethodStepModel.getInstance();
+		model.setByCar(btnGroup.getSelection() == yesBtn.getModel());
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		return VoyageMethodStepModel.getInstance();
 	}
 
 }
