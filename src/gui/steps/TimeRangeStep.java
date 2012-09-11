@@ -231,9 +231,10 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 				model.setTimeRangeTyp(TimeRangeStepModel.WINTERBREAK_TIME_RANGE);
 			}else if(timeRangeGroup.getSelection() == summerbreakBtn.getModel()){
 				model.setTimeRangeTyp(TimeRangeStepModel.SUMMERBREAK_TIME_RANGE);
-			}else{
+			}else if(timeRangeGroup.getSelection() == autumbreakBtn.getModel()){
 				model.setTimeRangeTyp(TimeRangeStepModel.AUTUMNBREAK_TIME_RANGE);	
 			}
+				
 			
 		}
 

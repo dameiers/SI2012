@@ -120,7 +120,14 @@ public class DurationStep extends AbstractViewModelConnectionImpl {
 	@Override
 	public void fillModel() {
 		DurationStepModel model = DurationStepModel.getInstance();
-		final String duration = durationGroup.getSelection() == oneDayBtn.getModel() ? DurationStepModel.ONE_DAY_DURATION : DurationStepModel.WEEKEND_DURATION;
+		String duration = null;
+		
+		if(durationGroup.getSelection() == oneDayBtn.getModel()) {
+			duration = DurationStepModel.ONE_DAY_DURATION;
+		} else if(durationGroup.getSelection() == weekendBtn.getModel()) {
+			duration = DurationStepModel.WEEKEND_DURATION;
+		}
+		
 		model.setDuration(duration);
 	}
 

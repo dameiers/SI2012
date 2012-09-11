@@ -24,7 +24,7 @@ public class SchoolLocationStepModel extends InformationGatherStepModel
 	
 	public String getError() 
 	{
-		if(locations.length == 0)
+		if(locations == null || locations.length == 0)
 			return "Ungültige Anzahl von Orten";
 		
 		return null;
