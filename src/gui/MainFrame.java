@@ -4,6 +4,7 @@ import gui.steps.TimeRangeStep;
 import gui.steps.ViewModelConnection;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -14,6 +15,7 @@ import java.util.Stack;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import javax.swing.WindowConstants;
@@ -39,9 +41,10 @@ import model.steps.InformationGatherStepModel;
 */
 public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	private JPanel ctrlPnl;
-	private JPanel mainPnl;
+	private JPanel mainPnl, errorMsg;
 	private JButton backBtn;
 	private JButton nextBtn;
+	private JLabel msg;
 	
 	private Model model;
 	private ViewModelConnection currentViewStepConnection;
@@ -70,6 +73,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	
 	public void lastStep()
 	{
+		cleanError();
 		System.out.println(stepHistory.size());
 		
 		if(!stepHistory.empty())
@@ -86,6 +90,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	
 	public void nextStep() 
 	{
+		cleanError();
 		InformationGatherStepModel stepModel = currentViewStepConnection.getModel();
 		String error = stepModel.getError();
 		
@@ -112,9 +117,14 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 		}
 	}
 	
+	private void cleanError()
+	{
+		msg.setText("");
+	}
+	
 	private void displayError(String error) 
 	{
-		System.out.println("Error: " + error);
+		msg.setText(error);
 	}
 	
 	private void updateBreadcrubs(InformationGatherStepModel[] stepModels)
@@ -162,7 +172,13 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 				currentViewStepConnection = new TimeRangeStep();
 				mainPnl.add(currentViewStepConnection.getVisualisationUI(), BorderLayout.CENTER);
 				
-				getContentPane().add(mainPnl, BorderLayout.CENTER);				
+				getContentPane().add(mainPnl, BorderLayout.CENTER);		
+				
+				errorMsg = new JPanel();
+				getContentPane().add(errorMsg, BorderLayout.NORTH);
+				msg = new JLabel();
+				msg.setForeground(Color.red);
+				errorMsg.add(msg);
 			}
 			
 			this.setSize(750, 650);
