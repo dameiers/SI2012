@@ -91,6 +91,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	public void nextStep() 
 	{
 		cleanError();
+		currentViewStepConnection.fillModel();
 		InformationGatherStepModel stepModel = currentViewStepConnection.getModel();
 		String error = stepModel.getError();
 		

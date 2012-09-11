@@ -47,7 +47,14 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	
 	public boolean hasValidTimeRange()
 	{
-		return true;
+		if(timeRangeTyp != null && timeRangeTyp.equals(AUTUMNBREAK_TIME_RANGE) || 
+				timeRangeTyp.equals(WINTERBREAK_TIME_RANGE) || 
+				timeRangeTyp.equals(SUMMERBREAK_TIME_RANGE) ||
+				timeRangeTyp.equals(EASTERBREAK_TIME_RANGE)||
+				timeRangeTyp.equals(MISC_TIME_RANGE)){
+			return true;
+		}
+		return false;
 	}
 	
 	public String getTimeRangeTyp() 
