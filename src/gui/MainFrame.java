@@ -63,12 +63,23 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	
 	public MainFrame() {
 		super();
+		model = new Model();
+		stepHistory = new Stack<ViewModelConnection>();
 		initGUI();
 	}
 	
 	public void lastStep()
 	{
+		System.out.println(stepHistory.size());
 		
+		if(!stepHistory.empty())
+		{
+			ViewModelConnection lastStep = stepHistory.pop();
+			remove(currentViewStepConnection.getVisualisationUI());
+			currentViewStepConnection = lastStep;
+			getContentPane().add(currentViewStepConnection.getVisualisationUI());
+			pack();
+		}
 	}
 	
 	public void nextStep() 
@@ -85,10 +96,9 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			JComponent 					nextJComponent = nextViewModelConnection.getVisualisationUI();
 			
 			stepHistory.push(currentViewStepConnection);
-			getContentPane().add(mainPnl, BorderLayout.CENTER);
-			
-			//remove(currentViewStepConnection.getVisualisationUI());
-			//getContentPane().add(nextJComponent);
+					
+			remove(currentViewStepConnection.getVisualisationUI());
+			getContentPane().add(nextJComponent);
 			
 			currentViewStepConnection = nextViewModelConnection;
 			pack();
@@ -99,9 +109,11 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 		}
 	}
 	
+	
+	
 	private void displayError(String error) 
 	{
-		
+		System.out.println("Error: " + error);
 	}
 	
 	private void updateBreadcrubs(InformationGatherStepModel[] stepModels)
@@ -129,23 +141,31 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 					ctrlPnl.add(nextBtn, new GridBagConstraints(4, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					nextBtn.setText("Weiter");
 					nextBtn.setBounds(566, 12, 58, 28);
+					nextBtn.setActionCommand("next");
+					nextBtn.addActionListener(this);
 				}
 				{
 					backBtn = new JButton();
 					ctrlPnl.add(backBtn, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					backBtn.setText("Zurück");
 					backBtn.setBounds(485, 12, 58, 28);
+					backBtn.setActionCommand("back");
+					backBtn.addActionListener(this);
 				}
 			}
 			{
 				mainPnl = new JPanel();
 				mainPnl.setPreferredSize(new Dimension(691, 416));
 				mainPnl.setBorder(new EmptyBorder(10, 10, 10, 10));
-				mainPnl.add(new TimeRangeStep(), BorderLayout.CENTER);
+				
+				currentViewStepConnection = new TimeRangeStep();
+				mainPnl.add(currentViewStepConnection.getVisualisationUI(), BorderLayout.CENTER);
+				
 				getContentPane().add(mainPnl, BorderLayout.CENTER);				
 			}
-			pack();
+			
 			this.setSize(750, 650);
+			pack();
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
@@ -153,9 +173,16 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) 
+	public void actionPerformed(ActionEvent actionEvent) 
 	{
-		nextStep();
+		if(actionEvent.getActionCommand().equals("next"))
+		{
+			nextStep();
+		}
+		else if(actionEvent.getActionCommand().equals("back"))
+		{
+			lastStep();
+		}
 	}
 
 }
