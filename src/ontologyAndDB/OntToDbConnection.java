@@ -3,6 +3,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Set;
 
+import model.steps.DistanceStepModel;
 import ontologyAndDB.exception.OWLConnectionUnknownTypeException;
 import ontologyAndDB.exception.OntologyConnectionDataPropertyException;
 import ontologyAndDB.exception.OntologyConnectionIndividualAreadyExistsException;
@@ -21,6 +22,8 @@ import org.semanticweb.owlapi.util.OWLEntityRemover;
 
 public class OntToDbConnection {
 	
+	private static OntToDbConnection instance;
+	
 	private 	DBConnection 		dbCon;
 	private		OntologyConnection  ontCon;
 	private 	boolean				reachCitiesViewIsSet;
@@ -35,7 +38,13 @@ public class OntToDbConnection {
 	
 	/////////////////////////////////////////////////// Constructor //////////////////////////////////////////////////////
 	
-	public OntToDbConnection(){
+	public static OntToDbConnection getInstance() 
+	{
+		return instance != null ? instance : (instance=new OntToDbConnection());
+	}
+	
+	
+	private OntToDbConnection(){
 		 dbCon = new DBConnection();
 		 ontCon = new OntologyConnection();
 		 holidayViewIsSet=false;
