@@ -47,7 +47,7 @@ public class testclass {
 
 	public static void main (String args[]) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, OWLOntologyCreationException, OWLOntologyStorageException{
 	
-		OntToDbConnection t = new OntToDbConnection();
+		OntToDbConnection t = OntToDbConnection.getInstance();
 		t.openOntology("evntologie_latest.owl");
 		Calendar cal =		Calendar.getInstance();
 		System.out.println("Start : "+cal.getTime());
