@@ -98,6 +98,11 @@ public class KindOfEventSelectionStep extends AbstractViewModelConnectionImpl {
 	public void fillModel() {
 		KindOfEventSelectionStepModel model = KindOfEventSelectionStepModel.getInstance();
 	}
+	
+	@Override
+	public void fillMask() {
+		//TODO: display preselection (or another state) from the Model 
+	}
 
 	@Override
 	public InformationGatherStepModel getModel() {

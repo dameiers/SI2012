@@ -18,5 +18,10 @@ public abstract class AbstractViewModelConnectionImpl extends JPanel implements 
 		// TODO Auto-generated method stub
 		return this;
 	}
+	
+	@Override
+	public void fillMask() {
+		
+	}
 
 }

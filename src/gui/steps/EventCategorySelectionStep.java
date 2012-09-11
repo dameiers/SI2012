@@ -169,6 +169,11 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 			model.setCultureCategories(cultureCategoryList.getSelectionList());
 		}
 	}
+	
+	@Override
+	public void fillMask() {
+		//TODO: display preselection (or another state) from the Model 
+	}
 
 	@Override
 	public InformationGatherStepModel getModel() {

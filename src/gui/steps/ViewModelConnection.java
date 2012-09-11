@@ -7,6 +7,7 @@ import model.steps.InformationGatherStepModel;
 public interface ViewModelConnection {
 	
 	void fillModel();
+	void fillMask();
 	
 	JComponent getVisualisationUI();
 	

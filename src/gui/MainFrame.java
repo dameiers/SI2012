@@ -108,6 +108,9 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			ViewModelConnection 		nextViewModelConnection = nextStepModel.getViewModelConnection();
 			JComponent 					nextJComponent = nextViewModelConnection.getVisualisationUI();
 			
+			nextStepModel.setPreselection();
+			nextViewModelConnection.fillMask();
+			
 			stepHistory.push(currentViewStepConnection);
 					
 			mainPnl.remove(currentViewStepConnection.getVisualisationUI());
@@ -185,9 +188,9 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 				msg.setForeground(Color.red);
 				errorMsg.add(msg);
 			}
-			
-			this.setSize(750, 650);
 			pack();
+			this.setSize(750, 650);
+			
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();

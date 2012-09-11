@@ -155,6 +155,11 @@ public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 	public void fillModel() {
 		GenreSelectionStepModel model = GenreSelectionStepModel.getInstance();
 	}
+	
+	@Override
+	public void fillMask() {
+		//TODO: display preselection (or another state) from the Model 
+	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
