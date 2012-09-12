@@ -8,7 +8,9 @@ public class GenreSelectionStepModel extends InformationGatherStepModel
 {
 	private static GenreSelectionStepModel instance;
 	
-	private HashMap<String, HashMap<String, String>> categoryGenresMap;
+	private HashMap<String, String> cinemaGenres;
+	private HashMap<String, String> concertGenres;
+	private HashMap<String, String> theatreGenres;
 	
 	private GenreSelectionStepModel() 
 	{
@@ -37,15 +39,29 @@ public class GenreSelectionStepModel extends InformationGatherStepModel
 		return null;
 	}
 
-	public HashMap<String, HashMap<String, String>> getCategoryGenresMap() 
-	{
-		return categoryGenresMap;
+	public HashMap<String, String> getCinemaGenres() {
+		return cinemaGenres;
 	}
 
-	public void setCategoryGenresMap(
-			HashMap<String, HashMap<String, String>> categoryGenresMap) 
-	{
-		this.categoryGenresMap = categoryGenresMap;
-		updateAlredayFilled();
+	public void setCinemaGenres(HashMap<String, String> cinemaGenres) {
+		this.cinemaGenres = cinemaGenres;
 	}
+
+	public HashMap<String, String> getConcertGenres() {
+		return concertGenres;
+	}
+
+	public void setConcertGenres(HashMap<String, String> concertGenres) {
+		this.concertGenres = concertGenres;
+	}
+
+	public HashMap<String, String> getTheatreGenres() {
+		return theatreGenres;
+	}
+
+	public void setTheatreGenres(HashMap<String, String> theatreGenres) {
+		this.theatreGenres = theatreGenres;
+	}
+
+	
 }
