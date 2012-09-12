@@ -34,7 +34,7 @@ public abstract class InformationGatherStepModel
 		alredyFilled = (getError() == null);
 	}
 	
-	public void setPreselectionIfItWasntAlredySet()
+	public final void setPreselectionIfItWasntAlredySet()
 	{
 		if(!preselectionWasAlreadySet)
 		{
