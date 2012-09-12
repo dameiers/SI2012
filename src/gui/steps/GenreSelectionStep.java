@@ -13,6 +13,7 @@ import javax.swing.JTextPane;
 import javax.swing.ListModel;
 import javax.swing.WindowConstants;
 
+import model.steps.EventCategoryStepModel;
 import model.steps.GenreSelectionStepModel;
 import model.steps.InformationGatherStepModel;
 
@@ -96,7 +97,6 @@ public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 				contentPnlLayout.columnWidths = new int[] {30, 200, 200, 200, 7};
 				contentPnl.setLayout(contentPnlLayout);
 				contentPnl.setPreferredSize(new java.awt.Dimension(691, 365));
-				updateGenreLists();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,20 +132,21 @@ public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 	}
 	
 	private void updateGenreLists(){
+		GenreSelectionStepModel model = GenreSelectionStepModel.getInstance(); 
 		contentPnl.removeAll();
 		insertPos =1;
 		if(cinemaGenreVisible){
-			cinemaGenreList = new LikeSelectionList();
+			cinemaGenreList = new LikeSelectionList("Kino", model.getCinemaGenres());
 			contentPnl.add(cinemaGenreList, new GridBagConstraints(insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
 		}
 		if(concertGenreVisible){
-			concertGenresList = new LikeSelectionList();
+			concertGenresList = new LikeSelectionList("Konzert", model.getConcertGenres());
 			contentPnl.add(concertGenresList, new GridBagConstraints(insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
 		}
 		if(theatreGenreVisible){
-			theatreGenreList = new LikeSelectionList();
+			theatreGenreList = new LikeSelectionList("Theater", model.getTheatreGenres());
 			contentPnl.add(theatreGenreList, new GridBagConstraints(insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
 		}
@@ -154,11 +155,28 @@ public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 	@Override
 	public void fillModel() {
 		GenreSelectionStepModel model = GenreSelectionStepModel.getInstance();
+		
+		if(cinemaGenreVisible) {
+			model.setCinemaGenres(cinemaGenreList.getSelectionList());
+		} 
+		
+		if(concertGenreVisible) {
+			model.setConcertGenres(concertGenresList.getSelectionList());
+		}
+		
+		if(theatreGenreVisible) {
+			model.setTheatreGenres(theatreGenreList.getSelectionList());
+		}
 	}
 	
 	@Override
 	public void fillMask() {
-		//TODO: display preselection (or another state) from the Model 
+		EventCategoryStepModel eventCategoryStepModel = EventCategoryStepModel.getInstance();
+		 
+		setCinemaGenreVisible(eventCategoryStepModel.isCategoryDesired("CinemaEvent"));
+		setConcertGenreVisible(eventCategoryStepModel.isCategoryDesired("ConcertEvent"));
+		setTheatreGenreVisible(eventCategoryStepModel.isCategoryDesired("TheatreEvent"));
+		updateGenreLists();
 	}
 
 	@Override

@@ -95,6 +95,17 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 		return true;
 	}
 	
+	public boolean isCategoryDesired(String category)
+	{
+		if(!hasValidCategorys()) {
+			return false;
+		} 
+		
+		return leisureTimeCategories.get(category) == LikeBox.LIKE || 
+			   sportCategories.get(category) == LikeBox.LIKE ||
+			   cultureCategories.get(category) == LikeBox.LIKE;
+	}
+	
 	public HashMap<String, String> getLeisureTimeCategories() {
 		return leisureTimeCategories;
 	}

@@ -37,15 +37,18 @@ public class LikeSelectionList extends JPanel {
 		
 		this.elems = new ArrayList<String>();
 		
-		for(String elem : elems.keySet()) {
-			this.elems.add(elem);
+		if(elems != null) {
+			for(String elem : elems.keySet()) {
+				this.elems.add(elem);
+			}
 		}
 		
 		this.title = title;
 		init();
-		
-		for(String elem : elems.keySet()) {
-			map.get(elem).setSelectedItem(elems.get(elem));
+		if(elems != null) {
+			for(String elem : elems.keySet()) {
+				map.get(elem).setSelectedItem(elems.get(elem));
+			}
 		}
 	}
 

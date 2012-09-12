@@ -80,7 +80,6 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	public void lastStep()
 	{
 		cleanError();
-		System.out.println(stepHistory.size());
 		
 		if(!stepHistory.empty())
 		{
