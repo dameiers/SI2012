@@ -1,8 +1,14 @@
 package model.steps;
 
+import gui.components.LikeBox;
 import gui.steps.EventCategorySelectionStep;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+
+import ontologyAndDB.OntToDbConnection;
 
 public class EventCategoryStepModel extends InformationGatherStepModel 
 {
@@ -14,14 +20,48 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 	
 	private EventCategoryStepModel() 
 	{
-		super("Kategorie", new EventCategorySelectionStep(true, true, true));
+		super("Kategorie", new EventCategorySelectionStep());
+		leisureTimeCategories = new HashMap<String, String>();
+		sportCategories = new HashMap<String, String>();
+		cultureCategories = new HashMap<String, String>();
 	}
 	
 	public void setPreselection()
 	{
-		//TODO
-		//PersonAgeStepModel personAgeStepModel = PersonAgeStepModel.getInstance();
+		try
+		{
+			OntToDbConnection ontoConn = OntToDbConnection.getInstance();
+			PersonAgeStepModel personAgesModel = PersonAgeStepModel.getInstance();
+
+			List<String> cultureCatList = ontoConn.getSubClassesOfClassByOntology("CultureEvent");
+			List<String> leisureCatList = ontoConn.getSubClassesOfClassByOntology("LeisureTimeEvent");
+			List<String> sportCatList = ontoConn.getSubClassesOfClassByOntology("SportEvents");
+			
+			String[] preferedCategories = personAgesModel.getPreferedStuffBasedOnAges();
+			
+			setCultureCategories(buildCategoriesListWithLikeState(cultureCatList, preferedCategories));
+			setLeisureTimeCategories(buildCategoriesListWithLikeState(leisureCatList, preferedCategories));
+			setSportCategories(buildCategoriesListWithLikeState(sportCatList, preferedCategories));
+			
+		} catch (Exception e)
+		{	
+			System.out.println("exception");
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	private HashMap<String, String> buildCategoriesListWithLikeState(List<String> catList, String[] preferedCats)
+	{
+		HashMap<String, String> result = new HashMap<String, String>();
+		String tmpState;
 		
+		for(String cat : catList) {
+			tmpState = Arrays.asList(preferedCats).contains(cat) ? LikeBox.LIKE : LikeBox.DONTLIKE; 
+			result.put(cat, tmpState);
+		}
+		
+		return result;
 	}
 	
 	public static EventCategoryStepModel getInstance() 
@@ -54,7 +94,10 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 		}
 		return true;
 	}
-
+	
+	public HashMap<String, String> getLeisureTimeCategories() {
+		return leisureTimeCategories;
+	}
 
 	public void setLeisureTimeCategories(HashMap<String, String> leisureTimeList) 
 	{
@@ -79,6 +122,4 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 		this.cultureCategories = cultureCategories;
 		updateAlredayFilled();
 	}
-	
-	
 }
