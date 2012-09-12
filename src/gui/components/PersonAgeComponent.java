@@ -41,7 +41,7 @@ public class PersonAgeComponent extends javax.swing.JPanel implements ActionList
 		this.container = container;
 	}
 	
-	public String getSelectedAges() {
+	public String getSelectedAge() {
 		return ageCbo.getSelectedAge();
 	}
 	

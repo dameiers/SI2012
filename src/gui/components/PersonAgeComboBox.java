@@ -13,11 +13,11 @@ public class PersonAgeComboBox extends JComboBox {
 	};
 	
 	private final static String[] ageKey = {
-		"child", 
-		"teen", 
-		"jungAdult",
-		"adult",
-		"oltAdult"		
+		"Child", 
+		"Teenager", 
+		"YoungAdults",
+		"Adults",
+		"OldAdults"		
 	};
 	
 	public PersonAgeComboBox() {

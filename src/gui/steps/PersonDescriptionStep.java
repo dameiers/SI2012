@@ -1,4 +1,6 @@
 package gui.steps;
+import gui.components.PersonAgeComboBox;
+
 import java.awt.BorderLayout;
 
 import java.awt.Dimension;
@@ -35,7 +37,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JLabel ageLbl;
-	private JComboBox ageCbo;
+	private PersonAgeComboBox ageCbo;
 	private JComboBox groupCbo;
 	private JLabel groupLbl;
 	private JTextPane titleTxt;
@@ -99,20 +101,9 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 					contentPnl.add(groupLbl, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					groupLbl.setText("Gruppe:");
 				}
-				{
-					String[] ages = new String[99];
-					
-					for(int i=0; i< ages.length; i++)
-					{
-						ages[i] = ((Number)i).toString();
-					}
-					
-					ComboBoxModel ageCboModel = 
-							new DefaultComboBoxModel(ages);
-					
-					ageCbo = new JComboBox();
+				{	
+					ageCbo = new PersonAgeComboBox();
 					contentPnl.add(ageCbo, new GridBagConstraints(2, 1, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
-					ageCbo.setModel(ageCboModel);
 				}
 				{
 					ComboBoxModel groupCboModel = 
@@ -131,8 +122,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 	@Override
 	public void fillModel() {
 		PersonDescriptionStepModel model = PersonDescriptionStepModel.getInstance();
-		final int age = Integer.valueOf((String)ageCbo.getSelectedItem());
-		model.setAge(age);
+		model.setAge(ageCbo.getSelectedAge());
 		model.setGroup((String)groupCbo.getSelectedItem());
 	}
 

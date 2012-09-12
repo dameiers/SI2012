@@ -72,7 +72,7 @@ class TraceBuilder
 			result.add(personAgeStep);
 		} 	
 		
-		if(personDescriptionStep.getAge() >= 18 || 
+		if(personDescriptionStep.isAdult() || 
 		   personAgeStep.hasAdultPerson() ||
 		   !personDescriptionStep.isAlredyFilled()) 
 		{

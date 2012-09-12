@@ -14,7 +14,7 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 		"family"
 	};
 	
-	private int age;
+	private String age;
 	private String group;
 	
 	private PersonDescriptionStepModel() 
@@ -44,7 +44,12 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	
 	public boolean hasValidAge()
 	{	
-		return age > 0 && age < 99;
+		return age != null && (
+				age.equals("Child") || 
+				age.equals("Teenager") || 
+				age.equals("YoungAdults") ||
+				age.equals("Adults") ||
+				age.equals("OldAdults"));
 	}
 	
 	public boolean hasValidGroup()
@@ -55,20 +60,14 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 		return false;
 	}
 
-	public int getAge() 
+	public String getAge() 
 	{
 		return age;
 	}
 
-	public void setAge(int age) 
+	public void setAge(String age) 
 	{
 		this.age = age;
-		updateAlredayFilled();
-	}
-	
-	public void setAge(String age)
-	{
-		setAge(Integer.parseInt(age));
 		updateAlredayFilled();
 	}
 
@@ -81,5 +80,12 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	{
 		this.group = group;
 		updateAlredayFilled();
+	}
+	
+	public boolean isAdult()
+	{
+		return (age.equals("YoungAdults") ||
+				age.equals("Adults") ||
+				age.equals("OldAdults"));
 	}
 }

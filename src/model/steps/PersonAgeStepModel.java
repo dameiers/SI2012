@@ -17,7 +17,7 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 {
 	private static PersonAgeStepModel instance;
 	
-	private int[] ages;
+	private String[] ages;
 	
 	private PersonAgeStepModel() 
 	{
@@ -47,51 +47,42 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 			return false;
 		
 		for(int i=0; i<ages.length; i++)
-		{
-			if(ages[i] >= 18) {
+		{	
+			if(ages[i].equals("YoungAdults") || 
+			   ages[i].equals("Adults") || 
+			   ages[i].equals("OldAdults")) 
+			{
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public int[] getAges() 
+	public String[] getAges() 
 	{
 		return ages;
 	}
 
 	public void setAges(String[] ages) 
 	{
-		this.ages = new int[ages.length];
-		
-		for(int i=1; i<ages.length; i++) {
-			this.ages[i] = Integer.parseInt(ages[i]);
-		}
-		updateAlredayFilled();
-	}
-	
-	public void setAges(int[] ages)
-	{
 		this.ages = ages;
 		updateAlredayFilled();
 	}
+	
 	
 	public String[] getPreferedStuffBasedOnAges() throws OWLOntologyCreationException
 	{
 		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
 
-		String[] ageClasses = getAgeClasses();
+		String[] ageClasses = getAges();
+		
+		System.out.println(ageClasses);
 		
 		HashSet<String> result = new HashSet<String>();
 		
 		for(String ageClass : ageClasses) {
 			try {
 				String className = ageClass + "PreferredEvents";
-				
-				if(ageClass.equals("Child")) {
-					className = ageClass + "FriendlyEvent";
-				}
-				
 				result.addAll(ontoConn.getSubClassesOfClassByOntology(className));
 			} catch (OntologyConnectionUnknowClassException e) {
 				e.printStackTrace();
@@ -100,41 +91,5 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 		
 		String[] strArr = new String[1];
 		return result.toArray(strArr);
-	}
-	
-	public String[] getAgeClasses()
-	{
-		PersonDescriptionStepModel personDescriptionStepModel = PersonDescriptionStepModel.getInstance();
-		
-		
-		if(!isAlredyFilled()) {
-			String[] result = {getAgeClass(personDescriptionStepModel.getAge())};
-			return result;
-		}
-		
-	    List<String> ageClasses = new ArrayList<String>(); 
-	    
-	    for(int age : getAges()) {
-	    	if(!ageClasses.contains(getAgeClass(age))) {
-	    		ageClasses.add(getAgeClass(age));
-	    	}
-	    }
-		
-	    String[] strArray = new String[1];
-		return ageClasses.toArray(strArray);
-	}
-	
-	public static String getAgeClass(int age)
-	{
-		if(age < 13)
-			return "Child";
-		if(age < 18)
-			return "Teenager";
-		if(age < 30)
-			return "YoungAdults";
-		if(age < 55)
-			return "Adults";
-		
-		return "OldAdults";
 	}
 }

@@ -291,6 +291,7 @@ public class OntologyConnection {
 	}
 	
 	protected ArrayList<String> getSubClassesByClassFromOntology (String className) throws OntologyConnectionUnknowClassException{
+		className = SpellingMistakeCorrector.correct(className);
 		OWLClass superClass = getClassByName(className );
 		if (superClass==null)
 			throw new OntologyConnectionUnknowClassException("unknow :"+className);

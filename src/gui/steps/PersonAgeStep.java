@@ -136,7 +136,7 @@ public class PersonAgeStep extends AbstractViewModelConnectionImpl implements Ac
 		int locationCount = ageCboContainer.getComponentCount();
 		String[] locations = new String[locationCount];
 		for(int i=0; i<locationCount; i++) {
-			locations[i] = ((PersonAgeComponent)ageCboContainer.getComponent(i)).getSelectedAges();
+			locations[i] = ((PersonAgeComponent)ageCboContainer.getComponent(i)).getSelectedAge();
 		}
 		
 		return locations;
