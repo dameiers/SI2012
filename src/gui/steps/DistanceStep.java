@@ -31,6 +31,8 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
 
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+
 import ontologyAndDB.OntToDbConnection;
 
 import model.steps.DistanceStepModel;
@@ -89,7 +91,12 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 	public DistanceStep() {
 		super();
 		cityandDist = new HashMap<String, Double>();
-		ontoconn = OntToDbConnection.getInstance();
+		try {
+			ontoconn = OntToDbConnection.getInstance();
+		} catch (OWLOntologyCreationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		initGUI();
 	}
 	
