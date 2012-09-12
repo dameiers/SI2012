@@ -38,9 +38,15 @@ public class OntToDbConnection {
 	
 	/////////////////////////////////////////////////// Constructor //////////////////////////////////////////////////////
 	
-	public static OntToDbConnection getInstance() 
+	public static OntToDbConnection getInstance() throws OWLOntologyCreationException 
 	{
-		return instance != null ? instance : (instance=new OntToDbConnection());
+		if(instance == null)
+		{
+			instance=new OntToDbConnection();
+			instance.openOntology("evntologie_latest.owl");
+		}
+		
+		return instance;
 	}
 	
 	
