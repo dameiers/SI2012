@@ -14,6 +14,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+
 import ontologyAndDB.OntToDbConnection;
 import ontologyAndDB.exception.OWLConnectionUnknownTypeException;
 import ontologyAndDB.exception.OntologyConnectionDataPropertyException;
@@ -62,10 +64,16 @@ class EventCollector {
 			.getInstance();
 	private static BudgetStepModel budgetStepModel = BudgetStepModel
 			.getInstance();
-	private OntToDbConnection ontToDbConnection = OntToDbConnection
-			.getInstance();
-
+	private OntToDbConnection ontToDbConnection;
 	private ArrayList<Integer> eventIDs = new ArrayList<Integer>();
+
+	public EventCollector() {
+		try {
+			ontToDbConnection = OntToDbConnection.getInstance();
+		} catch (OWLOntologyCreationException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * looks up the asked data from all step models and returns a list of events
@@ -182,41 +190,48 @@ class EventCollector {
 				KindOfEventSelectionStepModel.DONTLIKE)) {
 			sportEvents = calculateSportEvents();
 		}
-		
+
 		// duration && (sport || culture || leisuretime)
-		
+
 		final HashSet<Integer> tmp = new HashSet<Integer>();
-		if(cultureEvents != null && !cultureEvents.isEmpty()){
+		if (cultureEvents != null && !cultureEvents.isEmpty()) {
 			tmp.addAll(cultureEvents);
 		}
-		if(sportEvents != null && !sportEvents.isEmpty()){
+		if (sportEvents != null && !sportEvents.isEmpty()) {
 			tmp.addAll(sportEvents);
 		}
-		if(leisureTimeEvents != null && !leisureTimeEvents.isEmpty()){
+		if (leisureTimeEvents != null && !leisureTimeEvents.isEmpty()) {
 			tmp.addAll(leisureTimeEvents);
 		}
-		
+
 		durationSet.retainAll(tmp);
-		
+
 		this.eventIDs = new ArrayList<Integer>(durationSet);
 	}
 
 	private Set<Integer> calculateLeisureTimeEvents() {
-		// TODO do it after ollos commit
+		// leisureTime && (festivity || ...|| ...)
+				final Set<Integer> leisureTimeEvents = new HashSet<Integer>(
+						ontToDbConnection
+								.getInvidualsFromOntologieClassByReasoner("LeisureTimeEvents"));
 
-		// final HashMap<String, String> culturEventCategories =
-		// eventCategoryStepModel.getCultureCategories();
-		// final Iterator<String> it
-		// =culturEventCategories.keySet().iterator();
-		//
-		// while(it.hasNext()){
-		// final String currentCategory = it.next();
-		// final String status = culturEventCategories.get(currentCategory);
-		// if(!status.equals(LikeBox.DONTLIKE)){
-		// classNames.add(currentCategory);
-		// }
-		// }
-		return null;
+				final HashMap<String, String> leisureTimeEventCategories = eventCategoryStepModel
+						.getLeisureTimeCategories();
+				final Iterator<String> it = leisureTimeEventCategories.keySet().iterator();
+				final ArrayList<String> leisureTimeCategoryClassNames = new ArrayList<String>();
+				while (it.hasNext()) {
+					final String leisureTimeCategory = it.next();
+					final String status = leisureTimeEventCategories.get(leisureTimeCategory);
+					if (!status.equals(LikeBox.DONTLIKE)) {
+						leisureTimeCategoryClassNames.add(leisureTimeCategory);
+					}
+				}
+				final Set<Integer> sportCategoryEvents = new HashSet<Integer>(
+						ontToDbConnection
+								.getIndividualUnionOverClassesByReasoner(leisureTimeCategoryClassNames));
+				leisureTimeEvents.retainAll(sportCategoryEvents);
+
+				return leisureTimeEvents;
 	}
 
 	private Set<Integer> calculateSportEvents() {
@@ -257,37 +272,7 @@ class EventCollector {
 
 		return result;
 	}
-
-	/**
-	 * temporary method that fills the local variable eventIds with some ids..
-	 * only for testing reasons
-	 */
-	public void setDummyEventIds() {
-		final LinkedList<Integer> ids = new LinkedList<Integer>();
-		for (int i = 0; i < 99; i++) {
-			ids.add(i + 1);
-		}
-
-		eventIDs = new ArrayList<Integer>(ids);
-	}
-
-	/**
-	 * temporary method to print the local collected event ids to sout only for
-	 * testing reasons
-	 */
-	private void printEventList(HashMap<String, String>[] mapArr) {
-		for (int i = 0; i < mapArr.length; i++) {
-			final HashMap<String, String> tmpMap = mapArr[i];
-			final Iterator<String> it = tmpMap.keySet().iterator();
-			while (it.hasNext()) {
-				final String key = it.next();
-				final String value = tmpMap.get(key);
-				System.out.println(value + "\t");
-			}
-			System.out.println("\n");
-		}
-	}
-
+	
 	private Set<Integer> calculateCultureEvents() {
 		// culture && ((cinema && (genre1 || genre2)) || concert&&(genre ||
 		// genre ...) || theatre&&(genre || genre ...))
@@ -402,6 +387,37 @@ class EventCollector {
 		cultureEventsSet.retainAll(tmp);
 		return cultureEventsSet;
 	}
+
+	/**
+	 * temporary method that fills the local variable eventIds with some ids..
+	 * only for testing reasons
+	 */
+	public void setDummyEventIds() {
+		final LinkedList<Integer> ids = new LinkedList<Integer>();
+		for (int i = 0; i < 99; i++) {
+			ids.add(i + 1);
+		}
+
+		eventIDs = new ArrayList<Integer>(ids);
+	}
+
+	/**
+	 * temporary method to print the local collected event ids to sout only for
+	 * testing reasons
+	 */
+	private void printEventList(HashMap<String, String>[] mapArr) {
+		for (int i = 0; i < mapArr.length; i++) {
+			final HashMap<String, String> tmpMap = mapArr[i];
+			final Iterator<String> it = tmpMap.keySet().iterator();
+			while (it.hasNext()) {
+				final String key = it.next();
+				final String value = tmpMap.get(key);
+				System.out.println(value + "\t");
+			}
+			System.out.println("\n");
+		}
+	}
+
 
 	public static void main(String[] args) {
 		EventCollector collector = new EventCollector();
