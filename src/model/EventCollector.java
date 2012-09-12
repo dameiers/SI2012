@@ -2,6 +2,7 @@ package model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -92,7 +93,10 @@ class EventCollector
 		
 		//----------------------Holiday-View-Setzen----------------------------
 		try {
-			con.setHolidayView(timeRangeStep.getFromDate(), timeRangeStep.getToDate());
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
+			con.setHolidayView(sdf.format(timeRangeStep.getFromDate().getTime()), 
+							   sdf.format(timeRangeStep.getToDate().getTime()));
 			con.fillOntWithEventsFromHolidayView();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

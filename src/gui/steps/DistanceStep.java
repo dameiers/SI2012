@@ -89,7 +89,7 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 	public DistanceStep() {
 		super();
 		cityandDist = new HashMap<String, Double>();
-		ontoconn = new OntToDbConnection();
+		ontoconn = OntToDbConnection.getInstance();
 		initGUI();
 	}
 	
