@@ -90,6 +90,8 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			mainPnl.add(currentViewStepConnection.getVisualisationUI());
 			mainPnl.revalidate();
 			mainPnl.repaint();
+		} else {
+			backBtn.setEnabled(false);
 		}
 	}
 	
@@ -112,6 +114,8 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			nextViewModelConnection.fillMask();
 			
 			stepHistory.push(currentViewStepConnection);
+			
+			backBtn.setEnabled(true);
 					
 			mainPnl.remove(currentViewStepConnection.getVisualisationUI());
 			mainPnl.add(nextJComponent);
@@ -171,6 +175,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 					backBtn.setBounds(485, 12, 58, 28);
 					backBtn.setActionCommand("back");
 					backBtn.addActionListener(this);
+					backBtn.setEnabled(false);
 				}
 			}
 			{
