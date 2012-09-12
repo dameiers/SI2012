@@ -32,6 +32,22 @@ public class LikeSelectionList extends JPanel {
 		this.title = title;
 		init();
 	}
+	
+	public LikeSelectionList(String title, HashMap<String, String> elems) {
+		
+		this.elems = new ArrayList<String>();
+		
+		for(String elem : elems.keySet()) {
+			this.elems.add(elem);
+		}
+		
+		this.title = title;
+		init();
+		
+		for(String elem : elems.keySet()) {
+			map.get(elem).setSelectedItem(elems.get(elem));
+		}
+	}
 
 	private void init() {
 		GridBagLayout layout = new GridBagLayout();

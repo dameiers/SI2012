@@ -7,15 +7,21 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
 
+import ontologyAndDB.OntToDbConnection;
+import ontologyAndDB.exception.OntologyConnectionUnknowClassException;
+
 import model.steps.EventCategoryStepModel;
 import model.steps.InformationGatherStepModel;
+import model.steps.KindOfEventSelectionStepModel;
 
 /**
  * This code was edited or generated using CloudGarden's Jigloo SWT/Swing GUI
@@ -39,6 +45,7 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 	private boolean cultureCategoryVisible;
 	private int insertPos = 1;
 
+
 	/**
 	 * Auto-generated main method to display this JPanel inside a new JFrame.
 	 */
@@ -50,7 +57,8 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 		frame.setVisible(true);
 	}
 
-	public EventCategorySelectionStep() {
+	public EventCategorySelectionStep() 
+	{
 		this(true, true, true);
 	}
 
@@ -60,6 +68,12 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 		this.leisureTimeCategoryVisible = leisureTimeVisible;
 		this.sportCategoryVisible = sportVisible;
 		initGUI();
+	}
+	
+	private static boolean shouldDisplayCategory(String likeStatus)
+	{
+		return likeStatus != null && (likeStatus.equals(KindOfEventSelectionStepModel.LIKE) ||
+			   likeStatus.equals(KindOfEventSelectionStepModel.MAYBE));
 	}
 
 	private void initGUI() {
@@ -96,7 +110,6 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 						7 };
 				contentPnl.setLayout(contentPnlLayout);
 				contentPnl.setPreferredSize(new java.awt.Dimension(691, 365));
-				updateCategoryLists();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -131,24 +144,25 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 	}
 
 	private void updateCategoryLists() {
+		EventCategoryStepModel model = EventCategoryStepModel.getInstance();
 		contentPnl.removeAll();
 		insertPos = 1;
 		if (cultureCategoryVisible) {
-			cultureCategoryList = new LikeSelectionList();
+			cultureCategoryList = new LikeSelectionList("Kultur", model.getCultureCategories());
 			contentPnl.add(cultureCategoryList, new GridBagConstraints(
 					insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
 		}
 		if (leisureTimeCategoryVisible) {
-			leisureTimeCategoryList = new LikeSelectionList();
+			leisureTimeCategoryList = new LikeSelectionList("Freizeit", model.getLeisureTimeCategories());
 			contentPnl.add(leisureTimeCategoryList, new GridBagConstraints(
 					insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
 		}
 		if (sportCategoryVisible) {
-			sportCategoryList = new LikeSelectionList();
+			sportCategoryList = new LikeSelectionList("Sport", model.getSportCategories());
 			contentPnl.add(sportCategoryList, new GridBagConstraints(insertPos,
 					1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
@@ -172,7 +186,11 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 	
 	@Override
 	public void fillMask() {
-		//TODO: display preselection (or another state) from the Model 
+		KindOfEventSelectionStepModel kindOfModel = KindOfEventSelectionStepModel.getInstance();
+		setLeisureTimeCategoryVisible(shouldDisplayCategory(kindOfModel.getLeisureTimeStatus()));
+	    setSportCategoryVisible(shouldDisplayCategory(kindOfModel.getSportStatus())); 
+	    setCultureCategoryVisible(shouldDisplayCategory(kindOfModel.getCultureStatus()));
+	    updateCategoryLists();
 	}
 
 	@Override
