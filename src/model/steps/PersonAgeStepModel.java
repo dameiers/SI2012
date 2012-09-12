@@ -60,6 +60,10 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 
 	public String[] getAges() 
 	{
+		if(ages == null) {
+			return new String[0];
+		}
+		
 		return ages;
 	}
 
@@ -73,10 +77,9 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 	public String[] getPreferedStuffBasedOnAges() throws OWLOntologyCreationException
 	{
 		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
+		PersonDescriptionStepModel pdsm = PersonDescriptionStepModel.getInstance();
 
 		String[] ageClasses = getAges();
-		
-		System.out.println(ageClasses);
 		
 		HashSet<String> result = new HashSet<String>();
 		
@@ -87,6 +90,13 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 			} catch (OntologyConnectionUnknowClassException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		try {
+		String className = pdsm.getAge() + "PreferredEvents";
+		result.addAll(ontoConn.getSubClassesOfClassByOntology(className));
+		} catch (OntologyConnectionUnknowClassException e) {
+			e.printStackTrace();
 		}
 		
 		String[] strArr = new String[1];
