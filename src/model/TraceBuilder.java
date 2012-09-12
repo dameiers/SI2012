@@ -83,7 +83,10 @@ class TraceBuilder
 		result.add(originLocationStep);
 		result.add(kindOfEventSelectionStepModel);
 		result.add(eventCategoryStepModel);
-		result.add(genreSelectionStepModel);
+		
+		if(isGenreRequired()) {
+			result.add(genreSelectionStepModel);
+		}
 		
 		result.add(budgetStepModel);
 		
@@ -94,6 +97,11 @@ class TraceBuilder
 		}
 		
 		return newResult;
+	}
+	
+	private boolean isGenreRequired() {
+		//TODO: Ask the ontologie
+		return true;
 	}
 	
 }

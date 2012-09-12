@@ -221,13 +221,19 @@ public class OntToDbConnection {
 	
 		
 	public ResultSet getDataFromDbByEvent_Id ( ArrayList<Integer> eventIDs) throws SQLException{
-		String s = new String(" ");
-		int i ;
-		for ( i=0  ; i < eventIDs.size()-1;i++){
-			s = s.concat(String.valueOf(eventIDs.get(i))+"," );
+		if(eventIDs != null && !eventIDs.isEmpty() ){
+			String s = new String(" ");
+			int i ;
+			for ( i=0  ; i < eventIDs.size()-1;i++){
+				s = s.concat(String.valueOf(eventIDs.get(i))+"," );
+			}
+			s = s.concat(String.valueOf(eventIDs.get(i)));
+			return  dbCon.executeQuery("Select * from \"Event\" where \"event_id\" in (" + s + ")");	
+		}else{
+			System.out.println("received an empty list of event id's");
+			return null;
 		}
-		s = s.concat(String.valueOf(eventIDs.get(i)));
-		return  dbCon.executeQuery("Select * from \"Event\" where \"event_id\" in (" + s + ")");
+		
 	}
 	
 	public void disconnectFromDB (){

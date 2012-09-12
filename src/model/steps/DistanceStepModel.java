@@ -6,6 +6,8 @@ import gui.steps.DistanceStep;
 public class DistanceStepModel extends InformationGatherStepModel 
 {
 	private static DistanceStepModel instance;
+	public final static String HOUR_UNIT ="h";
+	public final static String DISTANCE_UNTI ="km";
 	
 	private String unit;
 	private String distance;
