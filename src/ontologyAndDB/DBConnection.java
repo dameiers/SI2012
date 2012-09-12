@@ -1,9 +1,12 @@
 package ontologyAndDB;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 import ontologyAndDB.exception.ViewDoesntExistsException;
 
@@ -16,15 +19,22 @@ public class DBConnection {
 	private String password;
 	
 	protected DBConnection() {
-		
 		try {
-		url = "jdbc:postgresql://localhost/eventmanager";
-		username = "postgres";
-		password = "sem_db_event";
+		
+		final Properties dbConnProps = new Properties();
+        URL propsUrl = DBConnection.class.getResource("/resources/dbConnection.properties");
+        dbConnProps.load(propsUrl.openStream());
+        
+        url = dbConnProps.getProperty("url", "jdbc:postgresql://localhost/eventmanager");
+        username = dbConnProps.getProperty("username", "postgres");
+        password = dbConnProps.getProperty("password", "sem_db_event");
+        
 		conn = DriverManager.getConnection(url, username, password);
 		
 		}catch (SQLException e){
 			System.out.println("Construktor :"+e.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
