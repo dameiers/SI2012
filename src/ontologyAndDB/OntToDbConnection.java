@@ -252,11 +252,12 @@ public class OntToDbConnection {
 			s = s.concat(String.valueOf(eventIDs.get(i)));
 			String sqlStatement = 	"SELECT * " +
 									"FROM 	\"Event\" ,\"Event_Genre\" ,\"Genre\" ,\"Kategorie\" , \"Preisliste\" " +
-									"WHERE  \"Event\".event_id = \"Event_Genre\".event" +
-									"AND	\"Event_Genre\".genre = \"Genre\".genre_id" +
-									"AND 	\"Event\".kategorie = \"Kategorie\".kategorie_id"+
-									"AND	\"Event\".event = \"Preisliste\".event" +
+									"WHERE  \"Event\".event_id = \"Event_Genre\".event " +
+									"AND	\"Event_Genre\".genre = \"Genre\".genre_id " +
+									"AND 	\"Event\".kategorie = \"Kategorie\".kategorie_id "+
+									"AND	\"Event\".event_id = \"Preisliste\".event " +
 									"AND event_id in ("+s+")";
+			//System.out.println(sqlStatement.toString());
 			return  dbCon.executeQuery(sqlStatement);	
 		}else{
 			System.out.println("received an empty list of event id's");

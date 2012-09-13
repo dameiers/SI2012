@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 import java.util.Calendar;
@@ -48,7 +49,7 @@ public class testclass {
 	public static void main (String args[]) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, OWLOntologyCreationException, OWLOntologyStorageException{
 	
 		OntToDbConnection t = OntToDbConnection.getInstance();
-		t.openOntology("evntologie_latest.owl");
+		//t.openOntology("evntologie_latest.owl");
 		Calendar cal =		Calendar.getInstance();
 		System.out.println("Start : "+cal.getTime());
 		//t.fillOntWithHalfEvents();
@@ -58,7 +59,7 @@ public class testclass {
 		//	System.out.println ( rs.getString(1));
 		//}
 		//"file://TestOntology.owl"
-		System.out.println( t.getSubClassesOfClassByOntology("MultipleDaysEvent"));
+		//System.out.println( t.getSubClassesOfClassByOntology("MultipleDaysEvent"));
 		//System.out.println (t.getSuperClassesOfClassByOntology("ComedyGenre"));
 		//System.out.println (t.getEventIdsByClassByOntology("WeekendEvent"));
 		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 
@@ -66,6 +67,14 @@ public class testclass {
 		//t.preAndSave("evntologie_latest.owl");
 		//t.preAndSave();
 		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 
+		
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		list.add(2);
+		list.add(3);
+		list.add(5);
+		ResultSet rs = t.getDataFromDbByEvent_Id(list);
+		rs.next() ;
+		System.out.println(rs.getString(1));
 		t.disconnectFromDB();
 		cal =		Calendar.getInstance();
 		System.out.println("Ende : "+cal.getTime());
