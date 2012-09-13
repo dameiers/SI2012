@@ -156,11 +156,12 @@ public class OntToDbConnection {
 	
 	//////////////////////////////////////////////////////////// Time-Methods//////////////////////////////////////////
 	
+	//TODO Format der Eingabe mit der Übergabe von der GUI anpassen
 	public void setHolidayView (String startDate, String endDate) throws SQLException, ViewDoesntExistsException{
 	//	if ( !reachCitiesViewIsSet )
 	//		throw new ViewDoesntExistsException(REACHABLE_CITIES_VIEW_NAME+" hasnt been created yet");
 		String sqlStatement ="";
-	//TODO Format an eingabe in GUI anpassen
+
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
 	
 	try{
@@ -249,8 +250,14 @@ public class OntToDbConnection {
 				s = s.concat(String.valueOf(eventIDs.get(i))+"," );
 			}
 			s = s.concat(String.valueOf(eventIDs.get(i)));
-			// TODO Join über alle Tabellen machen
-			return  dbCon.executeQuery("Select * from \"Event\" where \"event_id\" in (" + s + ")");	
+			String sqlStatement = 	"SELECT * " +
+									"FROM 	\"Event\" ,\"Event_Genre\" ,\"Genre\" ,\"Kategorie\" , \"Preisliste\" " +
+									"WHERE  \"Event\".event_id = \"Event_Genre\".event" +
+									"AND	\"Event_Genre\".genre = \"Genre\".genre_id" +
+									"AND 	\"Event\".kategorie = \"Kategorie\".kategorie_id"+
+									"AND	\"Event\".event = \"Preisliste\".event" +
+									"AND event_id in ("+s+")";
+			return  dbCon.executeQuery(sqlStatement);	
 		}else{
 			System.out.println("received an empty list of event id's");
 			return null;
