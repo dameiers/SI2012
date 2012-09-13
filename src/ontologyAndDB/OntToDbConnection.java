@@ -1,5 +1,7 @@
 package ontologyAndDB;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -146,7 +148,7 @@ public class OntToDbConnection {
 	 */
 	public void setDistanceView (ArrayList<String> reachableCities) throws SQLException{
 		String sqlInStat = reachableCities.toString().replace("[","").replace("]","").trim();
-		String sqlStatement =  " SELECT * FROM \"Event\" WHERE ort IN ("+sqlInStat+"(" ;
+		String sqlStatement =  " SELECT * FROM \"Event\" WHERE ort IN ("+sqlInStat+")" ;
 		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);
 	//reachCitiesViewIsSet = true;
 		
@@ -158,7 +160,20 @@ public class OntToDbConnection {
 	//	if ( !reachCitiesViewIsSet )
 	//		throw new ViewDoesntExistsException(REACHABLE_CITIES_VIEW_NAME+" hasnt been created yet");
 		String sqlStatement ="";
-		
+	//TODO Format an eingabe in GUI anpassen
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+	
+	try{
+		java.util.Date parsedStartDate = dateFormat.parse(startDate);
+		java.util.Date parsedEndDate = dateFormat.parse(endDate);
+		java.sql.Timestamp timestampStart = new java.sql.Timestamp(parsedStartDate.getTime());
+		java.sql.Timestamp timestampEnd = new java.sql.Timestamp(parsedEndDate.getTime());
+	
+		sqlStatement = " SELECT * FROM \"Event\" WHERE startdatum >= "+ timestampStart.toGMTString()+" AND enddatum <= "+timestampEnd.toGMTString() ;	
+	}catch( ParseException e){
+		e.printStackTrace();
+	}
+	
 		dbCon.createView(HOLIDAY_VIEW_NAME, sqlStatement);
 	//	holidayViewIsSet =true;
 	}
@@ -234,6 +249,7 @@ public class OntToDbConnection {
 				s = s.concat(String.valueOf(eventIDs.get(i))+"," );
 			}
 			s = s.concat(String.valueOf(eventIDs.get(i)));
+			// TODO Join über alle Tabellen machen
 			return  dbCon.executeQuery("Select * from \"Event\" where \"event_id\" in (" + s + ")");	
 		}else{
 			System.out.println("received an empty list of event id's");
