@@ -184,7 +184,7 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 		            public void run() {
 		            	try {
 		            		System.out.println("run");
-		            		dmodel.getReachableCities(11);
+		            		dmodel.getReachableCitiesByDistance(11);
 						} catch (Exception e) {
 							JOptionPane.showMessageDialog(null, "Bearbeitung fehlerhaft.", "Fehler", JOptionPane.ERROR_MESSAGE);
 							e.printStackTrace();

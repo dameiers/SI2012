@@ -85,28 +85,42 @@ public class DistanceStepModel extends InformationGatherStepModel
 		updateAlredayFilled();
 	}
 	
-	public  ArrayList<String> getReachableCities(double wish_distance) throws Exception {
+	public  ArrayList<String> getReachableCitiesByDistance(double wish_distance) throws Exception {
 		ArrayList<String> allcities = ontoconn.getCitiesFromDB();
 		ArrayList<String> reachablecities = new ArrayList<String>();
-		
+		String origin = OriginLocationStepModel.getInstance().getOrigin();
 		for (int i=0; i<allcities.size(); i++){
 			String city = allcities.get(i).replace("[", "").replace("]", "").trim();
-			city = city.replaceAll("ü", "ue");
-			city = city.replaceAll("ä", "ae");
-			city = city.replaceAll("ö", "oe");
-			city = city.replaceAll("ß", "ss");
-			city = city.replaceAll(" ", "%20");
-			city = city.replaceAll("Ü", "UE");
-			city = city.replaceAll("A", "AE");
-			city = city.replaceAll("Ö", "OE");
-			double dist = getDistance("Saarbruecken", city);
+			origin = normalizeCityName(origin);
+			city = normalizeCityName(city);
+			double dist = getDistance(origin, city);
 			
 			if (dist < wish_distance){
 				reachablecities.add(city);
 			}
 		}
+		ontoconn.setDistanceView(reachablecities);
 		return reachablecities;
 	}
+	
+	public  ArrayList<String> getReachableCitiesByTime(double wish_time) throws Exception {
+		ArrayList<String> allcities = ontoconn.getCitiesFromDB();
+		ArrayList<String> reachablecities = new ArrayList<String>();
+		String origin = OriginLocationStepModel.getInstance().getOrigin();
+		for (int i=0; i<allcities.size(); i++){
+			String city = allcities.get(i).replace("[", "").replace("]", "").trim();
+			origin = normalizeCityName(origin);
+			city = normalizeCityName(city);
+			double dist = getDistance(origin, city);
+			double estimate_time = dist / 60.0;
+			if (dist < wish_time){
+				reachablecities.add(city);
+			}
+		}
+		ontoconn.setDistanceView(reachablecities);
+		return reachablecities;
+	}
+	
 	
 		public static double[] getLatLon(String city) throws Exception {
 		double[] pos = new double[2];
@@ -131,6 +145,18 @@ public class DistanceStepModel extends InformationGatherStepModel
 			
 		in.close();
 		return pos;
+	}
+		
+	public String normalizeCityName(String city){
+		city = city.replaceAll("ü", "ue");
+		city = city.replaceAll("ä", "ae");
+		city = city.replaceAll("ö", "oe");
+		city = city.replaceAll("ß", "ss");
+		city = city.replaceAll(" ", "%20");
+		city = city.replaceAll("Ü", "UE");
+		city = city.replaceAll("A", "AE");
+		city = city.replaceAll("Ö", "OE");
+		return city;
 	}
 	
 	public static double getDistance(String from, String to) throws Exception{
