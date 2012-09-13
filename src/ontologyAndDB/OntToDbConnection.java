@@ -26,8 +26,8 @@ public class OntToDbConnection {
 	
 	private 	DBConnection 		dbCon;
 	private		OntologyConnection  ontCon;
-	private 	boolean				reachCitiesViewIsSet;
-	private		boolean				holidayViewIsSet;
+	//private 	boolean				reachCitiesViewIsSet;
+	//private		boolean				holidayViewIsSet;
 	
 	private final String HOLIDAY_VIEW_NAME ="HolidayView";
 	private final String REACHABLE_CITIES_VIEW_NAME ="ReachableCitiesView";
@@ -53,8 +53,8 @@ public class OntToDbConnection {
 	private OntToDbConnection(){
 		 dbCon = new DBConnection();
 		 ontCon = new OntologyConnection();
-		 holidayViewIsSet=false;
-		 reachCitiesViewIsSet=false;
+	//	 holidayViewIsSet=false;
+	//	 reachCitiesViewIsSet=false;
 	}
 	
 	/////////////////////////////////////////////////// Ontologie - Manipulation- Methods////////////////////////////////
@@ -85,8 +85,8 @@ public class OntToDbConnection {
 		}
 	
 	public void fillOntWithEventsFromHolidayView () throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, ViewDoesntExistsException{
-		if (!holidayViewIsSet)
-				throw new ViewDoesntExistsException(HOLIDAY_VIEW_NAME + " doesnt exist yet");
+		//if (!holidayViewIsSet)
+		//		throw new ViewDoesntExistsException(HOLIDAY_VIEW_NAME + " doesnt exist yet");
 		ResultSet rs = dbCon.executeQuery("SELECT * FROM \""+HOLIDAY_VIEW_NAME+"\"");
 		 fillOntWithEvents(rs);
 	}
@@ -148,19 +148,19 @@ public class OntToDbConnection {
 		String sqlInStat = reachableCities.toString().replace("[","").replace("]","").trim();
 		String sqlStatement =  " SELECT * FROM \"Event\" WHERE ort IN ("+sqlInStat+"(" ;
 		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);
-		reachCitiesViewIsSet = true;
+	//reachCitiesViewIsSet = true;
 		
 	}
 	
 	//////////////////////////////////////////////////////////// Time-Methods//////////////////////////////////////////
 	
 	public void setHolidayView (String startDate, String endDate) throws SQLException, ViewDoesntExistsException{
-		if ( !reachCitiesViewIsSet )
-			throw new ViewDoesntExistsException(REACHABLE_CITIES_VIEW_NAME+" hasnt been created yet");
+	//	if ( !reachCitiesViewIsSet )
+	//		throw new ViewDoesntExistsException(REACHABLE_CITIES_VIEW_NAME+" hasnt been created yet");
 		String sqlStatement ="";
-		//TODO Implementieren der Zeitberecchnung und des passenden SQL statements
+		
 		dbCon.createView(HOLIDAY_VIEW_NAME, sqlStatement);
-		holidayViewIsSet =true;
+	//	holidayViewIsSet =true;
 	}
 	
 	//////////////////////////////////////////Reasoner Based Methods ////////////////////////////////////////////////////////
