@@ -60,16 +60,14 @@ import model.steps.InformationGatherStepModel;
 public class DistanceStep extends AbstractViewModelConnectionImpl{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
-	private JButton jButton1;
-	private JLabel jLabel1;
-	private JTable jTable1;
 	private JTextPane hintTxt;
 	private JComboBox unitCbo;
 	private JTextField distanceTxt;
 	private JTextPane titleTxt;
-	private OntToDbConnection ontoconn;
+	
 	private HashMap<String, Double> cityandDist;
 	private DefaultTableModel jTable1Model;
+	private DistanceStepModel dmodel;
 
 	/**
 	* Auto-generated main method to display this 
@@ -90,13 +88,9 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 	
 	public DistanceStep() {
 		super();
+		dmodel = DistanceStepModel.getInstance();
 		cityandDist = new HashMap<String, Double>();
-		try {
-			ontoconn = OntToDbConnection.getInstance();
-		} catch (OWLOntologyCreationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		initGUI();
 	}
 	
@@ -145,39 +139,9 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 					hintTxt = new JTextPane();
 					contentPnl.add(hintTxt);
 					hintTxt.setText("Hinweis: Ohne Auto kann sich die Reisezeit verzoegern!");
-					hintTxt.setBounds(12, 79, 391, 35);
+					hintTxt.setBounds(66, 76, 391, 35);
 					hintTxt.setEditable(false);
 					hintTxt.setBackground(new java.awt.Color(255,43,52));
-				}
-				{
-					jButton1 = new JButton();
-					contentPnl.add(jButton1);
-					jButton1.setText("suchen");
-					jButton1.setBounds(331, 24, 100, 23);
-					jButton1.addActionListener(new SearchListener());
-				}
-				{
-					jLabel1 = new JLabel();
-					contentPnl.add(jLabel1);
-					jLabel1.setText("Ergebnis:");
-					jLabel1.setBounds(72, 72, 73, 16);
-
-				}
-				{
-					 jTable1Model = 
-							new DefaultTableModel(
-									new String[][] { { "Eine Stadt", "Die Entferung" } },
-									new String[] { "Stadt", "Entfernung" });
-					jTable1 = new JTable();
-					jTable1.setModel(jTable1Model);
-					jTable1.setAutoCreateRowSorter(true);
-					jTable1.setFillsViewportHeight(true);
-					JScrollPane scrollPane = new JScrollPane(jTable1);
-					scrollPane.setBounds(93, 111, 300, 150);
-					contentPnl.add(scrollPane);
-					
-					//jTable1.setBounds(93, 111, 94, 30);
-					//jTable1.setPreferredSize(new java.awt.Dimension(90, 73));
 				}
 				
 			}
@@ -186,86 +150,7 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 		}
 	}
 	
-	public  ArrayList<String> getReachableCities(double wish_distance) throws Exception {
-		ArrayList<String> allcities = ontoconn.getCitiesFromDB();
-		ArrayList<String> reachablecities = new ArrayList<String>();
-		
-		for (int i=0; i<allcities.size(); i++){
-			String city = allcities.get(i).replace("[", "").replace("]", "").trim();
-			city = city.replaceAll("ü", "ue");
-			city = city.replaceAll("ä", "ae");
-			city = city.replaceAll("ö", "oe");
-			city = city.replaceAll("ß", "ss");
-			city = city.replaceAll(" ", "%20");
-			city = city.replaceAll("Ü", "UE");
-			city = city.replaceAll("A", "AE");
-			city = city.replaceAll("Ö", "OE");
-			double dist = getRouteDistance("Saarbruecken", city, "motorcar", "1");
-			
-			if (dist < wish_distance){
-				reachablecities.add(city);
-				addToHash(city, dist);
-				jTable1Model.addRow(new Object[]{city,dist});
-			}
-		}
-		return reachablecities;
-	}
-	
-		public static double[] getLatLon(String city) throws Exception {
-		double[] pos = new double[2];
-		URL citylat = new URL("http://nominatim.openstreetmap.org/search?q="
-				+ city + "&format=xml");
-		URLConnection con = citylat.openConnection();
-		BufferedReader in = new BufferedReader(new InputStreamReader(
-				con.getInputStream()));
-		String inputLine;
-		while ((inputLine = in.readLine()) != null){
-			if (inputLine.contains("lat='")){
-				int index = inputLine.indexOf("lat='");
-				String lat = inputLine.substring(index+5, inputLine.indexOf("'", index+5));
-				pos[0]=Double.parseDouble(lat);
-			}
-			if (inputLine.contains("lon='")){
-				int index = inputLine.indexOf("lon='");
-				String lon = inputLine.substring(index+5, inputLine.indexOf("'", index+5));
-				pos[1]=Double.parseDouble(lon);
-			}
-		}
-			
-		in.close();
-		return pos;
-	}
-	
-	public static double getDistance(String from, String to) throws Exception{
-		double[] pos1 = getLatLon(from);
-		double[] pos2 = getLatLon(to);
-		double dLon = Math.toRadians(pos2[1]-pos1[1]);
-		double dLat = Math.toRadians(pos2[0]-pos1[0]);
-		double lat1 = Math.toRadians(pos1[0]);
-		double lat2 = Math.toRadians(pos2[0]);
-		double a = Math.pow(Math.sin(dLat/2), 2)+ Math.pow(Math.sin(dLon/2), 2)* Math.cos(lat1) * Math.cos(lat2); 
-		double c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-		return 6371*c;
-	}
 
-	public static double getRouteDistance (String from, String to, String vehicle, String type) throws Exception {
-		double[] fpos = getLatLon(from);
-		double[] tpos = getLatLon(to);
-		URL dis = new URL("http://www.yournavigation.org/api/1.0/gosmore.php?format=kml&flat="+fpos[0]+"&flon="+fpos[1]+"&tlat="+tpos[0]+"&tlon="+tpos[1]+"&v="+vehicle+"&fast="+type);
-		URLConnection con = dis.openConnection();
-		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		String inputLine;
-		while ((inputLine = in.readLine())!=null){
-			inputLine = inputLine.trim();
-			if (inputLine.startsWith("<distance>") && inputLine.endsWith("</distance>")){
-                        	String value = inputLine.substring(10, inputLine.indexOf("</distance"));
-				in.close();
-				return Double.parseDouble(value);
-			}
-		}
-		in.close();
-		return 0;
-	}
 	
 	@Override
 	public void fillModel() {
@@ -299,7 +184,7 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 		            public void run() {
 		            	try {
 		            		System.out.println("run");
-							getReachableCities(dist);
+		            		dmodel.getReachableCities(11);
 						} catch (Exception e) {
 							JOptionPane.showMessageDialog(null, "Bearbeitung fehlerhaft.", "Fehler", JOptionPane.ERROR_MESSAGE);
 							e.printStackTrace();
