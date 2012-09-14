@@ -39,13 +39,18 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.model.PrefixManager;
+import org.semanticweb.owlapi.reasoner.ClassExpressionNotInProfileException;
 import org.semanticweb.owlapi.reasoner.ConsoleProgressMonitor;
+import org.semanticweb.owlapi.reasoner.FreshEntitiesException;
+import org.semanticweb.owlapi.reasoner.InconsistentOntologyException;
 import org.semanticweb.owlapi.reasoner.InferenceType;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerConfiguration;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
+import org.semanticweb.owlapi.reasoner.ReasonerInterruptedException;
 import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
+import org.semanticweb.owlapi.reasoner.TimeOutException;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
 
 
@@ -162,7 +167,7 @@ public class OntologyConnection {
 		saveOntologie();
 	}
 	
-	protected void removeAllIndividualsOfClass (String className){
+	protected void removeAllIndividualsOfClass (String className) throws OntologyConnectionUnknowClassException{
 		
 		OWLClass cl = this.getClassByName(className);
 		Set<OWLIndividual> invids = cl.getIndividuals(ontology);
@@ -271,7 +276,7 @@ public class OntologyConnection {
 		return this.getClassNamesOnly(nodes);
 	}
 	
-	protected ArrayList<Integer> getEventIdsByClassByReasoner(String className){
+	protected ArrayList<Integer> getEventIdsByClassByReasoner(String className) throws InconsistentOntologyException, ClassExpressionNotInProfileException, FreshEntitiesException, TimeOutException, ReasonerInterruptedException, OntologyConnectionUnknowClassException{
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		NodeSet<OWLNamedIndividual> invids =reasoner.getInstances( getClassByName (className), false);
 		Set<OWLNamedIndividual> flatinvids= invids.getFlattened();
@@ -304,7 +309,7 @@ public class OntologyConnection {
 		return this.getClassNamesOnly(nodes);
 	}
 	
-	protected ArrayList<Integer> getEventIdsByClassByOntology(String className){
+	protected ArrayList<Integer> getEventIdsByClassByOntology(String className) throws OntologyConnectionUnknowClassException{
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		Set<OWLIndividual> invids = getClassByName(className).getIndividuals(ontology);
 		for (OWLIndividual invid : invids ){
@@ -361,9 +366,13 @@ public class OntologyConnection {
 	 * 
 	 * @param className
 	 * @return OWLClass or null if the class doesnt exist
+	 * @throws OntologyConnectionUnknowClassException 
 	 */
-	private OWLClass getClassByName ( String className){
-		return this.getClass(ontID+"#"+className);
+	private OWLClass getClassByName ( String className) throws OntologyConnectionUnknowClassException{
+		OWLClass cl = this.getClass(ontID+"#"+className);
+		if (cl ==null)
+			throw new OntologyConnectionUnknowClassException("Classname unknown : "+className);
+		return cl;
 	}
 	
 	

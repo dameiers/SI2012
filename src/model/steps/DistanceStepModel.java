@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
@@ -22,13 +24,18 @@ public class DistanceStepModel extends InformationGatherStepModel
 	private String unit;
 	private String distance;
 	private OntToDbConnection ontoconn;
+	private static HashMap<String, double[]> position;
 	
 	private DistanceStepModel() 
 	{
 		super("Distanz", new DistanceStep());
 		try {
 			ontoconn = OntToDbConnection.getInstance();
+			position = ontoconn.getCityPositions();
 		} catch (OWLOntologyCreationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -105,6 +112,7 @@ public class DistanceStepModel extends InformationGatherStepModel
 	
 	public  ArrayList<String> getReachableCitiesByTime(double wish_time) throws Exception {
 		ArrayList<String> allcities = ontoconn.getCitiesFromDB();
+		
 		ArrayList<String> reachablecities = new ArrayList<String>();
 		String origin = OriginLocationStepModel.getInstance().getOrigin();
 		for (int i=0; i<allcities.size(); i++){
@@ -124,6 +132,9 @@ public class DistanceStepModel extends InformationGatherStepModel
 	
 		public static double[] getLatLon(String city) throws Exception {
 		double[] pos = new double[2];
+		if (position != null){
+			return position.get(city);
+		}
 		URL citylat = new URL("http://nominatim.openstreetmap.org/search?q="
 				+ city + "&format=xml");
 		URLConnection con = citylat.openConnection();

@@ -3,6 +3,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 
 import model.steps.DistanceStepModel;
@@ -17,7 +18,12 @@ import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.reasoner.ClassExpressionNotInProfileException;
+import org.semanticweb.owlapi.reasoner.FreshEntitiesException;
+import org.semanticweb.owlapi.reasoner.InconsistentOntologyException;
 import org.semanticweb.owlapi.reasoner.NodeSet;
+import org.semanticweb.owlapi.reasoner.ReasonerInterruptedException;
+import org.semanticweb.owlapi.reasoner.TimeOutException;
 import org.semanticweb.owlapi.util.OWLEntityRemover;
 
 
@@ -65,7 +71,7 @@ public class OntToDbConnection {
 		ontCon.removeAllIndividuals();
 	}
 	
-	public void removeIndividualsFromClass (String className){
+	public void removeIndividualsFromClass (String className) throws OntologyConnectionUnknowClassException{
 		ontCon.removeAllIndividualsOfClass(className);
 	}
 	
@@ -209,11 +215,11 @@ public class OntToDbConnection {
 		
 	}
 	
-	public ArrayList<Integer> getInvidualsFromOntologieClassByReasoner (String className){
+	public ArrayList<Integer> getInvidualsFromOntologieClassByReasoner (String className) throws InconsistentOntologyException, ClassExpressionNotInProfileException, FreshEntitiesException, TimeOutException, ReasonerInterruptedException, OntologyConnectionUnknowClassException{
 		return ontCon.getEventIdsByClassByReasoner(className);
 	}
   
-	public ArrayList<Integer> getIndividualUnionOverClassesByReasoner (ArrayList<String> classNames) {
+	public ArrayList<Integer> getIndividualUnionOverClassesByReasoner (ArrayList<String> classNames) throws InconsistentOntologyException, ClassExpressionNotInProfileException, FreshEntitiesException, TimeOutException, ReasonerInterruptedException, OntologyConnectionUnknowClassException {
 		ArrayList<Integer> individs = new  ArrayList<Integer>();
 		for (String s : classNames){
 			individs.addAll(this.getInvidualsFromOntologieClassByReasoner(s));
@@ -245,7 +251,7 @@ public class OntToDbConnection {
 		return ontCon.getSuperClassesByClassFromOntology(className);
 	}
 	
-	public ArrayList<Integer> getEventIdsByClassByOntology (String className){
+	public ArrayList<Integer> getEventIdsByClassByOntology (String className) throws OntologyConnectionUnknowClassException{
 		return ontCon.getEventIdsByClassByOntology(className);
 	}
 	
@@ -255,6 +261,21 @@ public class OntToDbConnection {
 	//////////////////////////////////////////////////Database Methods//////////////////////////////////////////////////////////////////
 	
 		
+	
+	public HashMap<String , double[]> getCityPositions () throws SQLException{
+		
+		HashMap<String,double[]> pos = new HashMap<String, double[]>();
+	
+		ResultSet rs = dbCon.executeQuery("Select * FROM Stadt");
+		while(rs.next()){
+			double lat = rs.getDouble(2);
+			double lon = rs.getDouble(3);
+			double d[] = {lat,lon};
+			pos.put( rs.getString("stadt_name"), d );
+		}
+		return pos; 
+	}
+	
 	public ResultSet getDataFromDbByEvent_Id ( ArrayList<Integer> eventIDs) throws SQLException{
 		if(eventIDs != null && !eventIDs.isEmpty() ){
 			String s = new String(" ");
