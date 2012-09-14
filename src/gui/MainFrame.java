@@ -105,7 +105,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 		{
 			updateBreadcrubs(model.getInformationGatherTrace());
 			
-			InformationGatherStepModel 	nextStepModel = model.getNextStep();
+			InformationGatherStepModel 	nextStepModel = model.getNextStep(stepModel);
 			ViewModelConnection 		nextViewModelConnection = nextStepModel.getViewModelConnection();
 			JComponent 					nextJComponent = nextViewModelConnection.getVisualisationUI();
 			

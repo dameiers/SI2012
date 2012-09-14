@@ -53,7 +53,7 @@ public class testclass {
 		//t.openOntology("evntologie_latest.owl");
 		Calendar cal =		Calendar.getInstance();
 		System.out.println("Start : "+cal.getTime());
-		//t.fillOntWithHalfEvents();
+		//t.fillOntWithEventsUntilNumber(100);
 		//t.removeAllIndividuals();
 		//ResultSet rs = t.getDataFromDbByEvent_Id(t.getEventIdsFromOntologieClass("BalletEvent"));
 		//while (rs.next()){
@@ -65,8 +65,11 @@ public class testclass {
 		//System.out.println (t.getEventIdsByClassByOntology("WeekendEvent"));
 		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 
 		//System.out.println( t.getCitiesFromDB().toString());
+		
 		//t.preAndSave("evntologie_latest.owl");
-		//t.preAndSave();
+		//t.InfereceAndSaveOntology();
+		
+		
 		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 
 		
 		/*
@@ -81,6 +84,7 @@ public class testclass {
 		rs.next() ;
 		System.out.println(rs.getString(1));
 		*/
+		
 		/*
 		ArrayList<Integer> list=new ArrayList<Integer>();
 		list.add(2);
@@ -90,6 +94,8 @@ public class testclass {
 		rs.next() ;
 		System.out.println(rs.getString(1));
 		*/
+		
+		//t.removeIndividualsFromClass("CinemaEvent");
 		t.disconnectFromDB();
 		cal =		Calendar.getInstance();
 		System.out.println("Ende : "+cal.getTime());
