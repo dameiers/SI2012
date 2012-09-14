@@ -28,6 +28,22 @@ public class Model extends Observable
 	}
 	
 	/**
+	 * Returns the step fallowing after previousModel
+	 */
+	public InformationGatherStepModel getNextStep(InformationGatherStepModel previousModel)
+	{
+		InformationGatherStepModel[] steps = getInformationGatherTrace();
+
+		for(int i=0; i<steps.length-1; i++) {
+			if(steps[i].equals(previousModel)) {
+				return steps[i+1];
+			}
+		}
+		
+		return null;
+	}
+	
+	/**
 	 * Returns the next Step which needs to be asked in the current question order
 	 */
 	public InformationGatherStepModel getNextStep()
