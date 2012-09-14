@@ -1,7 +1,10 @@
-package gui.components;
+package gui.steps;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.util.HashMap;
+
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -10,9 +13,14 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
+
+import model.steps.InformationGatherStepModel;
+import model.steps.TableviewModel;
 
 
 /**
@@ -27,7 +35,7 @@ import javax.swing.SwingUtilities;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class Tableview extends javax.swing.JFrame {
+public class Tableview extends AbstractViewModelConnectionImpl {
 	private JSplitPane jSplitPane1;
 	private JTextField jTextField11;
 	private JLabel jLabel12;
@@ -55,6 +63,16 @@ public class Tableview extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JPanel jPanel1;
 	private JTable jTable1;
+	private DefaultTableModel jTable1Model;
+	private TableviewModel tvmodel;
+
+	public DefaultTableModel getTableModel() {
+		return jTable1Model;
+	}
+
+	public void setTableModel(DefaultTableModel jTable1Model) {
+		this.jTable1Model = jTable1Model;
+	}
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -62,9 +80,12 @@ public class Tableview extends javax.swing.JFrame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				JFrame frame = new JFrame();
 				Tableview inst = new Tableview();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
+				frame.add(inst, BorderLayout.CENTER);
+				frame.pack();
+				frame.setVisible(true);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
 	}
@@ -76,10 +97,10 @@ public class Tableview extends javax.swing.JFrame {
 	
 	private void initGUI() {
 		try {
-			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			
 			{
 				jSplitPane1 = new JSplitPane();
-				getContentPane().add(getJSplitPane1(), BorderLayout.CENTER);
+				add(getJSplitPane1(), BorderLayout.CENTER);
 				jSplitPane1.setAutoscrolls(true);
 				jSplitPane1.setOrientation(JSplitPane.VERTICAL_SPLIT);
 				jSplitPane1.setDividerLocation(300);
@@ -223,17 +244,37 @@ public class Tableview extends javax.swing.JFrame {
 					}
 				}
 				{
-					TableModel jTable1Model = 
+					 jTable1Model = 
 							new DefaultTableModel(
 									new String[][] { { "One", "Two" }, { "Three", "Four" } },
-									new String[] { "Column 1", "Column 2" });
+									new String[] { "Event ID", "Event Name" });
 					jTable1 = new JTable();
 					jScrollPane1.setViewportView(jTable1);
 					jTable1.setModel(jTable1Model);
 					jTable1.setLayout(null);
+					jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+
+						@Override
+						public void valueChanged(ListSelectionEvent arg0) {
+							int selectedrow = jTable1.getSelectedRow();
+							HashMap<String, String> selectedevent = tvmodel.getEventInfo(selectedrow);
+							jTextField1.setText(selectedevent.get("event_id"));
+							jTextField2.setText(selectedevent.get("startdatum"));
+							jTextField3.setText(selectedevent.get("enddatum"));
+							jTextField4.setText(selectedevent.get("ort"));
+							jTextField5.setText(selectedevent.get("kinderbetreuung"));
+							jTextField6.setText(selectedevent.get("mindestalter"));
+							jTextField7.setText(selectedevent.get("preis_kinder"));
+							jTextField8.setText(selectedevent.get("preis_erwachsene"));
+							jTextField9.setText(selectedevent.get("kategorie"));
+							jTextField10.setText(selectedevent.get("genre"));
+							jTextField11.setText(selectedevent.get("beschreibung"));
+						}
+						
+					});
 				}
 			}
-			pack();
+			
 			setSize(600, 700);
 		} catch (Exception e) {
 		    //add your error handling code here
@@ -243,6 +284,18 @@ public class Tableview extends javax.swing.JFrame {
 	
 	public JSplitPane getJSplitPane1() {
 		return jSplitPane1;
+	}
+
+	@Override
+	public void fillModel() {
+		 tvmodel = TableviewModel.getInstance();
+		 tvmodel.fillTableModel();
+	}
+
+	@Override
+	public InformationGatherStepModel getModel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
