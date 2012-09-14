@@ -38,7 +38,7 @@ public class OntToDbConnection {
 	//private		boolean				holidayViewIsSet;
 	
 	private final String HOLIDAY_VIEW_NAME ="holidayview";
-	private final String REACHABLE_CITIES_VIEW_NAME ="ReachableCitiesView";
+	private final String REACHABLE_CITIES_VIEW_NAME ="reachablecitiesview";
 	public static String THEATRE_GENRE = "TheatreGenre";
 	public static String Cinema_GENRE = "CinemaGenre";
 	public static String CONCERT_GENRE = "ConcertGenre";
