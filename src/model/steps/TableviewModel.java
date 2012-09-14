@@ -36,7 +36,7 @@ public class TableviewModel extends InformationGatherStepModel{
 	public void fillTableModel(){
 		EventCollector collector = new EventCollector();
 		collector.setEventIDs();
-		events = new Model().getEvents();
+		events = collector.getEvents();
 		Tableview tv = (Tableview) super.getViewModelConnection();
 		DefaultTableModel dtm = tv.getTableModel();
 		for (int i=0; i<events.length; i++){

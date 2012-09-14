@@ -273,7 +273,7 @@ public class EventCollector {
 		try {
 			sportEvents = new HashSet<Integer>(
 					ontToDbConnection
-							.getInvidualsFromOntologieClassByReasoner("SportEvent"));
+							.getInvidualsFromOntologieClassByReasoner("SportEvents"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
