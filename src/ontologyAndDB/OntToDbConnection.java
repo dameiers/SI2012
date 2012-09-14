@@ -145,13 +145,19 @@ public class OntToDbConnection {
 		return cities;
 	}
 	
+	
 	/**
 	 * Creates a view in the DB with all reachable Events
 	 * @param reachableCities all Cities that are reachable
 	 * @throws SQLException 
 	 */
 	public void setDistanceView (ArrayList<String> reachableCities) throws SQLException{
-		String sqlInStat = reachableCities.toString().replace("[","").replace("]","").trim();
+		
+		String sqlInStat ="";
+		for(String city : reachableCities){
+			sqlInStat.concat("'"+city+"' ,");
+		}
+		sqlInStat.substring(0 , sqlInStat.lastIndexOf(",")-1);
 		String sqlStatement =  " SELECT * FROM \"Event\" WHERE ort IN ("+sqlInStat+")" ;
 		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);
 	//reachCitiesViewIsSet = true;
