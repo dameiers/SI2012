@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
@@ -73,7 +74,6 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 		updateAlredayFilled();
 	}
 	
-	
 	public String[] getPreferedStuffBasedOnAges() throws OWLOntologyCreationException
 	{
 		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
@@ -99,7 +99,65 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 			e.printStackTrace();
 		}
 		
+		result.addAll(
+				getCorrespondingEventCategoriesFromGenres(
+				filterGenresFromPreferedStuff(result)));
+
 		String[] strArr = new String[1];
 		return result.toArray(strArr);
+	}
+	
+	private Collection<String> filterGenresFromPreferedStuff(Collection<String> likedStuff)
+	{
+		List<String> result = new ArrayList<String>();
+		
+		for(String item : likedStuff) {
+			if(Pattern.matches(".*Genre$", item)) {
+				result.add(item);
+			}
+		}
+	
+		return result;
+	}
+	
+	private Collection<String> getCorrespondingEventCategoriesFromGenres(Collection<String> genres) {
+		HashSet<String> result = new HashSet<String>();
+		
+		try {
+			OntToDbConnection onto = OntToDbConnection.getInstance();
+			
+			for(String genre : genres) {
+				
+				try {
+					result.addAll(
+							mapGenreCategoriesToEventCategories(
+							onto.getSuperClassesOfClassFromOntology(genre)));
+					
+				} catch (OntologyConnectionUnknowClassException e) {
+					System.out.println("Genre nicht gefunden (" + genre + ")");
+				}
+			}
+			
+			
+		} catch (OWLOntologyCreationException e) {
+			System.out.println();
+		}
+		
+		System.out.println("-------");
+		System.out.println(result);
+		System.out.println("-------");
+		
+		return result;
+	}
+	
+	private Collection<String> mapGenreCategoriesToEventCategories(Collection<String> genreCats)
+	{
+		Collection<String> result = new ArrayList<String>();
+		
+		for(String genreCat : genreCats) {
+			result.add(genreCat.replace("Genres", "Event"));
+		}
+		
+		return result;
 	}
 }
