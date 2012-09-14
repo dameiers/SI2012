@@ -266,7 +266,7 @@ public class OntToDbConnection {
 		
 		HashMap<String,double[]> pos = new HashMap<String, double[]>();
 	
-		ResultSet rs = dbCon.executeQuery("Select * FROM Stadt");
+		ResultSet rs = dbCon.executeQuery("Select * FROM \"Stadt\"");
 		while(rs.next()){
 			double lat = rs.getDouble(2);
 			double lon = rs.getDouble(3);
