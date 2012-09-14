@@ -96,10 +96,8 @@ public class OntToDbConnection {
 		  fillOntWithEvents(rs);
 		}
 	
-	public void fillOntWithEventsFromHolidayView () throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, ViewDoesntExistsException{
-		//if (!holidayViewIsSet)
-		//		throw new ViewDoesntExistsException(HOLIDAY_VIEW_NAME + " doesnt exist yet");
-		ResultSet rs = dbCon.executeQuery("SELECT * FROM \""+HOLIDAY_VIEW_NAME+"\"");
+	public void fillOntWithEventsFromDistanceView () throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, ViewDoesntExistsException{
+		ResultSet rs = dbCon.executeQuery("SELECT * FROM \""+REACHABLE_CITIES_VIEW_NAME+"\"");
 		 fillOntWithEvents(rs);
 	}
 	
