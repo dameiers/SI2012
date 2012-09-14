@@ -63,11 +63,16 @@ public class DBConnection {
 	 * @throws SQLException 
 	 */
 	protected void createView ( String viewName, String sqlStatement) throws SQLException{
-		ResultSet rs = this.executeQuery("SELECT count(*) FROM pg_tables where tablename='"+viewName+"'");
-		if (rs.next())
-			this.executeQuery("DROP VIEW "+viewName);
-		this.executeQuery("CREATE VIEW "+ viewName +" AS "+ sqlStatement);
+		ResultSet rs = this.executeQuery("SELECT * FROM pg_views where viewname='"+viewName+"'");
+		if (rs.next()){
+			Statement stmt = null;
+			stmt = conn.createStatement();
+			stmt.executeUpdate("DROP VIEW "+viewName);
+			}		
 		
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		stmt.executeUpdate("CREATE VIEW "+ viewName +" AS "+ sqlStatement);			        		
 	}
 	
 	

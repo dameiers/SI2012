@@ -31,7 +31,7 @@ public class OntToDbConnection {
 	//private 	boolean				reachCitiesViewIsSet;
 	//private		boolean				holidayViewIsSet;
 	
-	private final String HOLIDAY_VIEW_NAME ="HolidayView";
+	private final String HOLIDAY_VIEW_NAME ="holidayview";
 	private final String REACHABLE_CITIES_VIEW_NAME ="ReachableCitiesView";
 	public static String THEATRE_GENRE = "TheatreGenre";
 	public static String Cinema_GENRE = "CinemaGenre";
@@ -63,6 +63,10 @@ public class OntToDbConnection {
 	
 	public void removeAllIndividuals (){
 		ontCon.removeAllIndividuals();
+	}
+	
+	public void removeIndividualsFromClass (String className){
+		ontCon.removeAllIndividualsOfClass(className);
 	}
 	
 	public void openOntology(String ontologyFilePath) throws OWLOntologyCreationException{
@@ -161,7 +165,8 @@ public class OntToDbConnection {
 	//	if ( !reachCitiesViewIsSet )
 	//		throw new ViewDoesntExistsException(REACHABLE_CITIES_VIEW_NAME+" hasnt been created yet");
 		String sqlStatement ="";
-
+		
+	/*
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
 	
 	try{
@@ -173,8 +178,10 @@ public class OntToDbConnection {
 		sqlStatement = " SELECT * FROM \"Event\" WHERE startdatum >= "+ timestampStart.toGMTString()+" AND enddatum <= "+timestampEnd.toGMTString() ;	
 	}catch( ParseException e){
 		e.printStackTrace();
-	}
+	}*/
 	
+	
+	sqlStatement = " SELECT * FROM \"Event\" WHERE startdatum >= '"+startDate+"' AND enddatum <= '"+endDate+"'" ;	
 		dbCon.createView(HOLIDAY_VIEW_NAME, sqlStatement);
 	//	holidayViewIsSet =true;
 	}
@@ -282,7 +289,7 @@ public class OntToDbConnection {
 		return events;
 	}
 	
-	private ResultSet executeQuery (String sqlStatement)throws SQLException{		
+	public ResultSet executeQuery (String sqlStatement)throws SQLException{		
 		return dbCon.executeQuery(sqlStatement);
 	}
 	

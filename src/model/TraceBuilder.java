@@ -22,6 +22,7 @@ class TraceBuilder
 	private static EventCategoryStepModel		eventCategoryStepModel = EventCategoryStepModel.getInstance();
 	private static GenreSelectionStepModel 		genreSelectionStepModel = GenreSelectionStepModel.getInstance();
 	private static BudgetStepModel				budgetStepModel = BudgetStepModel.getInstance();
+	private static TableviewModel				tableviewModel = TableviewModel.getInstance();
 	
 	public InformationGatherStepModel[] build()
 	{	
@@ -89,6 +90,7 @@ class TraceBuilder
 		}
 		
 		result.add(budgetStepModel);
+		result.add(tableviewModel);
 		
 		InformationGatherStepModel[] newResult =  new InformationGatherStepModel[result.size()];
 		
