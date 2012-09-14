@@ -39,7 +39,7 @@ import model.steps.VoyageMethodStepModel;
 /**
  * Helper Class used in the model class
  */
-class EventCollector {
+public class EventCollector {
 	private static PersonDescriptionStepModel personDescriptionStep = PersonDescriptionStepModel
 			.getInstance();
 	private static TimeRangeStepModel timeRangeStep = TimeRangeStepModel
@@ -125,7 +125,7 @@ class EventCollector {
 			ontToDbConnection.setHolidayView(
 					sdf.format(timeRangeStep.getFromDate().getTime()),
 					sdf.format(timeRangeStep.getToDate().getTime()));
-			ontToDbConnection.fillOntWithEventsFromHolidayView();
+//			ontToDbConnection.fillOntWithEventsFromHolidayView();
 
 			// Distance view setzen...
 			final String distanceUnit = distanceStep.getUnit();
@@ -158,19 +158,20 @@ class EventCollector {
 		} catch (ViewDoesntExistsException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (OntologyConnectionDataPropertyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (OWLConnectionUnknownTypeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (OntologyConnectionIndividualAreadyExistsException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (OntologyConnectionUnknowClassException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
+//		catch (OntologyConnectionDataPropertyException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (OWLConnectionUnknownTypeException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (OntologyConnectionIndividualAreadyExistsException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (OntologyConnectionUnknowClassException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		// Duration-Ontologie
 		// TODO aufpassen dass das was aus dem gui model kommt auch mit dem

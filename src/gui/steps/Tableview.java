@@ -288,8 +288,8 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 
 	@Override
 	public void fillModel() {
-		 tvmodel = TableviewModel.getInstance();
-		 tvmodel.fillTableModel();
+//		 tvmodel = TableviewModel.getInstance();
+//		 tvmodel.fillTableModel();
 	}
 
 	@Override
@@ -297,5 +297,15 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void fillMask() {
+		// TODO Auto-generated method stub
+		 tvmodel = TableviewModel.getInstance();
+		 tvmodel.fillTableModel();
+	}
+	
+	
+	
 
 }

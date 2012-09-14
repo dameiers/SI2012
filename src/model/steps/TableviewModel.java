@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.swing.table.DefaultTableModel;
 
+import model.EventCollector;
 import model.Model;
 import gui.steps.Tableview;
 
@@ -15,7 +16,6 @@ public class TableviewModel extends InformationGatherStepModel{
 
 	public TableviewModel() {
 		super("Ergebnis", new Tableview());
-		events = new Model().getEvents();
 	}
 	
 	public static TableviewModel getInstance() 
@@ -34,6 +34,9 @@ public class TableviewModel extends InformationGatherStepModel{
 	}
 	
 	public void fillTableModel(){
+		EventCollector collector = new EventCollector();
+		collector.setEventIDs();
+		events = new Model().getEvents();
 		Tableview tv = (Tableview) super.getViewModelConnection();
 		DefaultTableModel dtm = tv.getTableModel();
 		for (int i=0; i<events.length; i++){
