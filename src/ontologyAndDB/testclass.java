@@ -67,7 +67,7 @@ public class testclass {
 		//System.out.println( t.getCitiesFromDB().toString());
 		
 		//t.preAndSave("evntologie_latest.owl");
-		t.InfereceAndSaveOntology();
+		//t.InfereceAndSaveOntology();
 		
 		
 		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 

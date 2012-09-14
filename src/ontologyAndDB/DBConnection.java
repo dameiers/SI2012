@@ -46,6 +46,13 @@ public class DBConnection {
 		rs = stmt.executeQuery(sqlStatement);			        
 		return rs;
 	}
+	
+	protected void executeUpdate (String sqlStatement)throws SQLException{
+
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		stmt.executeQuery(sqlStatement);			        
+	}
 
 	
 	protected void disconnect(){

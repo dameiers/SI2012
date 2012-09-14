@@ -289,10 +289,13 @@ public class OntToDbConnection {
 		return events;
 	}
 	
-	public ResultSet executeQuery (String sqlStatement)throws SQLException{		
+	private ResultSet executeQuery (String sqlStatement)throws SQLException{		
 		return dbCon.executeQuery(sqlStatement);
 	}
 	
-
+	public void executeUpdate (String sqlStatement)throws SQLException{		
+		dbCon.executeUpdate(sqlStatement);
+	}
+	
 	
 }
