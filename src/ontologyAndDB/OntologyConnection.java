@@ -116,8 +116,7 @@ public class OntologyConnection {
 		List<InferredAxiomGenerator<? extends OWLAxiom>> gens = new ArrayList<InferredAxiomGenerator<? extends OWLAxiom>>();
 		gens.add(new InferredSubClassAxiomGenerator());
 		gens.add(new InferredClassAssertionAxiomGenerator());
-		gens.add(new InferredEquivalentClassAxiomGenerator());
-		gens.add(new InferredDisjointClassesAxiomGenerator());
+
 		
 		File ontfile = new File(owlFilePath);
 		OWLOntology ont = manager.loadOntologyFromOntologyDocument(ontfile);
@@ -143,8 +142,7 @@ public class OntologyConnection {
 		List<InferredAxiomGenerator<? extends OWLAxiom>> gens = new ArrayList<InferredAxiomGenerator<? extends OWLAxiom>>();
 		gens.add(new InferredSubClassAxiomGenerator());
 		gens.add(new InferredClassAssertionAxiomGenerator());
-		gens.add(new InferredEquivalentClassAxiomGenerator());
-		gens.add(new InferredDisjointClassesAxiomGenerator());
+
    		
 		InferredOntologyGenerator iog = new InferredOntologyGenerator(reasoner, gens);
 		iog.fillOntology(manager, ontology);

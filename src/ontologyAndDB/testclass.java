@@ -60,7 +60,7 @@ public class testclass {
 		//	System.out.println ( rs.getString(1));
 		//}
 		//"file://TestOntology.owl"
-		//System.out.println( t.getSubClassesOfClassByOntology("MultipleDaysEvent"));
+		System.out.println( t.getSubClassesOfClassByOntology("CinemaGenres"));
 		//System.out.println (t.getSuperClassesOfClassByOntology("ComedyGenre"));
 		//System.out.println (t.getEventIdsByClassByOntology("WeekendEvent"));
 		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 
