@@ -11,7 +11,7 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	
 	private final static String[] VALID_GROUPS = {
 		"Einzeln",
-		"Gruppe"
+		"Familie"
 	};
 	
 	private String age;
@@ -80,6 +80,11 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	{
 		this.group = group;
 		updateAlredayFilled();
+	}
+	
+	public boolean isFamily() 
+	{
+		return getGroup().equals("Familie");
 	}
 	
 	public boolean isAdult()

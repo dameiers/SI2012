@@ -26,6 +26,15 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 		timeRangeTyp = null;
 	}
 	
+	public boolean inSchoolBreak()
+	{
+		return hasValidTimeRange() &&
+			   (timeRangeTyp == SUMMERBREAK_TIME_RANGE ||
+			    timeRangeTyp == AUTUMNBREAK_TIME_RANGE ||
+			    timeRangeTyp == EASTERBREAK_TIME_RANGE || 
+			    timeRangeTyp == WINTERBREAK_TIME_RANGE); 
+	}
+	
 	public static TimeRangeStepModel getInstance() 
 	{
 		System.out.println(instance);

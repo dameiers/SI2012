@@ -63,15 +63,17 @@ class TraceBuilder
 		result.add(personDescriptionStep);
 		result.add(timeRangeStep);
 		
-		if(timeRangeStep.isAlredyFilled() && "summerbreak".equals(timeRangeStep.getTimeRangeTyp())) {
+		if(personDescriptionStep.isAlredyFilled() && !"single".equals(personDescriptionStep.getGroup())) {
+			result.add(personAgeStep);
+		} 
+		
+		if(personDescriptionStep.isFamily() &&
+		   timeRangeStep.isAlredyFilled() && 
+		   timeRangeStep.inSchoolBreak()) {
 			result.add(schoolLocationStep);
 		}
 		
 		result.add(durationStep);
-		
-		if(personDescriptionStep.isAlredyFilled() && !"single".equals(personDescriptionStep.getGroup())) {
-			result.add(personAgeStep);
-		} 	
 		
 		if(personDescriptionStep.isAdult() || 
 		   personAgeStep.hasAdultPerson() ||

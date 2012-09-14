@@ -108,7 +108,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 				{
 					ComboBoxModel groupCboModel = 
 							new DefaultComboBoxModel(
-									new String[] { "Einzeln", "Gruppe" });
+									new String[] { "Einzeln", "Familie" });
 					groupCbo = new JComboBox();
 					contentPnl.add(groupCbo, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 					groupCbo.setModel(groupCboModel);
