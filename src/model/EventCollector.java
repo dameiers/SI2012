@@ -226,7 +226,7 @@ public class EventCollector {
 		// leisureTime && (festivity || ...|| ...)
 		final Set<Integer> leisureTimeEvents = new HashSet<Integer>(
 				ontToDbConnection
-						.getInvidualsFromOntologieClassByReasoner("LeisureTimeEvents"));
+						.getInvidualsFromOntologieClassByReasoner("LeisureTimeEvent"));
 
 		final HashMap<String, String> leisureTimeEventCategories = eventCategoryStepModel
 				.getLeisureTimeCategories();
@@ -321,8 +321,8 @@ public class EventCollector {
 							.getCinemaGenres();
 					final Iterator<String> cinemaGenreKeys = cinemaGenresLikeStatusMap
 							.keySet().iterator();
-					while (it.hasNext()) {
-						final String cinemaGenre = it.next();
+					while (cinemaGenreKeys.hasNext()) {
+						final String cinemaGenre = cinemaGenreKeys.next();
 						final String likeStatus = cinemaGenresLikeStatusMap
 								.get(cinemaGenre);
 						if (!likeStatus.equals(LikeBox.DONTLIKE)) {
@@ -349,8 +349,8 @@ public class EventCollector {
 							.getConcertGenres();
 					final Iterator<String> concertGenreKeys = concertGenresLikeStatusMap
 							.keySet().iterator();
-					while (it.hasNext()) {
-						final String concertGenre = it.next();
+					while (concertGenreKeys.hasNext()) {
+						final String concertGenre = concertGenreKeys.next();
 						final String likeStatus = concertGenresLikeStatusMap
 								.get(concertGenre);
 						if (!likeStatus.equals(LikeBox.DONTLIKE)) {
@@ -376,8 +376,8 @@ public class EventCollector {
 							.getTheatreGenres();
 					final Iterator<String> theatreGenreKeys = theatreGenresLikeStatusMap
 							.keySet().iterator();
-					while (it.hasNext()) {
-						final String theatreGenre = it.next();
+					while (theatreGenreKeys.hasNext()) {
+						final String theatreGenre = theatreGenreKeys.next();
 						final String likeStatus = theatreGenresLikeStatusMap
 								.get(theatreGenre);
 						if (!likeStatus.equals(LikeBox.DONTLIKE)) {
