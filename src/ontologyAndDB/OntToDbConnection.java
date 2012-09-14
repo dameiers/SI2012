@@ -155,9 +155,9 @@ public class OntToDbConnection {
 		
 		String sqlInStat ="";
 		for(String city : reachableCities){
-			sqlInStat.concat("'"+city+"' ,");
+			sqlInStat = sqlInStat.concat("'"+city+"' ,");
 		}
-		sqlInStat.substring(0 , sqlInStat.lastIndexOf(",")-1);
+		sqlInStat = sqlInStat.substring(0 , sqlInStat.lastIndexOf(","));
 		String sqlStatement =  " SELECT * FROM \"Event\" WHERE ort IN ("+sqlInStat+")" ;
 		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);
 	//reachCitiesViewIsSet = true;

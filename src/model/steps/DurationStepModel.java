@@ -4,8 +4,8 @@ import gui.steps.DurationStep;
 
 public class DurationStepModel extends InformationGatherStepModel 
 {
-	public final static String ONE_DAY_DURATION = "one_day";
-	public final static String WEEKEND_DURATION = "multiple_days";
+	public final static String ONE_DAY_DURATION = "OneDayEvent";
+	public final static String WEEKEND_DURATION = "MultipleDaysEvent";
 	private static DurationStepModel instance;
 	private String duration;
 

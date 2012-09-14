@@ -253,7 +253,7 @@ public class EventCollector {
 		// sport && (running || motorsport|| ...)
 		final Set<Integer> sportEvents = new HashSet<Integer>(
 				ontToDbConnection
-						.getInvidualsFromOntologieClassByReasoner("SportEvents"));
+						.getInvidualsFromOntologieClassByReasoner("SportEvent"));
 
 		final HashMap<String, String> sportEventCategories = eventCategoryStepModel
 				.getSportCategories();
@@ -294,7 +294,7 @@ public class EventCollector {
 
 		final Set<Integer> cultureEventsSet = new HashSet<Integer>(
 				ontToDbConnection
-						.getInvidualsFromOntologieClassByReasoner("CultureEvents"));
+						.getInvidualsFromOntologieClassByReasoner("CultureEvent"));
 
 		final HashMap<String, String> culturEventCategories = eventCategoryStepModel
 				.getCultureCategories();

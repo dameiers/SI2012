@@ -99,7 +99,7 @@ public class DistanceStepModel extends InformationGatherStepModel
 				reachablecities.add(city);
 			}
 		}
-		ontoconn.setDistanceView(reachablecities);
+//		ontoconn.setDistanceView(reachablecities);
 		return reachablecities;
 	}
 	
@@ -117,7 +117,7 @@ public class DistanceStepModel extends InformationGatherStepModel
 				reachablecities.add(city);
 			}
 		}
-		ontoconn.setDistanceView(reachablecities);
+//		ontoconn.setDistanceView(reachablecities);
 		return reachablecities;
 	}
 	
