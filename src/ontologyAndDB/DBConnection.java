@@ -82,10 +82,10 @@ public class DBConnection {
 			
 			}		*/		
 		
-		Statement stmt2 = null;
-		stmt2 = conn.createStatement();
-		stmt2.executeUpdate("CREATE OR REPLACE VIEW "+ viewName +" AS "+ sqlStatement);	
-		stmt2.close();
+		Statement stmt = null;
+		stmt = conn.createStatement();
+		stmt.executeUpdate("CREATE OR REPLACE VIEW "+ viewName +" AS "+ sqlStatement);	
+
 	}
 	
 	
