@@ -71,7 +71,7 @@ public class OriginLocationStep extends AbstractViewModelConnectionImpl {
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Von wo aus m�chten Sie die Reise zum Event antreten?");
+					titleTxt.setText("Von wo aus moechten Sie die Reise zum Event antreten?");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);

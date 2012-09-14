@@ -73,7 +73,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Bitte geben Sie zun�chst ihr Alter an und f�r welche Gruppe Sie ein Event suchen.");
+					titleTxt.setText("Bitte geben Sie zunaechst ihr Alter an und fuer wie viele Personen Sie ein Event suchen.");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);
@@ -99,7 +99,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 				{
 					groupLbl = new JLabel();
 					contentPnl.add(groupLbl, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					groupLbl.setText("Gruppe:");
+					groupLbl.setText("Anzahl Pesonen:");
 				}
 				{	
 					ageCbo = new PersonAgeComboBox();
@@ -108,7 +108,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 				{
 					ComboBoxModel groupCboModel = 
 							new DefaultComboBoxModel(
-									new String[] { "single", "family" });
+									new String[] { "Einzeln", "Gruppe" });
 					groupCbo = new JComboBox();
 					contentPnl.add(groupCbo, new GridBagConstraints(2, 2, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 					groupCbo.setModel(groupCboModel);

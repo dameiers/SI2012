@@ -175,7 +175,7 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 			try {
 				dist = Double.parseDouble(input);
 			} catch (Exception e){
-				JOptionPane.showMessageDialog(null, "Die Eingabe ist ungültig.", "Fehler", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Die Eingabe ist ungueltig.", "Fehler", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			jTable1Model.getDataVector().clear();

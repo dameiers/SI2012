@@ -128,16 +128,28 @@ class EventCollector {
 			ontToDbConnection.fillOntWithEventsFromHolidayView();
 
 			// Distance view setzen...
-			// TODO Bo muss komponente bauen...
-			// DistanceCalculator.getReachableCities(double km);
-			// DistanceCalculator.getReachableCities(double TimeInMillis);
 			final String distanceUnit = distanceStep.getUnit();
+			ArrayList<String> reachableCities = null;
+			try {
+				if (distanceUnit.equals(DistanceStepModel.DISTANCE_UNTI)) {
 
-			if (distanceUnit.equals(DistanceStepModel.DISTANCE_UNTI)) {
-
-			} else {
-				// TODO umrechnung zeit / km Verhältnis....
-				// ontToDbConnection.setDistanceView(reachableCities);
+					reachableCities = distanceStep.getReachableCitiesByDistance(Double
+							.parseDouble(distanceStep.getDistance()));
+				} else {
+					// TODO umrechnung zeit / km Verhältnis....
+					reachableCities = distanceStep.getReachableCitiesByTime(60*60*1000*Double
+							.parseDouble(distanceStep.getDistance()));
+				}
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if(reachableCities != null){
+				ontToDbConnection.setDistanceView(reachableCities);
 			}
 
 		} catch (SQLException e) {
@@ -211,27 +223,29 @@ class EventCollector {
 
 	private Set<Integer> calculateLeisureTimeEvents() {
 		// leisureTime && (festivity || ...|| ...)
-				final Set<Integer> leisureTimeEvents = new HashSet<Integer>(
-						ontToDbConnection
-								.getInvidualsFromOntologieClassByReasoner("LeisureTimeEvents"));
+		final Set<Integer> leisureTimeEvents = new HashSet<Integer>(
+				ontToDbConnection
+						.getInvidualsFromOntologieClassByReasoner("LeisureTimeEvents"));
 
-				final HashMap<String, String> leisureTimeEventCategories = eventCategoryStepModel
-						.getLeisureTimeCategories();
-				final Iterator<String> it = leisureTimeEventCategories.keySet().iterator();
-				final ArrayList<String> leisureTimeCategoryClassNames = new ArrayList<String>();
-				while (it.hasNext()) {
-					final String leisureTimeCategory = it.next();
-					final String status = leisureTimeEventCategories.get(leisureTimeCategory);
-					if (!status.equals(LikeBox.DONTLIKE)) {
-						leisureTimeCategoryClassNames.add(leisureTimeCategory);
-					}
-				}
-				final Set<Integer> sportCategoryEvents = new HashSet<Integer>(
-						ontToDbConnection
-								.getIndividualUnionOverClassesByReasoner(leisureTimeCategoryClassNames));
-				leisureTimeEvents.retainAll(sportCategoryEvents);
+		final HashMap<String, String> leisureTimeEventCategories = eventCategoryStepModel
+				.getLeisureTimeCategories();
+		final Iterator<String> it = leisureTimeEventCategories.keySet()
+				.iterator();
+		final ArrayList<String> leisureTimeCategoryClassNames = new ArrayList<String>();
+		while (it.hasNext()) {
+			final String leisureTimeCategory = it.next();
+			final String status = leisureTimeEventCategories
+					.get(leisureTimeCategory);
+			if (!status.equals(LikeBox.DONTLIKE)) {
+				leisureTimeCategoryClassNames.add(leisureTimeCategory);
+			}
+		}
+		final Set<Integer> sportCategoryEvents = new HashSet<Integer>(
+				ontToDbConnection
+						.getIndividualUnionOverClassesByReasoner(leisureTimeCategoryClassNames));
+		leisureTimeEvents.retainAll(sportCategoryEvents);
 
-				return leisureTimeEvents;
+		return leisureTimeEvents;
 	}
 
 	private Set<Integer> calculateSportEvents() {
@@ -272,7 +286,7 @@ class EventCollector {
 
 		return result;
 	}
-	
+
 	private Set<Integer> calculateCultureEvents() {
 		// culture && ((cinema && (genre1 || genre2)) || concert&&(genre ||
 		// genre ...) || theatre&&(genre || genre ...))
@@ -417,7 +431,6 @@ class EventCollector {
 			System.out.println("\n");
 		}
 	}
-
 
 	public static void main(String[] args) {
 		EventCollector collector = new EventCollector();

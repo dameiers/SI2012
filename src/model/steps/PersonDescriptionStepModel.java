@@ -10,8 +10,8 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	private static PersonDescriptionStepModel instance;
 	
 	private final static String[] VALID_GROUPS = {
-		"single",
-		"family"
+		"Einzeln",
+		"Gruppe"
 	};
 	
 	private String age;
@@ -19,7 +19,7 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	
 	private PersonDescriptionStepModel() 
 	{
-		super("Persönlich", new PersonDescriptionStep());
+		super("Persoenlich", new PersonDescriptionStep());
 	}
 	
 	public static PersonDescriptionStepModel getInstance() 
@@ -34,10 +34,10 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 	public String getError() {
 		
 		if(!hasValidAge())
-			return "Ungültiges Alter";
+			return "Ungueltiges Alter";
 		
 		if(!hasValidGroup())
-			return "Ungültige Gruppe";
+			return "Ungueltige Gruppe";
 		
 		return null;
 	}

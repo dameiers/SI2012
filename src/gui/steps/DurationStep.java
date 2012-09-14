@@ -100,7 +100,7 @@ public class DurationStep extends AbstractViewModelConnectionImpl {
 				{
 					oneDayBtn = new JRadioButton();
 					contentPnl.add(oneDayBtn, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					oneDayBtn.setText("Eint�gig");
+					oneDayBtn.setText("Eintaegig");
 					getTimeRangeGroup().add(oneDayBtn);
 				}
 			}

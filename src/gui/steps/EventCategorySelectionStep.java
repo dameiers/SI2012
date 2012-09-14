@@ -90,7 +90,7 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Welche Art von Event möchten Sie besuchen?");
+					titleTxt.setText("Welche Art von Event moechten Sie besuchen?");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212, 208, 200));
 					titleTxt.setEditable(false);

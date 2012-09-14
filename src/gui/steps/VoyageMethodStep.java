@@ -73,7 +73,7 @@ public class VoyageMethodStep extends AbstractViewModelConnectionImpl {
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Ist die Anreise mit dem Auto m�glich?");
+					titleTxt.setText("Ist die Anreise mit dem Auto moeglich?");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);

@@ -4,7 +4,7 @@ import javax.swing.JComboBox;
 
 public class LocationComboBox extends JComboBox {
 
-	private final static String[] locations = {"Saarbrücken", "Saarlouis", "Lebach"};
+	private final static String[] locations = {"Saarbruecken", "Saarlouis", "Lebach"};
 	
 	public LocationComboBox() {
 		super(locations);

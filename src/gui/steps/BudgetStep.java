@@ -69,7 +69,7 @@ public class BudgetStep extends AbstractViewModelConnectionImpl {
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Wie teuer darf das Event sein");
+					titleTxt.setText("Wie teuer darf das Event sein?");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);
