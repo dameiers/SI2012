@@ -152,7 +152,6 @@ public class EventCollector {
 			if(reachableCities != null){
 				ontToDbConnection.setDistanceView(reachableCities);
 			}
-			ontToDbConnection.f
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
