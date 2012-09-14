@@ -75,11 +75,13 @@ public class DBConnection {
 			Statement stmt = null;
 			stmt = conn.createStatement();
 			stmt.executeUpdate("DROP VIEW "+viewName);
+			stmt.close();
 			}		
 		
-		Statement stmt = null;
-		stmt = conn.createStatement();
-		stmt.executeUpdate("CREATE VIEW "+ viewName +" AS "+ sqlStatement);			        		
+		Statement stmt2 = null;
+		stmt2 = conn.createStatement();
+		stmt2.executeUpdate("CREATE VIEW "+ viewName +" AS "+ sqlStatement);	
+		stmt2.close();
 	}
 	
 	
