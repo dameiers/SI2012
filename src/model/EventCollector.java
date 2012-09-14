@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 import ontologyAndDB.OntToDbConnection;
 import ontologyAndDB.exception.OWLConnectionUnknownTypeException;
@@ -153,6 +154,29 @@ public class EventCollector {
 				ontToDbConnection.setDistanceView(reachableCities);
 			}
 
+			try {
+				ontToDbConnection.fillOntWithEventsFromDistanceView();
+				ontToDbConnection.InfereceAndSaveOntology();
+			} catch (OntologyConnectionDataPropertyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (OWLConnectionUnknownTypeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (OntologyConnectionIndividualAreadyExistsException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (OntologyConnectionUnknowClassException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (OWLOntologyCreationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (OWLOntologyStorageException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
