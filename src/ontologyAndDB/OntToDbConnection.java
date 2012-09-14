@@ -142,7 +142,7 @@ public class OntToDbConnection {
 	 */
 	public ArrayList<String> getCitiesFromDB () throws SQLException{
 		ArrayList<String> cities = new ArrayList<String>();
-		ResultSet rs = dbCon.executeQuery("Select Distinct ort from \"Event\"");
+		ResultSet rs = dbCon.executeQuery("Select Distinct ort from \""+HOLIDAY_VIEW_NAME +"\"");
 		while(rs.next()){
 			cities.add(rs.getString("ort"));
 		}
@@ -162,10 +162,8 @@ public class OntToDbConnection {
 			sqlInStat = sqlInStat.concat("'"+city+"' ,");
 		}
 		sqlInStat = sqlInStat.substring(0 , sqlInStat.lastIndexOf(","));
-		String sqlStatement =  " SELECT * FROM \"Event\" WHERE ort IN ("+sqlInStat+")" ;
-		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);
-	//reachCitiesViewIsSet = true;
-		
+		String sqlStatement =  " SELECT * FROM \""+HOLIDAY_VIEW_NAME+"\" WHERE ort IN ("+sqlInStat+")" ;
+		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);		
 	}
 	
 	//////////////////////////////////////////////////////////// Time-Methods//////////////////////////////////////////
