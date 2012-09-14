@@ -37,6 +37,7 @@ import ontologyAndDB.OntToDbConnection;
 
 import model.steps.DistanceStepModel;
 import model.steps.InformationGatherStepModel;
+import model.steps.VoyageMethodStepModel;
 
 import java.io.*;
 import java.net.URL;
@@ -86,6 +87,12 @@ public class DistanceStep extends AbstractViewModelConnectionImpl{
 		
 	}
 	
+	@Override
+	public void fillMask() {
+		VoyageMethodStepModel voyageMethodStepModel = VoyageMethodStepModel.getInstance();
+		hintTxt.setVisible(!voyageMethodStepModel.byCar());
+	}
+
 	public DistanceStep() {
 		super();
 		cityandDist = new HashMap<String, Double>();
