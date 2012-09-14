@@ -51,7 +51,7 @@ public class DBConnection {
 
 		Statement stmt = null;
 		stmt = conn.createStatement();
-		stmt.executeQuery(sqlStatement);			        
+		stmt.executeUpdate(sqlStatement);			        
 	}
 
 	
