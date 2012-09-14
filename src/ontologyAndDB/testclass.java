@@ -16,6 +16,7 @@ import ontologyAndDB.exception.OWLConnectionUnknownTypeException;
 import ontologyAndDB.exception.OntologyConnectionDataPropertyException;
 import ontologyAndDB.exception.OntologyConnectionIndividualAreadyExistsException;
 import ontologyAndDB.exception.OntologyConnectionUnknowClassException;
+import ontologyAndDB.exception.ViewDoesntExistsException;
 
 import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -68,6 +69,19 @@ public class testclass {
 		//t.preAndSave();
 		//System.out.println (t.getInvidualsFromOntologieClass("Event")); 
 		
+		/*
+		try{
+		t.setHolidayView("1999-01-01","2020-01-01");
+		}catch(ViewDoesntExistsException e)
+		{
+			e.printStackTrace();
+		}
+		ResultSet rs = t.executeQuery("Select * From HolidayView");
+		rs.next() ;
+		rs.next() ;
+		System.out.println(rs.getString(1));
+		*/
+		/*
 		ArrayList<Integer> list=new ArrayList<Integer>();
 		list.add(2);
 		list.add(3);
@@ -75,6 +89,7 @@ public class testclass {
 		ResultSet rs = t.getDataFromDbByEvent_Id(list);
 		rs.next() ;
 		System.out.println(rs.getString(1));
+		*/
 		t.disconnectFromDB();
 		cal =		Calendar.getInstance();
 		System.out.println("Ende : "+cal.getTime());
