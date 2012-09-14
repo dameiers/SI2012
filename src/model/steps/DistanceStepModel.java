@@ -98,8 +98,7 @@ public class DistanceStepModel extends InformationGatherStepModel
 		String origin = OriginLocationStepModel.getInstance().getOrigin();
 		for (int i=0; i<allcities.size(); i++){
 			String city = allcities.get(i).replace("[", "").replace("]", "").trim();
-			origin = normalizeCityName(origin);
-			city = normalizeCityName(city);
+		
 			double dist = getDistance(origin, city);
 			
 			if (dist < wish_distance){
@@ -117,8 +116,7 @@ public class DistanceStepModel extends InformationGatherStepModel
 		String origin = OriginLocationStepModel.getInstance().getOrigin();
 		for (int i=0; i<allcities.size(); i++){
 			String city = allcities.get(i).replace("[", "").replace("]", "").trim();
-			origin = normalizeCityName(origin);
-			city = normalizeCityName(city);
+			
 			double dist = getDistance(origin, city);
 			double estimate_time = dist / 60.0;
 			if (dist < wish_time){
@@ -173,6 +171,8 @@ public class DistanceStepModel extends InformationGatherStepModel
 	public static double getDistance(String from, String to) throws Exception{
 		double[] pos1 = getLatLon(from);
 		double[] pos2 = getLatLon(to);
+		if (pos1==null || pos2==null) System.out.println(from+" "+to);
+		
 		double dLon = Math.toRadians(pos2[1]-pos1[1]);
 		double dLat = Math.toRadians(pos2[0]-pos1[0]);
 		double lat1 = Math.toRadians(pos1[0]);
@@ -200,5 +200,5 @@ public class DistanceStepModel extends InformationGatherStepModel
 		in.close();
 		return 0;
 	}
-
+	
 }

@@ -174,28 +174,9 @@ public class OntToDbConnection {
 	
 	//TODO Format der Eingabe mit der Übergabe von der GUI anpassen
 	public void setHolidayView (String startDate, String endDate) throws SQLException, ViewDoesntExistsException{
-	//	if ( !reachCitiesViewIsSet )
-	//		throw new ViewDoesntExistsException(REACHABLE_CITIES_VIEW_NAME+" hasnt been created yet");
-		String sqlStatement ="";
-		
-	/*
-	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-	
-	try{
-		java.util.Date parsedStartDate = dateFormat.parse(startDate);
-		java.util.Date parsedEndDate = dateFormat.parse(endDate);
-		java.sql.Timestamp timestampStart = new java.sql.Timestamp(parsedStartDate.getTime());
-		java.sql.Timestamp timestampEnd = new java.sql.Timestamp(parsedEndDate.getTime());
-	
-		sqlStatement = " SELECT * FROM \"Event\" WHERE startdatum >= "+ timestampStart.toGMTString()+" AND enddatum <= "+timestampEnd.toGMTString() ;	
-	}catch( ParseException e){
-		e.printStackTrace();
-	}*/
-	
-	
-	sqlStatement = " SELECT * FROM \"Event\" WHERE startdatum >= '"+startDate+"' AND enddatum <= '"+endDate+"'" ;	
+		String sqlStatement ="";	
+		sqlStatement = " SELECT * FROM \"Event\" WHERE startdatum >= '"+startDate+"' AND enddatum <= '"+endDate+"'" ;	
 		dbCon.createView(HOLIDAY_VIEW_NAME, sqlStatement);
-	//	holidayViewIsSet =true;
 	}
 	
 	//////////////////////////////////////////Reasoner Based Methods ////////////////////////////////////////////////////////

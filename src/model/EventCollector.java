@@ -125,6 +125,7 @@ public class EventCollector {
 			ontToDbConnection.setHolidayView(
 					sdf.format(timeRangeStep.getFromDate().getTime()),
 					sdf.format(timeRangeStep.getToDate().getTime()));
+			
 //			ontToDbConnection.fillOntWithEventsFromHolidayView();
 
 			// Distance view setzen...
@@ -151,6 +152,7 @@ public class EventCollector {
 			if(reachableCities != null){
 				ontToDbConnection.setDistanceView(reachableCities);
 			}
+			ontToDbConnection.f
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
