@@ -65,6 +65,10 @@ public class OntToDbConnection {
 		ontCon.removeAllIndividuals();
 	}
 	
+	public void removeIndividualsFromClass (String className){
+		ontCon.removeAllIndividualsOfClass(className);
+	}
+	
 	public void openOntology(String ontologyFilePath) throws OWLOntologyCreationException{
 		ontCon.openOntology(ontologyFilePath);
 	}

@@ -14,6 +14,9 @@ import ontologyAndDB.exception.OntologyConnectionUnknowClassException;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.util.InferredAxiomGenerator;
 import org.semanticweb.owlapi.util.InferredClassAssertionAxiomGenerator;
+import org.semanticweb.owlapi.util.InferredDisjointClassesAxiomGenerator;
+import org.semanticweb.owlapi.util.InferredEquivalentClassAxiomGenerator;
+import org.semanticweb.owlapi.util.InferredIndividualAxiomGenerator;
 import org.semanticweb.owlapi.util.InferredOntologyGenerator;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
 import org.semanticweb.owlapi.util.OWLEntityRemover;
@@ -29,6 +32,7 @@ import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDataPropertyAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLIndividualVisitor;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -107,6 +111,8 @@ public class OntologyConnection {
 		List<InferredAxiomGenerator<? extends OWLAxiom>> gens = new ArrayList<InferredAxiomGenerator<? extends OWLAxiom>>();
 		gens.add(new InferredSubClassAxiomGenerator());
 		gens.add(new InferredClassAssertionAxiomGenerator());
+		gens.add(new InferredEquivalentClassAxiomGenerator());
+		gens.add(new InferredDisjointClassesAxiomGenerator());
 		
 		File ontfile = new File(owlFilePath);
 		OWLOntology ont = manager.loadOntologyFromOntologyDocument(ontfile);
@@ -132,6 +138,8 @@ public class OntologyConnection {
 		List<InferredAxiomGenerator<? extends OWLAxiom>> gens = new ArrayList<InferredAxiomGenerator<? extends OWLAxiom>>();
 		gens.add(new InferredSubClassAxiomGenerator());
 		gens.add(new InferredClassAssertionAxiomGenerator());
+		gens.add(new InferredEquivalentClassAxiomGenerator());
+		gens.add(new InferredDisjointClassesAxiomGenerator());
    		
 		InferredOntologyGenerator iog = new InferredOntologyGenerator(reasoner, gens);
 		iog.fillOntology(manager, ontology);
@@ -147,6 +155,21 @@ public class OntologyConnection {
 		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
 		 for(OWLNamedIndividual ind : ontology.getIndividualsInSignature()) {
 			 ind.accept(remover);
+			 }
+		manager.applyChanges(remover.getChanges());
+		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
+		remover.reset();
+		saveOntologie();
+	}
+	
+	protected void removeAllIndividualsOfClass (String className){
+		
+		OWLClass cl = this.getClassByName(className);
+		Set<OWLIndividual> invids = cl.getIndividuals(ontology);
+		OWLEntityRemover remover = new OWLEntityRemover(manager, Collections.singleton(ontology));
+		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
+		 for(OWLIndividual ind : invids) {
+			((OWLNamedIndividual)ind).accept(remover);
 			 }
 		manager.applyChanges(remover.getChanges());
 		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
