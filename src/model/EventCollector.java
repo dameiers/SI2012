@@ -117,6 +117,7 @@ public class EventCollector {
 	}
 
 	public void setEventIDs() {
+		ontToDbConnection.removeAllIndividuals();
 		ArrayList<Integer> tmpEventIDs = new ArrayList<Integer>();
 
 		// Holiday-View-Setzen
