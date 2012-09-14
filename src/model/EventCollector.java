@@ -176,10 +176,16 @@ public class EventCollector {
 		// Duration-Ontologie
 		// TODO aufpassen dass das was aus dem gui model kommt auch mit dem
 		// Ontologie Klassennamen übereinstimmt...
-		final Set<Integer> durationSet = new HashSet<Integer>(
-				ontToDbConnection
-						.getInvidualsFromOntologieClassByReasoner(durationStep
-								.getDuration()));
+		Set<Integer> durationSet = null;
+		try {
+			durationSet = new HashSet<Integer>(
+					ontToDbConnection
+							.getInvidualsFromOntologieClassByReasoner(durationStep
+									.getDuration()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// Ontologie Class Restrictions for Culture Events in der form
 		Set<Integer> cultureEvents = null;
@@ -224,9 +230,15 @@ public class EventCollector {
 
 	private Set<Integer> calculateLeisureTimeEvents() {
 		// leisureTime && (festivity || ...|| ...)
-		final Set<Integer> leisureTimeEvents = new HashSet<Integer>(
-				ontToDbConnection
-						.getInvidualsFromOntologieClassByReasoner("LeisureTimeEvent"));
+		Set<Integer> leisureTimeEvents = null;
+		try {
+			leisureTimeEvents = new HashSet<Integer>(
+					ontToDbConnection
+							.getInvidualsFromOntologieClassByReasoner("LeisureTimeEvent"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		final HashMap<String, String> leisureTimeEventCategories = eventCategoryStepModel
 				.getLeisureTimeCategories();
@@ -241,9 +253,15 @@ public class EventCollector {
 				leisureTimeCategoryClassNames.add(leisureTimeCategory);
 			}
 		}
-		final Set<Integer> sportCategoryEvents = new HashSet<Integer>(
-				ontToDbConnection
-						.getIndividualUnionOverClassesByReasoner(leisureTimeCategoryClassNames));
+		Set<Integer> sportCategoryEvents = null;
+		try {
+			sportCategoryEvents = new HashSet<Integer>(
+					ontToDbConnection
+							.getIndividualUnionOverClassesByReasoner(leisureTimeCategoryClassNames));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		leisureTimeEvents.retainAll(sportCategoryEvents);
 
 		return leisureTimeEvents;
@@ -251,9 +269,15 @@ public class EventCollector {
 
 	private Set<Integer> calculateSportEvents() {
 		// sport && (running || motorsport|| ...)
-		final Set<Integer> sportEvents = new HashSet<Integer>(
-				ontToDbConnection
-						.getInvidualsFromOntologieClassByReasoner("SportEvent"));
+		Set<Integer> sportEvents = null;
+		try {
+			sportEvents = new HashSet<Integer>(
+					ontToDbConnection
+							.getInvidualsFromOntologieClassByReasoner("SportEvent"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		final HashMap<String, String> sportEventCategories = eventCategoryStepModel
 				.getSportCategories();
@@ -266,9 +290,15 @@ public class EventCollector {
 				sportCategoryClassNames.add(sportCategory);
 			}
 		}
-		final Set<Integer> sportCategoryEvents = new HashSet<Integer>(
-				ontToDbConnection
-						.getIndividualUnionOverClassesByReasoner(sportCategoryClassNames));
+		Set<Integer> sportCategoryEvents = null;
+		try {
+			sportCategoryEvents = new HashSet<Integer>(
+					ontToDbConnection
+							.getIndividualUnionOverClassesByReasoner(sportCategoryClassNames));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		sportEvents.retainAll(sportCategoryEvents);
 
 		return sportEvents;
@@ -292,9 +322,15 @@ public class EventCollector {
 		// culture && ((cinema && (genre1 || genre2)) || concert&&(genre ||
 		// genre ...) || theatre&&(genre || genre ...))
 
-		final Set<Integer> cultureEventsSet = new HashSet<Integer>(
-				ontToDbConnection
-						.getInvidualsFromOntologieClassByReasoner("CultureEvent"));
+		Set<Integer> cultureEventsSet = null;
+		try {
+			cultureEventsSet = new HashSet<Integer>(
+					ontToDbConnection
+							.getInvidualsFromOntologieClassByReasoner("CultureEvent"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		final HashMap<String, String> culturEventCategories = eventCategoryStepModel
 				.getCultureCategories();
@@ -309,13 +345,18 @@ public class EventCollector {
 			final String status = culturEventCategories.get(currentCategory);
 			if (!status.equals(LikeBox.DONTLIKE)) {
 				if (currentCategory.equals("CinemaEvent")) {
-					cinemaEvents = new HashSet<Integer>(
-							ontToDbConnection
-									.getInvidualsFromOntologieClassByReasoner("CinemaEvent"));
+					try {
+						cinemaEvents = new HashSet<Integer>(
+								ontToDbConnection
+										.getInvidualsFromOntologieClassByReasoner("CinemaEvent"));
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					// here we now that cinema events are marked as "LIKE"
 					// so we have to care about genres
 					final ArrayList<String> cinemaGenreClassNames = new ArrayList<String>();
-					final Set<Integer> cinemaGenreEvents;
+					Set<Integer> cinemaGenreEvents = null;
 					// iterate through the genres that are selected...
 					final HashMap<String, String> cinemaGenresLikeStatusMap = genreSelectionStepModel
 							.getCinemaGenres();
@@ -329,9 +370,14 @@ public class EventCollector {
 							cinemaGenreClassNames.add(cinemaGenre);
 						}
 					}
-					cinemaGenreEvents = new HashSet<Integer>(
-							ontToDbConnection
-									.getIndividualUnionOverClassesByReasoner(cinemaGenreClassNames));
+					try {
+						cinemaGenreEvents = new HashSet<Integer>(
+								ontToDbConnection
+										.getIndividualUnionOverClassesByReasoner(cinemaGenreClassNames));
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					// cinema && (genre 1 || genre 2...)
 					cinemaEvents.retainAll(cinemaGenreEvents);
 
@@ -339,11 +385,16 @@ public class EventCollector {
 				if (currentCategory.equals("ConcertEvent")) {
 					// here we now that concert events are marked as "LIKE"
 					// so we have to care about genres
-					concertEvents = new HashSet<Integer>(
-							ontToDbConnection
-									.getInvidualsFromOntologieClassByReasoner("ConcertEvent"));
+					try {
+						concertEvents = new HashSet<Integer>(
+								ontToDbConnection
+										.getInvidualsFromOntologieClassByReasoner("ConcertEvent"));
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					final ArrayList<String> concertGenreClassNames = new ArrayList<String>();
-					final Set<Integer> concertGenreEvents;
+					Set<Integer> concertGenreEvents = null;
 					// iterate through the genres that are selected...
 					final HashMap<String, String> concertGenresLikeStatusMap = genreSelectionStepModel
 							.getConcertGenres();
@@ -357,20 +408,30 @@ public class EventCollector {
 							concertGenreClassNames.add(concertGenre);
 						}
 					}
-					concertGenreEvents = new HashSet<Integer>(
-							ontToDbConnection
-									.getIndividualUnionOverClassesByReasoner(concertGenreClassNames));
+					try {
+						concertGenreEvents = new HashSet<Integer>(
+								ontToDbConnection
+										.getIndividualUnionOverClassesByReasoner(concertGenreClassNames));
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					// concert && (genre 1 || genre 2...)
 					concertEvents.retainAll(concertGenreEvents);
 				}
 				if (currentCategory.equals("TheatreEvent")) {
 					// here we now that theatre events are marked as "LIKE"
 					// so we have to care about genres
-					theatreEvents = new HashSet<Integer>(
-							ontToDbConnection
-									.getInvidualsFromOntologieClassByReasoner("TheatreEvent"));
+					try {
+						theatreEvents = new HashSet<Integer>(
+								ontToDbConnection
+										.getInvidualsFromOntologieClassByReasoner("TheatreEvent"));
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					final ArrayList<String> theatreGenreClassNames = new ArrayList<String>();
-					final Set<Integer> theatreGenreEvents;
+					Set<Integer> theatreGenreEvents = null;
 					// iterate through the genres that are selected...
 					final HashMap<String, String> theatreGenresLikeStatusMap = genreSelectionStepModel
 							.getTheatreGenres();
@@ -384,9 +445,14 @@ public class EventCollector {
 							theatreGenreClassNames.add(theatreGenre);
 						}
 					}
-					theatreGenreEvents = new HashSet<Integer>(
-							ontToDbConnection
-									.getIndividualUnionOverClassesByReasoner(theatreGenreClassNames));
+					try {
+						theatreGenreEvents = new HashSet<Integer>(
+								ontToDbConnection
+										.getIndividualUnionOverClassesByReasoner(theatreGenreClassNames));
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					// theatre && (genre 1 || genre 2...)
 					theatreEvents.retainAll(theatreGenreEvents);
 				}
