@@ -3,6 +3,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 
 import model.steps.DistanceStepModel;
@@ -255,6 +256,21 @@ public class OntToDbConnection {
 	//////////////////////////////////////////////////Database Methods//////////////////////////////////////////////////////////////////
 	
 		
+	
+	public HashMap<String , double[]> getCityPositions () throws SQLException{
+		
+		HashMap<String,double[]> pos = new HashMap<String, double[]>();
+	
+		ResultSet rs = dbCon.executeQuery("Select * FROM Stadt");
+		while(rs.next()){
+			double lat = rs.getDouble(2);
+			double lon = rs.getDouble(3);
+			double d[] = {lat,lon};
+			pos.put( rs.getString("stadt_name"), d );
+		}
+		return pos; 
+	}
+	
 	public ResultSet getDataFromDbByEvent_Id ( ArrayList<Integer> eventIDs) throws SQLException{
 		if(eventIDs != null && !eventIDs.isEmpty() ){
 			String s = new String(" ");
