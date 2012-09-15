@@ -14,6 +14,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import javax.management.InstanceAlreadyExistsException;
+
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
@@ -67,9 +69,17 @@ public class EventCollector {
 			.getInstance();
 	private OntToDbConnection ontToDbConnection;
 	private ArrayList<Integer> eventIDs = new ArrayList<Integer>();
+	private static EventCollector instance=null;
 
-	public EventCollector() {
+	private EventCollector() {
 		ontToDbConnection = OntToDbConnection.getInstance();
+	}
+	
+	public static EventCollector getInstance(){
+		if(instance == null){
+			return instance;
+		}
+		return new EventCollector();
 	}
 
 	/**

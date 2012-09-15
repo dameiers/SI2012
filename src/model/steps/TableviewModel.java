@@ -34,7 +34,7 @@ public class TableviewModel extends InformationGatherStepModel{
 	}
 	
 	public void fillTableModel(){
-		EventCollector collector = new EventCollector();
+		EventCollector collector = EventCollector.getInstance();
 		collector.setEventIDs();
 
 		events = collector.getEvents();
