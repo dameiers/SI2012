@@ -111,7 +111,6 @@ public class OriginLocationStep extends AbstractViewModelConnectionImpl {
 			
 			@Override
 			public void run() {
-				EventCollector.getInstance().clearOntology();
 				EventCollector.getInstance().setDistanceView();
 			}
 		});

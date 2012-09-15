@@ -1,6 +1,7 @@
 package model;
 
 import gui.components.LikeBox;
+import gui.components.PersonAgeComboBox;
 import gui.steps.DistanceStep;
 
 import java.sql.ResultSet;
@@ -69,18 +70,18 @@ public class EventCollector {
 			.getInstance();
 	private OntToDbConnection ontToDbConnection;
 	private ArrayList<Integer> eventIDs = new ArrayList<Integer>();
-	private static EventCollector instance=null;
+	private static EventCollector instance = null;
 
 	private EventCollector() {
 		ontToDbConnection = OntToDbConnection.getInstance();
 		ontToDbConnection.removeAllIndividuals();
 	}
-	
-	public static EventCollector getInstance(){
-		if(instance != null){
-			return instance;
+
+	public static EventCollector getInstance() {
+		if (instance == null) {
+			instance = new EventCollector();
 		}
-		return new EventCollector();
+		return instance;
 	}
 
 	/**
@@ -123,14 +124,14 @@ public class EventCollector {
 	}
 
 	public void setEventIDs() {
-//		ontToDbConnection.removeAllIndividuals();
+		// ontToDbConnection.removeAllIndividuals();
 		ArrayList<Integer> tmpEventIDs = new ArrayList<Integer>();
 
 		// Holiday-View-Setzen
-//		setHolidayView();
+		// setHolidayView();
 
 		// Distance view setzen...
-//		setDistanceView();
+		// setDistanceView();
 
 		// Duration-Ontologie
 		Set<Integer> durationSet = null;
@@ -146,14 +147,14 @@ public class EventCollector {
 			cultureEvents = calculateCultureEvents();
 		}
 
-		//  Ontologie Class Restrictions for LeisureTimeEvents
+		// Ontologie Class Restrictions for LeisureTimeEvents
 		Set<Integer> leisureTimeEvents = null;
 		if (!kindOfEventSelectionStepModel.getLeisureTimeStatus().equals(
 				KindOfEventSelectionStepModel.DONTLIKE)) {
 			leisureTimeEvents = calculateLeisureTimeEvents();
 		}
 
-		//  Ontologie Class Restrictions for SportEvents
+		// Ontologie Class Restrictions for SportEvents
 		Set<Integer> sportEvents = null;
 		if (!kindOfEventSelectionStepModel.getSportStatus().equals(
 				KindOfEventSelectionStepModel.DONTLIKE)) {
@@ -175,9 +176,56 @@ public class EventCollector {
 
 		durationSet.retainAll(tmp);
 
-		this.eventIDs = new ArrayList<Integer>(durationSet);
+		this.eventIDs = new ArrayList<Integer>(calulateBudgetRestriction(durationSet));
 	}
 
+	private HashSet<Integer> calulateBudgetRestriction(Set<Integer> eventSet){
+		final HashSet<Integer> eventIdsWithBudgetRestriction = new HashSet<Integer>();
+		final double budget =  Double.parseDouble(budgetStepModel.getBudget());
+		boolean childPriceNeeded = false;
+		int childs = 0;
+		int normalPersons =0;
+		final String[] personAges = personAgeStep.getAges();
+		
+		for(int i=0; i< personAges.length;i++){
+			if(personAges[i].equals(PersonAgeComboBox.CHILD)){
+				childPriceNeeded=true;
+				childs++;
+			}
+		}
+		
+		for(Integer eventId : eventSet){
+			//check if the BudgetRestriction for this event is fullfilled
+			final ArrayList<Integer> tmp =  new ArrayList<Integer>();
+			tmp.add(eventId);
+			ResultSet rs =ontToDbConnection.getDataFromDbByEvent_Id(tmp);
+			double childPrice=0;
+			double normalPrice =0;
+			try {
+				while(rs.next()){
+					if(childPriceNeeded){
+						String s = rs.getString("kinder");
+						s = s.replace('Ä',' ');
+						s=s.replace(',','.');
+						childPrice = Double.parseDouble(s);
+					}
+					String s = rs.getString("erwachsene");
+					s=s.replace('Ä',' ');
+					s=s.replace(',','.');
+					normalPrice = Double.parseDouble(s);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			if((childs*childPrice)+(personAges.length-childs)*normalPrice <=budget){
+				eventIdsWithBudgetRestriction.add(eventId);
+			}
+		}
+		
+		return eventIdsWithBudgetRestriction;
+	}
+	
 	private Set<Integer> calculateLeisureTimeEvents() {
 		// leisureTime && (festivity || ...|| ...)
 		Set<Integer> leisureTimeEvents = null;
@@ -232,20 +280,6 @@ public class EventCollector {
 		sportEvents.retainAll(sportCategoryEvents);
 
 		return sportEvents;
-	}
-
-	public HashMap<String, String>[] getDummyData() {
-		HashMap<String, String>[] result = new HashMap[2];
-
-		result[0] = new HashMap<String, String>();
-		result[0].put("name", "Das Konzert Event");
-		result[0].put("location", "Saarbrücken");
-
-		result[1] = new HashMap<String, String>();
-		result[1].put("name", "Das Kino Event");
-		result[1].put("location", "Neunkirchen");
-
-		return result;
 	}
 
 	private Set<Integer> calculateCultureEvents() {
@@ -361,8 +395,8 @@ public class EventCollector {
 
 		// culture && (...)
 		cultureEventsSet.retainAll(tmp);
-		
-		//TODO restrictions for budget....
+
+		// TODO restrictions for budget....
 		return cultureEventsSet;
 	}
 
@@ -376,7 +410,7 @@ public class EventCollector {
 
 	public void setDistanceView() {
 		ontToDbConnection.removeAllIndividuals();
-		
+
 		final String distanceUnit = distanceStep.getUnit();
 		ArrayList<String> reachableCities = null;
 		try {
@@ -386,13 +420,11 @@ public class EventCollector {
 						.getReachableCitiesByDistance(Double
 								.parseDouble(distanceStep.getDistance()));
 			} else {
-				// TODO umrechnung zeit / km Verh‰ltnis....
 				reachableCities = distanceStep
 						.getReachableCitiesByTime(60 * 60 * 1000 * Double
 								.parseDouble(distanceStep.getDistance()));
 			}
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -403,5 +435,5 @@ public class EventCollector {
 		ontToDbConnection.fillOntWithEventsFromDistanceView();
 		ontToDbConnection.InfereceAndSaveOntology();
 	}
-	
+
 }
