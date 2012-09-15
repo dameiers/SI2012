@@ -73,10 +73,11 @@ public class EventCollector {
 
 	private EventCollector() {
 		ontToDbConnection = OntToDbConnection.getInstance();
+		ontToDbConnection.removeAllIndividuals();
 	}
 	
 	public static EventCollector getInstance(){
-		if(instance == null){
+		if(instance != null){
 			return instance;
 		}
 		return new EventCollector();
@@ -122,14 +123,14 @@ public class EventCollector {
 	}
 
 	public void setEventIDs() {
-		ontToDbConnection.removeAllIndividuals();
+//		ontToDbConnection.removeAllIndividuals();
 		ArrayList<Integer> tmpEventIDs = new ArrayList<Integer>();
 
 		// Holiday-View-Setzen
-		setHolidayView();
+//		setHolidayView();
 
 		// Distance view setzen...
-		setDistanceView();
+//		setDistanceView();
 
 		// Duration-Ontologie
 		Set<Integer> durationSet = null;
@@ -374,6 +375,8 @@ public class EventCollector {
 	}
 
 	public void setDistanceView() {
+		ontToDbConnection.removeAllIndividuals();
+		
 		final String distanceUnit = distanceStep.getUnit();
 		ArrayList<String> reachableCities = null;
 		try {
@@ -400,4 +403,5 @@ public class EventCollector {
 		ontToDbConnection.fillOntWithEventsFromDistanceView();
 		ontToDbConnection.InfereceAndSaveOntology();
 	}
+	
 }

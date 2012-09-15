@@ -29,12 +29,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import ontologyAndDB.OntToDbConnection;
 
+import model.EventCollector;
 import model.steps.DistanceStepModel;
 import model.steps.InformationGatherStepModel;
 import model.steps.VoyageMethodStepModel;

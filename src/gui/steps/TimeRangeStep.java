@@ -14,6 +14,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,6 +23,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import model.EventCollector;
 import model.steps.InformationGatherStepModel;
 import model.steps.TimeRangeStepModel;
 
@@ -234,15 +236,21 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 			}else if(timeRangeGroup.getSelection() == autumbreakBtn.getModel()){
 				model.setTimeRangeTyp(TimeRangeStepModel.AUTUMNBREAK_TIME_RANGE);	
 			}
+			
+			SwingUtilities.invokeLater(new Runnable() {
 				
+				@Override
+				public void run() {
+					EventCollector collector = EventCollector.getInstance();
+					collector.setHolidayView();
+				}
+			});
 			
 		}
-
 	}
 
 	@Override
 	public InformationGatherStepModel getModel() {
 		return TimeRangeStepModel.getInstance();
 	}
-
 }
