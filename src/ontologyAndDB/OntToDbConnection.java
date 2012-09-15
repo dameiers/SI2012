@@ -1,4 +1,5 @@
 package ontologyAndDB;
+
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,280 +27,390 @@ import org.semanticweb.owlapi.reasoner.ReasonerInterruptedException;
 import org.semanticweb.owlapi.reasoner.TimeOutException;
 import org.semanticweb.owlapi.util.OWLEntityRemover;
 
-
-
 public class OntToDbConnection {
-	
+
 	private static OntToDbConnection instance;
-	
-	private 	DBConnection 		dbCon;
-	private		OntologyConnection  ontCon;
-	//private 	boolean				reachCitiesViewIsSet;
-	//private		boolean				holidayViewIsSet;
-	
-	private final String HOLIDAY_VIEW_NAME ="holidayview";
-	private final String REACHABLE_CITIES_VIEW_NAME ="reachablecitiesview";
+
+	private DBConnection dbCon;
+	private OntologyConnection ontCon;
+	// private boolean reachCitiesViewIsSet;
+	// private boolean holidayViewIsSet;
+
+	private final String HOLIDAY_VIEW_NAME = "holidayview";
+	private final String REACHABLE_CITIES_VIEW_NAME = "reachablecitiesview";
 	public static String THEATRE_GENRE = "TheatreGenre";
 	public static String Cinema_GENRE = "CinemaGenre";
 	public static String CONCERT_GENRE = "ConcertGenre";
-	
-	
-	/////////////////////////////////////////////////// Constructor //////////////////////////////////////////////////////
-	
-	public static OntToDbConnection getInstance() throws OWLOntologyCreationException 
-	{
-		if(instance == null)
-		{
-			instance=new OntToDbConnection();
+
+	// ///////////////////////////////////////////////// Constructor
+	// //////////////////////////////////////////////////////
+
+	public static OntToDbConnection getInstance() {
+		if (instance == null) {
+			instance = new OntToDbConnection();
 			instance.openOntology("evntologie_latest.owl");
 		}
-		
+
 		return instance;
 	}
-	
-	
-	private OntToDbConnection(){
-		 dbCon = new DBConnection();
-		 ontCon = new OntologyConnection();
-	//	 holidayViewIsSet=false;
-	//	 reachCitiesViewIsSet=false;
+
+	private OntToDbConnection() {
+		dbCon = new DBConnection();
+		ontCon = new OntologyConnection();
+		// holidayViewIsSet=false;
+		// reachCitiesViewIsSet=false;
 	}
-	
-	/////////////////////////////////////////////////// Ontologie - Manipulation- Methods////////////////////////////////
-	
-	public void removeAllIndividuals (){
+
+	// ///////////////////////////////////////////////// Ontologie -
+	// Manipulation- Methods////////////////////////////////
+
+	public void removeAllIndividuals() {
 		ontCon.removeAllIndividuals();
 	}
-	
-	public void removeIndividualsFromClass (String className) throws OntologyConnectionUnknowClassException{
+
+	public void removeIndividualsFromClass(String className) {
 		ontCon.removeAllIndividualsOfClass(className);
 	}
-	
-	public void openOntology(String ontologyFilePath) throws OWLOntologyCreationException{
+
+	public void openOntology(String ontologyFilePath) {
 		ontCon.openOntology(ontologyFilePath);
 	}
-	public void InfereceAndSaveToFile(String owlFilePath) throws OWLOntologyCreationException, OWLOntologyStorageException{
+
+	public void InfereceAndSaveToFile(String owlFilePath) {
 		ontCon.preAndSave(owlFilePath);
 	}
-	
-	public void InfereceAndSaveOntology() throws OWLOntologyCreationException, OWLOntologyStorageException{
+
+	public void InfereceAndSaveOntology() {
 		ontCon.preAndSave();
 	}
 
-	public void fillOntWithAllEvents() throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
-	  ResultSet rs = dbCon.executeQuery("Select * from \"Event\"");
-	  fillOntWithEvents(rs);
+	public void fillOntWithAllEvents() {
+		ResultSet rs;
+		rs = dbCon.executeQuery("Select * from \"Event\"");
+		fillOntWithEvents(rs);
+
 	}
-	
-	public void fillOntWithEventsUntilNumber(int eventNumber) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
-		  ResultSet rs = dbCon.executeQuery("Select * from \"Event\" WHERE event_id < "+ eventNumber);
-		  fillOntWithEvents(rs);
-		}
-	
-	public void fillOntWithEventsFromDistanceView () throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException, ViewDoesntExistsException{
-		ResultSet rs = dbCon.executeQuery("SELECT * FROM \""+REACHABLE_CITIES_VIEW_NAME+"\"");
-		 fillOntWithEvents(rs);
+
+	public void fillOntWithEventsUntilNumber(int eventNumber)
+			throws SQLException, OntologyConnectionDataPropertyException,
+			OWLConnectionUnknownTypeException,
+			OntologyConnectionIndividualAreadyExistsException,
+			OntologyConnectionUnknowClassException {
+		ResultSet rs = dbCon
+				.executeQuery("Select * from \"Event\" WHERE event_id < "
+						+ eventNumber);
+		fillOntWithEvents(rs);
 	}
-	
-	private void fillOntWithEvents(ResultSet dataBaseEvents) throws SQLException, OntologyConnectionDataPropertyException, OWLConnectionUnknownTypeException, OntologyConnectionIndividualAreadyExistsException, OntologyConnectionUnknowClassException{	
-		  ResultSet rs2;
-		  ResultSet rs3;
-		  ResultSet rs4;
-		  while(dataBaseEvents.next()){
-			  // Individual erzeugen
-			  OWLNamedIndividual individ = ontCon.createIndividual(String.valueOf(dataBaseEvents.getInt("event_id")));
-			  // data propertie : Kinderbetreeung
-			  ontCon.setObjectPropertieToIndividual(individ, "hasChildCare", dataBaseEvents.getBoolean("kinderbetreuung"));
-			  // data propertie: childfriendly
-			  ontCon.setObjectPropertieToIndividual(individ, "isChildFriendly", dataBaseEvents.getBoolean("kinderfreundlich"));
-			  // data propertie : hasconcreteDuration 
-			  long timeDiff = dataBaseEvents.getTimestamp("enddatum").getTime() - dataBaseEvents.getTimestamp("startdatum").getTime();
-			  int durationInDays = (int)(timeDiff / 1000 / 3600 / 24) ;
-			  ontCon.setObjectPropertieToIndividual(individ, "hasConcreteDuration", durationInDays);
-			  // hinzufügen zur passenden Event-Klasse
-			  rs2 = (dbCon.executeQuery("select bezeichnung from \"Kategorie\" where kategorie_id="+  dataBaseEvents.getInt("kategorie") ));
-			  rs2.next();
-			  String eventKategorie = rs2.getString(1);
-			  ontCon.addIndividualToClass(individ, eventKategorie);
-			  // falls genre gesetzt ist , hinzufügen zur Genre-Klasse
-			  rs3 = (dbCon.executeQuery("select genre from \"Event_Genre\" where event=" + String.valueOf(dataBaseEvents.getInt("event_id") )));
-			  if (rs3.next()){
-			  int genreID = rs3.getInt(1);
-			  rs4 = (dbCon.executeQuery("select bezeichnung from \"Genre\" where genre_id=" + String.valueOf(genreID )));
-			  rs4.next();
-				  String genreKategorie = rs4.getString(1);
-				  ontCon.addIndividualToClass(individ, genreKategorie);
-			  }
-			  ontCon.saveOntologie();
-		  }	
+
+	public void fillOntWithEventsFromDistanceView() {
+		ResultSet rs;
+		rs = dbCon.executeQuery("SELECT * FROM \"" + REACHABLE_CITIES_VIEW_NAME
+				+ "\"");
+		fillOntWithEvents(rs);
+
+	}
+
+	private void fillOntWithEvents(ResultSet dataBaseEvents) {
+		ResultSet rs2;
+		ResultSet rs3;
+		ResultSet rs4;
+		try {
+			while (dataBaseEvents.next()) {
+				// Individual erzeugen
+				OWLNamedIndividual individ = ontCon.createIndividual(String
+						.valueOf(dataBaseEvents.getInt("event_id")));
+				// data propertie : Kinderbetreeung
+				ontCon.setObjectPropertieToIndividual(individ, "hasChildCare",
+						dataBaseEvents.getBoolean("kinderbetreuung"));
+				// data propertie: childfriendly
+				ontCon.setObjectPropertieToIndividual(individ,
+						"isChildFriendly",
+						dataBaseEvents.getBoolean("kinderfreundlich"));
+				// data propertie : hasconcreteDuration
+				long timeDiff = dataBaseEvents.getTimestamp("enddatum")
+						.getTime()
+						- dataBaseEvents.getTimestamp("startdatum").getTime();
+				int durationInDays = (int) (timeDiff / 1000 / 3600 / 24);
+				ontCon.setObjectPropertieToIndividual(individ,
+						"hasConcreteDuration", durationInDays);
+				// hinzufügen zur passenden Event-Klasse
+				rs2 = (dbCon
+						.executeQuery("select bezeichnung from \"Kategorie\" where kategorie_id="
+								+ dataBaseEvents.getInt("kategorie")));
+				rs2.next();
+				String eventKategorie = rs2.getString(1);
+				ontCon.addIndividualToClass(individ, eventKategorie);
+				// falls genre gesetzt ist , hinzufügen zur Genre-Klasse
+				rs3 = (dbCon
+						.executeQuery("select genre from \"Event_Genre\" where event="
+								+ String.valueOf(dataBaseEvents
+										.getInt("event_id"))));
+				if (rs3.next()) {
+					int genreID = rs3.getInt(1);
+					rs4 = (dbCon
+							.executeQuery("select bezeichnung from \"Genre\" where genre_id="
+									+ String.valueOf(genreID)));
+					rs4.next();
+					String genreKategorie = rs4.getString(1);
+					ontCon.addIndividualToClass(individ, genreKategorie);
+				}
+				ontCon.saveOntologie();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OntologyConnectionIndividualAreadyExistsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OntologyConnectionDataPropertyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OWLConnectionUnknownTypeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OntologyConnectionUnknowClassException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	
-	////////////////////////////////// Distance-Methods /////////////////////////////////////////////////////////////
-	
+	}
+
+	// //////////////////////////////// Distance-Methods
+	// /////////////////////////////////////////////////////////////
+
 	/**
 	 * Returns the Cities which occur in the DB
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 */
-	public ArrayList<String> getCitiesFromDB () throws SQLException{
+	public ArrayList<String> getCitiesFromDB() {
 		ArrayList<String> cities = new ArrayList<String>();
-		ResultSet rs = dbCon.executeQuery("Select Distinct ort from \""+HOLIDAY_VIEW_NAME +"\"");
-		while(rs.next()){
-			cities.add(rs.getString("ort"));
+		ResultSet rs;
+		try {
+			rs = dbCon.executeQuery("Select Distinct ort from \""
+					+ HOLIDAY_VIEW_NAME + "\"");
+			while (rs.next()) {
+				cities.add(rs.getString("ort"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 		return cities;
 	}
-	
-	
+
 	/**
 	 * Creates a view in the DB with all reachable Events
-	 * @param reachableCities all Cities that are reachable
-	 * @throws SQLException 
+	 * 
+	 * @param reachableCities
+	 *            all Cities that are reachable
+	 * @throws SQLException
 	 */
-	public void setDistanceView (ArrayList<String> reachableCities) throws SQLException{
-		
-		String sqlInStat ="";
-		for(String city : reachableCities){
-			sqlInStat = sqlInStat.concat("'"+city+"' ,");
+	public void setDistanceView(ArrayList<String> reachableCities) {
+
+		String sqlInStat = "";
+		for (String city : reachableCities) {
+			sqlInStat = sqlInStat.concat("'" + city + "' ,");
 		}
-		sqlInStat = sqlInStat.substring(0 , sqlInStat.lastIndexOf(","));
-		String sqlStatement =  " SELECT * FROM \""+HOLIDAY_VIEW_NAME+"\" WHERE ort IN ("+sqlInStat+")" ;
-		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);		
+		sqlInStat = sqlInStat.substring(0, sqlInStat.lastIndexOf(","));
+		String sqlStatement = " SELECT * FROM \"" + HOLIDAY_VIEW_NAME
+				+ "\" WHERE ort IN (" + sqlInStat + ")";
+		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);
 	}
-	
-	//////////////////////////////////////////////////////////// Time-Methods//////////////////////////////////////////
-	
-	//TODO Format der Eingabe mit der Übergabe von der GUI anpassen
-	public void setHolidayView (String startDate, String endDate) throws SQLException, ViewDoesntExistsException{
-		String sqlStatement ="";	
-		sqlStatement = " SELECT * FROM \"Event\" WHERE startdatum >= '"+startDate+"' AND enddatum <= '"+endDate+"'" ;	
+
+	// //////////////////////////////////////////////////////////
+	// Time-Methods//////////////////////////////////////////
+
+	// TODO Format der Eingabe mit der Übergabe von der GUI anpassen
+	public void setHolidayView(String startDate, String endDate) {
+		String sqlStatement = "";
+		sqlStatement = " SELECT * FROM \"Event\" WHERE startdatum >= '"
+				+ startDate + "' AND enddatum <= '" + endDate + "'";
 		dbCon.createView(HOLIDAY_VIEW_NAME, sqlStatement);
 	}
-	
-	//////////////////////////////////////////Reasoner Based Methods ////////////////////////////////////////////////////////
-	
+
+	// ////////////////////////////////////////Reasoner Based Methods
+	// ////////////////////////////////////////////////////////
+
 	/**
-	 *  Returns the direct Subclases of a Class
-	 * @param className the Name of the superclass
+	 * Returns the direct Subclases of a Class
+	 * 
+	 * @param className
+	 *            the Name of the superclass
 	 * @return Non rekursive list of subclasses
-	 * @throws OntologyConnectionUnknowClassException 
+	 * @throws OntologyConnectionUnknowClassException
 	 */
-	public ArrayList<String> getSubClassesOfClassByReasoner(String className) throws OntologyConnectionUnknowClassException{
-		return ontCon.getClassNamesOnly(ontCon.getSubClassesByReasoner(className));
+	public ArrayList<String> getSubClassesOfClassByReasoner(String className) {
+		ArrayList<String> result = null;
+		try {
+			result = ontCon.getClassNamesOnly(ontCon
+					.getSubClassesByReasoner(className));
+		} catch (OntologyConnectionUnknowClassException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
-	
-	public ArrayList<String> getSuperClassesOfClassByReasoner ( String className) throws OntologyConnectionUnknowClassException{
+
+	public ArrayList<String> getSuperClassesOfClassByReasoner(String className) {
 		return ontCon.getSuperClassesByReasoner(className);
-		
+
 	}
-	
-	public ArrayList<Integer> getInvidualsFromOntologieClassByReasoner (String className) throws InconsistentOntologyException, ClassExpressionNotInProfileException, FreshEntitiesException, TimeOutException, ReasonerInterruptedException, OntologyConnectionUnknowClassException{
-		return ontCon.getEventIdsByClassByReasoner(className);
+
+	public ArrayList<Integer> getInvidualsFromOntologieClassByReasoner(
+			String className) {
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		try {
+			result = ontCon.getEventIdsByClassByReasoner(className);
+		} catch (InconsistentOntologyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassExpressionNotInProfileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FreshEntitiesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeOutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ReasonerInterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OntologyConnectionUnknowClassException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
-  
-	public ArrayList<Integer> getIndividualUnionOverClassesByReasoner (ArrayList<String> classNames) throws InconsistentOntologyException, ClassExpressionNotInProfileException, FreshEntitiesException, TimeOutException, ReasonerInterruptedException, OntologyConnectionUnknowClassException {
-		ArrayList<Integer> individs = new  ArrayList<Integer>();
-		for (String s : classNames){
+
+	public ArrayList<Integer> getIndividualUnionOverClassesByReasoner(
+			ArrayList<String> classNames) {
+		ArrayList<Integer> individs = new ArrayList<Integer>();
+		for (String s : classNames) {
 			individs.addAll(this.getInvidualsFromOntologieClassByReasoner(s));
 		}
 		return individs;
 	}
-	
-	public ArrayList<Integer> getIndividualIntersectionOverClassesByReasoner ( ArrayList<String> classNames) throws Exception {
-		if (classNames.size()<2)
-			throw new Exception("2 ore more Classes needed to make an intersection");
-		ArrayList<Integer> list1 ;
-		ArrayList<Integer> list2 ;
-		ArrayList<Integer> list3 = this.getInvidualsFromOntologieClassByReasoner(classNames.get(0));
-		for ( int i = 1; i < classNames.size(); i++ ){
+
+	public ArrayList<Integer> getIndividualIntersectionOverClassesByReasoner(
+			ArrayList<String> classNames) throws IllegalStateException {
+		if (classNames.size() < 2)
+			throw new IllegalStateException(
+					"2 ore more Classes needed to make an intersection");
+		ArrayList<Integer> list1;
+		ArrayList<Integer> list2;
+		ArrayList<Integer> list3 = this
+				.getInvidualsFromOntologieClassByReasoner(classNames.get(0));
+		for (int i = 1; i < classNames.size(); i++) {
 			list1 = list3;
 			list3 = new ArrayList<Integer>();
-			list2 = this.getInvidualsFromOntologieClassByReasoner(classNames.get(i));
-			for (Integer s : list1){
+			list2 = this.getInvidualsFromOntologieClassByReasoner(classNames
+					.get(i));
+			for (Integer s : list1) {
 				if (list2.contains(s))
 					list3.add(s);
 			}
 		}
 		return list3;
-	} 
-	
-	//////////////////////////////////////////Ontology Based Queries ////////////////////////////////////////////////////////
-	
-	public ArrayList<String> getSuperClassesOfClassFromOntology(String className) throws OntologyConnectionUnknowClassException{
+	}
+
+	// ////////////////////////////////////////Ontology Based Queries
+	// ////////////////////////////////////////////////////////
+
+	public ArrayList<String> getSuperClassesOfClassFromOntology(String className) {
 		return ontCon.getSuperClassesByClassFromOntology(className);
 	}
-	
-	public ArrayList<Integer> getEventIdsByClassByOntology (String className) throws OntologyConnectionUnknowClassException{
+
+	public ArrayList<Integer> getEventIdsByClassByOntology(String className) {
 		return ontCon.getEventIdsByClassByOntology(className);
 	}
-	
-	public  ArrayList<String> getSubClassesOfClassByOntology(String className) throws OntologyConnectionUnknowClassException{
+
+	public ArrayList<String> getSubClassesOfClassByOntology(String className) {
 		return ontCon.getSubClassesByClassFromOntology(className);
 	}
-	//////////////////////////////////////////////////Database Methods//////////////////////////////////////////////////////////////////
-	
-		
-	
-	public HashMap<String , double[]> getCityPositions () throws SQLException{
-		
-		HashMap<String,double[]> pos = new HashMap<String, double[]>();
-	
+
+	// ////////////////////////////////////////////////Database
+	// Methods//////////////////////////////////////////////////////////////////
+
+	public HashMap<String, double[]> getCityPositions() {
+
+		HashMap<String, double[]> pos = new HashMap<String, double[]>();
+
 		ResultSet rs = dbCon.executeQuery("Select * FROM \"Stadt\"");
-		while(rs.next()){
-			double lat = rs.getDouble(2);
-			double lon = rs.getDouble(3);
-			double d[] = {lat,lon};
-			pos.put( rs.getString("stadt_name"), d );
+		try {
+			while (rs.next()) {
+				double lat = rs.getDouble(2);
+				double lon = rs.getDouble(3);
+				double d[] = { lat, lon };
+				pos.put(rs.getString("stadt_name"), d);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return pos; 
+		return pos;
 	}
-	
-	public ResultSet getDataFromDbByEvent_Id ( ArrayList<Integer> eventIDs) throws SQLException{
-		if(eventIDs != null && !eventIDs.isEmpty() ){
+
+	public ResultSet getDataFromDbByEvent_Id(ArrayList<Integer> eventIDs){
+		if (eventIDs != null && !eventIDs.isEmpty()) {
 			String s = new String(" ");
-			int i ;
-			for ( i=0  ; i < eventIDs.size()-1;i++){
-				s = s.concat(String.valueOf(eventIDs.get(i))+"," );
+			int i;
+			for (i = 0; i < eventIDs.size() - 1; i++) {
+				s = s.concat(String.valueOf(eventIDs.get(i)) + ",");
 			}
 			s = s.concat(String.valueOf(eventIDs.get(i)));
-			String sqlStatement = 	"SELECT * " +
-									"FROM 	\"Event\" ,\"Event_Genre\" ,\"Genre\" ,\"Kategorie\" , \"Preisliste\" " +
-									"WHERE  \"Event\".event_id = \"Event_Genre\".event " +
-									"AND	\"Event_Genre\".genre = \"Genre\".genre_id " +
-									"AND 	\"Event\".kategorie = \"Kategorie\".kategorie_id "+
-									"AND	\"Event\".event_id = \"Preisliste\".event " +
-									"AND event_id in ("+s+")";
-			//System.out.println(sqlStatement.toString());
-			return  dbCon.executeQuery(sqlStatement);	
-		}else{
+			String sqlStatement = "SELECT * "
+					+ "FROM 	\"Event\" ,\"Event_Genre\" ,\"Genre\" ,\"Kategorie\" , \"Preisliste\" "
+					+ "WHERE  \"Event\".event_id = \"Event_Genre\".event "
+					+ "AND	\"Event_Genre\".genre = \"Genre\".genre_id "
+					+ "AND 	\"Event\".kategorie = \"Kategorie\".kategorie_id "
+					+ "AND	\"Event\".event_id = \"Preisliste\".event "
+					+ "AND event_id in (" + s + ")";
+			// System.out.println(sqlStatement.toString());
+			return dbCon.executeQuery(sqlStatement);
+		} else {
 			System.out.println("received an empty list of event id's");
 			return null;
 		}
-		
+
 	}
-	
-	public void disconnectFromDB (){
+
+	public void disconnectFromDB() {
 		dbCon.disconnect();
 	}
-	
-	public ArrayList<Integer> EventsFromDBByMaxCosts ( int numberGrownUp , int numberChilden , int numberReducedCost , int MaxSum , ArrayList<Integer> searchField) throws SQLException{
+
+	public ArrayList<Integer> EventsFromDBByMaxCosts(int numberGrownUp,
+			int numberChilden, int numberReducedCost, int MaxSum,
+			ArrayList<Integer> searchField) {
 		ArrayList<Integer> events = new ArrayList<Integer>();
-		ResultSet rs = dbCon.executeQuery("Select * from \"Event\" where \"event_id\" in (" + searchField + ")");
-		while(rs.next()){
-			int event_id = rs.getInt("event_id");
-			ResultSet rs2 = dbCon.executeQuery("SELECT * FROM \"Preisliste\" WHERE event = " + event_id);
-			if ( rs2.getInt("kinder")*numberChilden + rs2.getInt("erwachsene")*numberChilden +rs2.getInt("ermaessigt")*numberReducedCost < MaxSum )
-				events.add(event_id);
+		ResultSet rs = dbCon
+				.executeQuery("Select * from \"Event\" where \"event_id\" in ("
+						+ searchField + ")");
+		try {
+			while (rs.next()) {
+				int event_id = rs.getInt("event_id");
+				ResultSet rs2 = dbCon
+						.executeQuery("SELECT * FROM \"Preisliste\" WHERE event = "
+								+ event_id);
+				if (rs2.getInt("kinder") * numberChilden
+						+ rs2.getInt("erwachsene") * numberChilden
+						+ rs2.getInt("ermaessigt") * numberReducedCost < MaxSum)
+					events.add(event_id);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return events;
 	}
-	
-	private ResultSet executeQuery (String sqlStatement)throws SQLException{		
+
+	private ResultSet executeQuery(String sqlStatement) {
 		return dbCon.executeQuery(sqlStatement);
 	}
-	
-	public void executeUpdate (String sqlStatement)throws SQLException{		
+
+	public void executeUpdate(String sqlStatement) {
 		dbCon.executeUpdate(sqlStatement);
 	}
-	
-	
+
 }

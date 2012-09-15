@@ -38,20 +38,31 @@ public class DBConnection {
 		}
 	}
 	
-	protected ResultSet executeQuery (String sqlStatement)throws SQLException{
+	protected ResultSet executeQuery (String sqlStatement){
 		
 		Statement stmt = null;
 		ResultSet rs = null;
-		stmt = conn.createStatement();
-		rs = stmt.executeQuery(sqlStatement);			        
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sqlStatement);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				        
 		return rs;
 	}
 	
-	protected void executeUpdate (String sqlStatement)throws SQLException{
+	protected void executeUpdate (String sqlStatement){
 
 		Statement stmt = null;
-		stmt = conn.createStatement();
-		stmt.executeUpdate(sqlStatement);			        
+		try {
+			stmt = conn.createStatement();
+			stmt.executeUpdate(sqlStatement);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	
@@ -69,7 +80,7 @@ public class DBConnection {
 	 * @param sqlStatement the statement witch fills the view
 	 * @throws SQLException 
 	 */
-	protected void createView ( String viewName, String sqlStatement) throws SQLException{
+	protected void createView ( String viewName, String sqlStatement){
 		
 		/*
 		 ResultSet rs = this.executeQuery("SELECT * FROM pg_views where viewname='"+viewName+"'");
@@ -83,8 +94,14 @@ public class DBConnection {
 			}		*/		
 		
 		Statement stmt = null;
-		stmt = conn.createStatement();
-		stmt.executeUpdate("CREATE OR REPLACE VIEW "+ viewName +" AS "+ sqlStatement);	
+		try {
+			stmt = conn.createStatement();
+			stmt.executeUpdate("CREATE OR REPLACE VIEW "+ viewName +" AS "+ sqlStatement);	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 	}
 	
