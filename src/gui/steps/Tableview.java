@@ -38,6 +38,8 @@ import model.steps.TableviewModel;
 */
 public class Tableview extends AbstractViewModelConnectionImpl {
 	private JSplitPane jSplitPane1;
+	private JTextField jTextField12;
+	private JLabel jLabel13;
 	private JTextField jTextField11;
 	private JLabel jLabel12;
 	private JScrollPane jScrollPane1;
@@ -183,12 +185,12 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 						jLabel7 = new JLabel();
 						jPanel1.add(jLabel7);
 						jLabel7.setText("Mindestalter:");
-						jLabel7.setBounds(498, 132, 90, 14);
+						jLabel7.setBounds(532, 171, 90, 14);
 					}
 					{
 						jTextField6 = new JTextField();
 						jPanel1.add(jTextField6);
-						jTextField6.setBounds(600, 129, 59, 21);
+						jTextField6.setBounds(612, 168, 59, 21);
 					}
 					{
 						jLabel8 = new JLabel();
@@ -199,18 +201,18 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 					{
 						jTextField7 = new JTextField();
 						jPanel1.add(jTextField7);
-						jTextField7.setBounds(141, 129, 75, 21);
+						jTextField7.setBounds(113, 129, 75, 21);
 					}
 					{
 						jLabel9 = new JLabel();
 						jPanel1.add(jLabel9);
 						jLabel9.setText("Preis: (Erwachsene)");
-						jLabel9.setBounds(247, 132, 121, 14);
+						jLabel9.setBounds(210, 132, 121, 14);
 					}
 					{
 						jTextField8 = new JTextField();
 						jPanel1.add(jTextField8);
-						jTextField8.setBounds(380, 129, 86, 21);
+						jTextField8.setBounds(343, 129, 86, 21);
 					}
 					{
 						jLabel10 = new JLabel();
@@ -221,18 +223,18 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 					{
 						jTextField9 = new JTextField();
 						jPanel1.add(jTextField9);
-						jTextField9.setBounds(102, 164, 265, 21);
+						jTextField9.setBounds(91, 164, 179, 21);
 					}
 					{
 						jLabel11 = new JLabel();
 						jPanel1.add(jLabel11);
 						jLabel11.setText("Genre:");
-						jLabel11.setBounds(387, 171, 61, 14);
+						jLabel11.setBounds(288, 171, 61, 14);
 					}
 					{
 						jTextField10 = new JTextField();
 						jPanel1.add(jTextField10);
-						jTextField10.setBounds(466, 168, 216, 21);
+						jTextField10.setBounds(329, 168, 191, 21);
 					}
 					{
 						jLabel12 = new JLabel();
@@ -244,6 +246,17 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 						jTextField11 = new JTextField();
 						jPanel1.add(jTextField11);
 						jTextField11.setBounds(115, 204, 567, 21);
+					}
+					{
+						jLabel13 = new JLabel();
+						jPanel1.add(jLabel13);
+						jLabel13.setText("Preis(ermaessigt)");
+						jLabel13.setBounds(447, 129, 110, 16);
+					}
+					{
+						jTextField12 = new JTextField();
+						jPanel1.add(jTextField12);
+						jTextField12.setBounds(580, 126, 106, 23);
 					}
 				}
 				{
@@ -270,11 +283,12 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 							jTextField4.setText(selectedevent.get("ort"));
 							jTextField5.setText((selectedevent.get("kinderbetreuung").equals("t")?"ja":"nein"));
 							jTextField6.setText(selectedevent.get("mindestalter"));
-							jTextField7.setText(selectedevent.get("preis_kinder"));
-							jTextField8.setText(selectedevent.get("preis_erwachsene"));
+							jTextField7.setText(selectedevent.get("kinder"));
+							jTextField8.setText(selectedevent.get("erwachsene"));
 							jTextField9.setText(selectedevent.get("kategorie"));
 							jTextField10.setText(selectedevent.get("genre"));
 							jTextField11.setText(selectedevent.get("beschreibung"));
+							jTextField12.setText(selectedevent.get("ermaessigt"));
 						}
 						
 					});
