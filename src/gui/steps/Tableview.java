@@ -246,8 +246,9 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 				{
 					 jTable1Model = 
 							new DefaultTableModel(
-									new String[][] { { "One", "Two" }, { "Three", "Four" } },
+									new String[][]{},
 									new String[] { "Event ID", "Event Name" });
+					
 					jTable1 = new JTable();
 					jScrollPane1.setViewportView(jTable1);
 					jTable1.setModel(jTable1Model);

@@ -89,9 +89,11 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			mainPnl.add(currentViewStepConnection.getVisualisationUI());
 			mainPnl.revalidate();
 			mainPnl.repaint();
+			nextBtn.setEnabled(true);
 		} else {
 			backBtn.setEnabled(false);
 		}
+		
 	}
 	
 	public void nextStep() 
@@ -99,6 +101,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 		cleanError();
 		currentViewStepConnection.fillModel();
 		InformationGatherStepModel stepModel = currentViewStepConnection.getModel();
+		
 		String error = stepModel.getError();
 		
 		if(error == null)
@@ -109,6 +112,9 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			ViewModelConnection 		nextViewModelConnection = nextStepModel.getViewModelConnection();
 			JComponent 					nextJComponent = nextViewModelConnection.getVisualisationUI();
 			
+			if (nextStepModel.getDisplayName().equals("Ergebnis")) {
+				nextBtn.setEnabled(false);
+			}
 			nextStepModel.setPreselectionIfItWasntAlredySet();
 			nextViewModelConnection.fillMask();
 			
