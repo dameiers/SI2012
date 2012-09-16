@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -85,6 +86,8 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 				frame.add(inst, BorderLayout.CENTER);
 				frame.pack();
 				frame.setVisible(true);
+				 if (inst.getTableModel().getRowCount() == 0) JOptionPane.showMessageDialog(null, "Kein Ergebnis wurde gefunden.", "Nachricht", JOptionPane.ERROR_MESSAGE);
+					
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -277,6 +280,7 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 			}
 			
 			setSize(600, 700);
+				
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
@@ -304,6 +308,7 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 		// TODO Auto-generated method stub
 		 tvmodel = TableviewModel.getInstance();
 		 tvmodel.fillTableModel();
+		
 	}
 	
 	

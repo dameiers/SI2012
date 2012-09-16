@@ -1,5 +1,6 @@
 package gui;
 import gui.steps.PersonDescriptionStep;
+import gui.steps.Tableview;
 import gui.steps.TimeRangeStep;
 import gui.steps.ViewModelConnection;
 
@@ -16,6 +17,7 @@ import java.util.Stack;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import javax.swing.WindowConstants;
@@ -128,6 +130,11 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			currentViewStepConnection = nextViewModelConnection;
 			mainPnl.revalidate();
 			mainPnl.repaint();
+			if (currentViewStepConnection instanceof Tableview) {
+				Tableview tmp = (Tableview)currentViewStepConnection;
+				if (tmp.getTableModel().getRowCount() == 0) JOptionPane.showMessageDialog(null, "Kein Ergebnis wurde gefunden.", "Nachricht", JOptionPane.ERROR_MESSAGE);
+				
+			}
 		}
 		else
 		{
