@@ -41,6 +41,9 @@ public class TableviewModel extends InformationGatherStepModel{
 		if (events == null) return;
 		Tableview tv = (Tableview) super.getViewModelConnection();
 		DefaultTableModel dtm = tv.getTableModel();
+		dtm.setDataVector(
+				new String[][]{},
+				new String[] { "Event ID", "Event Name" });
 		for (int i=0; i<events.length; i++){
 			HashMap<String, String> tmp = events[i];
 			String[] line = new String[2];

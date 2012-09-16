@@ -106,12 +106,12 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 				add(getJSplitPane1(), BorderLayout.CENTER);
 				jSplitPane1.setAutoscrolls(true);
 				jSplitPane1.setOrientation(JSplitPane.VERTICAL_SPLIT);
-				jSplitPane1.setDividerLocation(300);
-				jSplitPane1.setPreferredSize(new java.awt.Dimension(592, 604));
+				jSplitPane1.setDividerLocation(230);
+				jSplitPane1.setPreferredSize(new java.awt.Dimension(700, 520));
 				{
 					jScrollPane1 = new JScrollPane();
 					jSplitPane1.add(jScrollPane1, JSplitPane.RIGHT);
-					jScrollPane1.setPreferredSize(new java.awt.Dimension(590, 564));
+					jScrollPane1.setPreferredSize(new java.awt.Dimension(700, 520));
 				}
 				{
 					jPanel1 = new JPanel();
@@ -121,7 +121,7 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 						jLabel1 = new JLabel();
 						jPanel1.add(jLabel1);
 						jLabel1.setText("Informationen zum Event");
-						jLabel1.setBounds(191, 12, 203, 14);
+						jLabel1.setBounds(235, 12, 203, 14);
 						jLabel1.setFont(new java.awt.Font("Arial",1,16));
 					}
 					{
@@ -133,29 +133,29 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 					{
 						jTextField1 = new JTextField();
 						jPanel1.add(jTextField1);
-						jTextField1.setBounds(65, 50, 105, 21);
+						jTextField1.setBounds(65, 50, 287, 21);
 					}
 					{
 						jLabel3 = new JLabel();
 						jPanel1.add(jLabel3);
 						jLabel3.setText("Startdatum:");
-						jLabel3.setBounds(184, 50, 76, 14);
+						jLabel3.setBounds(356, 57, 76, 14);
 					}
 					{
 						jTextField2 = new JTextField();
 						jPanel1.add(jTextField2);
-						jTextField2.setBounds(260, 50, 90, 21);
+						jTextField2.setBounds(438, 54, 248, 21);
 					}
 					{
 						jLabel4 = new JLabel();
 						jPanel1.add(jLabel4);
 						jLabel4.setText("Enddatum:");
-						jLabel4.setBounds(368, 50, 60, 14);
+						jLabel4.setBounds(362, 90, 60, 14);
 					}
 					{
 						jTextField3 = new JTextField();
 						jPanel1.add(jTextField3);
-						jTextField3.setBounds(436, 47, 112, 21);
+						jTextField3.setBounds(440, 87, 242, 21);
 					}
 					{
 						jLabel5 = new JLabel();
@@ -183,12 +183,12 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 						jLabel7 = new JLabel();
 						jPanel1.add(jLabel7);
 						jLabel7.setText("Mindestalter:");
-						jLabel7.setBounds(368, 90, 90, 14);
+						jLabel7.setBounds(498, 132, 90, 14);
 					}
 					{
 						jTextField6 = new JTextField();
 						jPanel1.add(jTextField6);
-						jTextField6.setBounds(458, 80, 59, 21);
+						jTextField6.setBounds(600, 129, 59, 21);
 					}
 					{
 						jLabel8 = new JLabel();
@@ -221,18 +221,18 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 					{
 						jTextField9 = new JTextField();
 						jPanel1.add(jTextField9);
-						jTextField9.setBounds(102, 164, 178, 21);
+						jTextField9.setBounds(102, 164, 265, 21);
 					}
 					{
 						jLabel11 = new JLabel();
 						jPanel1.add(jLabel11);
 						jLabel11.setText("Genre:");
-						jLabel11.setBounds(302, 171, 61, 14);
+						jLabel11.setBounds(387, 171, 61, 14);
 					}
 					{
 						jTextField10 = new JTextField();
 						jPanel1.add(jTextField10);
-						jTextField10.setBounds(368, 164, 180, 21);
+						jTextField10.setBounds(466, 168, 216, 21);
 					}
 					{
 						jLabel12 = new JLabel();
@@ -243,7 +243,7 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 					{
 						jTextField11 = new JTextField();
 						jPanel1.add(jTextField11);
-						jTextField11.setBounds(115, 204, 439, 21);
+						jTextField11.setBounds(115, 204, 567, 21);
 					}
 				}
 				{
@@ -255,14 +255,16 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 					jTable1 = new JTable();
 					jScrollPane1.setViewportView(jTable1);
 					jTable1.setModel(jTable1Model);
+					
 					jTable1.setLayout(null);
 					jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 
 						@Override
 						public void valueChanged(ListSelectionEvent arg0) {
 							int selectedrow = jTable1.getSelectedRow();
+							if (selectedrow == -1) return;
 							HashMap<String, String> selectedevent = tvmodel.getEventInfo(selectedrow);
-							jTextField1.setText(selectedevent.get("event_id"));
+							jTextField1.setText(selectedevent.get("name"));
 							jTextField2.setText(selectedevent.get("startdatum"));
 							jTextField3.setText(selectedevent.get("enddatum"));
 							jTextField4.setText(selectedevent.get("ort"));
@@ -279,7 +281,7 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 				}
 			}
 			
-			setSize(600, 700);
+			//setSize(600, 700);
 				
 		} catch (Exception e) {
 		    //add your error handling code here
