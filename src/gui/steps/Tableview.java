@@ -268,7 +268,7 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 							jTextField2.setText(selectedevent.get("startdatum"));
 							jTextField3.setText(selectedevent.get("enddatum"));
 							jTextField4.setText(selectedevent.get("ort"));
-							jTextField5.setText(selectedevent.get("kinderbetreuung"));
+							jTextField5.setText((selectedevent.get("kinderbetreuung").equals("t")?"ja":"nein"));
 							jTextField6.setText(selectedevent.get("mindestalter"));
 							jTextField7.setText(selectedevent.get("preis_kinder"));
 							jTextField8.setText(selectedevent.get("preis_erwachsene"));
