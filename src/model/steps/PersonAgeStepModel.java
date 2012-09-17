@@ -81,6 +81,26 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 		this.ages = ages;
 		updateAlredayFilled();
 	}
+	
+	public Collection<String> getPupils()
+	{
+		Collection<String> result = new LinkedList<String>();
+		
+		if(ages != null)
+		{
+			for(int i=0; i<ages.length; i++) 
+			{
+				if(ages[i].equals("Child") || 
+				   ages[i].equals("Teenager") || 
+				   ages[i].equals("YoungAdults") )
+				{
+					result.add(ages[i]);
+				}
+			}
+		}
+		
+		return result;
+	}
 
 	public String[] getPreferedStuffBasedOnAges()
 			throws OWLOntologyCreationException {

@@ -15,7 +15,12 @@ public class SchoolLocationStepModel extends InformationGatherStepModel
 	
 	public void printToConsole()
 	{
-		System.out.println(locations);
+		String str = "";
+		for(String tmp : locations)
+		{
+			str += tmp + " ";
+		}
+		System.out.println(str);
 	}
 	
 	public static SchoolLocationStepModel getInstance() 
@@ -29,11 +34,16 @@ public class SchoolLocationStepModel extends InformationGatherStepModel
 	
 	public String getError() 
 	{
-		if(locations == null || locations.length == 0)
+		PersonAgeStepModel pasm = PersonAgeStepModel.getInstance();
+		
+		if(locations == null || 
+		   locations.length == 0 ||
+		   locations.length > pasm.getPupils().size())
 			return "Ungültige Anzahl von Orten";
 		
 		return null;
 	}
+	
 
 	public String[] getLocations() 
 	{
