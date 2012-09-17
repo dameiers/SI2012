@@ -2,8 +2,6 @@ package model.steps;
 
 import gui.steps.PersonDescriptionStep;
 
-import java.util.ArrayList;
-
 
 public class PersonDescriptionStepModel extends InformationGatherStepModel 
 {

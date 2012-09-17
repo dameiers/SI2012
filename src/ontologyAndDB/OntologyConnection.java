@@ -53,56 +53,59 @@ import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.semanticweb.owlapi.reasoner.TimeOutException;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
 
-
-
 public class OntologyConnection {
 
-	private 	OWLOntologyManager 		manager;
-	private 	OWLDataFactory 			factory;
-	private  	File 					file;
-	private		OWLOntology 			ontology;
-	private 	IRI 					documentIRI;
-	private		PrefixManager 			pm; 
-	private 	OWLReasoner 			reasoner;
-	private 	String					ontID;
-	private 	Set<OWLDataProperty>	dataProperties;
-	private 	Set<OWLNamedIndividual> individuals;
-	private		Set<OWLClass>			classes;
-	private		OWLReasonerFactory 		reasonerFactory;
-	
-	
-	////////////////////////////////////////////////////Constructor//////////////////////////////////////////////////////////
-	
-	protected OntologyConnection(){
+	private OWLOntologyManager manager;
+	private OWLDataFactory factory;
+	private File file;
+	private OWLOntology ontology;
+	private IRI documentIRI;
+	private PrefixManager pm;
+	private OWLReasoner reasoner;
+	private String ontID;
+	private Set<OWLDataProperty> dataProperties;
+	private Set<OWLNamedIndividual> individuals;
+	private Set<OWLClass> classes;
+	private OWLReasonerFactory reasonerFactory;
+
+	// //////////////////////////////////////////////////Constructor//////////////////////////////////////////////////////////
+
+	protected OntologyConnection() {
 		manager = OWLManager.createOWLOntologyManager();
 		factory = manager.getOWLDataFactory();
 		reasonerFactory = new Reasoner.ReasonerFactory();
 	}
-	
-	///////////////////////////////////////////////////Ontology-Methods//////////////////////////////////////////////////////////////	
-	
-	protected void saveOntologie (){
+
+	// /////////////////////////////////////////////////Ontology-Methods//////////////////////////////////////////////////////////////
+
+	protected void saveOntologie() {
 		try {
 			manager.saveOntology(ontology);
 		} catch (OWLOntologyStorageException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	protected void openOntology(String filePath) throws OWLOntologyCreationException{
+
+	protected void openOntology(String filePath) {
 		file = new File(filePath);
-		ontology = manager.loadOntologyFromOntologyDocument(file);
-        documentIRI = manager.getOntologyDocumentIRI(ontology);
-        ontID = ontology.getOntologyID().toString();
-        ontID = ontID.substring(1, ontID.length()-1);
-        pm = new DefaultPrefixManager(ontID+"#");
-        individuals= ontology.getIndividualsInSignature();	
-		dataProperties = ontology.getDataPropertiesInSignature();
-		classes = ontology.getClassesInSignature();
-		reasoner = reasonerFactory.createReasoner(ontology);
+		try {
+			ontology = manager.loadOntologyFromOntologyDocument(file);
+			documentIRI = manager.getOntologyDocumentIRI(ontology);
+			ontID = ontology.getOntologyID().toString();
+			ontID = ontID.substring(1, ontID.length() - 1);
+			pm = new DefaultPrefixManager(ontID + "#");
+			individuals = ontology.getIndividualsInSignature();
+			dataProperties = ontology.getDataPropertiesInSignature();
+			classes = ontology.getClassesInSignature();
+			reasoner = reasonerFactory.createReasoner(ontology);
+		} catch (OWLOntologyCreationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
-	
-	protected void preAndSave(String owlFilePath) throws OWLOntologyCreationException, OWLOntologyStorageException{
+
+	protected void preAndSave(String owlFilePath) {
 		reasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 		reasoner.precomputeInferences(InferenceType.CLASS_ASSERTIONS);
 		reasoner.precomputeInferences(InferenceType.DIFFERENT_INDIVIDUALS);
@@ -112,23 +115,29 @@ public class OntologyConnection {
 		reasoner.precomputeInferences(InferenceType.DISJOINT_CLASSES);
 		reasoner.precomputeInferences(InferenceType.OBJECT_PROPERTY_ASSERTIONS);
 		reasoner.precomputeInferences(InferenceType.OBJECT_PROPERTY_HIERARCHY);
-		
+
 		List<InferredAxiomGenerator<? extends OWLAxiom>> gens = new ArrayList<InferredAxiomGenerator<? extends OWLAxiom>>();
 		gens.add(new InferredSubClassAxiomGenerator());
 		gens.add(new InferredClassAssertionAxiomGenerator());
 
-		
 		File ontfile = new File(owlFilePath);
-		OWLOntology ont = manager.loadOntologyFromOntologyDocument(ontfile);
-		
-		InferredOntologyGenerator iog = new InferredOntologyGenerator(reasoner, gens);
-		iog.fillOntology(manager, ont);
-		manager.saveOntology(ont);
-		
+		OWLOntology ont;
+		try {
+			ont = manager.loadOntologyFromOntologyDocument(ontfile);
+			InferredOntologyGenerator iog = new InferredOntologyGenerator(reasoner,
+					gens);
+			iog.fillOntology(manager, ont);
+			manager.saveOntology(ont);
+		} catch (OWLOntologyCreationException e) {
+			e.printStackTrace();
+		} catch (OWLOntologyStorageException e) {
+			e.printStackTrace();
+		}
+
 		System.out.println("Infered and Saved!");
 	}
-	
-	protected void preAndSave() throws OWLOntologyCreationException, OWLOntologyStorageException{
+
+	protected void preAndSave(){
 		reasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY);
 		reasoner.precomputeInferences(InferenceType.CLASS_ASSERTIONS);
 		reasoner.precomputeInferences(InferenceType.DIFFERENT_INDIVIDUALS);
@@ -138,240 +147,317 @@ public class OntologyConnection {
 		reasoner.precomputeInferences(InferenceType.DISJOINT_CLASSES);
 		reasoner.precomputeInferences(InferenceType.OBJECT_PROPERTY_ASSERTIONS);
 		reasoner.precomputeInferences(InferenceType.OBJECT_PROPERTY_HIERARCHY);
-		
+
 		List<InferredAxiomGenerator<? extends OWLAxiom>> gens = new ArrayList<InferredAxiomGenerator<? extends OWLAxiom>>();
 		gens.add(new InferredSubClassAxiomGenerator());
 		gens.add(new InferredClassAssertionAxiomGenerator());
 
-   		
-		InferredOntologyGenerator iog = new InferredOntologyGenerator(reasoner, gens);
+		InferredOntologyGenerator iog = new InferredOntologyGenerator(reasoner,
+				gens);
 		iog.fillOntology(manager, ontology);
-		manager.saveOntology(ontology);
-		
+		try {
+			manager.saveOntology(ontology);
+		} catch (OWLOntologyStorageException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		System.out.println("Infered and Saved!");
 	}
-	
-	
-	
-	protected void removeAllIndividuals (){
-		OWLEntityRemover remover = new OWLEntityRemover(manager, Collections.singleton(ontology));
-		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
-		 for(OWLNamedIndividual ind : ontology.getIndividualsInSignature()) {
-			 ind.accept(remover);
-			 }
+
+	protected void removeAllIndividuals() {
+		OWLEntityRemover remover = new OWLEntityRemover(manager,
+				Collections.singleton(ontology));
+		 System.out.println("Number of individuals: " +
+		 ontology.getIndividualsInSignature().size());
+		for (OWLNamedIndividual ind : ontology.getIndividualsInSignature()) {
+			ind.accept(remover);
+		}
 		manager.applyChanges(remover.getChanges());
-		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
+		 System.out.println("Number of individuals: " +
+		 ontology.getIndividualsInSignature().size());
 		remover.reset();
 		saveOntologie();
-	}
-	
-	protected void removeAllIndividualsOfClass (String className) throws OntologyConnectionUnknowClassException{
-		
-		OWLClass cl = this.getClassByName(className);
-		Set<OWLIndividual> invids = cl.getIndividuals(ontology);
-		OWLEntityRemover remover = new OWLEntityRemover(manager, Collections.singleton(ontology));
-		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
-		 for(OWLIndividual ind : invids) {
-			((OWLNamedIndividual)ind).accept(remover);
-			 }
-		manager.applyChanges(remover.getChanges());
-		//System.out.println("Number of individuals: " + ontology.getIndividualsInSignature().size());
-		remover.reset();
-		saveOntologie();
-	}
-	
-	
-	///////////////////////////////////////////////////Individual-Methods////////////////////////////////////////////////////////////
-	
-	protected OWLNamedIndividual setObjectPropertieToIndividual(OWLNamedIndividual individual , String objectPropertieName ,String value)throws OntologyConnectionDataPropertyException,OWLConnectionUnknownTypeException{
-		OWLDataProperty prop = getOWLDataProperty( ontID+"#"+objectPropertieName);
-		if ( null == prop)
-			throw new OntologyConnectionDataPropertyException(objectPropertieName + " : Doesnt exist");
-		OWLDataPropertyAssertionAxiom assertion = factory.getOWLDataPropertyAssertionAxiom( prop, individual, value);				
-		AddAxiom addAxiomChange = new AddAxiom(ontology, assertion);
-		manager.applyChange(addAxiomChange);		
-		return individual;	 
-	}
-	
-	protected OWLNamedIndividual setObjectPropertieToIndividual(OWLNamedIndividual individual , String objectPropertieName ,boolean value)throws OntologyConnectionDataPropertyException,OWLConnectionUnknownTypeException{
-		OWLDataProperty prop = getOWLDataProperty( ontID+"#"+objectPropertieName);
-		if ( null == prop)
-			throw new OntologyConnectionDataPropertyException(objectPropertieName + " : Doesnt exist");
-		OWLDataPropertyAssertionAxiom assertion = factory.getOWLDataPropertyAssertionAxiom( prop, individual,value);				
-		AddAxiom addAxiomChange = new AddAxiom(ontology, assertion);
-		manager.applyChange(addAxiomChange);		
-		return individual;	 
-	}
-	
-	protected OWLNamedIndividual setObjectPropertieToIndividual(OWLNamedIndividual individual , String objectPropertieName ,Integer value)throws OntologyConnectionDataPropertyException,OWLConnectionUnknownTypeException{
-		OWLDataProperty prop = getOWLDataProperty( ontID+"#"+objectPropertieName);
-		if ( null == prop)
-			throw new OntologyConnectionDataPropertyException(objectPropertieName + " : Doesnt exist");
-		OWLDataPropertyAssertionAxiom assertion = factory.getOWLDataPropertyAssertionAxiom( prop, individual, value);			
-		AddAxiom addAxiomChange = new AddAxiom(ontology, assertion);
-		manager.applyChange(addAxiomChange);		
-		return individual;	 
-	}
-	
-	
-	protected void addIndividualToClass (OWLNamedIndividual individual , String ClassName)throws OntologyConnectionUnknowClassException{
-		OWLClass cl = getClass( ontID+"#"+ClassName);
-		if (null == cl)
-			throw new OntologyConnectionUnknowClassException("Unknown class : "+ClassName);
-		OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(cl,individual);
-        manager.addAxiom(ontology, classAssertion);
+		individuals = ontology.getIndividualsInSignature();
 	}
 
-	protected OWLNamedIndividual createIndividual (String name) throws OntologyConnectionIndividualAreadyExistsException{
-		if ( null != getIndividual(  ontID+"#"+name ) ) 
-			throw new OntologyConnectionIndividualAreadyExistsException(name + "  :  Already Exists");
-		OWLNamedIndividual individual = factory.getOWLNamedIndividual(name,pm);
+	protected void removeAllIndividualsOfClass(String className){
+
+		OWLClass cl;
+		try {
+			cl = this.getClassByName(className);
+			Set<OWLIndividual> invids = cl.getIndividuals(ontology);
+			OWLEntityRemover remover = new OWLEntityRemover(manager,
+					Collections.singleton(ontology));
+			// System.out.println("Number of individuals: " +
+			// ontology.getIndividualsInSignature().size());
+			for (OWLIndividual ind : invids) {
+				((OWLNamedIndividual) ind).accept(remover);
+			}
+			manager.applyChanges(remover.getChanges());
+			// System.out.println("Number of individuals: " +
+			// ontology.getIndividualsInSignature().size());
+			remover.reset();
+			saveOntologie();
+			individuals = ontology.getIndividualsInSignature();
+		} catch (OntologyConnectionUnknowClassException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// /////////////////////////////////////////////////Individual-Methods////////////////////////////////////////////////////////////
+
+	protected OWLNamedIndividual setObjectPropertieToIndividual(
+			OWLNamedIndividual individual, String objectPropertieName,
+			String value) throws OntologyConnectionDataPropertyException,
+			OWLConnectionUnknownTypeException {
+		OWLDataProperty prop = getOWLDataProperty(ontID + "#"
+				+ objectPropertieName);
+		if (null == prop)
+			throw new OntologyConnectionDataPropertyException(
+					objectPropertieName + " : Doesnt exist");
+		OWLDataPropertyAssertionAxiom assertion = factory
+				.getOWLDataPropertyAssertionAxiom(prop, individual, value);
+		AddAxiom addAxiomChange = new AddAxiom(ontology, assertion);
+		manager.applyChange(addAxiomChange);
+		return individual;
+	}
+
+	protected OWLNamedIndividual setObjectPropertieToIndividual(
+			OWLNamedIndividual individual, String objectPropertieName,
+			boolean value) throws OntologyConnectionDataPropertyException,
+			OWLConnectionUnknownTypeException {
+		OWLDataProperty prop = getOWLDataProperty(ontID + "#"
+				+ objectPropertieName);
+		if (null == prop)
+			throw new OntologyConnectionDataPropertyException(
+					objectPropertieName + " : Doesnt exist");
+		OWLDataPropertyAssertionAxiom assertion = factory
+				.getOWLDataPropertyAssertionAxiom(prop, individual, value);
+		AddAxiom addAxiomChange = new AddAxiom(ontology, assertion);
+		manager.applyChange(addAxiomChange);
+		return individual;
+	}
+
+	protected OWLNamedIndividual setObjectPropertieToIndividual(
+			OWLNamedIndividual individual, String objectPropertieName,
+			Integer value) throws OntologyConnectionDataPropertyException,
+			OWLConnectionUnknownTypeException {
+		OWLDataProperty prop = getOWLDataProperty(ontID + "#"
+				+ objectPropertieName);
+		if (null == prop)
+			throw new OntologyConnectionDataPropertyException(
+					objectPropertieName + " : Doesnt exist");
+		OWLDataPropertyAssertionAxiom assertion = factory
+				.getOWLDataPropertyAssertionAxiom(prop, individual, value);
+		AddAxiom addAxiomChange = new AddAxiom(ontology, assertion);
+		manager.applyChange(addAxiomChange);
+		return individual;
+	}
+
+	protected void addIndividualToClass(OWLNamedIndividual individual,
+			String ClassName) throws OntologyConnectionUnknowClassException {
+		OWLClass cl = getClass(ontID + "#" + ClassName);
+		if (null == cl)
+			throw new OntologyConnectionUnknowClassException("Unknown class : "
+					+ ClassName);
+		OWLClassAssertionAxiom classAssertion = factory
+				.getOWLClassAssertionAxiom(cl, individual);
+		manager.addAxiom(ontology, classAssertion);
+	}
+
+	protected OWLNamedIndividual createIndividual(String name)
+			throws OntologyConnectionIndividualAreadyExistsException {
+		if (null != getIndividual(ontID + "#" + name))
+			throw new OntologyConnectionIndividualAreadyExistsException(name
+					+ "  :  Already Exists");
+		OWLNamedIndividual individual = factory.getOWLNamedIndividual(name, pm);
 		individuals.add(individual);
 		return individual;
 	}
-		
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
+	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	/**
 	 * 
 	 * @param classList
 	 * @return
 	 */
-	protected ArrayList<String> getClassNamesOnly(NodeSet<OWLClass> classList){
+	protected ArrayList<String> getClassNamesOnly(NodeSet<OWLClass> classList) {
 		if (classList.isEmpty())
 			return null;
 		Set<OWLClass> clses = classList.getFlattened();
-		ArrayList<String> subClasses =new ArrayList<String> ();
-		for(OWLClass cls : clses) {
-			subClasses.add(cls.toString().replaceFirst(ontID+"#", "").replace("<", "").replace(">", ""));	
-			}
+		ArrayList<String> subClasses = new ArrayList<String>();
+		for (OWLClass cls : clses) {
+			subClasses.add(cls.toString().replaceFirst(ontID + "#", "")
+					.replace("<", "").replace(">", ""));
+		}
 		return subClasses;
 	}
-		
-	protected ArrayList<String> getClassNamesOnly(Set<OWLClassExpression> classList){
-		if (classList.isEmpty())
+
+	protected ArrayList<String> getClassNamesOnly(
+			Set<OWLClassExpression> classList) {
+		if (classList == null || classList.isEmpty())
 			return null;
-		ArrayList<String> subClasses =new ArrayList<String> ();
-		for(OWLClassExpression cls : classList) {
-			subClasses.add(cls.toString().replaceFirst(ontID+"#", "").replace("<", "").replace(">", ""));	
-			}
+		ArrayList<String> subClasses = new ArrayList<String>();
+		for (OWLClassExpression cls : classList) {
+			subClasses.add(cls.toString().replaceFirst(ontID + "#", "")
+					.replace("<", "").replace(">", ""));
+		}
 		return subClasses;
 	}
-	
-	
-	////////////////////////////////////////////Reasoner-Calls//////////////////////////////////////////////////////////////////
+
+	// //////////////////////////////////////////Reasoner-Calls//////////////////////////////////////////////////////////////////
 	/**
 	 * 
 	 * @param className
-	 * @return the names of the SuperClasses or null if there are no superclasses
+	 * @return the names of the SuperClasses or null if there are no
+	 *         superclasses
 	 * @throws OntologyConnectionUnknowClassException
 	 */
-	protected ArrayList<String> getSuperClassesByReasoner (String className) throws OntologyConnectionUnknowClassException{
-		OWLClass cl = getClassByName(className);
-		if(null == cl)
-				throw new OntologyConnectionUnknowClassException("Unknown : "+className);
-		NodeSet<OWLClass> nodes = reasoner.getSuperClasses(cl, true);
-		return this.getClassNamesOnly(nodes);
+	protected ArrayList<String> getSuperClassesByReasoner(String className) {
+		OWLClass cl;
+		try {
+			cl = getClassByName(className);
+			NodeSet<OWLClass> nodes = reasoner.getSuperClasses(cl, true);
+			return this.getClassNamesOnly(nodes);
+		} catch (OntologyConnectionUnknowClassException e) {
+			System.out.println("Could not find class " + className
+					+ " in Ontology");
+		}
+		return null;
 	}
-	
-	protected ArrayList<Integer> getEventIdsByClassByReasoner(String className) throws InconsistentOntologyException, ClassExpressionNotInProfileException, FreshEntitiesException, TimeOutException, ReasonerInterruptedException, OntologyConnectionUnknowClassException{
+
+	protected ArrayList<Integer> getEventIdsByClassByReasoner(String className)
+			throws InconsistentOntologyException,
+			ClassExpressionNotInProfileException, FreshEntitiesException,
+			TimeOutException, ReasonerInterruptedException,
+			OntologyConnectionUnknowClassException {
 		ArrayList<Integer> ids = new ArrayList<Integer>();
-		NodeSet<OWLNamedIndividual> invids =reasoner.getInstances( getClassByName (className), false);
-		Set<OWLNamedIndividual> flatinvids= invids.getFlattened();
-		for (OWLIndividual invid : flatinvids ){
-			ids.add(Integer.valueOf(invid.toStringID().replace(pm.getDefaultPrefix(),"")));
+		NodeSet<OWLNamedIndividual> invids = reasoner.getInstances(
+				getClassByName(className), false);
+		Set<OWLNamedIndividual> flatinvids = invids.getFlattened();
+		for (OWLIndividual invid : flatinvids) {
+			ids.add(Integer.valueOf(invid.toStringID().replace(
+					pm.getDefaultPrefix(), "")));
 		}
 		return ids;
 	}
-	
-	protected NodeSet<OWLClass> getSubClassesByReasoner (String className) throws OntologyConnectionUnknowClassException{
-		OWLClass superClass = getClassByName(className );
-		if (superClass==null)
-			throw new OntologyConnectionUnknowClassException("unknow :"+className);
-		return  reasoner.getSubClasses(superClass, true);
+
+	protected NodeSet<OWLClass> getSubClassesByReasoner(String className)
+			throws OntologyConnectionUnknowClassException {
+		OWLClass superClass = getClassByName(className);
+		if (superClass == null)
+			throw new OntologyConnectionUnknowClassException("unknow :"
+					+ className);
+		return reasoner.getSubClasses(superClass, true);
 	}
-	
-	////////////////////////////////////////////////////Ontology-Base-Queries///////////////////////////////////////////////////////
-	
+
+	// //////////////////////////////////////////////////Ontology-Base-Queries///////////////////////////////////////////////////////
+
 	/**
 	 * 
 	 * @param className
-	 * @return the names of the SuperClasses or null if there are no superclasses
+	 * @return the names of the SuperClasses or null if there are no
+	 *         superclasses
 	 * @throws OntologyConnectionUnknowClassException
 	 */
-	protected ArrayList<String> getSuperClassesByClassFromOntology(String className) throws OntologyConnectionUnknowClassException{
-		OWLClass cl = getClassByName(className);
-		if(null == cl)
-				throw new OntologyConnectionUnknowClassException("Unknown : "+className);
-		Set<OWLClassExpression> nodes = cl.getSuperClasses(ontology);
+	protected ArrayList<String> getSuperClassesByClassFromOntology(
+			String className){
+		OWLClass cl;
+		Set<OWLClassExpression> nodes=null;
+		try {
+			cl = getClassByName(className);
+			nodes = cl.getSuperClasses(ontology);
+		} catch (OntologyConnectionUnknowClassException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return this.getClassNamesOnly(nodes);
 	}
-	
-	protected ArrayList<Integer> getEventIdsByClassByOntology(String className) throws OntologyConnectionUnknowClassException{
+
+	protected ArrayList<Integer> getEventIdsByClassByOntology(String className){
 		ArrayList<Integer> ids = new ArrayList<Integer>();
-		Set<OWLIndividual> invids = getClassByName(className).getIndividuals(ontology);
-		for (OWLIndividual invid : invids ){
-			ids.add(Integer.valueOf(invid.toStringID().replace(pm.getDefaultPrefix(),"")));
+		Set<OWLIndividual> invids;
+		try {
+			invids = getClassByName(className).getIndividuals(
+					ontology);
+			for (OWLIndividual invid : invids) {
+				ids.add(Integer.valueOf(invid.toStringID().replace(
+						pm.getDefaultPrefix(), "")));
+			}
+		} catch (OntologyConnectionUnknowClassException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 		return ids;
 	}
-	
-	protected ArrayList<String> getSubClassesByClassFromOntology (String className) throws OntologyConnectionUnknowClassException{
+
+	protected ArrayList<String> getSubClassesByClassFromOntology(
+			String className) {
 		className = SpellingMistakeCorrector.correct(className);
-		OWLClass superClass = getClassByName(className );
-		if (superClass==null)
-			throw new OntologyConnectionUnknowClassException("unknow :"+className);
+		OWLClass superClass = null;
+		try {
+			superClass = getClassByName(className);
+		} catch (OntologyConnectionUnknowClassException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return getClassNamesOnly(superClass.getSubClasses(ontology));
 	}
-	
-	
-	
-	////////////////////////////////////////////////////Private Methods///////////////////////////////////////////////////////////
-	
-	private OWLDataProperty getOWLDataProperty (String dataPropIRI){	
-		for ( OWLDataProperty prop : dataProperties ){
-			if (prop.toString().replace("<", "").replace(">","").trim().equals(dataPropIRI))
+
+	// //////////////////////////////////////////////////Private
+	// Methods///////////////////////////////////////////////////////////
+
+	private OWLDataProperty getOWLDataProperty(String dataPropIRI) {
+		for (OWLDataProperty prop : dataProperties) {
+			if (prop.toString().replace("<", "").replace(">", "").trim()
+					.equals(dataPropIRI))
 				return prop;
 		}
 		return null;
 	}
-	
-	private OWLNamedIndividual getIndividual (String individualIRI){
-		for ( OWLNamedIndividual indi : individuals){
+
+	private OWLNamedIndividual getIndividual(String individualIRI) {
+		for (OWLNamedIndividual indi : individuals) {
 			if (indi.getIRI().toString().equals(individualIRI))
 				return indi;
 		}
 		return null;
 	}
-	
-	private OWLNamedIndividual getIndividual (OWLNamedIndividual individ){
-		for ( OWLNamedIndividual indi : individuals){
+
+	private OWLNamedIndividual getIndividual(OWLNamedIndividual individ) {
+		for (OWLNamedIndividual indi : individuals) {
 			if (indi.equals(individ))
 				return indi;
 		}
 		return null;
 	}
-	
-	private OWLClass getClass (String classIRI){
-		for ( OWLClass cl : classes){
+
+	private OWLClass getClass(String classIRI) {
+		for (OWLClass cl : classes) {
 			if (cl.getIRI().toString().equals(classIRI))
 				return cl;
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 
 	 * @param className
 	 * @return OWLClass or null if the class doesnt exist
-	 * @throws OntologyConnectionUnknowClassException 
+	 * @throws OntologyConnectionUnknowClassException
 	 */
-	private OWLClass getClassByName ( String className) throws OntologyConnectionUnknowClassException{
-		OWLClass cl = this.getClass(ontID+"#"+className);
-		if (cl ==null)
-			throw new OntologyConnectionUnknowClassException("Classname unknown : "+className);
+	private OWLClass getClassByName(String className)
+			throws OntologyConnectionUnknowClassException {
+		OWLClass cl = this.getClass(ontID + "#" + className);
+		if (cl == null)
+			throw new OntologyConnectionUnknowClassException(
+					"Classname unknown : " + className);
 		return cl;
 	}
-	
-	
+
 }

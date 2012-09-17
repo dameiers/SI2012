@@ -16,22 +16,19 @@ import ontologyAndDB.exception.OntologyConnectionUnknowClassException;
 
 import gui.steps.PersonAgeStep;
 
-public class PersonAgeStepModel extends InformationGatherStepModel 
-{
+public class PersonAgeStepModel extends InformationGatherStepModel {
 	private static PersonAgeStepModel instance;
-	
+
 	private String[] ages;
-	
-	private PersonAgeStepModel() 
-	{
+
+	private PersonAgeStepModel() {
 		super("Personen", new PersonAgeStep());
 	}
-	
-	public static PersonAgeStepModel getInstance() 
-	{
-		if(instance != null)
+
+	public static PersonAgeStepModel getInstance() {
+		if (instance != null)
 			return instance;
-		
+
 		instance = new PersonAgeStepModel();
 		return instance;
 	}
@@ -52,178 +49,99 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 		}
 	}
 
-	public String getError() 
-	{
-		if(ages.length == 0)
+	public String getError() {
+		if (ages.length == 0)
 			return "Ungültige Anzahl von Altersangaben";
-		
+
 		return null;
 	}
-	
-	public boolean hasAdultPerson()
-	{
-		if(ages == null) 
+
+	public boolean hasAdultPerson() {
+		if (ages == null)
 			return false;
-		
-		for(int i=0; i<ages.length; i++)
-		{	
-			if(ages[i].equals("YoungAdults") || 
-			   ages[i].equals("Adults") || 
-			   ages[i].equals("OldAdults")) 
-			{
+
+		for (int i = 0; i < ages.length; i++) {
+			if (ages[i].equals("YoungAdults") || ages[i].equals("Adults")
+					|| ages[i].equals("OldAdults")) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public String[] getAges() 
-	{
-		if(ages == null) {
+	public String[] getAges() {
+		if (ages == null) {
 			return new String[0];
 		}
-		
+
 		return ages;
 	}
 
-	public void setAges(String[] ages) 
-	{
+	public void setAges(String[] ages) {
 		this.ages = ages;
 		updateAlredayFilled();
 	}
-	
-	public boolean containsAgeClass(String ageClass) {
-		PersonDescriptionStepModel pdsm = PersonDescriptionStepModel.getInstance();
-		Collection<String> ageClasses = new LinkedList<String>();
-		ageClasses.addAll(Arrays.asList(getAges()));
-		ageClasses.add(pdsm.getAge());
-		
-		for(String age : ageClasses){
-			if(age.equals(ageClass)) {
-				
-				return true;
-			}
-		} 
-		
-		return false;
-	}
-	
 
-	public String[] getPreferedStuffBasedOnAges() throws OWLOntologyCreationException
-	{
+	public String[] getPreferedStuffBasedOnAges()
+			throws OWLOntologyCreationException {
 		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
-		PersonDescriptionStepModel pdsm = PersonDescriptionStepModel.getInstance();
+		PersonDescriptionStepModel pdsm = PersonDescriptionStepModel
+				.getInstance();
 
-		Collection<String> ageClasses = new LinkedList<String>();
-		ageClasses.addAll(Arrays.asList(getAges()));
-		ageClasses.add(pdsm.getAge());
-		
+		String[] ageClasses = getAges();
+
 		HashSet<String> result = new HashSet<String>();
-		
-		for(String ageClass : ageClasses) {
-			try {
-				String className = ageClass + "PreferredEvents";
-				result.addAll(ontoConn.getSubClassesOfClassByOntology(className));
-			} catch (OntologyConnectionUnknowClassException e) {
-				e.printStackTrace();
-			}
+
+		for (String ageClass : ageClasses) {
+			String className = ageClass + "PreferredEvents";
+			result.addAll(ontoConn.getSubClassesOfClassByOntology(className));
 		}
-		
-		result.addAll(
-				getCorrespondingEventCategoriesFromGenres(
-				filterGenresFromPreferedStuff(result)));
-	
-		
-		result = filterEventsConsidereingSpacialAgeClasses(result);
-		
-		System.out.println(result);
+
+		String className = pdsm.getAge() + "PreferredEvents";
+		result.addAll(ontoConn.getSubClassesOfClassByOntology(className));
+
+		result.addAll(getCorrespondingEventCategoriesFromGenres(filterGenresFromPreferedStuff(result)));
 
 		String[] strArr = new String[1];
 		return result.toArray(strArr);
 	}
-	
-	private  HashSet<String> filterEventsConsidereingSpacialAgeClasses(HashSet<String> events) throws OWLOntologyCreationException
-	{
-		
-		if(containsAgeClass("Child")) {
-			System.out.println("Da ein Kind in der Gruppe ist werden nur Kinderfreundliche Events betrachtet");
-			events = intersectionWithEventClass(events, "ChildFriendlyEvent");
-		}
-		else if(containsAgeClass("Teenager")) {
-			System.out.println("Da ein Jugentlicher in der Gruppe ist werden nur ensprechent geeignete Events betrachtet");
-			events = intersectionWithEventClass(events, "Teenager");
-		}
-		
-		return events;
-	}
-	
-	private HashSet<String> intersectionWithEventClass(Collection<String> likedStuff, String eventClass)  throws OWLOntologyCreationException
-	{
-		HashSet<String> result = new HashSet<String>();
-		
-		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
-		try {
-			Collection<String> chieldEvents = ontoConn.getSubClassesOfClassByOntology(eventClass);
-			
-			for(String event : likedStuff) {
-				if(chieldEvents.contains(event)) {
-					result.add(event);
-				}
-			}
-		} catch (OntologyConnectionUnknowClassException e) {
-			System.out.println("klasse in der ontologie nicht gefunden");
-		}
-		
-		return result;
-	}
-	
-	private Collection<String> filterGenresFromPreferedStuff(Collection<String> likedStuff)
-	{
+
+	private Collection<String> filterGenresFromPreferedStuff(
+			Collection<String> likedStuff) {
 		List<String> result = new ArrayList<String>();
-		
-		for(String item : likedStuff) {
-			if(Pattern.matches(".*Genre$", item)) {
+
+		for (String item : likedStuff) {
+			if (Pattern.matches(".*Genre$", item)) {
 				result.add(item);
 			}
 		}
-	
+
 		return result;
 	}
-	
-	private Collection<String> getCorrespondingEventCategoriesFromGenres(Collection<String> genres) {
+
+	private Collection<String> getCorrespondingEventCategoriesFromGenres(
+			Collection<String> genres) {
 		HashSet<String> result = new HashSet<String>();
-		
-		try {
-			OntToDbConnection onto = OntToDbConnection.getInstance();
-			
-			for(String genre : genres) {
-				
-				try {
-					result.addAll(
-							mapGenreCategoriesToEventCategories(
-							onto.getSuperClassesOfClassFromOntology(genre)));
-					
-				} catch (OntologyConnectionUnknowClassException e) {
-					System.out.println("Genre nicht gefunden (" + genre + ")");
-				}
-			}
-			
-			
-		} catch (OWLOntologyCreationException e) {
-			System.out.println();
+
+		OntToDbConnection onto = OntToDbConnection.getInstance();
+
+		for (String genre : genres) {
+
+			result.addAll(mapGenreCategoriesToEventCategories(onto
+					.getSuperClassesOfClassFromOntology(genre)));
 		}
 		
 		return result;
 	}
-	
-	private Collection<String> mapGenreCategoriesToEventCategories(Collection<String> genreCats)
-	{
+
+	private Collection<String> mapGenreCategoriesToEventCategories(
+			Collection<String> genreCats) {
 		Collection<String> result = new ArrayList<String>();
-		
-		for(String genreCat : genreCats) {
+
+		for (String genreCat : genreCats) {
 			result.add(genreCat.replace("Genres", "Event"));
 		}
-		
+
 		return result;
 	}
 }

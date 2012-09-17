@@ -11,6 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
 import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import model.EventCollector;
 import model.steps.InformationGatherStepModel;
 import model.steps.OriginLocationStepModel;
 
@@ -105,6 +107,13 @@ public class OriginLocationStep extends AbstractViewModelConnectionImpl {
 	public void fillModel() {
 		OriginLocationStepModel model = OriginLocationStepModel.getInstance();
 		model.setOrigin(locationComboBox.getSelectedLocation());
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				EventCollector.getInstance().setDistanceView();
+			}
+		});
 	}
 
 	@Override

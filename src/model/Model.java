@@ -16,7 +16,7 @@ public class Model extends Observable
 	 */
 	public HashMap<String, String>[] getEvents()
 	{	
-		return (new EventCollector()).getEvents();
+		return (EventCollector.getInstance()).getEvents();
 	}
 	
 	/**
