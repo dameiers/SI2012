@@ -1,9 +1,11 @@
 package model.steps;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -32,6 +34,22 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 		
 		instance = new PersonAgeStepModel();
 		return instance;
+	}
+	
+	public void printToConsole()
+	{
+		if(ages == null)
+		{
+			System.out.println("Null");
+		}
+		else
+		{
+			String str = "";
+			for(int i=0; i<ages.length; i++) {
+				str += ages[i] + " ";
+			}
+			System.out.println(str);
+		}
 	}
 
 	public String getError() 
@@ -74,12 +92,31 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 		updateAlredayFilled();
 	}
 	
+	public boolean containsAgeClass(String ageClass) {
+		PersonDescriptionStepModel pdsm = PersonDescriptionStepModel.getInstance();
+		Collection<String> ageClasses = new LinkedList<String>();
+		ageClasses.addAll(Arrays.asList(getAges()));
+		ageClasses.add(pdsm.getAge());
+		
+		for(String age : ageClasses){
+			if(age.equals(ageClass)) {
+				
+				return true;
+			}
+		} 
+		
+		return false;
+	}
+	
+
 	public String[] getPreferedStuffBasedOnAges() throws OWLOntologyCreationException
 	{
 		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
 		PersonDescriptionStepModel pdsm = PersonDescriptionStepModel.getInstance();
 
-		String[] ageClasses = getAges();
+		Collection<String> ageClasses = new LinkedList<String>();
+		ageClasses.addAll(Arrays.asList(getAges()));
+		ageClasses.add(pdsm.getAge());
 		
 		HashSet<String> result = new HashSet<String>();
 		
@@ -92,19 +129,52 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 			}
 		}
 		
-		try {
-		String className = pdsm.getAge() + "PreferredEvents";
-		result.addAll(ontoConn.getSubClassesOfClassByOntology(className));
-		} catch (OntologyConnectionUnknowClassException e) {
-			e.printStackTrace();
-		}
-		
 		result.addAll(
 				getCorrespondingEventCategoriesFromGenres(
 				filterGenresFromPreferedStuff(result)));
+	
+		
+		result = filterEventsConsidereingSpacialAgeClasses(result);
+		
+		System.out.println(result);
 
 		String[] strArr = new String[1];
 		return result.toArray(strArr);
+	}
+	
+	private  HashSet<String> filterEventsConsidereingSpacialAgeClasses(HashSet<String> events) throws OWLOntologyCreationException
+	{
+		
+		if(containsAgeClass("Child")) {
+			System.out.println("Da ein Kind in der Gruppe ist werden nur Kinderfreundliche Events betrachtet");
+			events = intersectionWithEventClass(events, "ChildFriendlyEvent");
+		}
+		else if(containsAgeClass("Teenager")) {
+			System.out.println("Da ein Jugentlicher in der Gruppe ist werden nur ensprechent geeignete Events betrachtet");
+			events = intersectionWithEventClass(events, "Teenager");
+		}
+		
+		return events;
+	}
+	
+	private HashSet<String> intersectionWithEventClass(Collection<String> likedStuff, String eventClass)  throws OWLOntologyCreationException
+	{
+		HashSet<String> result = new HashSet<String>();
+		
+		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
+		try {
+			Collection<String> chieldEvents = ontoConn.getSubClassesOfClassByOntology(eventClass);
+			
+			for(String event : likedStuff) {
+				if(chieldEvents.contains(event)) {
+					result.add(event);
+				}
+			}
+		} catch (OntologyConnectionUnknowClassException e) {
+			System.out.println("klasse in der ontologie nicht gefunden");
+		}
+		
+		return result;
 	}
 	
 	private Collection<String> filterGenresFromPreferedStuff(Collection<String> likedStuff)
@@ -142,10 +212,6 @@ public class PersonAgeStepModel extends InformationGatherStepModel
 		} catch (OWLOntologyCreationException e) {
 			System.out.println();
 		}
-		
-		System.out.println("-------");
-		System.out.println(result);
-		System.out.println("-------");
 		
 		return result;
 	}

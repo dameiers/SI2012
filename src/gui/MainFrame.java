@@ -103,13 +103,17 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 		
 		if(error == null)
 		{
+			System.out.println("Model ("+ stepModel.getDisplayName() +") fehlerfrei mit folgenden Daten gefüllt: " );
+			stepModel.printToConsole();
+			System.out.println("-------------------------------------------");
+			
 			updateBreadcrubs(model.getInformationGatherTrace());
 			
 			InformationGatherStepModel 	nextStepModel = model.getNextStep(stepModel);
 			ViewModelConnection 		nextViewModelConnection = nextStepModel.getViewModelConnection();
 			JComponent 					nextJComponent = nextViewModelConnection.getVisualisationUI();
 			
-			nextStepModel.setPreselectionIfItWasntAlredySet();
+			nextStepModel.setPreselectionIfModelIsVirgin();
 			nextViewModelConnection.fillMask();
 			
 			stepHistory.push(currentViewStepConnection);

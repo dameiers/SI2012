@@ -9,7 +9,6 @@ public abstract class InformationGatherStepModel
 {
 	private String displayName;
 	private Boolean alredyFilled = false;
-	private Boolean preselectionWasAlreadySet = false;
 	private AbstractViewModelConnectionImpl viewModelConnection;
 	
 	public InformationGatherStepModel(String displayName, 
@@ -34,23 +33,27 @@ public abstract class InformationGatherStepModel
 		alredyFilled = (getError() == null);
 	}
 	
-	public final void setPreselectionIfItWasntAlredySet()
-	{
-		if(!preselectionWasAlreadySet)
-		{
-			setPreselection();
-			preselectionWasAlreadySet=true;
-		}
-	}
-	
-	public void setPreselection()
+	protected void setPreselection()
 	{
 		
+	}
+	
+	public final void setPreselectionIfModelIsVirgin()
+	{
+		if(!alredyFilled) {
+			System.out.println("setPreselection for "+ getDisplayName());
+			setPreselection();
+		}
 	}
 	
 	public String getDisplayName()
 	{
 		return displayName;
+	}
+	
+	public void printToConsole()
+	{
+		System.out.println("Wer die Info braucht, macht sich dran die printToConsole Methode im jeweiligen Schritt zu implementieren ;)");
 	}
 	
 	public abstract String getError();

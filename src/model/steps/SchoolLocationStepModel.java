@@ -13,6 +13,11 @@ public class SchoolLocationStepModel extends InformationGatherStepModel
 		super("Schulort", new SchoolLocationStep());
 	}
 	
+	public void printToConsole()
+	{
+		System.out.println(locations);
+	}
+	
 	public static SchoolLocationStepModel getInstance() 
 	{
 		if(instance != null)
