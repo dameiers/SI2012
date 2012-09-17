@@ -63,7 +63,7 @@ class TraceBuilder
 		result.add(personDescriptionStep);
 		result.add(timeRangeStep);
 		
-		if(personDescriptionStep.isAlredyFilled() && !"single".equals(personDescriptionStep.getGroup())) {
+		if(personDescriptionStep.isAlredyFilled() && !"Einzeln".equals(personDescriptionStep.getGroup())) {
 			result.add(personAgeStep);
 		} 
 		
