@@ -908,7 +908,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#MultipleDaysEvent"/>
-        <Class IRI="#LeisureTimeEvent"/>
+        <Class IRI="#Event"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#NonActiveSportEvent"/>
@@ -1280,6 +1280,3330 @@
         <Class IRI="#MultipleDaysEvent"/>
         <Class IRI="#OneDayEvent"/>
     </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ThrillerGenre"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#236"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DramaGenre"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#238"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ActionGenre"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#240"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TragedyGenre"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#241"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TragedyGenre"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#242"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ActionGenre"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#244"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdventureGenre"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#245"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdventureGenre"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#247"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComicGenre"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#249"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HorrorGenre"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#251"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HorrorGenre"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#253"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HorrorGenre"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#254"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComicGenre"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#255"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#256"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ActionGenre"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#259"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#260"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ActionGenre"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaEvent"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#263"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PopGenre"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#396"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassicGenre"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#398"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassicGenre"/>
+        <NamedIndividual IRI="#399"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#399"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#399"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#399"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#399"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#399"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#399"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#399"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#399"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PopGenre"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#400"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PopGenre"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#401"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassicGenre"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#402"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassicGenre"/>
+        <NamedIndividual IRI="#403"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#403"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#403"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#403"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#403"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#403"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#403"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#403"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#403"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HipHopGenre"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#404"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HipHopGenre"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#405"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HipHopGenre"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#406"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ElectroGenre"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#407"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#408"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#408"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#408"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ElectroGenre"/>
+        <NamedIndividual IRI="#408"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#408"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#408"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#408"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#408"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#408"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RockGenre"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#410"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RockGenre"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#YoungAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#412"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SchlagerGenre"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#413"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#414"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#414"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#414"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#414"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#414"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#414"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#414"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SchlagerGenre"/>
+        <NamedIndividual IRI="#414"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#414"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PunkGenre"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#415"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PunkGenre"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#417"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertEvent"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ConcertGenres"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PunkGenre"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SportEvents"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TeenagerPreferredEvents"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#418"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#437"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#437"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#437"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#437"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#437"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OperaEvent"/>
+        <NamedIndividual IRI="#437"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#437"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#438"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#438"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#438"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#438"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#438"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#438"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OperaEvent"/>
+        <NamedIndividual IRI="#438"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#438"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BalletEvent"/>
+        <NamedIndividual IRI="#456"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#456"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#456"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#456"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#456"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#456"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BalletEvent"/>
+        <NamedIndividual IRI="#457"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#457"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#457"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#457"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#457"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#BalletEvent"/>
+        <NamedIndividual IRI="#458"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#458"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#458"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#458"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#458"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#458"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AmusementParkEvent"/>
+        <NamedIndividual IRI="#527"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#527"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#527"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MultipleDaysEvent"/>
+        <NamedIndividual IRI="#527"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#527"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AmusementParkEvent"/>
+        <NamedIndividual IRI="#528"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#528"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#528"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#528"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MultipleDaysEvent"/>
+        <NamedIndividual IRI="#528"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#528"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#571"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CircusEvent"/>
+        <NamedIndividual IRI="#571"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#571"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#571"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#571"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#574"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CircusEvent"/>
+        <NamedIndividual IRI="#574"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#574"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#574"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#574"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#575"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CircusEvent"/>
+        <NamedIndividual IRI="#575"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#575"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#575"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#575"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#576"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CircusEvent"/>
+        <NamedIndividual IRI="#576"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#576"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#576"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#576"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#605"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#605"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HikeEvent"/>
+        <NamedIndividual IRI="#605"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#605"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MultipleDaysEvent"/>
+        <NamedIndividual IRI="#605"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#WeekendEvent"/>
+        <NamedIndividual IRI="#605"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#605"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#606"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HikeEvent"/>
+        <NamedIndividual IRI="#606"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#606"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#606"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#607"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#607"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#HikeEvent"/>
+        <NamedIndividual IRI="#607"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#607"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#607"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TragedyGenre"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TragedyGenre"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#69"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TragedyGenre"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#70"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TragedyGenre"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#71"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DramaGenre"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#72"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DramaGenre"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#73"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#74"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ComedyGenre"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#75"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ChildFriendlyEvent"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DramaGenre"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#77"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AdulsPreferredEvents"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CinemaGenres"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CultureEvent"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DramaGenre"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genre"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OldAdultsPreferredEvents"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreEvent"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TheatreGenres"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI=":Thing"/>
+        <NamedIndividual IRI="#78"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#236"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#236"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#236"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#238"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#238"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#238"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#240"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#240"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#240"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#241"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#241"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#241"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#242"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#242"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#242"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#244"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#244"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#244"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#245"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#245"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#245"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#247"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#247"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#247"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#249"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#249"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#249"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#251"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#251"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#251"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#253"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#253"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#253"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#254"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#254"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#254"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#255"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#255"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#255"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#256"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#256"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#256"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#259"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#259"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#259"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#260"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#260"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#260"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#263"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#263"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#263"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#396"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#396"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#396"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#398"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#398"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#398"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#399"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#399"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#399"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#400"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#400"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#400"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#401"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#401"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#401"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#402"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#402"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#402"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#403"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#403"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#403"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#404"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#404"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#404"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#405"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#405"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#405"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#406"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#406"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#406"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#407"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#407"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#407"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#408"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#408"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#408"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#410"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#410"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#410"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#412"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#412"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#412"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#413"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#413"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#413"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#414"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#414"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#414"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#415"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#415"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#415"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#417"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#417"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#417"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#418"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#418"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#418"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#437"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#437"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#437"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#438"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#438"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#438"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#456"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#456"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#456"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#457"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#457"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#457"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#458"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#458"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#458"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#527"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#527"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#527"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#528"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#528"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#528"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#571"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#571"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#571"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#574"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#574"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#574"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#575"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#575"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#575"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#576"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#576"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#576"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#605"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#605"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#605"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#606"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#606"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#606"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#607"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#607"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#607"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#68"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#68"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#68"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#69"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#69"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#69"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#70"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#70"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#70"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#71"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#71"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#71"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#72"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#72"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#72"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#73"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#73"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#73"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#74"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#74"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#74"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#75"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#75"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#75"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#77"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#77"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#77"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasChildCare"/>
+        <NamedIndividual IRI="#78"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasConcreteDuration"/>
+        <NamedIndividual IRI="#78"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isChildFriendly"/>
+        <NamedIndividual IRI="#78"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
     <InverseObjectProperties>
         <ObjectProperty IRI="#hasDuration"/>
         <ObjectProperty IRI="#isSuitableForEvent"/>
