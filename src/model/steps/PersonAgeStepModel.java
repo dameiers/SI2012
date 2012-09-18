@@ -32,17 +32,13 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 		instance = new PersonAgeStepModel();
 		return instance;
 	}
-	
-	public void printToConsole()
-	{
-		if(ages == null)
-		{
+
+	public void printToConsole() {
+		if (ages == null) {
 			System.out.println("Null");
-		}
-		else
-		{
+		} else {
 			String str = "";
-			for(int i=0; i<ages.length; i++) {
+			for (int i = 0; i < ages.length; i++) {
 				str += ages[i] + " ";
 			}
 			System.out.println(str);
@@ -82,23 +78,35 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 		updateAlredayFilled();
 	}
 	
-	public Collection<String> getPupils()
-	{
+	public boolean containsAgeClass(String ageClass) {
+		PersonDescriptionStepModel pdsm = PersonDescriptionStepModel
+				.getInstance();
+		Collection<String> ageClasses = new LinkedList<String>();
+		ageClasses.addAll(Arrays.asList(getAges()));
+		ageClasses.add(pdsm.getAge());
+
+		for (String age : ageClasses) {
+			if (age.equals(ageClass)) {
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public Collection<String> getPupils() {
 		Collection<String> result = new LinkedList<String>();
-		
-		if(ages != null)
-		{
-			for(int i=0; i<ages.length; i++) 
-			{
-				if(ages[i].equals("Child") || 
-				   ages[i].equals("Teenager") || 
-				   ages[i].equals("YoungAdults") )
-				{
+
+		if (ages != null) {
+			for (int i = 0; i < ages.length; i++) {
+				if (ages[i].equals("Child") || ages[i].equals("Teenager")
+						|| ages[i].equals("YoungAdults")) {
 					result.add(ages[i]);
 				}
 			}
 		}
-		
+
 		return result;
 	}
 
@@ -122,8 +130,45 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 
 		result.addAll(getCorrespondingEventCategoriesFromGenres(filterGenresFromPreferedStuff(result)));
 
+		result = filterEventsConsidereingSpacialAgeClasses(result);
+		
 		String[] strArr = new String[1];
 		return result.toArray(strArr);
+	}
+	
+	private HashSet<String> filterEventsConsidereingSpacialAgeClasses(
+			HashSet<String> events) throws OWLOntologyCreationException {
+
+		if (containsAgeClass("Child")) {
+			System.out
+					.println("Da ein Kind in der Gruppe ist werden nur Kinderfreundliche Events betrachtet");
+			events = intersectionWithEventClass(events, "ChildFriendlyEvent");
+		} else if (containsAgeClass("Teenager")) {
+			System.out
+					.println("Da ein Jugentlicher in der Gruppe ist werden nur ensprechent geeignete Events betrachtet");
+			events = intersectionWithEventClass(events, "Teenager");
+		}
+
+		return events;
+	}
+	
+	private HashSet<String> intersectionWithEventClass(
+			Collection<String> likedStuff, String eventClass)
+			throws OWLOntologyCreationException {
+		HashSet<String> result = new HashSet<String>();
+
+		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
+
+			Collection<String> chieldEvents = ontoConn
+					.getSubClassesOfClassByOntology(eventClass);
+
+			for (String event : likedStuff) {
+				if (chieldEvents.contains(event)) {
+					result.add(event);
+				}
+			}
+		
+		return result;
 	}
 
 	private Collection<String> filterGenresFromPreferedStuff(
@@ -150,7 +195,7 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 			result.addAll(mapGenreCategoriesToEventCategories(onto
 					.getSuperClassesOfClassFromOntology(genre)));
 		}
-		
+
 		return result;
 	}
 
