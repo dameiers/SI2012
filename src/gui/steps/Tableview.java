@@ -285,8 +285,8 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 							jTextField6.setText(selectedevent.get("mindestalter"));
 							jTextField7.setText(selectedevent.get("kinder"));
 							jTextField8.setText(selectedevent.get("erwachsene"));
-							jTextField9.setText(selectedevent.get("kategorie"));
-							jTextField10.setText(selectedevent.get("genre"));
+							jTextField9.setText(selectedevent.get("kategorie_name"));
+							jTextField10.setText(selectedevent.get("genre_name"));
 							jTextField11.setText(selectedevent.get("beschreibung"));
 							jTextField12.setText(selectedevent.get("ermaessigt"));
 						}
