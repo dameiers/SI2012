@@ -373,7 +373,7 @@
             <DataProperty IRI="#hasConcreteDuration"/>
             <DatatypeRestriction>
                 <Datatype abbreviatedIRI="xsd:integer"/>
-                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
                     <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
                 </FacetRestriction>
             </DatatypeRestriction>
@@ -432,6 +432,21 @@
                 <ObjectProperty IRI="#hasDuration"/>
                 <Class IRI="#OneDayDuration"/>
             </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#OneDayEvent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Event"/>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#hasConcreteDuration"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:integer"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -627,24 +642,6 @@
     <SubClassOf>
         <Class IRI="#AmusementParkEvent"/>
         <Class IRI="#LeisureTimeEvent"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#AmusementParkEvent"/>
-        <Class IRI="#MultipleDaysEvent"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#AmusementParkEvent"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasDuration"/>
-            <Class IRI="#MultipleDaysDuration"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#AmusementParkEvent"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasDuration"/>
-            <Class IRI="#OneDayDuration"/>
-        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#BalletEvent"/>
@@ -1470,17 +1467,6 @@
         <Class IRI="#LeisureTimeEvent"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#TripEvent"/>
-        <Class IRI="#MultipleDaysEvent"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#TripEvent"/>
-        <ObjectAllValuesFrom>
-            <ObjectProperty IRI="#hasDuration"/>
-            <Class IRI="#MultipleDaysDuration"/>
-        </ObjectAllValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#WeekendEvent"/>
         <Class IRI="#MultipleDaysEvent"/>
     </SubClassOf>
@@ -2370,7 +2356,7 @@
         <NamedIndividual IRI="#472"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#MultipleDaysEvent"/>
+        <Class IRI="#OneDayEvent"/>
         <NamedIndividual IRI="#472"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -2446,6 +2432,10 @@
         <NamedIndividual IRI="#550"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#550"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI=":Thing"/>
         <NamedIndividual IRI="#550"/>
     </ClassAssertion>
@@ -2490,6 +2480,10 @@
         <NamedIndividual IRI="#578"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#578"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI=":Thing"/>
         <NamedIndividual IRI="#578"/>
     </ClassAssertion>
@@ -2562,6 +2556,10 @@
         <NamedIndividual IRI="#589"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#589"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI=":Thing"/>
         <NamedIndividual IRI="#589"/>
     </ClassAssertion>
@@ -2578,6 +2576,10 @@
         <NamedIndividual IRI="#590"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#590"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI=":Thing"/>
         <NamedIndividual IRI="#590"/>
     </ClassAssertion>
@@ -2594,6 +2596,10 @@
         <NamedIndividual IRI="#591"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#591"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI=":Thing"/>
         <NamedIndividual IRI="#591"/>
     </ClassAssertion>
@@ -2638,6 +2644,10 @@
         <NamedIndividual IRI="#600"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#600"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class abbreviatedIRI=":Thing"/>
         <NamedIndividual IRI="#600"/>
     </ClassAssertion>
@@ -2647,6 +2657,10 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#608"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
         <NamedIndividual IRI="#608"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -2671,6 +2685,10 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#LeisureTimeEvent"/>
+        <NamedIndividual IRI="#609"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
         <NamedIndividual IRI="#609"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -2754,7 +2772,7 @@
         <NamedIndividual IRI="#625"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#MultipleDaysEvent"/>
+        <Class IRI="#OneDayEvent"/>
         <NamedIndividual IRI="#625"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -2786,6 +2804,10 @@
         <NamedIndividual IRI="#630"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#630"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#SportEvents"/>
         <NamedIndividual IRI="#630"/>
     </ClassAssertion>
@@ -2807,6 +2829,10 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#NonActiveSportEvent"/>
+        <NamedIndividual IRI="#631"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
         <NamedIndividual IRI="#631"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -2838,6 +2864,10 @@
         <NamedIndividual IRI="#632"/>
     </ClassAssertion>
     <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
+        <NamedIndividual IRI="#632"/>
+    </ClassAssertion>
+    <ClassAssertion>
         <Class IRI="#SportEvents"/>
         <NamedIndividual IRI="#632"/>
     </ClassAssertion>
@@ -2863,6 +2893,10 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="#NonActiveSportEvent"/>
+        <NamedIndividual IRI="#633"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OneDayEvent"/>
         <NamedIndividual IRI="#633"/>
     </ClassAssertion>
     <ClassAssertion>

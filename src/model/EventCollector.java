@@ -292,6 +292,7 @@ public class EventCollector {
 		// culture && ((cinema && (genre1 || genre2)) || concert&&(genre ||
 		// genre ...) || theatre&&(genre || genre ...))
 
+		final Set<Integer> tmp = new HashSet<Integer>();
 		Set<Integer> cultureEventsSet = null;
 		cultureEventsSet = new HashSet<Integer>(
 				ontToDbConnection
@@ -337,7 +338,7 @@ public class EventCollector {
 					cinemaEvents.retainAll(cinemaGenreEvents);
 
 				}
-				if (currentCategory.equals("ConcertEvent")) {
+				else if (currentCategory.equals("ConcertEvent")) {
 					// here we now that concert events are marked as "LIKE"
 					// so we have to care about genres
 					concertEvents = new HashSet<Integer>(
@@ -364,7 +365,7 @@ public class EventCollector {
 					// concert && (genre 1 || genre 2...)
 					concertEvents.retainAll(concertGenreEvents);
 				}
-				if (currentCategory.equals("TheatreEvent")) {
+				else if (currentCategory.equals("TheatreEvent")) {
 					// here we now that theatre events are marked as "LIKE"
 					// so we have to care about genres
 					theatreEvents = new HashSet<Integer>(
@@ -391,11 +392,19 @@ public class EventCollector {
 					// theatre && (genre 1 || genre 2...)
 					theatreEvents.retainAll(theatreGenreEvents);
 				}
+				else{
+					//TODO sonsige kulturkategorien berechnen
+					final ArrayList<Integer> miscCultureEvents = new ArrayList<Integer>(ontToDbConnection
+							.getInvidualsFromOntologieClassByReasoner(currentCategory));							
+					
+					tmp.addAll(miscCultureEvents);
+				}
+				
 			}
 		}
 
 		// cinema &&(...) || concert && (...) || theatre&&(...)
-		final Set<Integer> tmp = new HashSet<Integer>(cinemaEvents);
+		tmp.addAll(cinemaEvents);
 		tmp.addAll(concertEvents);
 		tmp.addAll(theatreEvents);
 

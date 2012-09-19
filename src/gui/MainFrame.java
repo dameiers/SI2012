@@ -224,11 +224,23 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	{
 		if(actionEvent.getActionCommand().equals("next"))
 		{
-			nextStep();
+			SwingUtilities.invokeLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					nextStep();					
+				}
+			});
 		}
 		else if(actionEvent.getActionCommand().equals("back"))
 		{
-			lastStep();
+			SwingUtilities.invokeLater(new Runnable() {
+				
+				@Override
+				public void run() {
+					lastStep();					
+				}
+			});
 		}
 	}
 
