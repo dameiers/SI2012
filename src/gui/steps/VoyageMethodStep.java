@@ -90,14 +90,14 @@ public class VoyageMethodStep extends AbstractViewModelConnectionImpl {
 					yesBtn = new JRadioButton();
 					contentPnl.add(yesBtn);
 					yesBtn.setText("Ja");
-					yesBtn.setBounds(69, 26, 29, 19);
+					yesBtn.setBounds(69, 26, 52, 19);
 					getBtnGroup().add(yesBtn);
 				}
 				{
 					noBtn = new JRadioButton();
 					contentPnl.add(noBtn);
 					noBtn.setText("Nein");
-					noBtn.setBounds(132, 26, 44, 19);
+					noBtn.setBounds(132, 26, 67, 19);
 					getBtnGroup().add(noBtn);
 				}
 			}

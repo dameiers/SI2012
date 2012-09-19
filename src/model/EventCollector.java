@@ -176,12 +176,13 @@ public class EventCollector {
 
 		durationSet.retainAll(tmp);
 
-		this.eventIDs = new ArrayList<Integer>(calulateBudgetRestriction(durationSet));
+		this.eventIDs = new ArrayList<Integer>(
+				calulateBudgetRestriction(durationSet));
 	}
 
-	private HashSet<Integer> calulateBudgetRestriction(Set<Integer> eventSet){
+	private HashSet<Integer> calulateBudgetRestriction(Set<Integer> eventSet) {
 		final HashSet<Integer> eventIdsWithBudgetRestriction = new HashSet<Integer>();
-		final double budget =  Double.parseDouble(budgetStepModel.getBudget());
+		final double budget = Double.parseDouble(budgetStepModel.getBudget());
 		boolean childPriceNeeded = false;
 		int childs = 0;
 		int normalPersons =0;
@@ -193,39 +194,44 @@ public class EventCollector {
 				childs++;
 			}
 		}
-		
-		for(Integer eventId : eventSet){
-			//check if the BudgetRestriction for this event is fullfilled
-			final ArrayList<Integer> tmp =  new ArrayList<Integer>();
+
+		for (Integer eventId : eventSet) {
+			// check if the BudgetRestriction for this event is fullfilled
+			final ArrayList<Integer> tmp = new ArrayList<Integer>();
 			tmp.add(eventId);
-			ResultSet rs =ontToDbConnection.getDataFromDbByEvent_Id(tmp);
-			double childPrice=0;
-			double normalPrice =0;
+			ResultSet rs = ontToDbConnection.getDataFromDbByEvent_Id(tmp);
+			double childPrice = 0;
+			double normalPrice = 0;
 			try {
-				while(rs.next()){
-					if(childPriceNeeded){
+				while (rs.next()) {
+					if (childPriceNeeded) {
 						String s = rs.getString("kinder");
-						s = s.replace('€',' ');
-						s=s.replace(',','.');
-						childPrice = Double.parseDouble(s);
+						if (s != null) {
+							s = s.replace('€', ' ');
+							s = s.replace(',', '.');
+							childPrice = Double.parseDouble(s);
+						}
 					}
 					String s = rs.getString("erwachsene");
-					s=s.replace('€',' ');
-					s=s.replace(',','.');
-					normalPrice = Double.parseDouble(s);
+					if (s != null) {
+						s = s.replace('€', ' ');
+						s = s.replace(',', '.');
+						normalPrice = Double.parseDouble(s);
+					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
-			if((childs*childPrice)+(personAges.length-childs)*normalPrice <=budget){
+
+			if ((childs * childPrice) + (personAges.length - childs)
+					* normalPrice <= budget) {
 				eventIdsWithBudgetRestriction.add(eventId);
 			}
 		}
-		
+
 		return eventIdsWithBudgetRestriction;
 	}
-	
+
 	private Set<Integer> calculateLeisureTimeEvents() {
 		// leisureTime && (festivity || ...|| ...)
 		Set<Integer> leisureTimeEvents = null;
@@ -396,7 +402,6 @@ public class EventCollector {
 		// culture && (...)
 		cultureEventsSet.retainAll(tmp);
 
-		// TODO restrictions for budget....
 		return cultureEventsSet;
 	}
 

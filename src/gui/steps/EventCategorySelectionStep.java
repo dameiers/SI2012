@@ -180,7 +180,7 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 			model.setSportCategories(sportCategoryList.getSelectionList());
 		}
 		if(leisureTimeCategoryVisible){
-			model.setCultureCategories(cultureCategoryList.getSelectionList());
+			model.setLeisureTimeCategories(leisureTimeCategoryList.getSelectionList());
 		}
 	}
 	
