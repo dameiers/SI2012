@@ -146,7 +146,7 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 		} else if (containsAgeClass("Teenager")) {
 			System.out
 					.println("Da ein Jugentlicher in der Gruppe ist werden nur ensprechent geeignete Events betrachtet");
-			events = intersectionWithEventClass(events, "Teenager");
+			events = intersectionWithEventClass(events, "TeenagerPreferredEvents");
 		}
 
 		return events;
