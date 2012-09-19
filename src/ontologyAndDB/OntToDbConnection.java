@@ -135,7 +135,7 @@ public class OntToDbConnection {
 						"hasConcreteDuration", durationInDays);
 				// hinzufügen zur passenden Event-Klasse
 				rs2 = (dbCon
-						.executeQuery("select bezeichnung from \"Kategorie\" where kategorie_id="
+						.executeQuery("select kategorie_name from \"Kategorie\" where kategorie_id="
 								+ dataBaseEvents.getInt("kategorie")));
 				rs2.next();
 				String eventKategorie = rs2.getString(1);
@@ -148,7 +148,7 @@ public class OntToDbConnection {
 				if (rs3.next()) {
 					int genreID = rs3.getInt(1);
 					rs4 = (dbCon
-							.executeQuery("select bezeichnung from \"Genre\" where genre_id="
+							.executeQuery("select genre_name from \"Genre\" where genre_id="
 									+ String.valueOf(genreID)));
 					rs4.next();
 					String genreKategorie = rs4.getString(1);
