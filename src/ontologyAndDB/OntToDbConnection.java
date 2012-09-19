@@ -360,6 +360,7 @@ public class OntToDbConnection {
 				s = s.concat(String.valueOf(eventIDs.get(i)) + ",");
 			}
 			s = s.concat(String.valueOf(eventIDs.get(i)));
+			/*
 			String sqlStatement = "SELECT * "
 					+ "FROM 	\"Event\" ,\"Event_Genre\" ,\"Genre\" ,\"Kategorie\" , \"Preisliste\" "
 					+ "WHERE  \"Event\".event_id = \"Event_Genre\".event "
@@ -367,6 +368,14 @@ public class OntToDbConnection {
 					+ "AND 	\"Event\".kategorie = \"Kategorie\".kategorie_id "
 					+ "AND	\"Event\".event_id = \"Preisliste\".event "
 					+ "AND event_id in (" + s + ")";
+			*/
+			
+			String sqlStatement = "SELECT name, startdatum, enddatum, ort, kinderbetreuung, kinderfreundlich, mindestalter, event_id, beschreibung, kategorie_name, kinder, erwachsene, ermaessigt, genre_name FROM \"Event\" event join \"Kategorie\" kategorie on event.kategorie = kategorie.kategorie_id" 
+					+ " left join \"Preisliste\" preis on preis.event = event.event_id" 
+					+ " left join \"Event_Genre\" eventGenre on event.event_ID = eventGenre.event" 
+					+ " left join \"Genre\" genre on eventGenre.genre = genre.genre_id"
+					+ " where event_id in ("+s +")";
+			
 			// System.out.println(sqlStatement.toString());
 			return dbCon.executeQuery(sqlStatement);
 		} else {
