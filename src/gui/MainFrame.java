@@ -52,7 +52,6 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	private ViewModelConnection currentViewStepConnection;
 	private Stack<ViewModelConnection> stepHistory;
 	
-
 	/**
 	* Auto-generated main method to display this JFrame
 	*/
@@ -68,7 +67,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	
 	public MainFrame() {
 		super();
-		model = new Model();
+		model = Model.getInstance();
 		stepHistory = new Stack<ViewModelConnection>();
 		initGUI();
 	}
@@ -224,11 +223,19 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 	{
 		if(actionEvent.getActionCommand().equals("next"))
 		{
-			nextStep();
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					nextStep();
+				}
+			});
 		}
 		else if(actionEvent.getActionCommand().equals("back"))
 		{
-			lastStep();
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					lastStep();
+				}
+			});
 		}
 	}
 

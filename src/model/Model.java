@@ -11,6 +11,22 @@ import model.steps.*;
 
 public class Model extends Observable 
 {	
+	private static Model instance;
+	private TraceBuilder traceBuilder;
+	
+	public static Model getInstance() 
+	{
+		if(instance == null) {
+			instance = new Model();
+		}
+		return instance;
+	}
+	
+	private Model() 
+	{
+		traceBuilder = new TraceBuilder();
+	}
+	
 	/**
 	 * Returns all events considering the data which is already asked
 	 */
@@ -24,7 +40,7 @@ public class Model extends Observable
 	 */
 	public InformationGatherStepModel[] getInformationGatherTrace()
 	{
-		return (new TraceBuilder()).build();
+		return traceBuilder.build();
 	}
 	
 	/**
@@ -57,6 +73,11 @@ public class Model extends Observable
 			}
 		}
 		return result;
+	}
+	
+	public void setVoyageMethodStepRequired(boolean voyaageMethodStepRequired)
+	{
+		traceBuilder.setVoyageMethodStepRequired(voyaageMethodStepRequired);
 	}
 
 }

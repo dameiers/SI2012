@@ -86,8 +86,19 @@ public class OntologyConnection {
 		}
 	}
 
+	protected void reopenOntology() {
+		if(file != null && ontology != null) {
+			manager.removeOntology(ontology);
+			openOntology(file);
+		}
+	}
+	
 	protected void openOntology(String filePath) {
 		file = new File(filePath);
+		openOntology(file);
+	}
+	
+	protected void openOntology(File file) {
 		try {
 			ontology = manager.loadOntologyFromOntologyDocument(file);
 			documentIRI = manager.getOntologyDocumentIRI(ontology);
@@ -98,11 +109,12 @@ public class OntologyConnection {
 			dataProperties = ontology.getDataPropertiesInSignature();
 			classes = ontology.getClassesInSignature();
 			reasoner = reasonerFactory.createReasoner(ontology);
+			
+			
 		} catch (OWLOntologyCreationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	protected void preAndSave(String owlFilePath) {
@@ -334,10 +346,13 @@ public class OntologyConnection {
 			ClassExpressionNotInProfileException, FreshEntitiesException,
 			TimeOutException, ReasonerInterruptedException,
 			OntologyConnectionUnknowClassException {
+
 		ArrayList<Integer> ids = new ArrayList<Integer>();
 		NodeSet<OWLNamedIndividual> invids = reasoner.getInstances(
 				getClassByName(className), false);
+		
 		Set<OWLNamedIndividual> flatinvids = invids.getFlattened();
+		
 		for (OWLIndividual invid : flatinvids) {
 			ids.add(Integer.valueOf(invid.toStringID().replace(
 					pm.getDefaultPrefix(), "")));

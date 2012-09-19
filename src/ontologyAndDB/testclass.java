@@ -54,8 +54,10 @@ public class testclass {
 		Calendar cal =		Calendar.getInstance();
 		System.out.println("Start : "+cal.getTime());
 //		t.fillOntWithEventsUntilNumber(100);
-		t.fillOntWithAllEvents();
-//		t.removeAllIndividuals();
+//		t.fillOntWithAllEvents();
+		t.removeAllIndividuals();
+		
+		System.out.println(t.getInvidualsFromOntologieClassByReasoner("Person"));
 		//ResultSet rs = t.getDataFromDbByEvent_Id(t.getEventIdsFromOntologieClass("BalletEvent"));
 		//while (rs.next()){
 		//	System.out.println ( rs.getString(1));

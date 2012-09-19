@@ -185,7 +185,7 @@ public class EventCollector {
 		boolean childPriceNeeded = false;
 		int childs = 0;
 		int normalPersons =0;
-		final String[] personAges = personAgeStep.getAges();
+		final String[] personAges = personAgeStep.getAgesIncludingOrderingPerson();
 		
 		for(int i=0; i< personAges.length;i++){
 			if(personAges[i].equals(PersonAgeComboBox.CHILD)){
