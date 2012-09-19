@@ -147,24 +147,34 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 
 		return result;
 	}
-
-	public String[] getPreferedStuffBasedOnAges()
-			throws OWLOntologyCreationException {
+	
+	public String[] getPrefferedStuffBasedOnAgeClass(String ageClass)
+	{
 		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
-		PersonDescriptionStepModel pdsm = PersonDescriptionStepModel
-				.getInstance();
+		HashSet<String> result = new HashSet<String>();
+		
+		String className = ageClass + "PreferredEvents";
+		result.addAll(ontoConn.getSubClassesOfClassByOntology(className));
+		result.addAll(getCorrespondingEventCategoriesFromGenres(filterGenresFromPreferedStuff(result)));
+		
+		String[] strArr = new String[1];
+		return result.toArray(strArr);
+	}
 
+	public String[] getPreferedStuffBasedOnAgeClasses()
+			throws OWLOntologyCreationException 
+	{
 		String[] ageClasses = getAgesIncludingOrderingPerson();
 
 		HashSet<String> result = new HashSet<String>();
 
 		for (String ageClass : ageClasses) {
-			String className = ageClass + "PreferredEvents";
-			result.addAll(ontoConn.getSubClassesOfClassByOntology(className));
+			String[] tmpResult = getPrefferedStuffBasedOnAgeClass(ageClass);
+			for(String likedStuff : tmpResult) {
+				result.add(likedStuff);
+			}
 		}
-
-		result.addAll(getCorrespondingEventCategoriesFromGenres(filterGenresFromPreferedStuff(result)));
-
+		
 		result = filterEventsConsidereingSpacialAgeClasses(result);
 		
 		String[] strArr = new String[1];
@@ -187,37 +197,34 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 	private HashSet<String> filterEventsConsidereingSpacialAgeClasses(
 			HashSet<String> events) throws OWLOntologyCreationException {
 
-		if (containsAgeClass("Child")) {
-			System.out
-					.println("Da ein Kind in der Gruppe ist werden nur Kinderfreundliche Events betrachtet");
-			events = intersectionWithEventClass(events, "ChildFriendlyEvent");
-		} else if (containsAgeClass("Teenager")) {
-			System.out
-					.println("Da ein Jugentlicher in der Gruppe ist werden nur ensprechent geeignete Events betrachtet");
-			events = intersectionWithEventClass(events, "TeenagerPreferredEvents");
+		HashSet<String> result = events;
+		
+		if (containsAgeClass("Child")) 
+		{
+			System.out.println("Da ein Kind in der Gruppe ist werden nur Kinderfreundliche Events betrachtet");
+		
+			result = new HashSet<String>();
+			String[] childPrefStuff = getPrefferedStuffBasedOnAgeClass("Child");
+			
+			for(String prefStuff : childPrefStuff) {
+				result.add(prefStuff);
+			}
+			
+		} else if(containsAgeClass("Teenager")) 
+		{
+			System.out.println("Da ein Jugentlicher in der Gruppe ist werden nur ensprechent geeignete Events betrachtet");
+			
+			result = new HashSet<String>();
+			String[] teenPrefStuff = getPrefferedStuffBasedOnAgeClass("Teenager");
+			
+			for(String prefStuff : teenPrefStuff) {
+				result.add(prefStuff);
+			}
 		}
 
-		return events;
-	}
-	
-	private HashSet<String> intersectionWithEventClass(
-			Collection<String> likedStuff, String eventClass)
-			throws OWLOntologyCreationException {
-		HashSet<String> result = new HashSet<String>();
-
-		OntToDbConnection ontoConn = OntToDbConnection.getInstance();
-
-			Collection<String> chieldEvents = ontoConn
-					.getSubClassesOfClassByOntology(eventClass);
-
-			for (String event : likedStuff) {
-				if (chieldEvents.contains(event)) {
-					result.add(event);
-				}
-			}
-		
 		return result;
 	}
+	
 
 	private Collection<String> filterGenresFromPreferedStuff(
 			Collection<String> likedStuff) {

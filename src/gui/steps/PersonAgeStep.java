@@ -65,7 +65,6 @@ public class PersonAgeStep extends AbstractViewModelConnectionImpl implements Ac
 	public PersonAgeStep() {
 		super();
 		initGUI();
-		
 	}
 	
 	private void initGUI() {
