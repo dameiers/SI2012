@@ -6,6 +6,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import ontologyAndDB.exception.OWLConnectionUnknownTypeException;
 import ontologyAndDB.exception.OntologyConnectionDataPropertyException;
 import ontologyAndDB.exception.OntologyConnectionIndividualAreadyExistsException;
@@ -93,6 +100,47 @@ public class OntologyConnection {
 		}
 	}
 	
+	
+	protected void saveOntologieToWorkingCopy() {
+		
+		 File fromFile = new File("evntologie_latest.owl");
+		 File toFile = new File("eventologie_latest_workingcopy.owl");
+		 
+
+		    FileInputStream from = null;
+		    FileOutputStream to = null;
+		    try {
+		      from = new FileInputStream(fromFile);
+		      to = new FileOutputStream(toFile);
+		      byte[] buffer = new byte[4096];
+		      int bytesRead;
+
+		      while ((bytesRead = from.read(buffer)) != -1)
+		        to.write(buffer, 0, bytesRead); // write
+		    } catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+		      if (from != null)
+		        try {
+		          from.close();
+		        } catch (IOException e) {
+		          ;
+		        }
+		      if (to != null)
+		        try {
+		          to.close();
+		        } catch (IOException e) {
+		          ;
+		        }
+		    }
+		  
+		  
+	}
+	
 	protected void openOntology(String filePath) {
 		file = new File(filePath);
 		openOntology(file);
@@ -100,6 +148,8 @@ public class OntologyConnection {
 	
 	protected void openOntology(File file) {
 		try {
+			if (ontology != null)
+				manager.removeOntology(ontology);
 			ontology = manager.loadOntologyFromOntologyDocument(file);
 			documentIRI = manager.getOntologyDocumentIRI(ontology);
 			ontID = ontology.getOntologyID().toString();
