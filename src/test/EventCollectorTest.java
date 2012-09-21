@@ -62,7 +62,8 @@ public class EventCollectorTest {
 		
 		HashMap<String, String>[] events = collector.getEvents();
 		
-		
+		System.out.println();
+		System.out.println();
 		System.out.println(events == null ? 0 : events.length + " Events gefunden");
 		System.out.println("---------------------");
 		
