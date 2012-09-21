@@ -327,6 +327,7 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 	}
 	
 	public String round (String num){
+		if (num == null) return "";
 		double val = Double.parseDouble(num);
 		val *= 100;
 		val = Math.round(val);
