@@ -24,6 +24,7 @@ public class EventCollectorTest {
 		PersonDescriptionStepModel personDescriptionStep = PersonDescriptionStepModel.getInstance();
 		TimeRangeStepModel timeRangeStep = TimeRangeStepModel.getInstance();
 		DurationStepModel durationStep = DurationStepModel.getInstance();
+		OriginLocationStepModel originLocationStepModel = OriginLocationStepModel.getInstance();
 		PersonAgeStepModel personAgeStep = PersonAgeStepModel.getInstance();
 		DistanceStepModel distanceStep = DistanceStepModel.getInstance();
 		KindOfEventSelectionStepModel kindOfEventSelectionStepModel = KindOfEventSelectionStepModel.getInstance();
@@ -37,8 +38,11 @@ public class EventCollectorTest {
 		
 		timeRangeStep.setTimeRangeTyp("autumnbreak");
 		
+		originLocationStepModel.setOrigin("Saarbruecken");
+		
 		durationStep.setDuration("OneDayEvent");
 		distanceStep.setDistance("5000");
+		distanceStep.setUnit("km");
 		
 		kindOfEventSelectionStepModel.setCultureStatus("like");
 		kindOfEventSelectionStepModel.setLeisureTimeStatus("like");
@@ -62,7 +66,6 @@ public class EventCollectorTest {
 		
 		HashMap<String, String>[] events = collector.getEvents();
 		
-		System.out.println();
 		System.out.println();
 		System.out.println(events == null ? 0 : events.length + " Events gefunden");
 		System.out.println("---------------------");
