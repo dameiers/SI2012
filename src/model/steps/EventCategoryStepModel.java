@@ -37,6 +37,9 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 			List<String> leisureCatList = ontoConn.getSubClassesOfClassByOntology("LeisureTimeEvent");
 			List<String> sportCatList = ontoConn.getSubClassesOfClassByOntology("SportEvents");
 			
+			sportCatList.remove("ActiveSportEvent");
+			sportCatList.remove("NonActiveSportEvent");
+			
 			String[] preferedCategories = personAgesModel.getPreferedStuffBasedOnAgeClasses();
 			
 			setCultureCategories(buildCategoriesListWithLikeState(cultureCatList, preferedCategories));
