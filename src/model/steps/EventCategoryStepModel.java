@@ -64,6 +64,13 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 		return result;
 	}
 	
+	public boolean hasCategoryBelongingToSomeGenres() 
+	{
+		return (isCategoryDesired("CinemaEvent") ||
+				isCategoryDesired("ConcertEvent") ||
+				isCategoryDesired("TheatreEvent"));
+	}
+	
 	public static EventCategoryStepModel getInstance() 
 	{
 		if(instance != null)

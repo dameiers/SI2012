@@ -119,7 +119,7 @@ class TraceBuilder
 	
 	private boolean isGenreStepRequired() {
 		//TODO: Ask the ontologie
-		return true;
+		return eventCategoryStepModel.hasCategoryBelongingToSomeGenres();
 	}
 	
 	public void setVoyageMethodStepRequired(boolean voyaageMethodStepRequired) {
