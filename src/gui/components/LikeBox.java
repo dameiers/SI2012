@@ -10,19 +10,42 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.border.EmptyBorder;
 
+import model.IntelligentEventCollector;
+
 
 public class LikeBox extends JComboBox{
 	
 	public static final String LIKE = "like";
 	public static final String DONTLIKE = "notlike";
 	public static final String MAYBE = "maybe";
-
-	public LikeBox() {
+	private final String key;
+	
+	public LikeBox(String key) {
 		super(new Object[] {
 				LIKE, MAYBE, DONTLIKE});
+		this.key =key; 
 		this.setRenderer(new LikeBoxCellRenderer());
+//		this.addActionListener(IntelligentEventCollector.getInstance());
 	}
 	
+	public String getKey() {
+		return key;
+	}
+
+	
+	@Override
+	public void setSelectedItem(Object anObject) {
+		// TODO Auto-generated method stub
+		super.setSelectedItem(anObject);
+	}
+
+	@Override
+	public void setSelectedIndex(int anIndex) {
+		// TODO Auto-generated method stub
+		super.setSelectedIndex(anIndex);
+	}
+
+
 	private final class LikeBoxCellRenderer extends DefaultListCellRenderer{
 
 		private final ImageIcon thumbUp;
@@ -39,6 +62,8 @@ public class LikeBox extends JComboBox{
 			final URL thumpSideImageURL = LikeBoxCellRenderer.class.getResource("/resources/thumb_side.png");
 			thumbSide = new ImageIcon(thumpSideImageURL);
 		}
+		
+		
 		 
 		@Override
 		public Component getListCellRendererComponent(JList list, Object value,

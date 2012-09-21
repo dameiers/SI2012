@@ -13,6 +13,7 @@ import javax.swing.JTextPane;
 import javax.swing.ListModel;
 import javax.swing.WindowConstants;
 
+import model.IntelligentEventCollector;
 import model.steps.EventCategoryStepModel;
 import model.steps.GenreSelectionStepModel;
 import model.steps.InformationGatherStepModel;
@@ -139,16 +140,19 @@ public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 			cinemaGenreList = new LikeSelectionList("Kino", model.getCinemaGenres());
 			contentPnl.add(cinemaGenreList, new GridBagConstraints(insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
+			cinemaGenreList.addActionListener(IntelligentEventCollector.getInstance());
 		}
 		if(concertGenreVisible){
 			concertGenresList = new LikeSelectionList("Konzert", model.getConcertGenres());
 			contentPnl.add(concertGenresList, new GridBagConstraints(insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
+			concertGenresList.addActionListener(IntelligentEventCollector.getInstance());
 		}
 		if(theatreGenreVisible){
 			theatreGenreList = new LikeSelectionList("Theater", model.getTheatreGenres());
 			contentPnl.add(theatreGenreList, new GridBagConstraints(insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
+			theatreGenreList.addActionListener(IntelligentEventCollector.getInstance());
 		}
 	}
 

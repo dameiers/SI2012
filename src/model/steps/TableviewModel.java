@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
 import model.EventCollector;
+import model.IntelligentEventCollector;
 import model.Model;
 import gui.steps.Tableview;
 
@@ -40,7 +41,8 @@ public class TableviewModel extends InformationGatherStepModel{
 		dtm.setDataVector(
 				new String[][]{},
 				new String[] {"Zeile", "Event ID", "Event Name" });
-		EventCollector collector = EventCollector.getInstance();
+//		EventCollector collector = EventCollector.getInstance();
+		EventCollector collector = IntelligentEventCollector.getInstance();
 		collector.setEventIDs();
 
 		events = collector.getEvents();

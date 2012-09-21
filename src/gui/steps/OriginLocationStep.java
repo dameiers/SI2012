@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import model.EventCollector;
+import model.IntelligentEventCollector;
 import model.steps.InformationGatherStepModel;
 import model.steps.OriginLocationStepModel;
 
@@ -111,7 +112,8 @@ public class OriginLocationStep extends AbstractViewModelConnectionImpl {
 			
 			@Override
 			public void run() {
-				EventCollector.getInstance().setDistanceView();
+//				EventCollector.getInstance().setDistanceView();
+				IntelligentEventCollector.getInstance().setDistanceView();
 			}
 		});
 	}

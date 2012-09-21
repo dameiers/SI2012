@@ -84,7 +84,7 @@ public class OntToDbConnection {
 		ontCon.openOntology(ontologyFilePath);
 	}
 	
-	public void reopenOntology() {
+	private void reopenOntology() {
 		ontCon.reopenOntology();
 	}
 	
@@ -95,10 +95,12 @@ public class OntToDbConnection {
 
 	public void InfereceAndSaveToFile(String owlFilePath) {
 		ontCon.preAndSave(owlFilePath);
+		reopenOntology();
 	}
 
 	public void InfereceAndSaveOntology() {
 		ontCon.preAndSave();
+		reopenOntology();
 	}
 
 	public void fillOntWithAllEvents() {
@@ -106,6 +108,17 @@ public class OntToDbConnection {
 		rs = dbCon.executeQuery("Select * from \"Event\"");
 		fillOntWithEvents(rs);
 
+	}
+	
+	public void fillOntWithEvents(Set<Integer> events){
+		ResultSet rs;
+		String s = "";
+		for(Integer i : events){
+			s = s+i+",";
+		}
+		s = s.substring(0,s.lastIndexOf(","));
+		rs = dbCon.executeQuery("select * from \"Event\" where event_id in ("+s+")");
+		fillOntWithEvents(rs);
 	}
 
 	public void fillOntWithEventsUntilNumber(int eventNumber)
@@ -165,7 +178,7 @@ public class OntToDbConnection {
 		}	
 	}
 
-	private void fillOntWithEvents(ResultSet dataBaseEvents) {
+	public void fillOntWithEvents(ResultSet dataBaseEvents) {
 		ResultSet rs2;
 		ResultSet rs3;
 		ResultSet rs4;
@@ -191,7 +204,7 @@ public class OntToDbConnection {
 				// hinzufügen zur passenden Event-Klasse
 				rs2 = (dbCon
 						.executeQuery("select kategorie_name from \"Kategorie\" where kategorie_id="
-								+ dataBaseEvents.getInt("kategorie")));
+								+ dataBaseEvents.getInt("kategorie_id")));
 				rs2.next();
 				String eventKategorie = rs2.getString(1);
 				ontCon.addIndividualToClass(individ, eventKategorie);
@@ -463,7 +476,7 @@ public class OntToDbConnection {
 		return events;
 	}
 
-	private ResultSet executeQuery(String sqlStatement) {
+	public ResultSet executeQuery(String sqlStatement) {
 		return dbCon.executeQuery(sqlStatement);
 	}
 

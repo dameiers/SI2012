@@ -19,6 +19,7 @@ import javax.swing.WindowConstants;
 import ontologyAndDB.OntToDbConnection;
 import ontologyAndDB.exception.OntologyConnectionUnknowClassException;
 
+import model.IntelligentEventCollector;
 import model.steps.EventCategoryStepModel;
 import model.steps.InformationGatherStepModel;
 import model.steps.KindOfEventSelectionStepModel;
@@ -153,6 +154,7 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 					insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
+			cultureCategoryList.addActionListener(IntelligentEventCollector.getInstance());
 		}
 		if (leisureTimeCategoryVisible) {
 			leisureTimeCategoryList = new LikeSelectionList("Freizeit", model.getLeisureTimeCategories());
@@ -160,6 +162,7 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 					insertPos, 1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
+			leisureTimeCategoryList.addActionListener(IntelligentEventCollector.getInstance());
 		}
 		if (sportCategoryVisible) {
 			sportCategoryList = new LikeSelectionList("Sport", model.getSportCategories());
@@ -167,6 +170,7 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 					1, 1, 1, 0.0, 0.0, GridBagConstraints.NORTH,
 					GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 			insertPos++;
+			sportCategoryList.addActionListener(IntelligentEventCollector.getInstance());
 		}
 	}
 

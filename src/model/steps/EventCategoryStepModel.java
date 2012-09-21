@@ -143,4 +143,5 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 		this.cultureCategories = cultureCategories;
 		updateAlredayFilled();
 	}
+	
 }

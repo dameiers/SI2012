@@ -2,6 +2,7 @@ package gui.components;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -79,7 +80,7 @@ public class LikeSelectionList extends JPanel {
 		this.setBorder(new TitledBorder(title));
 
 		for (int i= 0; i < elems.size(); i++) {
-			final LikeBox lcb = new LikeBox();
+			final LikeBox lcb = new LikeBox(elems.get(i));
 			lcb.setBorder(new EmptyBorder(0,0, 5,0));
 			map.put(elems.get(i),lcb);
 			GridBagConstraints lcbConstrains = new GridBagConstraints();
@@ -93,6 +94,13 @@ public class LikeSelectionList extends JPanel {
 			final JLabel lbl = new JLabel(elems.get(i));
 			lbl.setBorder(new EmptyBorder(0, 5, 0, 0));
 			this.add(lbl, lblConstrains);
+		}
+	}
+	
+	public void addActionListener(ActionListener listener){
+		for(LikeBox lb : map.values()){
+			lb.removeActionListener(listener);
+			lb.addActionListener(listener);
 		}
 	}
 	

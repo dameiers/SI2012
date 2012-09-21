@@ -3,6 +3,7 @@ package test;
 import java.util.HashMap;
 
 import model.EventCollector;
+import model.IntelligentEventCollector;
 import model.Model;
 import model.steps.BudgetStepModel;
 import model.steps.DistanceStepModel;
@@ -61,7 +62,8 @@ public class EventCollectorTest {
 		
 		
 		
-		EventCollector collector = EventCollector.getInstance();
+//		EventCollector collector = EventCollector.getInstance();
+		EventCollector collector = IntelligentEventCollector.getInstance();
 		collector.setEventIDs();
 		
 		HashMap<String, String>[] events = collector.getEvents();

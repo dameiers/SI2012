@@ -33,6 +33,7 @@ import javax.swing.JTextPane;
 import com.toedter.calendar.JCalendar;
 
 import model.EventCollector;
+import model.IntelligentEventCollector;
 import model.steps.InformationGatherStepModel;
 import model.steps.TimeRangeStepModel;
 
@@ -257,7 +258,8 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl implements Ac
 				
 				@Override
 				public void run() {
-					EventCollector collector = EventCollector.getInstance();
+//					EventCollector collector = EventCollector.getInstance();
+					EventCollector collector = IntelligentEventCollector.getInstance();
 					collector.setHolidayView();
 				}
 			});

@@ -14,6 +14,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import javax.management.InstanceAlreadyExistsException;
 import javax.swing.SwingUtilities;
@@ -44,36 +45,36 @@ import model.steps.VoyageMethodStepModel;
 /**
  * Helper Class used in the model class
  */
-public class EventCollector {
-	private static PersonDescriptionStepModel personDescriptionStep = PersonDescriptionStepModel
+public class EventCollector{
+	protected static PersonDescriptionStepModel personDescriptionStep = PersonDescriptionStepModel
 			.getInstance();
-	private static TimeRangeStepModel timeRangeStep = TimeRangeStepModel
+	protected static TimeRangeStepModel timeRangeStep = TimeRangeStepModel
 			.getInstance();
-	private static DurationStepModel durationStep = DurationStepModel
+	protected static DurationStepModel durationStep = DurationStepModel
 			.getInstance();
-	private static SchoolLocationStepModel schoolLocationStep = SchoolLocationStepModel
+	protected static SchoolLocationStepModel schoolLocationStep = SchoolLocationStepModel
 			.getInstance();
-	private static PersonAgeStepModel personAgeStep = PersonAgeStepModel
+	protected static PersonAgeStepModel personAgeStep = PersonAgeStepModel
 			.getInstance();
-	private static VoyageMethodStepModel voyageMethodStep = VoyageMethodStepModel
+	protected static VoyageMethodStepModel voyageMethodStep = VoyageMethodStepModel
 			.getInstance();
-	private static DistanceStepModel distanceStep = DistanceStepModel
+	protected static DistanceStepModel distanceStep = DistanceStepModel
 			.getInstance();
-	private static OriginLocationStepModel originLocationStep = OriginLocationStepModel
+	protected static OriginLocationStepModel originLocationStep = OriginLocationStepModel
 			.getInstance();
-	private static KindOfEventSelectionStepModel kindOfEventSelectionStepModel = KindOfEventSelectionStepModel
+	protected static KindOfEventSelectionStepModel kindOfEventSelectionStepModel = KindOfEventSelectionStepModel
 			.getInstance();
-	private static EventCategoryStepModel eventCategoryStepModel = EventCategoryStepModel
+	protected static EventCategoryStepModel eventCategoryStepModel = EventCategoryStepModel
 			.getInstance();
-	private static GenreSelectionStepModel genreSelectionStepModel = GenreSelectionStepModel
+	protected static GenreSelectionStepModel genreSelectionStepModel = GenreSelectionStepModel
 			.getInstance();
-	private static BudgetStepModel budgetStepModel = BudgetStepModel
+	protected static BudgetStepModel budgetStepModel = BudgetStepModel
 			.getInstance();
-	private OntToDbConnection ontToDbConnection;
+	protected OntToDbConnection ontToDbConnection;
 	private ArrayList<Integer> eventIDs = new ArrayList<Integer>();
 	private static EventCollector instance = null;
 
-	private EventCollector() {
+	protected EventCollector() {
 		ontToDbConnection = OntToDbConnection.getInstance();
 		ontToDbConnection.removeAllIndividuals();
 	}
@@ -129,12 +130,12 @@ public class EventCollector {
 		ArrayList<Integer> tmpEventIDs = new ArrayList<Integer>();
 
 		// Holiday-View-Setzen
-		setHolidayView();
+		// setHolidayView();
 
 		// Distance view setzen...
-		setDistanceView();
-		
-		ontToDbConnection.reopenOntology();
+		// setDistanceView();
+
+		// ontToDbConnection.reopenOntology();
 
 		// Duration-Ontologie
 		Set<Integer> durationSet = null;
@@ -188,12 +189,13 @@ public class EventCollector {
 		final double budget = Double.parseDouble(budgetStepModel.getBudget());
 		boolean childPriceNeeded = false;
 		int childs = 0;
-		int normalPersons =0;
-		final String[] personAges = personAgeStep.getAgesIncludingOrderingPerson();
-		
-		for(int i=0; i< personAges.length;i++){
-			if(personAges[i].equals(PersonAgeComboBox.CHILD)){
-				childPriceNeeded=true;
+		int normalPersons = 0;
+		final String[] personAges = personAgeStep
+				.getAgesIncludingOrderingPerson();
+
+		for (int i = 0; i < personAges.length; i++) {
+			if (personAges[i].equals(PersonAgeComboBox.CHILD)) {
+				childPriceNeeded = true;
 				childs++;
 			}
 		}
@@ -210,7 +212,7 @@ public class EventCollector {
 					if (childPriceNeeded) {
 						Double d = rs.getDouble("kinder");
 						if (d != null) {
-							
+
 							childPrice = Math.round(d);
 						}
 					}
@@ -337,8 +339,7 @@ public class EventCollector {
 					// cinema && (genre 1 || genre 2...)
 					cinemaEvents.retainAll(cinemaGenreEvents);
 
-				}
-				else if (currentCategory.equals("ConcertEvent")) {
+				} else if (currentCategory.equals("ConcertEvent")) {
 					// here we now that concert events are marked as "LIKE"
 					// so we have to care about genres
 					concertEvents = new HashSet<Integer>(
@@ -364,8 +365,7 @@ public class EventCollector {
 									.getIndividualUnionOverClassesByReasoner(concertGenreClassNames));
 					// concert && (genre 1 || genre 2...)
 					concertEvents.retainAll(concertGenreEvents);
-				}
-				else if (currentCategory.equals("TheatreEvent")) {
+				} else if (currentCategory.equals("TheatreEvent")) {
 					// here we now that theatre events are marked as "LIKE"
 					// so we have to care about genres
 					theatreEvents = new HashSet<Integer>(
@@ -391,14 +391,14 @@ public class EventCollector {
 									.getIndividualUnionOverClassesByReasoner(theatreGenreClassNames));
 					// theatre && (genre 1 || genre 2...)
 					theatreEvents.retainAll(theatreGenreEvents);
-				}
-				else{
-					final ArrayList<Integer> miscCultureEvents = new ArrayList<Integer>(ontToDbConnection
-							.getInvidualsFromOntologieClassByReasoner(currentCategory));							
-					
+				} else {
+					final ArrayList<Integer> miscCultureEvents = new ArrayList<Integer>(
+							ontToDbConnection
+									.getInvidualsFromOntologieClassByReasoner(currentCategory));
+
 					tmp.addAll(miscCultureEvents);
 				}
-				
+
 			}
 		}
 
@@ -446,14 +446,17 @@ public class EventCollector {
 		}
 
 		ontToDbConnection.fillOntWithEventsFromDistanceView();
+
 		SwingUtilities.invokeLater(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				ontToDbConnection.InfereceAndSaveOntology();
 			}
 		});
-		
+
 	}
+	
+	
 
 }
