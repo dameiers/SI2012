@@ -129,10 +129,12 @@ public class EventCollector {
 		ArrayList<Integer> tmpEventIDs = new ArrayList<Integer>();
 
 		// Holiday-View-Setzen
-		// setHolidayView();
+		setHolidayView();
 
 		// Distance view setzen...
-		// setDistanceView();
+		setDistanceView();
+		
+		ontToDbConnection.reopenOntology();
 
 		// Duration-Ontologie
 		Set<Integer> durationSet = null;

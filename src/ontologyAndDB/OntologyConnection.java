@@ -95,6 +95,7 @@ public class OntologyConnection {
 
 	protected void reopenOntology() {
 		if(file != null && ontology != null) {
+			preAndSave();
 			manager.removeOntology(ontology);
 			openOntology(file);
 		}
