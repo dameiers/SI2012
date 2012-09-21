@@ -85,17 +85,17 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 
 	private void fillTimeRangeDates() {
 		if(timeRangeTyp.equals(SUMMERBREAK_TIME_RANGE)){
-			fromDate = new GregorianCalendar(2013, 6, 8);
-			toDate = new GregorianCalendar(2013,7,17);
+			fromDate = new GregorianCalendar(2013, 6, 6);
+			toDate = new GregorianCalendar(2013,7,18);
 		}else if(timeRangeTyp.equals(WINTERBREAK_TIME_RANGE)){
-			fromDate = new GregorianCalendar(2012, 11, 24);
-			toDate = new GregorianCalendar(2013,0,5);			
+			fromDate = new GregorianCalendar(2012, 11, 22);
+			toDate = new GregorianCalendar(2013,0,6);			
 		}else if(timeRangeTyp.equals(EASTERBREAK_TIME_RANGE)){
-			fromDate = new GregorianCalendar(2013, 2, 25);
-			toDate = new GregorianCalendar(2013,3,6);
+			fromDate = new GregorianCalendar(2013, 2, 23);
+			toDate = new GregorianCalendar(2013,3,7);
 		}else{
-			fromDate = new GregorianCalendar(2012, 9, 22);
-			toDate = new GregorianCalendar(2012,10,3);
+			fromDate = new GregorianCalendar(2012, 9, 20);
+			toDate = new GregorianCalendar(2012,10,4);
 		}
 	}
 
