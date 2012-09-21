@@ -206,18 +206,15 @@ public class EventCollector {
 			try {
 				while (rs.next()) {
 					if (childPriceNeeded) {
-						String s = rs.getString("kinder");
-						if (s != null) {
-							s = s.replace('€', ' ');
-							s = s.replace(',', '.');
-							childPrice = Double.parseDouble(s);
+						Double d = rs.getDouble("kinder");
+						if (d != null) {
+							
+							childPrice = Math.round(d);
 						}
 					}
-					String s = rs.getString("erwachsene");
-					if (s != null) {
-						s = s.replace('€', ' ');
-						s = s.replace(',', '.');
-						normalPrice = Double.parseDouble(s);
+					Double d = rs.getDouble("erwachsene");
+					if (d != null) {
+						normalPrice = Math.round(d);
 					}
 				}
 			} catch (SQLException e) {

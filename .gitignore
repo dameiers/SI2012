@@ -1,2 +1,3 @@
 bin/**/*
 eventologie_latest_workingcopy.owl
+src/resources/dbConnection.properties
