@@ -1,7 +1,10 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import ontologyAndDB.OntToDbConnection;
 
 import model.steps.*;
 
@@ -23,6 +26,8 @@ class TraceBuilder
 	private static GenreSelectionStepModel 		genreSelectionStepModel = GenreSelectionStepModel.getInstance();
 	private static BudgetStepModel				budgetStepModel = BudgetStepModel.getInstance();
 	private static TableviewModel				tableviewModel = TableviewModel.getInstance();
+	
+	private boolean voyaageMethodStepRequired = false;
 	
 	public InformationGatherStepModel[] build()
 	{	
@@ -63,22 +68,17 @@ class TraceBuilder
 		result.add(personDescriptionStep);
 		result.add(timeRangeStep);
 		
-		if(personDescriptionStep.isAlredyFilled() && !"Einzeln".equals(personDescriptionStep.getGroup())) {
+		if(isPersonAgesStepRequired()) {
 			result.add(personAgeStep);
 		} 
 		
-		if(personDescriptionStep.isFamily() &&
-		   timeRangeStep.isAlredyFilled() && 
-		   timeRangeStep.inSchoolBreak()) {
+		if(isSchoolLocationStepRequired()) {
 			result.add(schoolLocationStep);
 		}
 		
 		result.add(durationStep);
 		
-		if(personDescriptionStep.isAdult() || 
-		   personAgeStep.hasAdultPerson() ||
-		   !personDescriptionStep.isAlredyFilled()) 
-		{
+		if(isVoyageMethodStepRequired()) {
 			result.add(voyageMethodStep);
 		}
 		
@@ -87,7 +87,7 @@ class TraceBuilder
 		result.add(kindOfEventSelectionStepModel);
 		result.add(eventCategoryStepModel);
 		
-		if(isGenreRequired()) {
+		if(isGenreStepRequired()) {
 			result.add(genreSelectionStepModel);
 		}
 		
@@ -103,9 +103,28 @@ class TraceBuilder
 		return newResult;
 	}
 	
-	private boolean isGenreRequired() {
+	private boolean isSchoolLocationStepRequired() {
+		return (personDescriptionStep.isFamily() &&
+			   timeRangeStep.isAlredyFilled() && 
+			   timeRangeStep.inSchoolBreak());
+	}
+	
+	private boolean isPersonAgesStepRequired() {
+		return personDescriptionStep.isAlredyFilled() && !"Einzeln".equals(personDescriptionStep.getGroup());
+	}
+	
+	private boolean isVoyageMethodStepRequired() {
+		return voyaageMethodStepRequired;
+	}
+	
+	private boolean isGenreStepRequired() {
 		//TODO: Ask the ontologie
 		return true;
+	}
+	
+	public void setVoyageMethodStepRequired(boolean voyaageMethodStepRequired) {
+		this.voyaageMethodStepRequired = voyaageMethodStepRequired;
+		
 	}
 	
 }

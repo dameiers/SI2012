@@ -33,7 +33,7 @@ public class GenreSelectionStepModel extends InformationGatherStepModel
 			List<String> concertGenreList = ontoConn.getSubClassesOfClassByOntology("ConcertGenres");
 			List<String> theatreGenreList = ontoConn.getSubClassesOfClassByOntology("TheatreGenres");
 			
-			String[] preferedCategories = personAgesModel.getPreferedStuffBasedOnAges();
+			String[] preferedCategories = personAgesModel.getPreferedStuffBasedOnAgeClasses();
 			
 			setCinemaGenres(buildGenreListWithLikeState(cinemaGenreList, preferedCategories));
 			setConcertGenres(buildGenreListWithLikeState(concertGenreList, preferedCategories));

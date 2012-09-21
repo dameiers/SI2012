@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
+import model.Model;
 import model.steps.InformationGatherStepModel;
 import model.steps.PersonAgeStepModel;
 
@@ -64,7 +65,6 @@ public class PersonAgeStep extends AbstractViewModelConnectionImpl implements Ac
 	public PersonAgeStep() {
 		super();
 		initGUI();
-		
 	}
 	
 	private void initGUI() {
@@ -152,6 +152,7 @@ public class PersonAgeStep extends AbstractViewModelConnectionImpl implements Ac
 	public void fillModel() {
 		PersonAgeStepModel model = PersonAgeStepModel.getInstance();
 		model.setAges(getSelectedAges());
+		Model.getInstance().setVoyageMethodStepRequired(model.hasDriveablePersons());
 	}
 
 	@Override

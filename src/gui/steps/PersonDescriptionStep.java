@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
+import model.Model;
 import model.steps.InformationGatherStepModel;
 import model.steps.PersonAgeStepModel;
 import model.steps.PersonDescriptionStepModel;
@@ -124,6 +125,8 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 		PersonDescriptionStepModel model = PersonDescriptionStepModel.getInstance();
 		model.setAge(ageCbo.getSelectedAge());
 		model.setGroup((String)groupCbo.getSelectedItem());
+		
+		Model.getInstance().setVoyageMethodStepRequired(model.isDriveablePerson());
 	}
 
 	@Override

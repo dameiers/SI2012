@@ -4,10 +4,13 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Set;
 
 import model.steps.DistanceStepModel;
+import model.steps.PersonAgeStepModel;
 import ontologyAndDB.exception.OWLConnectionUnknownTypeException;
 import ontologyAndDB.exception.OntologyConnectionDataPropertyException;
 import ontologyAndDB.exception.OntologyConnectionIndividualAreadyExistsException;
@@ -50,7 +53,6 @@ public class OntToDbConnection {
 			instance = new OntToDbConnection();
 			instance.openOntology("evntologie_latest.owl");
 		}
-
 		return instance;
 	}
 
@@ -67,6 +69,10 @@ public class OntToDbConnection {
 	public void removeAllIndividuals() {
 		ontCon.removeAllIndividuals();
 	}
+	
+	public void removeAllIndividualsOfClass(String className) {
+		ontCon.removeAllIndividualsOfClass(className);
+	}
 
 	public void removeIndividualsFromClass(String className) {
 		ontCon.removeAllIndividualsOfClass(className);
@@ -74,6 +80,10 @@ public class OntToDbConnection {
 
 	public void openOntology(String ontologyFilePath) {
 		ontCon.openOntology(ontologyFilePath);
+	}
+	
+	public void reopenOntology() {
+		ontCon.reopenOntology();
 	}
 
 	public void InfereceAndSaveToFile(String owlFilePath) {
@@ -108,6 +118,44 @@ public class OntToDbConnection {
 				+ "\"");
 		fillOntWithEvents(rs);
 
+	}
+	
+	/**
+	 * @param ages The agegroups per exaple: "Child" or "Teenager"
+	 */
+	public void fillOntWithPersons(String[] ages) {
+		Calendar c = new GregorianCalendar();
+		long millis = c.getTimeInMillis();
+		
+		for(int i=0; i<ages.length; i++) {
+			putPersonIndividumIntoOnt(ages[i], String.valueOf((millis+i)).substring(6));
+		}
+		
+		ontCon.saveOntologie();
+	}
+	
+	private void putPersonIndividumIntoOnt(String age, String id) {
+		int AgeAsNumber = PersonAgeStepModel.getAvgAgeByAgeGroup(age);
+			
+		try {
+			
+			OWLNamedIndividual individ = ontCon.createIndividual(id);
+			ontCon.addIndividualToClass(individ, "Person");
+			ontCon.setObjectPropertieToIndividual(individ, "hasAge", AgeAsNumber);
+			
+		} catch (OntologyConnectionIndividualAreadyExistsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OntologyConnectionDataPropertyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OWLConnectionUnknownTypeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (OntologyConnectionUnknowClassException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 
 	private void fillOntWithEvents(ResultSet dataBaseEvents) {
@@ -263,22 +311,16 @@ public class OntToDbConnection {
 		try {
 			result = ontCon.getEventIdsByClassByReasoner(className);
 		} catch (InconsistentOntologyException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassExpressionNotInProfileException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FreshEntitiesException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (TimeOutException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ReasonerInterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (OntologyConnectionUnknowClassException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;

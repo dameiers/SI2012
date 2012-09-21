@@ -1,5 +1,8 @@
 package model.steps;
 
+import java.util.Collection;
+
+import ontologyAndDB.OntToDbConnection;
 import gui.steps.PersonDescriptionStep;
 
 
@@ -90,5 +93,18 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 		return (age.equals("YoungAdults") ||
 				age.equals("Adults") ||
 				age.equals("OldAdults"));
+	}
+	
+	public boolean isDriveablePerson() {
+		OntToDbConnection onto = OntToDbConnection.getInstance();
+		
+		onto.removeAllIndividualsOfClass("Person");
+		onto.fillOntWithPersons(new String[] {getAge()});
+		onto.InfereceAndSaveOntology();
+		onto.reopenOntology();
+		Collection<Integer> driveablePersonsIds = onto.getInvidualsFromOntologieClassByReasoner("DriveablePerson");
+		onto.removeAllIndividualsOfClass("Person");
+		
+		return driveablePersonsIds.size() != 0;
 	}
 }
