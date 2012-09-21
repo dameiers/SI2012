@@ -51,8 +51,7 @@ public class OntToDbConnection {
 	public static OntToDbConnection getInstance() {
 		if (instance == null) {
 			instance = new OntToDbConnection();
-			instance.openOntology("evntologie_latest.owl");
-			instance.saveToWorkingCopy();
+			//instance.openOntology("evntologie_latest.owl");
 		}
 		return instance;
 	}
@@ -87,8 +86,9 @@ public class OntToDbConnection {
 		ontCon.reopenOntology();
 	}
 	
-	private void saveToWorkingCopy(){
+	public void createAndOpenWorkingCopy(){
 		ontCon.saveOntologieToWorkingCopy();
+		ontCon.openOntology("eventologie_latest_workingcopy.owl");
 	}
 
 	public void InfereceAndSaveToFile(String owlFilePath) {

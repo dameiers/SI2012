@@ -148,6 +148,8 @@ public class OntologyConnection {
 	
 	protected void openOntology(File file) {
 		try {
+			if (ontology != null)
+				manager.removeOntology(ontology);
 			ontology = manager.loadOntologyFromOntologyDocument(file);
 			documentIRI = manager.getOntologyDocumentIRI(ontology);
 			ontID = ontology.getOntologyID().toString();
