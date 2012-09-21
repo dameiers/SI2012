@@ -327,6 +327,21 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 		
 	}
 	
+	public void clearFields(){
+		jTextField1.setText("");
+		jTextField2.setText("");
+		jTextField3.setText("");
+		jTextField4.setText("");
+		jTextField5.setText("");
+		jTextField6.setText("");
+		jTextField7.setText("");
+		jTextField8.setText("");
+		jTextField9.setText("");
+		jTextField10.setText("");
+		jTextField11.setText("");
+		jTextField12.setText("");
+	}
+	
 	
 	
 
