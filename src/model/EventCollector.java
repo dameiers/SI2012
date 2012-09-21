@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.management.InstanceAlreadyExistsException;
+import javax.swing.SwingUtilities;
 
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
@@ -393,7 +394,6 @@ public class EventCollector {
 					theatreEvents.retainAll(theatreGenreEvents);
 				}
 				else{
-					//TODO sonsige kulturkategorien berechnen
 					final ArrayList<Integer> miscCultureEvents = new ArrayList<Integer>(ontToDbConnection
 							.getInvidualsFromOntologieClassByReasoner(currentCategory));							
 					
@@ -447,7 +447,14 @@ public class EventCollector {
 		}
 
 		ontToDbConnection.fillOntWithEventsFromDistanceView();
-		ontToDbConnection.InfereceAndSaveOntology();
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				ontToDbConnection.InfereceAndSaveOntology();
+			}
+		});
+		
 	}
 
 }

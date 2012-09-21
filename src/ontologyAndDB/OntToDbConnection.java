@@ -51,7 +51,8 @@ public class OntToDbConnection {
 	public static OntToDbConnection getInstance() {
 		if (instance == null) {
 			instance = new OntToDbConnection();
-			//instance.openOntology("evntologie_latest.owl");
+//			instance.openOntology("evntologie_latest.owl");
+			instance.createAndOpenWorkingCopy();
 		}
 		return instance;
 	}
@@ -59,6 +60,7 @@ public class OntToDbConnection {
 	private OntToDbConnection() {
 		dbCon = new DBConnection();
 		ontCon = new OntologyConnection();
+//		createAndOpenWorkingCopy();
 		// holidayViewIsSet=false;
 		// reachCitiesViewIsSet=false;
 	}
