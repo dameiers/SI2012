@@ -105,19 +105,20 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 				contentPnl.setLayout(contentPnlLayout);
 				contentPnl.setPreferredSize(new java.awt.Dimension(635, 277));
 				{
+					autumbreakBtn = new JRadioButton();
 					summerbreakBtn = new JRadioButton();
-					contentPnl.add(summerbreakBtn, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+					
 					summerbreakBtn.setText("Sommerferien");
 					getTimeRangeGroup().add(summerbreakBtn);
-				}
-				{
-					autumbreakBtn = new JRadioButton();
-					contentPnl.add(autumbreakBtn, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					contentPnl.add(getWinterbreakBtn(), new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					contentPnl.add(getEasterbreak(), new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+					
+					contentPnl.add(autumbreakBtn, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+					contentPnl.add(getWinterbreakBtn(), new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+					contentPnl.add(getEasterbreak(), new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+					contentPnl.add(summerbreakBtn, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					contentPnl.add(getMiscTimeRange(), new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					contentPnl.add(getMiscTimeRangePnl(), new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 					autumbreakBtn.setText("Herbstferien");
+					
 					getTimeRangeGroup().add(autumbreakBtn);
 				}
 			}
