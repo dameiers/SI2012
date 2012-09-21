@@ -136,8 +136,12 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 			mainPnl.repaint();
 			if (currentViewStepConnection instanceof Tableview) {
 				Tableview tmp = (Tableview)currentViewStepConnection;
-				if (tmp.getTableModel().getRowCount() == 0) JOptionPane.showMessageDialog(null, "Kein Ergebnis wurde gefunden.", "Nachricht", JOptionPane.ERROR_MESSAGE);
-				
+				if (tmp.getTableModel().getRowCount() == 0) {
+					JOptionPane.showMessageDialog(null, "Kein Ergebnis wurde gefunden.", "Nachricht", JOptionPane.ERROR_MESSAGE);
+				} else {
+					int num = tmp.getTableModel().getRowCount();
+					JOptionPane.showMessageDialog(null, num+" Ergebnisse wurde gefunden.", "Nachricht", JOptionPane.PLAIN_MESSAGE);
+				}
 			}
 		}
 		else

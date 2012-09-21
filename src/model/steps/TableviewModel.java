@@ -39,7 +39,7 @@ public class TableviewModel extends InformationGatherStepModel{
 		DefaultTableModel dtm = tv.getTableModel();
 		dtm.setDataVector(
 				new String[][]{},
-				new String[] { "Event ID", "Event Name" });
+				new String[] {"Zeile", "Event ID", "Event Name" });
 		EventCollector collector = EventCollector.getInstance();
 		collector.setEventIDs();
 
@@ -48,9 +48,10 @@ public class TableviewModel extends InformationGatherStepModel{
 
 		for (int i=0; i<events.length; i++){
 			HashMap<String, String> tmp = events[i];
-			String[] line = new String[2];
-			line[0] = tmp.get("event_id");
-			line[1] = tmp.get("name");
+			String[] line = new String[3];
+			line[0] = (i+1)+"";
+			line[1] = tmp.get("event_id");
+			line[2] = tmp.get("name");
 			dtm.addRow(line);
 			
 		}

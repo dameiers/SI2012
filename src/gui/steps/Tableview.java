@@ -38,6 +38,9 @@ import model.steps.TableviewModel;
 */
 public class Tableview extends AbstractViewModelConnectionImpl {
 	private JSplitPane jSplitPane1;
+	private JLabel jLabel16;
+	private JLabel jLabel15;
+	private JLabel jLabel14;
 	private JTextField jTextField12;
 	private JLabel jLabel13;
 	private JTextField jTextField11;
@@ -201,18 +204,18 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 					{
 						jTextField7 = new JTextField();
 						jPanel1.add(jTextField7);
-						jTextField7.setBounds(113, 129, 75, 21);
+						jTextField7.setBounds(112, 129, 75, 21);
 					}
 					{
 						jLabel9 = new JLabel();
 						jPanel1.add(jLabel9);
 						jLabel9.setText("Preis: (Erwachsene)");
-						jLabel9.setBounds(210, 132, 121, 14);
+						jLabel9.setBounds(208, 132, 121, 14);
 					}
 					{
 						jTextField8 = new JTextField();
 						jPanel1.add(jTextField8);
-						jTextField8.setBounds(343, 129, 86, 21);
+						jTextField8.setBounds(326, 129, 86, 21);
 					}
 					{
 						jLabel10 = new JLabel();
@@ -251,24 +254,43 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 						jLabel13 = new JLabel();
 						jPanel1.add(jLabel13);
 						jLabel13.setText("Preis(ermaessigt)");
-						jLabel13.setBounds(447, 129, 110, 16);
+						jLabel13.setBounds(433, 129, 110, 16);
 					}
 					{
 						jTextField12 = new JTextField();
 						jPanel1.add(jTextField12);
-						jTextField12.setBounds(580, 126, 106, 23);
+						jTextField12.setBounds(537, 126, 106, 23);
+					}
+					{
+						jLabel14 = new JLabel();
+						jPanel1.add(jLabel14);
+						jLabel14.setText("\u20ac");
+						jLabel14.setBounds(192, 131, 10, 16);
+					}
+					{
+						jLabel15 = new JLabel();
+						jPanel1.add(jLabel15);
+						jLabel15.setText("\u20ac");
+						jLabel15.setBounds(417, 131, 10, 16);
+					}
+					{
+						jLabel16 = new JLabel();
+						jPanel1.add(jLabel16);
+						jLabel16.setText("\u20ac");
+						jLabel16.setBounds(651, 129, 10, 16);
 					}
 				}
 				{
 					 jTable1Model = 
 							new DefaultTableModel(
 									new String[][]{},
-									new String[] { "Event ID", "Event Name" });
-					
+									new String[] {"Zeile", "Event ID", "Event Name" });
+					 
+					 
 					jTable1 = new JTable();
 					jScrollPane1.setViewportView(jTable1);
 					jTable1.setModel(jTable1Model);
-					
+
 					jTable1.setLayout(null);
 					jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 
@@ -283,13 +305,14 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 							jTextField4.setText(selectedevent.get("ort"));
 							jTextField5.setText((selectedevent.get("kinderbetreuung").equals("t")?"ja":"nein"));
 							jTextField6.setText(selectedevent.get("mindestalter"));
-							jTextField7.setText(selectedevent.get("kinder"));
-							jTextField8.setText(selectedevent.get("erwachsene"));
+							jTextField7.setText(round(selectedevent.get("kinder")));
+							jTextField8.setText(round(selectedevent.get("erwachsene")));
 							jTextField9.setText(selectedevent.get("kategorie_name"));
 							jTextField10.setText(selectedevent.get("genre_name"));
 							jTextField11.setText(selectedevent.get("beschreibung"));
-							jTextField12.setText(selectedevent.get("ermaessigt"));
+							jTextField12.setText(round(selectedevent.get("ermaessigt")));
 						}
+						
 						
 					});
 				}
@@ -301,6 +324,14 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
+	}
+	
+	public String round (String num){
+		double val = Double.parseDouble(num);
+		val *= 100;
+		val = Math.round(val);
+		val /= 100;
+		return Double.toString(val);
 	}
 	
 	public JSplitPane getJSplitPane1() {
@@ -324,7 +355,9 @@ public class Tableview extends AbstractViewModelConnectionImpl {
 		// TODO Auto-generated method stub
 		 tvmodel = TableviewModel.getInstance();
 		 tvmodel.fillTableModel();
-		
+			jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
+			jTable1.getColumnModel().getColumn(1).setPreferredWidth(150);
+			jTable1.getColumnModel().getColumn(2).setPreferredWidth(450);
 	}
 	
 	public void clearFields(){
