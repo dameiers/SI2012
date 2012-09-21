@@ -79,5 +79,10 @@ public class Model extends Observable
 	{
 		traceBuilder.setVoyageMethodStepRequired(voyaageMethodStepRequired);
 	}
+	
+	public void setSchoolLocationStepRequired(boolean schoolLocationStepRequired)
+	{
+		traceBuilder.setSchoolLocationStepRequired(schoolLocationStepRequired);
+	}
 
 }

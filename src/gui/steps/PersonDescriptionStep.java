@@ -127,6 +127,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 		model.setGroup((String)groupCbo.getSelectedItem());
 		
 		Model.getInstance().setVoyageMethodStepRequired(model.isDriveablePerson());
+		Model.getInstance().setSchoolLocationStepRequired(model.isSchoolObligaded());
 	}
 
 	@Override

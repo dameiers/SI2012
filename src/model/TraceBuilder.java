@@ -28,6 +28,7 @@ class TraceBuilder
 	private static TableviewModel				tableviewModel = TableviewModel.getInstance();
 	
 	private boolean voyaageMethodStepRequired = false;
+	private boolean schoolLocationStepRequired = false;
 	
 	public InformationGatherStepModel[] build()
 	{	
@@ -104,9 +105,7 @@ class TraceBuilder
 	}
 	
 	private boolean isSchoolLocationStepRequired() {
-		return (personDescriptionStep.isFamily() &&
-			   timeRangeStep.isAlredyFilled() && 
-			   timeRangeStep.inSchoolBreak());
+		return schoolLocationStepRequired;
 	}
 	
 	private boolean isPersonAgesStepRequired() {
@@ -122,9 +121,12 @@ class TraceBuilder
 		return eventCategoryStepModel.hasCategoryBelongingToSomeGenres();
 	}
 	
+	public void setSchoolLocationStepRequired(boolean schoolLocationStepRequired) {
+		this.schoolLocationStepRequired = schoolLocationStepRequired;
+	}
+	
 	public void setVoyageMethodStepRequired(boolean voyaageMethodStepRequired) {
 		this.voyaageMethodStepRequired = voyaageMethodStepRequired;
-		
 	}
 	
 }

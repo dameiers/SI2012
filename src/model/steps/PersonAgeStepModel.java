@@ -181,6 +181,19 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 		return result.toArray(strArr);
 	}
 	
+	public boolean hasSchoolObligadedPersons() {
+		OntToDbConnection onto = OntToDbConnection.getInstance();
+		
+		onto.removeAllIndividualsOfClass("Person");
+		onto.fillOntWithPersons(getAgesIncludingOrderingPerson());
+		onto.InfereceAndSaveOntology();
+		onto.reopenOntology();
+		Collection<Integer> obligadedPersonsIds = onto.getInvidualsFromOntologieClassByReasoner("SchoolObligationPerson");
+		onto.removeAllIndividualsOfClass("Person");
+		
+		return obligadedPersonsIds.size() != 0;
+	}
+	
 	public boolean hasDriveablePersons() {
 		OntToDbConnection onto = OntToDbConnection.getInstance();
 		

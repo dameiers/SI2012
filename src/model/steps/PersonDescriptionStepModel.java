@@ -95,6 +95,19 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 				age.equals("OldAdults"));
 	}
 	
+	public boolean isSchoolObligaded()
+	{
+		OntToDbConnection onto = OntToDbConnection.getInstance();	
+		onto.removeAllIndividualsOfClass("Person");
+		onto.fillOntWithPersons(new String[] {getAge()});
+		onto.InfereceAndSaveOntology();
+		onto.reopenOntology();
+		Collection<Integer> obligadedPersonsIds = onto.getInvidualsFromOntologieClassByReasoner("SchoolObligationPerson");
+		onto.removeAllIndividualsOfClass("Person");
+	
+		return obligadedPersonsIds.size() != 0;
+	}
+	
 	public boolean isDriveablePerson() {
 		OntToDbConnection onto = OntToDbConnection.getInstance();
 		

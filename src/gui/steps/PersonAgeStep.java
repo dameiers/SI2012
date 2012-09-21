@@ -153,6 +153,7 @@ public class PersonAgeStep extends AbstractViewModelConnectionImpl implements Ac
 		PersonAgeStepModel model = PersonAgeStepModel.getInstance();
 		model.setAges(getSelectedAges());
 		Model.getInstance().setVoyageMethodStepRequired(model.hasDriveablePersons());
+		Model.getInstance().setSchoolLocationStepRequired(model.hasSchoolObligadedPersons());
 	}
 
 	@Override
