@@ -74,7 +74,7 @@ public class PersonDescriptionStep extends AbstractViewModelConnectionImpl{
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Bitte geben Sie zunaechst ihr Alter an und fuer wie viele Personen Sie ein Event suchen.");
+					titleTxt.setText("Bitte geben Sie zunaechst Ihr Alter an und fuer wie viele Personen Sie ein Event suchen.");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);
