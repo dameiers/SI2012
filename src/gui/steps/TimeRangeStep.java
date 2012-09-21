@@ -5,6 +5,10 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
@@ -14,6 +18,9 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
@@ -22,6 +29,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+
+import com.toedter.calendar.JCalendar;
 
 import model.EventCollector;
 import model.steps.InformationGatherStepModel;
@@ -39,7 +48,7 @@ import model.steps.TimeRangeStepModel;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class TimeRangeStep extends AbstractViewModelConnectionImpl{
+public class TimeRangeStep extends AbstractViewModelConnectionImpl implements ActionListener, WindowListener{
 	private JPanel tiltePnl;
 	private JPanel contentPnl;
 	private JRadioButton summerbreakBtn;
@@ -54,6 +63,11 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 	private JRadioButton autumbreakBtn;
 	private ButtonGroup timeRangeGroup;
 	private JTextPane titleTxt;
+	private ImageIcon cup ;
+	private JCalendar cal;
+	private String buttonselected;
+	private JButton jButton2;
+	private JButton jButton1;
 
 	/**
 	* Auto-generated main method to display this 
@@ -69,6 +83,7 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 	
 	public TimeRangeStep() {
 		super();
+		cup = new ImageIcon(TimeRangeStep.class.getResource("/resources/Calendar-icon.png"));
 		initGUI();
 	}
 	
@@ -105,20 +120,19 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 				contentPnl.setLayout(contentPnlLayout);
 				contentPnl.setPreferredSize(new java.awt.Dimension(635, 277));
 				{
-					autumbreakBtn = new JRadioButton();
 					summerbreakBtn = new JRadioButton();
-					
+					contentPnl.add(summerbreakBtn, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					summerbreakBtn.setText("Sommerferien");
 					getTimeRangeGroup().add(summerbreakBtn);
-					
-					contentPnl.add(autumbreakBtn, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					contentPnl.add(getWinterbreakBtn(), new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					contentPnl.add(getEasterbreak(), new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					contentPnl.add(summerbreakBtn, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+				}
+				{
+					autumbreakBtn = new JRadioButton();
+					contentPnl.add(autumbreakBtn, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+					contentPnl.add(getWinterbreakBtn(), new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+					contentPnl.add(getEasterbreak(), new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					contentPnl.add(getMiscTimeRange(), new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 					contentPnl.add(getMiscTimeRangePnl(), new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 					autumbreakBtn.setText("Herbstferien");
-					
 					getTimeRangeGroup().add(autumbreakBtn);
 				}
 			}
@@ -169,6 +183,8 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 			miscTimeRangePnl.add(getFromDateTxt());
 			miscTimeRangePnl.add(getToLbl());
 			miscTimeRangePnl.add(getToDateTxt());
+			miscTimeRangePnl.add(getJButton1());
+			miscTimeRangePnl.add(getJButton2());
 		}
 		return miscTimeRangePnl;
 	}
@@ -194,7 +210,7 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 		if(toLbl == null) {
 			toLbl = new JLabel();
 			toLbl.setText("bis:");
-			toLbl.setBounds(179, 18, 22, 21);
+			toLbl.setBounds(204, 18, 22, 21);
 		}
 		return toLbl;
 	}
@@ -202,8 +218,7 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 	private JTextField getToDateTxt() {
 		if(toDateTxt == null) {
 			toDateTxt = new JTextField();
-			toDateTxt.setBounds(213, 15, 10, 28);
-			toDateTxt.setSize(96, 28);
+			toDateTxt.setBounds(239, 15, 96, 28);
 		}
 		return toDateTxt;
 	}
@@ -253,5 +268,91 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl{
 	@Override
 	public InformationGatherStepModel getModel() {
 		return TimeRangeStepModel.getInstance();
+	}
+	
+	private JButton getJButton1() {
+		
+		if(jButton1 == null) {
+			jButton1 = new JButton(cup);
+			jButton1.setName("start");
+			jButton1.addActionListener(this);
+			jButton1.setBounds(173, 18, 14, 10);
+		}
+		return jButton1;
+	}
+	
+	private JButton getJButton2() {
+		if(jButton2 == null) {
+			jButton2 = new JButton(cup);
+			jButton2.setName("end");
+			jButton2.addActionListener(this);
+			jButton2.setBounds(341, 17, 14, 10);
+		}
+		return jButton2;
+	}
+
+	@Override
+	public void windowActivated(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent arg0) {
+		if (buttonselected.equals("start")){
+			fromDateTxt.setText(cal.getSelectedDate());
+		} else if (buttonselected.equals("end")){
+			toDateTxt.setText(cal.getSelectedDate());
+		}
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowOpened(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		JButton but = (JButton) arg0.getSource();
+		if (but.getName().equals("start")){
+			buttonselected = "start";
+		} else if (but.getName().equals("end")){
+			buttonselected = "end";
+		}
+		JDialog dia = new JDialog();
+		dia.setTitle("Kalendar");
+		dia.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+		dia.addWindowListener(this);
+		 cal = new JCalendar();
+		dia.add(cal);
+		dia.pack();
+		dia.setVisible(true);
+		
 	}
 }
