@@ -101,7 +101,6 @@ public class PersonDescriptionStepModel extends InformationGatherStepModel
 		onto.removeAllIndividualsOfClass("Person");
 		onto.fillOntWithPersons(new String[] {getAge()});
 		onto.InfereceAndSaveOntology();
-		onto.reopenOntology();
 		Collection<Integer> driveablePersonsIds = onto.getInvidualsFromOntologieClassByReasoner("DriveablePerson");
 		onto.removeAllIndividualsOfClass("Person");
 		
