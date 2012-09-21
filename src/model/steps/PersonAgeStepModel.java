@@ -187,7 +187,6 @@ public class PersonAgeStepModel extends InformationGatherStepModel {
 		onto.removeAllIndividualsOfClass("Person");
 		onto.fillOntWithPersons(getAgesIncludingOrderingPerson());
 		onto.InfereceAndSaveOntology();
-		onto.reopenOntology();
 		Collection<Integer> driveablePersonsIds = onto.getInvidualsFromOntologieClassByReasoner("DriveablePerson");
 		onto.removeAllIndividualsOfClass("Person");
 		
