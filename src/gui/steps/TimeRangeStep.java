@@ -339,20 +339,20 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl implements Ac
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-//		JButton but = (JButton) arg0.getSource();
-//		if (but.getName().equals("start")){
-//			buttonselected = "start";
-//		} else if (but.getName().equals("end")){
-//			buttonselected = "end";
-//		}
-//		JDialog dia = new JDialog();
-//		dia.setTitle("Kalendar");
-//		dia.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-//		dia.addWindowListener(this);
-//		 cal = new JCalendar();
-//		dia.add(cal);
-//		dia.pack();
-//		dia.setVisible(true);
+		JButton but = (JButton) arg0.getSource();
+		if (but.getName().equals("start")){
+			buttonselected = "start";
+		} else if (but.getName().equals("end")){
+			buttonselected = "end";
+		}
+		JDialog dia = new JDialog();
+		dia.setTitle("Kalendar");
+		dia.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+		dia.addWindowListener(this);
+		 cal = new JCalendar();
+		dia.add(cal);
+		dia.pack();
+		dia.setVisible(true);
 		
 	}
 }
