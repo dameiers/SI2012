@@ -81,7 +81,7 @@ public class PersonAgeStep extends AbstractViewModelConnectionImpl implements Ac
 				{
 					titleTxt = new JTextPane();
 					tiltePnl.add(titleTxt, BorderLayout.WEST);
-					titleTxt.setText("Alter der beteiligent Personen");
+					titleTxt.setText("Alter der beteiligten Personen");
 					titleTxt.setPreferredSize(new java.awt.Dimension(626, 58));
 					titleTxt.setBackground(new java.awt.Color(212,208,200));
 					titleTxt.setEditable(false);

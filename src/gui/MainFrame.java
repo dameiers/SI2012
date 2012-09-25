@@ -191,7 +191,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener {
 				{
 					backBtn = new JButton();
 					ctrlPnl.add(backBtn, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					backBtn.setText("Zurück");
+					backBtn.setText("Zurueck");
 					backBtn.setBounds(485, 12, 58, 28);
 					backBtn.setActionCommand("back");
 					backBtn.addActionListener(this);

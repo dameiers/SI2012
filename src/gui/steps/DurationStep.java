@@ -94,7 +94,7 @@ public class DurationStep extends AbstractViewModelConnectionImpl {
 				{
 					weekendBtn = new JRadioButton();
 					contentPnl.add(weekendBtn, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
-					weekendBtn.setText("Wochenende");
+					weekendBtn.setText("Mehrtaegig");
 					getTimeRangeGroup().add(weekendBtn);
 				}
 				{
