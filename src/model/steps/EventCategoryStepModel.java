@@ -111,9 +111,11 @@ public class EventCategoryStepModel extends InformationGatherStepModel
 			return false;
 		} 
 		
-		return leisureTimeCategories.get(category) == LikeBox.LIKE || 
-			   sportCategories.get(category) == LikeBox.LIKE ||
-			   cultureCategories.get(category) == LikeBox.LIKE;
+		KindOfEventSelectionStepModel kind = KindOfEventSelectionStepModel.getInstance();
+		
+		return (LikeBox.LIKE.equals(leisureTimeCategories.get(category)) && LikeBox.LIKE.equals(kind.getLeisureTimeStatus())) || 
+			   (LikeBox.LIKE.equals(sportCategories.get(category)) && LikeBox.LIKE.equals(kind.getSportStatus())) ||
+			   (LikeBox.LIKE.equals(cultureCategories.get(category)) && LikeBox.LIKE.equals(kind.getCultureStatus()));
 	}
 	
 	public HashMap<String, String> getLeisureTimeCategories() {
