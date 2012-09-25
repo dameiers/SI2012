@@ -332,10 +332,16 @@ public class OntologyConnection {
 
 	protected OWLNamedIndividual createIndividual(String name)
 			throws OntologyConnectionIndividualAreadyExistsException {
-		if (null != getIndividual(ontID + "#" + name))
-			throw new OntologyConnectionIndividualAreadyExistsException(name
-					+ "  :  Already Exists");
-		OWLNamedIndividual individual = factory.getOWLNamedIndividual(name, pm);
+		
+		OWLNamedIndividual individual = getIndividual(ontID + "#" + name);
+		if (null != individual)
+		{
+			//throw new OntologyConnectionIndividualAreadyExistsException(name
+			//		+ "  :  Already Exists");
+			return individual;
+		}
+		
+		individual = factory.getOWLNamedIndividual(name, pm);
 		individuals.add(individual);
 		return individual;
 	}
