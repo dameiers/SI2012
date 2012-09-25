@@ -1,5 +1,6 @@
 package model.steps;
 
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 import gui.steps.TimeRangeStep;
@@ -18,6 +19,7 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	private String timeRangeTyp;
 	private GregorianCalendar fromDate;
 	private GregorianCalendar toDate;
+	private boolean validdate;
 	
 	
 	private TimeRangeStepModel() 
@@ -51,7 +53,23 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 		if(!hasValidTimeRange())
 			return "Ung�ltiger Zeitraum";
 		
+		if(!validdate)
+			return "Falsches Datums Format";
+		
 		return null;
+	}
+	
+	public void setValidDate(boolean b){
+		
+		this.validdate = b;
+	}
+	
+	
+	public boolean getValidDate()
+	{
+		
+		
+		return validdate;
 	}
 	
 	
@@ -113,12 +131,17 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	public GregorianCalendar getToDate() 
 	{
 		return toDate;
-		
 	}
 
 	public void setToDate(GregorianCalendar toDate) 
 	{
 		this.toDate = toDate;
 		updateAlredayFilled();
+	}
+
+	@Override
+	public void printToConsole() {
+		System.out.println("from Date: " + getFromDate().getTime());
+		System.out.println("to Date: " + getToDate().getTime());
 	}
 }

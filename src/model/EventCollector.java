@@ -414,8 +414,8 @@ public class EventCollector{
 	}
 
 	public void setHolidayView() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		ontToDbConnection.setHolidayView(
 				sdf.format(timeRangeStep.getFromDate().getTime()),
 				sdf.format(timeRangeStep.getToDate().getTime()));

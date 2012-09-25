@@ -230,15 +230,16 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl implements Ac
 		//there is a own time range defined
 		if(timeRangeGroup.getSelection() == miscTimeRange.getModel()){
 			model.setTimeRangeTyp(TimeRangeStepModel.MISC_TIME_RANGE);
-			SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+			SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 			final GregorianCalendar fromDate = new GregorianCalendar();
 			final GregorianCalendar toDate = new GregorianCalendar();
 			try {
+				System.out.println("from date: "+df.parse(fromDateTxt.getText()));
 				fromDate.setTime(df.parse(fromDateTxt.getText()));
 				toDate.setTime(df.parse(toDateTxt.getText()));
+				model.setValidDate(true);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				model.setValidDate(false);
 			}
 			
 			model.setFromDate(fromDate);
@@ -254,17 +255,18 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl implements Ac
 				model.setTimeRangeTyp(TimeRangeStepModel.AUTUMNBREAK_TIME_RANGE);	
 			}
 			
-			SwingUtilities.invokeLater(new Runnable() {
-				
-				@Override
-				public void run() {
-//					EventCollector collector = EventCollector.getInstance();
-					EventCollector collector = IntelligentEventCollector.getInstance();
-					collector.setHolidayView();
-				}
-			});
+			
 			
 		}
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+//				EventCollector collector = EventCollector.getInstance();
+				EventCollector collector = IntelligentEventCollector.getInstance();
+				collector.setHolidayView();
+			}
+		});
 	}
 
 	@Override

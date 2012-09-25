@@ -280,9 +280,20 @@ public class OntToDbConnection {
 		for (String city : reachableCities) {
 			sqlInStat = sqlInStat.concat("'" + city + "' ,");
 		}
-		sqlInStat = sqlInStat.substring(0, sqlInStat.lastIndexOf(","));
+		
+		String cities = "";
+		
+		if (reachableCities.size()>0) 
+		{
+			cities = sqlInStat.substring(0, sqlInStat.lastIndexOf(","));
+		}
+		else
+		{
+			cities = "'_'";
+		}
+		
 		String sqlStatement = " SELECT * FROM \"" + HOLIDAY_VIEW_NAME
-				+ "\" WHERE ort IN (" + sqlInStat + ")";
+				+ "\" WHERE ort IN (" + cities + ")";
 		dbCon.createView(REACHABLE_CITIES_VIEW_NAME, sqlStatement);
 	}
 
@@ -293,7 +304,7 @@ public class OntToDbConnection {
 	public void setHolidayView(String startDate, String endDate) {
 		String sqlStatement = "";
 		sqlStatement = " SELECT * FROM \"Event\" WHERE startdatum >= '"
-				+ startDate + "' AND enddatum <= '" + endDate + "'";
+				+ startDate + " 00:00:00' AND enddatum <= '" + endDate + " 23:59:00'";
 		dbCon.createView(HOLIDAY_VIEW_NAME, sqlStatement);
 	}
 
