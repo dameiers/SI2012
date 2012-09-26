@@ -51,9 +51,9 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 	public String getError() 
 	{	
 		if(!hasValidTimeRange())
-			return "Ung�ltiger Zeitraum";
+			return "Ungueltiger Zeitraum";
 		
-		if(!validdate)
+		if(timeRangeTyp.equals(MISC_TIME_RANGE) && !validdate)
 			return "Falsches Datums Format";
 		
 		return null;
