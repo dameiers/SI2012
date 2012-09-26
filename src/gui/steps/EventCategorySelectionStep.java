@@ -207,7 +207,4 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 		return EventCategoryStepModel.getInstance();
 	}
 	
-	public void recalculateEvents(){
-		
-	}
 }
