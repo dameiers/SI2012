@@ -34,7 +34,9 @@ import com.toedter.calendar.JCalendar;
 
 import model.EventCollector;
 import model.IntelligentEventCollector;
+import model.Model;
 import model.steps.InformationGatherStepModel;
+import model.steps.SchoolLocationStepModel;
 import model.steps.TimeRangeStepModel;
 
 /**
@@ -227,9 +229,11 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl implements Ac
 	@Override
 	public void fillModel() {
 		TimeRangeStepModel model = TimeRangeStepModel.getInstance();
+		
 		//there is a own time range defined
 		if(timeRangeGroup.getSelection() == miscTimeRange.getModel()){
 			model.setTimeRangeTyp(TimeRangeStepModel.MISC_TIME_RANGE);
+			Model.getInstance().setSchoolLocationStepRequired(false);
 			SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 			final GregorianCalendar fromDate = new GregorianCalendar();
 			final GregorianCalendar toDate = new GregorianCalendar();
