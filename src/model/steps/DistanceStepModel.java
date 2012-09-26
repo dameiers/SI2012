@@ -80,6 +80,10 @@ public class DistanceStepModel extends InformationGatherStepModel {
 		ArrayList<String> allcities = ontoconn.getCitiesFromDB();
 		ArrayList<String> reachablecities = new ArrayList<String>();
 		String origin = OriginLocationStepModel.getInstance().getOrigin();
+		if (wish_distance==0) {
+			reachablecities.add(origin);
+			return reachablecities;
+		}
 		for (int i = 0; i < allcities.size(); i++) {
 			String city = allcities.get(i).replace("[", "").replace("]", "")
 					.trim();
