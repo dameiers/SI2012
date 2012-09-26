@@ -162,14 +162,17 @@ public class GenreSelectionStep extends AbstractViewModelConnectionImpl{
 		
 		if(cinemaGenreVisible) {
 			model.setCinemaGenres(cinemaGenreList.getSelectionList());
+			IntelligentEventCollector.getInstance().addEventstoOnto(cinemaGenreList.getSelectionList());
 		} 
 		
 		if(concertGenreVisible) {
 			model.setConcertGenres(concertGenresList.getSelectionList());
+			IntelligentEventCollector.getInstance().addEventstoOnto(concertGenresList.getSelectionList());
 		}
 		
 		if(theatreGenreVisible) {
 			model.setTheatreGenres(theatreGenreList.getSelectionList());
+			IntelligentEventCollector.getInstance().addEventstoOnto(theatreGenreList.getSelectionList());
 		}
 	}
 	

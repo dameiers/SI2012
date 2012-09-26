@@ -177,14 +177,19 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 	@Override
 	public void fillModel() {
 		EventCategoryStepModel model = EventCategoryStepModel.getInstance();
+		
 		if(cultureCategoryVisible){
 			model.setCultureCategories(cultureCategoryList.getSelectionList());
+			IntelligentEventCollector.getInstance().addEventstoOnto(cultureCategoryList.getSelectionList());
 		}
 		if(sportCategoryVisible){
 			model.setSportCategories(sportCategoryList.getSelectionList());
+			IntelligentEventCollector.getInstance().addEventstoOnto(sportCategoryList.getSelectionList());
+			
 		}
 		if(leisureTimeCategoryVisible){
 			model.setLeisureTimeCategories(leisureTimeCategoryList.getSelectionList());
+			IntelligentEventCollector.getInstance().addEventstoOnto(leisureTimeCategoryList.getSelectionList());
 		}
 	}
 	
@@ -200,5 +205,9 @@ public class EventCategorySelectionStep extends AbstractViewModelConnectionImpl{
 	@Override
 	public InformationGatherStepModel getModel() {
 		return EventCategoryStepModel.getInstance();
+	}
+	
+	public void recalculateEvents(){
+		
 	}
 }

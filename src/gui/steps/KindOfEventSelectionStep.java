@@ -15,6 +15,7 @@ import javax.swing.JTextPane;
 import javax.swing.ListModel;
 import javax.swing.WindowConstants;
 
+import model.IntelligentEventCollector;
 import model.steps.InformationGatherStepModel;
 import model.steps.KindOfEventSelectionStepModel;
 
@@ -103,6 +104,7 @@ public class KindOfEventSelectionStep extends AbstractViewModelConnectionImpl {
 		model.setCultureStatus(list.get("Kulturell"));
 		model.setLeisureTimeStatus(list.get("Freizeit"));
 		model.setSportStatus(list.get("Sportlich"));
+		IntelligentEventCollector.getInstance().clearNewAddedEvents();
 	}
 	
 	@Override

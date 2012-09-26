@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -21,6 +22,7 @@ public class IntelligentEventCollector extends EventCollector implements
 
 	private static IntelligentEventCollector instance;
 	private HashSet<String> alreadyLaodedClasses = new HashSet<String>();
+	private HashSet<String> newLaodedClasses = new HashSet<String>();
 
 	private IntelligentEventCollector() {
 
@@ -150,7 +152,7 @@ public class IntelligentEventCollector extends EventCollector implements
 					alreadyLaodedClasses.remove(key);
 				}
 			} else {
-				if (!alreadyLaodedClasses.contains(key)) {
+				if (!alreadyLaodedClasses.contains(key) ) {
 					final Set<Integer> prefetchEvents = new HashSet<Integer>();
 					String query = "";
 					if (Pattern.matches(".*Genre$", key)) {
@@ -170,10 +172,57 @@ public class IntelligentEventCollector extends EventCollector implements
 					ResultSet rs = ontToDbConnection.executeQuery(query);
 					ontToDbConnection.fillOntWithEvents(rs);
 					alreadyLaodedClasses.add(key);
+					newLaodedClasses.add(key);
 					ontToDbConnection.InfereceAndSaveOntology();
 				}
 			}
 		}
 	}
+	
+	public void addEventstoOnto(HashMap<String,String> events){
+		for(String elem : events.keySet()) {
+			String value = events.get(elem);
+			if (value.equals(LikeBox.DONTLIKE)) {
+				// remove from ontology
+				if (alreadyLaodedClasses.contains(elem)) {
+					ontToDbConnection.removeAllIndividualsOfClass(elem);
+					ontToDbConnection.InfereceAndSaveOntology();
+					alreadyLaodedClasses.remove(elem);
+				}
+			} else {
+				if (!alreadyLaodedClasses.contains(elem) ) {
+					String query = "";
+					if (Pattern.matches(".*Genre$", elem)) {
+						query = "select view.name, view.startdatum, view.enddatum, view.ort, view.kinderbetreuung, view.mindestalter, view.event_id, kat.kategorie_id, genre_name, view.kinderfreundlich from reachablecitiesview view"
+								+ " left join \"Event\" event on view.event_id = event.event_id left join \"Kategorie\" kat on view.kategorie = kat.kategorie_id"
+								+ " left join \"Event_Genre\" foo on foo.event = event.event_id"
+								+ " left join \"Genre\" genre on foo.genre = genre.genre_id"
+								+ " where genre_name in ('" + elem + "')";
+					} else {
+						query = "select view.name, view.startdatum, view.enddatum, view.ort, view.kinderbetreuung, view.mindestalter, view.event_id, kat.kategorie_id, genre_name, view.kinderfreundlich from reachablecitiesview view"
+								+ " left join \"Event\" event on view.event_id = event.event_id left join \"Kategorie\" kat on view.kategorie = kat.kategorie_id"
+								+ " left join \"Event_Genre\" foo on foo.event = event.event_id"
+								+ " left join \"Genre\" genre on foo.genre = genre.genre_id"
+								+ " where kategorie_name in ('" + elem + "')";
+					}
+
+					ResultSet rs = ontToDbConnection.executeQuery(query);
+					ontToDbConnection.fillOntWithEvents(rs);
+					alreadyLaodedClasses.add(elem);
+					newLaodedClasses.add(elem);
+					ontToDbConnection.InfereceAndSaveOntology();
+				}
+			}
+		}
+		
+	}
+	
+	public void clearNewAddedEvents(){
+		for (String elem : newLaodedClasses){
+			alreadyLaodedClasses.remove(elem);
+		}
+		newLaodedClasses.clear();
+	}
+
 
 }
