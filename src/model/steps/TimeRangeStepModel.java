@@ -56,6 +56,9 @@ public class TimeRangeStepModel extends InformationGatherStepModel
 		if(timeRangeTyp.equals(MISC_TIME_RANGE) && !validdate)
 			return "Falsches Datums Format";
 		
+		if (fromDate.after(toDate)){
+			return "Das Enddatum muss groesser oder gleich als das Startdatum sein.";
+		}
 		return null;
 	}
 	

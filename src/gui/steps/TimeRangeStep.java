@@ -311,6 +311,7 @@ public class TimeRangeStep extends AbstractViewModelConnectionImpl implements Ac
 	public void windowClosing(WindowEvent arg0) {
 		if (buttonselected.equals("start")){
 			fromDateTxt.setText(cal.getSelectedDate());
+			toDateTxt.setText(cal.getSelectedDate());
 		} else if (buttonselected.equals("end")){
 			toDateTxt.setText(cal.getSelectedDate());
 		}
